@@ -162,9 +162,9 @@ Bats and lighting (Layer B candidates):
 
 ## 10) Current status (agent must keep updated)
 
-- Current phase: Milestone 0.3.x — Layer A metric engine (smoke-test)
-- Recently completed: WP0.6/0.7 smoke-test radiance outputs + WP0.8 schema reference and regression tests.
+- Current phase: Milestone 0.6.x — Layer B (optional) decision point
+- Recently completed: WP0.9–WP0.13 (national Layer A tables, sanity suite, trends, vulnerability model, paper-ready figures).
 - Immediate next steps (should match the first unchecked WP in `docs/roadmap.md`):
-  1) WP0.9 — National run: Layer A metric tables produced.
-  2) WP0.10 — Layer A sanity suite: anchors, missingness, invariants, and sensitivity checks.
-  3) WP0.11 — Trend estimation + inside-vs-outside retention indices.
+  1) WP0.14 — Layer B go/no-go: focal taxa + negative controls + bias strategy (decision).
+  2) WP0.15 — Layer B data acquisition + provenance + quality filters.
+  3) WP0.16 — Layer B modelling + falsification checks + interpretation.

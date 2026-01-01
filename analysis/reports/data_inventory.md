@@ -1,6 +1,6 @@
 # Data inventory (Layer A)
 
-Generated: 2026-01-01 07:33 UTC
+Generated: 2026-01-01 10:00 UTC
 
 ## Protected areas — CAPAD 2024 (DCCEEW)
 
@@ -21,7 +21,7 @@ Source URLs:
 - Coverage: annual global time series (2000–2024). VIIRS-based years start 2012; core analysis uses 2013–2024.
 - Resolution/CRS: 500 m (COG) in EPSG:4326.
 - Variable: annual average VIIRS composite (`nightlights.average_viirs.v21_*`).
-- Scaling: record notes values scaled from 0–200 to 0–2000; scale factor to be confirmed in WP0.6 and recorded.
+- Scaling: record notes values scaled from 0–200 to 0–2000; apply raster scale/offset metadata during metric computation (2022–2024 files report scale=10).
 - Smoke-test years (WP0.6): 2013, 2018, 2024.
 - Known caveats: 2012 is partial-year for VIIRS; exclude from trends.
 

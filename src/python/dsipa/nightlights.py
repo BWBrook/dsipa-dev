@@ -15,9 +15,20 @@ FILE_TEMPLATE = (
 
 EXPECTED_MD5 = {
     2013: "b60fb30a5039aff28e943179ec797f3f",
+    2014: "c9505d985dbfef015e4f23f3d0172f32",
+    2015: "2dbb7b5930a218778636bea0eeb9afb1",
+    2016: "a75f58ecdffb7c62e6af2a0464139551",
+    2017: "380fcdc877f0213f023ee41372ff7894",
     2018: "b1818a74dd2bc41e7253a5df76533a9c",
+    2019: "88933a6aa669fa863a998b92f9d25c92",
+    2020: "2e2756b276a293dc4c2932c9ccb1f7e4",
+    2021: "f200a2292de85badfbadb557621cdd6b",
+    2022: "d0952d107adfd943478f1635a2eb987e",
+    2023: "7108c72e049e2e718213816e3dad3ed2",
     2024: "0b976892d40c2d0d99177c727289eaf2",
 }
+
+CORE_YEARS = tuple(sorted(EXPECTED_MD5.keys()))
 
 
 @dataclass(frozen=True)

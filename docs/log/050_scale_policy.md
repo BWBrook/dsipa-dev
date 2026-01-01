@@ -1,0 +1,21 @@
+# 050_scale_policy log
+
+- Date/time (UTC): 2026-01-01 08:50 UTC
+- Objectives: confirm night-lights scale metadata and standardise scaling policy before national run.
+- Actions taken:
+  - Inspected GeoTIFF metadata: 2013/2018 scale=1, 2024 scale=10, offset=0, nodata=-32768.
+  - Adopted policy to apply scale/offset metadata during metric computation (DEC-003 update).
+  - Re-ran smoke-test radiance buffers and edge profile outputs to align with scaling policy.
+  - Regenerated smoke-test reports and artefacts.
+- Outputs updated:
+  - `data/processed/pa_radiance_buffers_smoketest_v0_1_0.csv`
+  - `data/processed/pa_edge_profiles_smoketest_v0_1_0.csv`
+  - `analysis/reports/smoketest_buffers_sanity.md`
+  - `analysis/reports/smoketest_edge_profiles.md`
+  - `artefacts/wp0_6_radiance_smoketest/`
+  - `artefacts/wp0_7_edge_profiles_smoketest/`
+- Sanity verdict:
+  - pass — 2024 values now align with 2013/2018 magnitude; triad ordering remains plausible.
+- Next steps:
+  - Update data inventory and schema reference to reflect scaling policy.
+  - Proceed with WP0.9 national run.

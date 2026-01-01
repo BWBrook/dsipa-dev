@@ -1,0 +1,22 @@
+# 060_national_run log
+
+- Date/time (UTC): 2026-01-01 09:59 UTC
+- Objectives: compute national Layer A tables and coverage/sanity report (WP0.9).
+- Actions taken:
+  - Downloaded Zenodo VIIRS COGs for 2013–2024.
+  - Computed national inside + buffer radiance summaries and inside ring profiles.
+  - Generated national coverage/sanity report and distribution plot.
+  - Wrote canonical artefact folder.
+- Outputs:
+  - `data/processed/pa_radiance_buffers_national_v0_1_0.csv`
+  - `data/processed/pa_edge_profiles_national_v0_1_0.csv`
+  - `analysis/reports/national_layerA_coverage_and_sanity.md`
+  - `analysis/reports/national_layerA_distributions.png`
+  - `artefacts/wp0_9_layerA_national/`
+- Diagnostics / sanity checks:
+  - Scale metadata shows scale=10 for 2022–2024, scale=1 earlier (documented in report).
+  - Inside valid coverage ~0.40 at 10-pixel threshold; rings drop to ~0.03 in outer bin.
+  - Urban-adjacent inside medians higher than remote medians (anchor check).
+- Next steps:
+  - Run Layer A sanity dashboard (WP0.10).
+  - Proceed to trend estimation (WP0.11).

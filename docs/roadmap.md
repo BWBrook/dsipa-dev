@@ -67,13 +67,13 @@ At minimum:
 - [x] **WP0.8 — Structured outputs + schema_version + regression tests (smoke-test)**
 
 ### Milestone 0.4.x — Layer A national run + sanity (aim: national tables + core sanity)
-- [ ] **WP0.9 — National run: Layer A metric tables produced**
-- [ ] **WP0.10 — Layer A sanity suite: anchors, missingness, invariants, and sensitivity checks**
+- [x] **WP0.9 — National run: Layer A metric tables produced**
+- [x] **WP0.10 — Layer A sanity suite: anchors, missingness, invariants, and sensitivity checks**
 
 ### Milestone 0.5.x — Trends, vulnerability, and paper-ready Layer A figures
-- [ ] **WP0.11 — Trend estimation + inside-vs-outside retention indices**
-- [ ] **WP0.12 — Vulnerability model: predictors of brightening/penetration**
-- [ ] **WP0.13 — Paper-ready Layer A figure set + interpretation notes**
+- [x] **WP0.11 — Trend estimation + inside-vs-outside retention indices**
+- [x] **WP0.12 — Vulnerability model: predictors of brightening/penetration**
+- [x] **WP0.13 — Paper-ready Layer A figure set + interpretation notes**
 
 ### Milestone 0.6.x — Layer B (optional): nocturnal biodiversity signal module
 (Only proceed if Layer A is stable and the roadmap has not been reordered to skip required sanity work.)

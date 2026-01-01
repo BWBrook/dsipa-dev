@@ -1,6 +1,6 @@
 # Output schema reference
 
-Generated: 2026-01-01 07:59 UTC
+Generated: 2026-01-01 10:01 UTC
 
 Schema version: 0.1.0
 
@@ -123,19 +123,19 @@ Smoke-test radiance summaries inside PAs and outside buffers.
 | year | int | year | Observation year. |
 | zone | string | - | Zone label: inside or buffer. |
 | buffer_km | float | km | Buffer distance for zone=buffer; NA for inside. |
-| scale_metadata | float | - | Raster scale metadata (raw GeoTIFF). |
-| offset_metadata | float | - | Raster offset metadata (raw GeoTIFF). |
+| scale_metadata | float | - | Raster scale metadata (GeoTIFF). |
+| offset_metadata | float | - | Raster offset metadata (GeoTIFF). |
 | pixel_count | int | pixels | Total pixels sampled (incl. invalid). |
 | valid_pixel_count | int | pixels | Valid pixels after masking. |
 | valid_fraction | float | - | valid_pixel_count / pixel_count. |
-| mean | float | raw | Mean of valid pixel values. |
-| median | float | raw | Median of valid pixel values. |
-| min | float | raw | Minimum valid pixel value. |
-| max | float | raw | Maximum valid pixel value. |
-| std | float | raw | Standard deviation of valid pixel values. |
+| mean | float | scaled | Mean of valid pixel values (scale/offset applied). |
+| median | float | scaled | Median of valid pixel values (scale/offset applied). |
+| min | float | scaled | Minimum valid pixel value (scale/offset applied). |
+| max | float | scaled | Maximum valid pixel value (scale/offset applied). |
+| std | float | scaled | Standard deviation of valid pixel values (scale/offset applied). |
 
 Notes:
-- Statistics are computed on raw stored raster values; scale/offset not applied.
+- Statistics are computed on scaled raster values; scale/offset metadata applied.
 
 ## pa_edge_profiles_smoketest
 
@@ -153,16 +153,115 @@ Smoke-test inside ring (distance-to-edge) radiance profiles.
 | ring_index | int | - | Ring bin index (0..n-1). |
 | ring_inner_km | float | km | Inner distance from boundary. |
 | ring_outer_km | float | km | Outer distance from boundary. |
-| scale_metadata | float | - | Raster scale metadata (raw GeoTIFF). |
-| offset_metadata | float | - | Raster offset metadata (raw GeoTIFF). |
+| scale_metadata | float | - | Raster scale metadata (GeoTIFF). |
+| offset_metadata | float | - | Raster offset metadata (GeoTIFF). |
 | pixel_count | int | pixels | Total pixels sampled (incl. invalid). |
 | valid_pixel_count | int | pixels | Valid pixels after masking. |
 | valid_fraction | float | - | valid_pixel_count / pixel_count. |
-| mean | float | raw | Mean of valid pixel values. |
-| median | float | raw | Median of valid pixel values. |
-| min | float | raw | Minimum valid pixel value. |
-| max | float | raw | Maximum valid pixel value. |
-| std | float | raw | Standard deviation of valid pixel values. |
+| mean | float | scaled | Mean of valid pixel values (scale/offset applied). |
+| median | float | scaled | Median of valid pixel values (scale/offset applied). |
+| min | float | scaled | Minimum valid pixel value (scale/offset applied). |
+| max | float | scaled | Maximum valid pixel value (scale/offset applied). |
+| std | float | scaled | Standard deviation of valid pixel values (scale/offset applied). |
 
 Notes:
-- Statistics are computed on raw stored raster values; scale/offset not applied.
+- Statistics are computed on scaled raster values; scale/offset metadata applied.
+
+## pa_radiance_buffers_national
+
+File: `data/processed/pa_radiance_buffers_national_v0_1_0.csv`
+Format: csv
+
+National radiance summaries inside PAs and outside buffers.
+
+| Column | Type | Units | Description |
+| --- | --- | --- | --- |
+| schema_version | string | - | Schema version for radiance outputs. |
+| pa_id | string | - | CAPAD PA_ID. |
+| year | int | year | Observation year. |
+| zone | string | - | Zone label: inside or buffer. |
+| buffer_km | float | km | Buffer distance for zone=buffer; NA for inside. |
+| scale_metadata | float | - | Raster scale metadata (GeoTIFF). |
+| offset_metadata | float | - | Raster offset metadata (GeoTIFF). |
+| pixel_count | int | pixels | Total pixels sampled (incl. invalid). |
+| valid_pixel_count | int | pixels | Valid pixels after masking. |
+| valid_fraction | float | - | valid_pixel_count / pixel_count. |
+| mean | float | scaled | Mean of valid pixel values (scale/offset applied). |
+| median | float | scaled | Median of valid pixel values (scale/offset applied). |
+| min | float | scaled | Minimum valid pixel value (scale/offset applied). |
+| max | float | scaled | Maximum valid pixel value (scale/offset applied). |
+| std | float | scaled | Standard deviation of valid pixel values (scale/offset applied). |
+
+Notes:
+- Statistics are computed on scaled raster values; scale/offset metadata applied.
+
+## pa_edge_profiles_national
+
+File: `data/processed/pa_edge_profiles_national_v0_1_0.csv`
+Format: csv
+
+National inside ring (distance-to-edge) radiance profiles.
+
+| Column | Type | Units | Description |
+| --- | --- | --- | --- |
+| schema_version | string | - | Schema version for edge profile outputs. |
+| pa_id | string | - | CAPAD PA_ID. |
+| year | int | year | Observation year. |
+| ring_index | int | - | Ring bin index (0..n-1). |
+| ring_inner_km | float | km | Inner distance from boundary. |
+| ring_outer_km | float | km | Outer distance from boundary. |
+| scale_metadata | float | - | Raster scale metadata (GeoTIFF). |
+| offset_metadata | float | - | Raster offset metadata (GeoTIFF). |
+| pixel_count | int | pixels | Total pixels sampled (incl. invalid). |
+| valid_pixel_count | int | pixels | Valid pixels after masking. |
+| valid_fraction | float | - | valid_pixel_count / pixel_count. |
+| mean | float | scaled | Mean of valid pixel values (scale/offset applied). |
+| median | float | scaled | Median of valid pixel values (scale/offset applied). |
+| min | float | scaled | Minimum valid pixel value (scale/offset applied). |
+| max | float | scaled | Maximum valid pixel value (scale/offset applied). |
+| std | float | scaled | Standard deviation of valid pixel values (scale/offset applied). |
+
+Notes:
+- Statistics are computed on scaled raster values; scale/offset metadata applied.
+
+## pa_trends
+
+File: `data/processed/pa_trends_v0_1_0.csv`
+Format: csv
+
+Protected-area trend estimates and retention indices.
+
+| Column | Type | Units | Description |
+| --- | --- | --- | --- |
+| schema_version | string | - | Schema version for trend outputs. |
+| pa_id | string | - | CAPAD PA_ID. |
+| n_years_inside | int | years | Valid years used for inside trend. |
+| slope_inside | float | scaled/year | Theil-Sen slope for inside median. |
+| intercept_inside | float | scaled | Theil-Sen intercept for inside median. |
+| n_years_buffer_1km | int | years | Valid years used for 1 km buffer trend. |
+| slope_buffer_1km | float | scaled/year | Theil-Sen slope for 1 km buffer median. |
+| intercept_buffer_1km | float | scaled | Theil-Sen intercept for 1 km buffer median. |
+| n_years_buffer_5km | int | years | Valid years used for 5 km buffer trend. |
+| slope_buffer_5km | float | scaled/year | Theil-Sen slope for 5 km buffer median. |
+| intercept_buffer_5km | float | scaled | Theil-Sen intercept for 5 km buffer median. |
+| method | string | - | Trend estimator name. |
+| metric | string | - | Metric used for trends (e.g., median). |
+| retention_index_1km | float | scaled/year | Inside slope minus 1 km buffer slope. |
+| retention_index_5km | float | scaled/year | Inside slope minus 5 km buffer slope. |
+
+## pa_risk_rankings
+
+File: `data/processed/pa_risk_rankings_v0_1_0.csv`
+Format: csv
+
+Ranked protected areas by brightening/retention metrics.
+
+| Column | Type | Units | Description |
+| --- | --- | --- | --- |
+| schema_version | string | - | Schema version for risk rankings. |
+| pa_id | string | - | CAPAD PA_ID. |
+| slope_inside | float | scaled/year | Inside median trend slope. |
+| retention_index_1km | float | scaled/year | Inside minus 1 km buffer slope. |
+| retention_index_5km | float | scaled/year | Inside minus 5 km buffer slope. |
+| rank_slope_inside | int | - | Rank by slope_inside (1=largest brightening). |
+| rank_retention_1km | int | - | Rank by retention_index_1km (1=largest inside-outside contrast). |

@@ -52,7 +52,13 @@ def _load_geoms(path: Path, target_crs: str) -> gpd.GeoDataFrame:
     return gdf.to_crs(target_crs)
 
 
-def _stats_for_geom(dataset: rasterio.DatasetReader, geom) -> dict[str, float]:
+def _stats_for_geom(
+    dataset: rasterio.DatasetReader,
+    geom,
+    *,
+    scale: float | None,
+    offset: float | None,
+) -> dict[str, float]:
     nodata = dataset.nodata
     data, _ = mask(dataset, [geom], crop=True, filled=True, nodata=nodata)
     band = data[0]
@@ -63,7 +69,10 @@ def _stats_for_geom(dataset: rasterio.DatasetReader, geom) -> dict[str, float]:
     mask_invalid |= band < 0
 
     pixel_count = int(band.size)
-    valid = band[~mask_invalid]
+    valid = band[~mask_invalid].astype("float64")
+    scale_value = 1.0 if scale is None else float(scale)
+    offset_value = 0.0 if offset is None else float(offset)
+    valid = valid * scale_value + offset_value
     valid_count = int(valid.size)
 
     if valid_count == 0:
@@ -123,7 +132,7 @@ def summarise_year(
         meta = _raster_meta(dataset, year, raster_path)
 
         for _, row in triad.iterrows():
-            stats = _stats_for_geom(dataset, row.geometry)
+            stats = _stats_for_geom(dataset, row.geometry, scale=meta.scale, offset=meta.offset)
             records.append(
                 {
                     "schema_version": SCHEMA_VERSION,
@@ -139,7 +148,7 @@ def summarise_year(
             )
 
         for _, row in buffers.iterrows():
-            stats = _stats_for_geom(dataset, row.geometry)
+            stats = _stats_for_geom(dataset, row.geometry, scale=meta.scale, offset=meta.offset)
             records.append(
                 {
                     "schema_version": SCHEMA_VERSION,
@@ -186,7 +195,7 @@ def write_sanity_report(
         "## Raster metadata (per year)",
         *meta_lines,
         "",
-        "Note: Summary statistics are computed on raw stored values (no scale/offset applied).",
+        "Note: Summary statistics are computed on scaled values (scale/offset metadata applied).",
         "",
         "## Summary by zone",
         "",

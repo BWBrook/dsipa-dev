@@ -1,13 +1,13 @@
 # Smoke-test edge profile report
 
-Generated: 2026-01-01 07:47 UTC
+Generated: 2026-01-01 08:45 UTC
 
 ## Raster metadata (per year)
 - 2013: dtype=int16, nodata=-32768.0, scale=1.0, offset=0.0
 - 2018: dtype=int16, nodata=-32768.0, scale=1.0, offset=0.0
 - 2024: dtype=int16, nodata=-32768.0, scale=10.0, offset=0.0
 
-Note: Statistics computed on raw stored values (no scale/offset applied).
+Note: Statistics computed on scaled values (scale/offset metadata applied).
 
 ## Summary by ring
 
@@ -20,7 +20,7 @@ year ring_index
 2018 0            3.0  0.186  0.170  0.0  0.111  0.222  0.279  0.335    3.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0               3.0  234.000  314.457  45.0  52.5  60.0  328.5  597.0
      1            3.0  0.000  0.000  0.0  0.000  0.000  0.000  0.000    3.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0               3.0  185.667  312.949   1.0   5.0   9.0  278.0  547.0
      2            0.0    NaN    NaN  NaN    NaN    NaN    NaN    NaN    0.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN               3.0    0.000    0.000   0.0   0.0   0.0    0.0    0.0
-2024 0            3.0  0.024  0.023  0.0  0.014  0.028  0.036  0.044    3.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0               3.0  234.000  314.457  45.0  52.5  60.0  328.5  597.0
+2024 0            3.0  0.243  0.225  0.0  0.142  0.285  0.365  0.444    3.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0               3.0  234.000  314.457  45.0  52.5  60.0  328.5  597.0
      1            3.0  0.000  0.000  0.0  0.000  0.000  0.000  0.000    3.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0               3.0  185.667  312.949   1.0   5.0   9.0  278.0  547.0
      2            0.0    NaN    NaN  NaN    NaN    NaN    NaN    NaN    0.0  NaN  NaN  NaN  NaN  NaN  NaN  NaN               3.0    0.000    0.000   0.0   0.0   0.0    0.0    0.0
 

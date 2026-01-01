@@ -21,6 +21,14 @@ RADIANCE_BUFFERS_SMOKETEST_CSV = (
 EDGE_PROFILES_SMOKETEST_CSV = (
     f"data/processed/pa_edge_profiles_smoketest_v{SCHEMA_SLUG}.csv"
 )
+RADIANCE_BUFFERS_NATIONAL_CSV = (
+    f"data/processed/pa_radiance_buffers_national_v{SCHEMA_SLUG}.csv"
+)
+EDGE_PROFILES_NATIONAL_CSV = (
+    f"data/processed/pa_edge_profiles_national_v{SCHEMA_SLUG}.csv"
+)
+PA_TRENDS_CSV = f"data/processed/pa_trends_v{SCHEMA_SLUG}.csv"
+PA_RISK_RANKINGS_CSV = f"data/processed/pa_risk_rankings_v{SCHEMA_SLUG}.csv"
 
 
 @dataclass(frozen=True)
@@ -179,19 +187,19 @@ RADIANCE_BUFFERS_SMOKETEST_SCHEMA = OutputSchema(
         ColumnSpec("year", "int", "year", "Observation year."),
         ColumnSpec("zone", "string", "-", "Zone label: inside or buffer."),
         ColumnSpec("buffer_km", "float", "km", "Buffer distance for zone=buffer; NA for inside."),
-        ColumnSpec("scale_metadata", "float", "-", "Raster scale metadata (raw GeoTIFF)."),
-        ColumnSpec("offset_metadata", "float", "-", "Raster offset metadata (raw GeoTIFF)."),
+        ColumnSpec("scale_metadata", "float", "-", "Raster scale metadata (GeoTIFF)."),
+        ColumnSpec("offset_metadata", "float", "-", "Raster offset metadata (GeoTIFF)."),
         ColumnSpec("pixel_count", "int", "pixels", "Total pixels sampled (incl. invalid)."),
         ColumnSpec("valid_pixel_count", "int", "pixels", "Valid pixels after masking."),
         ColumnSpec("valid_fraction", "float", "-", "valid_pixel_count / pixel_count."),
-        ColumnSpec("mean", "float", "raw", "Mean of valid pixel values."),
-        ColumnSpec("median", "float", "raw", "Median of valid pixel values."),
-        ColumnSpec("min", "float", "raw", "Minimum valid pixel value."),
-        ColumnSpec("max", "float", "raw", "Maximum valid pixel value."),
-        ColumnSpec("std", "float", "raw", "Standard deviation of valid pixel values."),
+        ColumnSpec("mean", "float", "scaled", "Mean of valid pixel values (scale/offset applied)."),
+        ColumnSpec("median", "float", "scaled", "Median of valid pixel values (scale/offset applied)."),
+        ColumnSpec("min", "float", "scaled", "Minimum valid pixel value (scale/offset applied)."),
+        ColumnSpec("max", "float", "scaled", "Maximum valid pixel value (scale/offset applied)."),
+        ColumnSpec("std", "float", "scaled", "Standard deviation of valid pixel values (scale/offset applied)."),
     ),
     notes=(
-        "Statistics are computed on raw stored raster values; scale/offset not applied.",
+        "Statistics are computed on scaled raster values; scale/offset metadata applied.",
     ),
 )
 
@@ -208,19 +216,119 @@ EDGE_PROFILES_SMOKETEST_SCHEMA = OutputSchema(
         ColumnSpec("ring_index", "int", "-", "Ring bin index (0..n-1)."),
         ColumnSpec("ring_inner_km", "float", "km", "Inner distance from boundary."),
         ColumnSpec("ring_outer_km", "float", "km", "Outer distance from boundary."),
-        ColumnSpec("scale_metadata", "float", "-", "Raster scale metadata (raw GeoTIFF)."),
-        ColumnSpec("offset_metadata", "float", "-", "Raster offset metadata (raw GeoTIFF)."),
+        ColumnSpec("scale_metadata", "float", "-", "Raster scale metadata (GeoTIFF)."),
+        ColumnSpec("offset_metadata", "float", "-", "Raster offset metadata (GeoTIFF)."),
         ColumnSpec("pixel_count", "int", "pixels", "Total pixels sampled (incl. invalid)."),
         ColumnSpec("valid_pixel_count", "int", "pixels", "Valid pixels after masking."),
         ColumnSpec("valid_fraction", "float", "-", "valid_pixel_count / pixel_count."),
-        ColumnSpec("mean", "float", "raw", "Mean of valid pixel values."),
-        ColumnSpec("median", "float", "raw", "Median of valid pixel values."),
-        ColumnSpec("min", "float", "raw", "Minimum valid pixel value."),
-        ColumnSpec("max", "float", "raw", "Maximum valid pixel value."),
-        ColumnSpec("std", "float", "raw", "Standard deviation of valid pixel values."),
+        ColumnSpec("mean", "float", "scaled", "Mean of valid pixel values (scale/offset applied)."),
+        ColumnSpec("median", "float", "scaled", "Median of valid pixel values (scale/offset applied)."),
+        ColumnSpec("min", "float", "scaled", "Minimum valid pixel value (scale/offset applied)."),
+        ColumnSpec("max", "float", "scaled", "Maximum valid pixel value (scale/offset applied)."),
+        ColumnSpec("std", "float", "scaled", "Standard deviation of valid pixel values (scale/offset applied)."),
     ),
     notes=(
-        "Statistics are computed on raw stored raster values; scale/offset not applied.",
+        "Statistics are computed on scaled raster values; scale/offset metadata applied.",
+    ),
+)
+
+RADIANCE_BUFFERS_NATIONAL_SCHEMA = OutputSchema(
+    key="pa_radiance_buffers_national",
+    filename=RADIANCE_BUFFERS_NATIONAL_CSV,
+    file_type="csv",
+    description="National radiance summaries inside PAs and outside buffers.",
+    columns=(
+        ColumnSpec("schema_version", "string", "-", "Schema version for radiance outputs."),
+        ColumnSpec("pa_id", "string", "-", "CAPAD PA_ID."),
+        ColumnSpec("year", "int", "year", "Observation year."),
+        ColumnSpec("zone", "string", "-", "Zone label: inside or buffer."),
+        ColumnSpec("buffer_km", "float", "km", "Buffer distance for zone=buffer; NA for inside."),
+        ColumnSpec("scale_metadata", "float", "-", "Raster scale metadata (GeoTIFF)."),
+        ColumnSpec("offset_metadata", "float", "-", "Raster offset metadata (GeoTIFF)."),
+        ColumnSpec("pixel_count", "int", "pixels", "Total pixels sampled (incl. invalid)."),
+        ColumnSpec("valid_pixel_count", "int", "pixels", "Valid pixels after masking."),
+        ColumnSpec("valid_fraction", "float", "-", "valid_pixel_count / pixel_count."),
+        ColumnSpec("mean", "float", "scaled", "Mean of valid pixel values (scale/offset applied)."),
+        ColumnSpec("median", "float", "scaled", "Median of valid pixel values (scale/offset applied)."),
+        ColumnSpec("min", "float", "scaled", "Minimum valid pixel value (scale/offset applied)."),
+        ColumnSpec("max", "float", "scaled", "Maximum valid pixel value (scale/offset applied)."),
+        ColumnSpec("std", "float", "scaled", "Standard deviation of valid pixel values (scale/offset applied)."),
+    ),
+    notes=(
+        "Statistics are computed on scaled raster values; scale/offset metadata applied.",
+    ),
+)
+
+EDGE_PROFILES_NATIONAL_SCHEMA = OutputSchema(
+    key="pa_edge_profiles_national",
+    filename=EDGE_PROFILES_NATIONAL_CSV,
+    file_type="csv",
+    description="National inside ring (distance-to-edge) radiance profiles.",
+    columns=(
+        ColumnSpec("schema_version", "string", "-", "Schema version for edge profile outputs."),
+        ColumnSpec("pa_id", "string", "-", "CAPAD PA_ID."),
+        ColumnSpec("year", "int", "year", "Observation year."),
+        ColumnSpec("ring_index", "int", "-", "Ring bin index (0..n-1)."),
+        ColumnSpec("ring_inner_km", "float", "km", "Inner distance from boundary."),
+        ColumnSpec("ring_outer_km", "float", "km", "Outer distance from boundary."),
+        ColumnSpec("scale_metadata", "float", "-", "Raster scale metadata (GeoTIFF)."),
+        ColumnSpec("offset_metadata", "float", "-", "Raster offset metadata (GeoTIFF)."),
+        ColumnSpec("pixel_count", "int", "pixels", "Total pixels sampled (incl. invalid)."),
+        ColumnSpec("valid_pixel_count", "int", "pixels", "Valid pixels after masking."),
+        ColumnSpec("valid_fraction", "float", "-", "valid_pixel_count / pixel_count."),
+        ColumnSpec("mean", "float", "scaled", "Mean of valid pixel values (scale/offset applied)."),
+        ColumnSpec("median", "float", "scaled", "Median of valid pixel values (scale/offset applied)."),
+        ColumnSpec("min", "float", "scaled", "Minimum valid pixel value (scale/offset applied)."),
+        ColumnSpec("max", "float", "scaled", "Maximum valid pixel value (scale/offset applied)."),
+        ColumnSpec("std", "float", "scaled", "Standard deviation of valid pixel values (scale/offset applied)."),
+    ),
+    notes=(
+        "Statistics are computed on scaled raster values; scale/offset metadata applied.",
+    ),
+)
+
+PA_TRENDS_SCHEMA = OutputSchema(
+    key="pa_trends",
+    filename=PA_TRENDS_CSV,
+    file_type="csv",
+    description="Protected-area trend estimates and retention indices.",
+    columns=(
+        ColumnSpec("schema_version", "string", "-", "Schema version for trend outputs."),
+        ColumnSpec("pa_id", "string", "-", "CAPAD PA_ID."),
+        ColumnSpec("n_years_inside", "int", "years", "Valid years used for inside trend."),
+        ColumnSpec("slope_inside", "float", "scaled/year", "Theil-Sen slope for inside median."),
+        ColumnSpec("intercept_inside", "float", "scaled", "Theil-Sen intercept for inside median."),
+        ColumnSpec("n_years_buffer_1km", "int", "years", "Valid years used for 1 km buffer trend."),
+        ColumnSpec("slope_buffer_1km", "float", "scaled/year", "Theil-Sen slope for 1 km buffer median."),
+        ColumnSpec("intercept_buffer_1km", "float", "scaled", "Theil-Sen intercept for 1 km buffer median."),
+        ColumnSpec("n_years_buffer_5km", "int", "years", "Valid years used for 5 km buffer trend."),
+        ColumnSpec("slope_buffer_5km", "float", "scaled/year", "Theil-Sen slope for 5 km buffer median."),
+        ColumnSpec("intercept_buffer_5km", "float", "scaled", "Theil-Sen intercept for 5 km buffer median."),
+        ColumnSpec("method", "string", "-", "Trend estimator name."),
+        ColumnSpec("metric", "string", "-", "Metric used for trends (e.g., median)."),
+        ColumnSpec("retention_index_1km", "float", "scaled/year", "Inside slope minus 1 km buffer slope."),
+        ColumnSpec("retention_index_5km", "float", "scaled/year", "Inside slope minus 5 km buffer slope."),
+    ),
+)
+
+PA_RISK_RANKINGS_SCHEMA = OutputSchema(
+    key="pa_risk_rankings",
+    filename=PA_RISK_RANKINGS_CSV,
+    file_type="csv",
+    description="Ranked protected areas by brightening/retention metrics.",
+    columns=(
+        ColumnSpec("schema_version", "string", "-", "Schema version for risk rankings."),
+        ColumnSpec("pa_id", "string", "-", "CAPAD PA_ID."),
+        ColumnSpec("slope_inside", "float", "scaled/year", "Inside median trend slope."),
+        ColumnSpec("retention_index_1km", "float", "scaled/year", "Inside minus 1 km buffer slope."),
+        ColumnSpec("retention_index_5km", "float", "scaled/year", "Inside minus 5 km buffer slope."),
+        ColumnSpec("rank_slope_inside", "int", "-", "Rank by slope_inside (1=largest brightening)."),
+        ColumnSpec(
+            "rank_retention_1km",
+            "int",
+            "-",
+            "Rank by retention_index_1km (1=largest inside-outside contrast).",
+        ),
     ),
 )
 
@@ -232,6 +340,10 @@ OUTPUT_SCHEMAS = (
     PA_GEOMETRIES_SCHEMA,
     RADIANCE_BUFFERS_SMOKETEST_SCHEMA,
     EDGE_PROFILES_SMOKETEST_SCHEMA,
+    RADIANCE_BUFFERS_NATIONAL_SCHEMA,
+    EDGE_PROFILES_NATIONAL_SCHEMA,
+    PA_TRENDS_SCHEMA,
+    PA_RISK_RANKINGS_SCHEMA,
 )
 
 OUTPUT_SCHEMAS_BY_KEY = {schema.key: schema for schema in OUTPUT_SCHEMAS}
@@ -243,3 +355,7 @@ TRIAD_BUFFERS_COLUMNS = TRIAD_BUFFERS_SCHEMA.column_names
 PA_GEOMETRIES_COLUMNS = PA_GEOMETRIES_SCHEMA.column_names
 RADIANCE_BUFFERS_SMOKETEST_COLUMNS = RADIANCE_BUFFERS_SMOKETEST_SCHEMA.column_names
 EDGE_PROFILES_SMOKETEST_COLUMNS = EDGE_PROFILES_SMOKETEST_SCHEMA.column_names
+RADIANCE_BUFFERS_NATIONAL_COLUMNS = RADIANCE_BUFFERS_NATIONAL_SCHEMA.column_names
+EDGE_PROFILES_NATIONAL_COLUMNS = EDGE_PROFILES_NATIONAL_SCHEMA.column_names
+PA_TRENDS_COLUMNS = PA_TRENDS_SCHEMA.column_names
+PA_RISK_RANKINGS_COLUMNS = PA_RISK_RANKINGS_SCHEMA.column_names

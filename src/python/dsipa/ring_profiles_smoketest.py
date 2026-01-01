@@ -49,7 +49,13 @@ def _load_triads(path: Path, target_crs: str) -> gpd.GeoDataFrame:
     return gdf.to_crs(target_crs)
 
 
-def _stats_for_geom(dataset: rasterio.DatasetReader, geom) -> dict[str, float]:
+def _stats_for_geom(
+    dataset: rasterio.DatasetReader,
+    geom,
+    *,
+    scale: float | None,
+    offset: float | None,
+) -> dict[str, float]:
     if geom is None or geom.is_empty:
         return {
             "pixel_count": 0,
@@ -72,7 +78,10 @@ def _stats_for_geom(dataset: rasterio.DatasetReader, geom) -> dict[str, float]:
     mask_invalid |= band < 0
 
     pixel_count = int(band.size)
-    valid = band[~mask_invalid]
+    valid = band[~mask_invalid].astype("float64")
+    scale_value = 1.0 if scale is None else float(scale)
+    offset_value = 0.0 if offset is None else float(offset)
+    valid = valid * scale_value + offset_value
     valid_count = int(valid.size)
 
     if valid_count == 0:
@@ -124,7 +133,7 @@ def summarise_year(
         meta = _raster_meta(dataset, year, raster_path)
 
         for _, row in rings.iterrows():
-            stats = _stats_for_geom(dataset, row.geometry)
+            stats = _stats_for_geom(dataset, row.geometry, scale=meta.scale, offset=meta.offset)
             records.append(
                 {
                     "schema_version": SCHEMA_VERSION,
@@ -199,7 +208,7 @@ def write_report(df: pd.DataFrame, meta: Iterable[RasterMeta], report_path: Path
         "## Raster metadata (per year)",
         *meta_lines,
         "",
-        "Note: Statistics computed on raw stored values (no scale/offset applied).",
+        "Note: Statistics computed on scaled values (scale/offset metadata applied).",
         "",
         "## Summary by ring",
         "",
