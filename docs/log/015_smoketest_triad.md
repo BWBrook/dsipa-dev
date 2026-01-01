@@ -1,0 +1,33 @@
+# 015_smoketest_triad log
+
+- Date/time (UTC): 2026-01-01 05:05 UTC
+- Objectives: define deterministic triad; generate buffers/rings; produce QA maps and manifests.
+- Actions taken:
+  - Implemented CAPAD REST fetch + triad selection pipeline and QA harness.
+  - Generated triad index + geoms, buffers, rings, QA manifest, and quick-look maps.
+  - Wrote triad definition report and canonical artefact folder.
+- Triad members:
+  - Wellington Park (TAS) — urban_edge
+  - Coornartha (NSW) — peri_urban
+  - Lizard Island (QLD) — remote
+- Outputs:
+  - `analysis/reports/smoke_test_triad_definition.md`
+  - `data/processed/smoke_test_triad_index_v0_1_0.csv`
+  - `data/processed/smoke_test_triad_geoms_v0_1_0.gpkg`
+  - `data/processed/smoke_test_triad_buffers_v0_1_0.gpkg`
+  - `data/processed/smoke_test_triad_rings_v0_1_0.csv`
+  - `analysis/reports/triad_qa_maps/` (3 PNGs + README)
+  - `analysis/reports/triad_qa_manifest.json`
+  - `artefacts/wp0_4_smoketest_triad/`
+- Diagnostics / sanity checks:
+  - Ring areas positive for all triad PAs; no empty geometries after fix.
+  - Urban/peri/remote distances align with selection rule (15.8 km / 100.1 km / 1620 km).
+  - `uv run pytest` (6 passed).
+  - `uv run python -m build` (sdist + wheel).
+- Visual check notes:
+  - QA PNGs generated (non-zero size); geometry checks confirm buffers enclose cores and ring bins are nested as intended.
+- Decisions (also recorded in `docs/decisions.md`):
+  - DEC-004: EPSG:3577 for distance/buffer operations.
+  - DEC-005: buffers 1/5 km outside; rings 0–1/1–5/5–10 km inside.
+- Next steps:
+  - Mark WP0.4 complete and proceed to WP0.5 geometry processing.

@@ -1,0 +1,81 @@
+{
+  "generated_utc": "2026-01-01 05:03 UTC",
+  "schema_version": "0.1.0",
+  "capad": {
+    "source": "https://gis.environment.gov.au/gispubmap/rest/services/ogc_services/CAPAD/MapServer",
+    "layer": 0,
+    "where": "NRS_PA='Y'",
+    "metadata_files": {
+      "capad_2024_technical_spec.pdf": "bdf7c15be087793dcfa27af38eb5dd56a66672ba3d8d88ba3ac2313456a51947"
+    }
+  },
+  "night_lights": {
+    "metadata_files": {
+      "vnl_v22_readme_20230707.pptx": "40855418eba6d7543ecd4c8cc3d373e18c9cc6af6224a9e34f9047aef13763b1"
+    }
+  },
+  "projection": "EPSG:3577",
+  "buffer_distances_km": [
+    1,
+    5
+  ],
+  "ring_bins_km": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      5,
+      10
+    ]
+  ],
+  "triad": [
+    {
+      "schema_version": "0.1.0",
+      "triad_role": "urban_edge",
+      "pa_id": "TAS_50483",
+      "pa_pid": "TAS_50483",
+      "name": "Wellington Park",
+      "state": "TAS",
+      "iucn": "II",
+      "area_km2": 180.25382689983934,
+      "distance_km": 15.75362019605176,
+      "nearest_city": "Hobart"
+    },
+    {
+      "schema_version": "0.1.0",
+      "triad_role": "peri_urban",
+      "pa_id": "NSW_N0856",
+      "pa_pid": "NSW_N0856",
+      "name": "Coornartha",
+      "state": "NSW",
+      "iucn": "Ia",
+      "area_km2": 11.837729451095942,
+      "distance_km": 100.07983202030033,
+      "nearest_city": "Canberra"
+    },
+    {
+      "schema_version": "0.1.0",
+      "triad_role": "remote",
+      "pa_id": "QLD_0117LZI001",
+      "pa_pid": "QLD_0117LZI001",
+      "name": "Lizard Island",
+      "state": "QLD",
+      "iucn": "II",
+      "area_km2": 9.372439828859603,
+      "distance_km": 1620.4594523198762,
+      "nearest_city": "Darwin"
+    }
+  ],
+  "outputs": {
+    "triad_index": "/home/bwbrook/git/dsipa-dev/data/processed/smoke_test_triad_index_v0_1_0.csv",
+    "triad_geoms": "/home/bwbrook/git/dsipa-dev/data/processed/smoke_test_triad_geoms_v0_1_0.gpkg",
+    "triad_rings_csv": "/home/bwbrook/git/dsipa-dev/data/processed/smoke_test_triad_rings_v0_1_0.csv",
+    "triad_buffers_gpkg": "/home/bwbrook/git/dsipa-dev/data/processed/smoke_test_triad_buffers_v0_1_0.gpkg",
+    "triad_maps_dir": "/home/bwbrook/git/dsipa-dev/analysis/reports/triad_qa_maps"
+  }
+}

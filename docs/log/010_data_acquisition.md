@@ -1,13 +1,21 @@
 # 010_data_acquisition log
 
-- Date/time (UTC): _[fill in]_ 
-- Objectives for this phase: _[e.g., download datasets X, verify checksums]_ 
+- Date/time (UTC): 2026-01-01 04:39 UTC
+- Objectives for this phase: Select CAPAD + night-lights sources; download metadata; record provenance/checksums.
 - Actions taken:
-  - _[step]_ 
-- Data sources & checksums recorded in `data/README.md` (Y/N): _[fill in]_ 
+  - Confirmed CAPAD 2024 source and ArcGIS REST service endpoints; downloaded technical specification PDF.
+  - Confirmed VIIRS DNB annual VNL v2.2 source; downloaded readme metadata.
+  - Generated `analysis/reports/data_inventory.md` and canonical artefact folder for WP0.3.
+  - Updated `data/README.md` with provenance entries and checksums.
+- Data sources & checksums recorded in `data/README.md` (Y/N): Y
 - Issues/blockers (add questions to `docs/questions_for_human.md` if needed):
-  - _[item]_ 
+  - None.
 - Decisions (if irreversible, also log in `docs/decisions.md`):
-  - _[item]_ 
+  - DEC-002: CAPAD 2024 via DCCEEW REST; terrestrial-only for core Layer A.
+  - DEC-003: VIIRS DNB annual VNL v2.2, median-masked radiance band.
+- Tests/builds:
+  - `uv run pytest` (2 passed).
+  - `uv run python -m build` (sdist + wheel).
+- Sanity verdict: pass (metadata downloads and inventory report align with chosen sources).
 - Next steps:
-  - _[item]_ 
+  - Begin WP0.4 smoke-test triad definition and input preparation.

@@ -1,6 +1,6 @@
 # Repo map (snapshot)
 
-Generated: 2026-01-01 04:31:45 UTC
+Generated: 2026-01-01 05:07:48 UTC
 Root: /home/bwbrook/git/dsipa-dev
 Depth: 3
 
@@ -10,22 +10,53 @@ Depth: 3
 │   ├── notebooks/
 │   │   └── .gitkeep
 │   └── reports/
-│       └── .gitkeep
+│       ├── triad_qa_maps/
+│       │   ├── NSW_N0856_peri_urban.png
+│       │   ├── QLD_0117LZI001_remote.png
+│       │   ├── README.md
+│       │   └── TAS_50483_urban_edge.png
+│       ├── .gitkeep
+│       ├── data_inventory.md
+│       ├── smoke_test_triad_definition.md
+│       └── triad_qa_manifest.json
 ├── artefacts/
-│   └── wp0_1_bootstrap/
+│   ├── wp0_1_bootstrap/
+│   │   ├── MANIFEST.json
+│   │   ├── placeholder.txt
+│   │   └── README.txt
+│   ├── wp0_3_data_sources/
+│   │   ├── data_inventory.md
+│   │   ├── MANIFEST.json
+│   │   └── README.txt
+│   └── wp0_4_smoketest_triad/
+│       ├── triad_qa_maps/
+│       │   ├── NSW_N0856_peri_urban.png
+│       │   ├── QLD_0117LZI001_remote.png
+│       │   ├── README.md
+│       │   └── TAS_50483_urban_edge.png
 │       ├── MANIFEST.json
-│       ├── placeholder.txt
-│       └── README.txt
+│       ├── README.txt
+│       ├── smoke_test_triad_definition.md
+│       ├── smoke_test_triad_index_v0_1_0.csv
+│       ├── smoke_test_triad_rings_v0_1_0.csv
+│       └── triad_qa_manifest.json
 ├── data/
 │   ├── processed/
-│   │   └── .gitkeep
+│   │   ├── .gitkeep
+│   │   ├── smoke_test_triad_buffers_v0_1_0.gpkg
+│   │   ├── smoke_test_triad_geoms_v0_1_0.gpkg
+│   │   ├── smoke_test_triad_index_v0_1_0.csv
+│   │   └── smoke_test_triad_rings_v0_1_0.csv
 │   ├── raw/
-│   │   └── .gitkeep
+│   │   ├── .gitkeep
+│   │   ├── capad_2024_technical_spec.pdf
+│   │   └── vnl_v22_readme_20230707.pptx
 │   └── README.md
 ├── docs/
 │   ├── log/
 │   │   ├── 000_bootstrap.md
 │   │   ├── 010_data_acquisition.md
+│   │   ├── 015_smoketest_triad.md
 │   │   └── 020_exploratory_analysis.md
 │   ├── collaboration_protocol.md
 │   ├── decisions.md
@@ -43,9 +74,12 @@ Depth: 3
 │   ├── python/
 │   │   ├── dsipa/
 │   │   │   ├── __init__.py
+│   │   │   ├── capad.py
+│   │   │   ├── data_inventory.py
 │   │   │   ├── manifest.py
 │   │   │   ├── paths.py
-│   │   │   └── run.py
+│   │   │   ├── run.py
+│   │   │   └── triad.py
 │   │   └── .gitkeep
 │   └── r/
 │       └── .gitkeep
@@ -53,7 +87,8 @@ Depth: 3
 │   ├── python/
 │   │   ├── .gitkeep
 │   │   ├── test_manifest.py
-│   │   └── test_run.py
+│   │   ├── test_run.py
+│   │   └── test_triad.py
 │   └── r/
 │       └── .gitkeep
 ├── .gitignore

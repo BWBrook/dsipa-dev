@@ -162,9 +162,9 @@ Bats and lighting (Layer B candidates):
 
 ## 10) Current status (agent must keep updated)
 
-- Current phase: Milestone 0.1.x — Bootstrap & scaffolding
-- Recently completed: WP0.1 repo bootstrap (env/tests/run skeleton) and WP0.2 logging/decision system setup.
+- Current phase: Milestone 0.3.x — Layer A metric engine (smoke-test)
+- Recently completed: WP0.3 data-source selection/provenance and WP0.4 smoke-test triad definition + QA harness.
 - Immediate next steps (should match the first unchecked WP in `docs/roadmap.md`):
-  1) WP0.3 — Choose and lock Layer A data sources (CAPAD + night-lights) with provenance.
-  2) WP0.4 — Define smoke-test triad and prepare minimal slice inputs.
-  3) Draft a data inventory report for selected products.
+  1) WP0.5 — Protected-area geometry processing + stable IDs.
+  2) WP0.6 — Radiance summarisation inside PAs + outside buffers (smoke-test).
+  3) WP0.7 — Distance-to-edge penetration profiles (smoke-test).

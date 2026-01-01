@@ -13,7 +13,14 @@ license-files = ["LICENSE"]
 authors = [
   { name = "DSIPA-NBS contributors" }
 ]
-dependencies = []
+dependencies = [
+  "geopandas>=0.14",
+  "matplotlib>=3.8",
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "pyproj>=3.6",
+  "shapely>=2.0",
+]
 
 [project.optional-dependencies]
 dev = [

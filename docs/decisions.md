@@ -6,6 +6,10 @@ Mark superseded items in **Status** (active / superseded / reverted) rather than
 | Date (UTC) | Decision ID | Decision            | Rationale / evidence | Status | Links (log/commit/artefact) |
 | ---------- | ----------- | ------------------- | -------------------- | ------ | --------------------------- |
 | 2026-01-01 | DEC-001     | Python 3.12 + uv-managed environment; package via pyproject/setuptools | Matches repo guidance; uv available; enables reproducible builds/tests | active | docs/log/000_bootstrap.md |
+| 2026-01-01 | DEC-002     | CAPAD 2024 via DCCEEW ArcGIS REST; include terrestrial PAs only for Layer A core | CAPAD 2024 is current national compilation; REST service supports reproducible access; terrestrial focus avoids marine ALAN confounds | active | analysis/reports/data_inventory.md |
+| 2026-01-01 | DEC-003     | VIIRS DNB annual VNL v2.2 (EOG), using median-masked radiance band | Annual global series with documented methods; median-masked reduces transient outliers; public-domain source | active | analysis/reports/data_inventory.md |
+| 2026-01-01 | DEC-004     | Use EPSG:3577 (GDA94 / Australian Albers) for distance/buffer operations | Equal-area projection suitable for national-scale Australia distances | active | analysis/reports/triad_qa_manifest.json |
+| 2026-01-01 | DEC-005     | Smoke-test buffers: 1 km + 5 km outside; rings: 0–1, 1–5, 5–10 km inside | Provides near-edge and interior gradients for QA while keeping compute light | active | analysis/reports/triad_qa_manifest.json |
 
 ---
 
