@@ -7,6 +7,7 @@
   - Generated `analysis/reports/output_schema_reference.md` and WP0.8 artefact folder.
   - Updated tests to enforce schema columns and schema_version values across triad, PA geometry, radiance buffers, and edge profiles.
   - Recorded schema policy decision (DEC-008).
+  - Added interpretation notes for smoke-test radiance buffers and edge profiles.
 - Outputs:
   - `analysis/reports/output_schema_reference.md`
   - `artefacts/wp0_8_schema_reference/`

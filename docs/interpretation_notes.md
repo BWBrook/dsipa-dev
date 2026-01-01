@@ -7,6 +7,40 @@ Every key figure/table/model must have an entry here.
 
 ## Result entries (append over time)
 
+### SMOKETEST_RADIANCE_BUFFERS_2013_2018_2024
+
+- Artefact: `artefacts/wp0_6_radiance_smoketest/`
+- What it shows (plain language):
+  - Inside vs outside-buffer mean radiance for the triad PAs across 2013/2018/2024.
+  - Urban-edge PA buffers are brighter than interiors; remote PA remains low across zones.
+  - Peri-urban PA sits between the two extremes, as expected for a smoke-test.
+- Relation to hypotheses:
+  - Consistent with H1/H2 as a sanity check (inside darker than buffers for developed contexts).
+- Sanity verdict (pass/warn/fail) and why:
+  - pass — relative ordering and inside/buffer contrast look plausible for the triad.
+- Surprises / concerns:
+  - Scale metadata differs by year (2024 shows scale=10; raw values used).
+  - Some low pixel-counts for small geometries; watch for unstable estimates.
+- Follow-up tasks:
+  - [ ] Confirm scale factor for Zenodo VIIRS COGs before national run.
+  - [ ] Add/record minimum valid pixel thresholds for national summaries.
+
+### SMOKETEST_EDGE_PROFILES_2013_2018_2024
+
+- Artefact: `artefacts/wp0_7_edge_profiles_smoketest/`
+- What it shows (plain language):
+  - Ring-based mean radiance (0–1, 1–5, 5–10 km inside boundary) for triad PAs.
+  - Urban-edge PA shows higher near-boundary values than deeper rings; remote PA is flat/low.
+- Relation to hypotheses:
+  - Supports H2 as a directional sanity check (edge gradients present where expected).
+- Sanity verdict (pass/warn/fail) and why:
+  - warn — ring 5–10 km has zero valid pixels for all triad PAs, likely due to small PA sizes.
+- Surprises / concerns:
+  - Missingness in outer ring suggests current ring widths may be too large for some PAs.
+- Follow-up tasks:
+  - [ ] Track valid pixel counts per ring and flag low-coverage rings in national outputs.
+  - [ ] Consider adaptive ring bins (or minimum-area filter) for small PAs.
+
 ### [RESULT-ID]
 
 - Artefact: `path/to/artefact`
