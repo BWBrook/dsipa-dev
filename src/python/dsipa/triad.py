@@ -19,13 +19,19 @@ from shapely.geometry import Point
 from dsipa.capad import CapadQuery, fetch_gdf
 from dsipa.manifest import build_manifest, write_manifest
 from dsipa.paths import find_repo_root
+from dsipa.schema import (
+    SCHEMA_VERSION,
+    TRIAD_BUFFERS_GPKG,
+    TRIAD_GEOMS_GPKG,
+    TRIAD_INDEX_CSV,
+    TRIAD_RINGS_CSV,
+)
 
 try:
     from shapely import make_valid
 except ImportError:  # pragma: no cover
     from shapely.validation import make_valid  # type: ignore
 
-SCHEMA_VERSION = "0.1.0"
 TARGET_CRS = "EPSG:3577"  # GDA94 / Australian Albers
 BUFFER_DISTANCES_KM = [1, 5]
 RING_BINS_KM = [(0, 1), (1, 5), (5, 10)]
@@ -60,10 +66,6 @@ class TriadPaths:
     triad_definition_md: Path
     triad_qa_manifest: Path
     triad_maps_dir: Path
-
-
-def _schema_slug() -> str:
-    return SCHEMA_VERSION.replace(".", "_")
 
 
 def _now_utc() -> str:
@@ -169,12 +171,11 @@ def select_triad(gdf: gpd.GeoDataFrame) -> pd.DataFrame:
 
 
 def triad_paths(root: Path) -> TriadPaths:
-    schema_slug = _schema_slug()
     return TriadPaths(
-        triad_index_csv=root / "data" / "processed" / f"smoke_test_triad_index_v{schema_slug}.csv",
-        triad_geoms_gpkg=root / "data" / "processed" / f"smoke_test_triad_geoms_v{schema_slug}.gpkg",
-        triad_rings_csv=root / "data" / "processed" / f"smoke_test_triad_rings_v{schema_slug}.csv",
-        triad_buffers_gpkg=root / "data" / "processed" / f"smoke_test_triad_buffers_v{schema_slug}.gpkg",
+        triad_index_csv=root / TRIAD_INDEX_CSV,
+        triad_geoms_gpkg=root / TRIAD_GEOMS_GPKG,
+        triad_rings_csv=root / TRIAD_RINGS_CSV,
+        triad_buffers_gpkg=root / TRIAD_BUFFERS_GPKG,
         triad_definition_md=root / "analysis" / "reports" / "smoke_test_triad_definition.md",
         triad_qa_manifest=root / "analysis" / "reports" / "triad_qa_manifest.json",
         triad_maps_dir=root / "analysis" / "reports" / "triad_qa_maps",

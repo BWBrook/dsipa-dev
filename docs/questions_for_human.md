@@ -14,14 +14,11 @@ When an answer is provided, mark it inline as “Answered: …” and (if resolv
 
 ## Open questions (most recent at top)
 
-1. **Q-___ — [Short title]**
-   - Context:
-     - _[1–3 bullets, minimal but sufficient]_
-   - Question:
-     - _[1–3 sentences; include options A/B if relevant]_
+_(none)_
 
 ---
 
 ## Answered questions
 
-_(Move resolved questions here with a one-line summary of the outcome.)_
+1. **Q-001 — Night-lights data access for WP0.6**
+   - Answered: Switch to Zenodo DOI 10.5281/zenodo.17294744 (annual VIIRS COGs, no auth).

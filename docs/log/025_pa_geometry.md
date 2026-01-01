@@ -1,0 +1,21 @@
+# 025_pa_geometry log
+
+- Date/time (UTC): 2026-01-01 05:16 UTC
+- Objectives: process CAPAD geometries, validate/fix, compute descriptors, and write stable-ID outputs.
+- Actions taken:
+  - Implemented CAPAD geometry processing pipeline with validity repair and descriptor computation.
+  - Generated processed geometry outputs (GPKG + CSV) and QC report.
+  - Wrote canonical artefact folder for WP0.5.
+- Outputs:
+  - `data/processed/pa_geometries_v0_1_0.gpkg`
+  - `data/processed/pa_geometries_v0_1_0.csv`
+  - `analysis/reports/pa_geometry_qc.md`
+  - `artefacts/wp0_5_pa_geometry/`
+- Diagnostics / sanity checks:
+  - Invalid geometries reduced from 59 to 0 after repair; zero empty geometries.
+  - `uv run pytest` (8 passed).
+  - `uv run python -m build` (sdist + wheel).
+- Decisions (also recorded in `docs/decisions.md`):
+  - DEC-010: Stable PA ID = CAPAD PA_ID.
+- Next steps:
+  - Proceed to WP0.6 radiance summarisation on triad slice.

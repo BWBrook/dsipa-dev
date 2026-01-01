@@ -30,19 +30,19 @@ Source URLs:
 - https://www.dcceew.gov.au/environment/land/nrs/science/capad/2024
 - https://gis.environment.gov.au/gispubmap/rest/services/ogc_services/CAPAD/MapServer
 
-## Night lights — VIIRS DNB annual VNL v2.2 (EOG)
+## Night lights — VIIRS annual average (Zenodo v0.4, Hengl/OpenGeoHub)
 
-- Provider: Earth Observation Group (Colorado School of Mines).
-- Coverage: annual near-global time series (2012–2024), 75N–65S.
-- Resolution/CRS: 15 arc-second (~500 m) in EPSG:4326.
-- Units: nW/cm^2/sr (radiance).
-- Bands: average, median, median-masked, plus coverage statistics.
-- Planned band (Layer A core): median-masked radiance to reduce transient outliers.
-- Known caveats: background is zeroed via data-range thresholds; annual composites built from monthly cloud-free grids.
+- Provider: OpenGeoHub (Hengl et al.), Zenodo record v0.4.
+- Coverage: annual global time series (2000–2024). VIIRS-based years start 2012; core analysis uses 2013–2024.
+- Resolution/CRS: 500 m (COG) in EPSG:4326.
+- Variable: annual average VIIRS composite (`nightlights.average_viirs.v21_*`).
+- Scaling: record notes values scaled from 0–200 to 0–2000; scale factor to be confirmed in WP0.6 and recorded.
+- Smoke-test years (WP0.6): 2013, 2018, 2024.
+- Known caveats: 2012 is partial-year for VIIRS; exclude from trends.
 
 Source URLs:
-- https://eogdata.mines.edu/products/vnl/
-- https://developers.google.com/earth-engine/datasets/catalog/NOAA_VIIRS_DNB_ANNUAL_V22
+- https://doi.org/10.5281/zenodo.17294744
+- https://zenodo.org/records/17294744
 """.format(timestamp=timestamp)
 
 

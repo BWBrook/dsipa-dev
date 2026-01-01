@@ -1,0 +1,23 @@
+# 035_radiance_buffers_smoketest log
+
+- Date/time (UTC): 2026-01-01 07:45 UTC
+- Objectives: compute smoke-test radiance summaries for triad (inside + buffers) using Zenodo VIIRS annual COGs.
+- Actions taken:
+  - Downloaded Zenodo v0.4 night-lights COGs for 2013, 2018, 2024 (MD5 verified).
+  - Computed inside + buffer radiance stats for triad; captured pixel counts and valid fractions.
+  - Generated sanity report + plot and canonical artefact folder.
+- Outputs:
+  - `data/processed/pa_radiance_buffers_smoketest_v0_1_0.csv`
+  - `analysis/reports/smoketest_buffers_sanity.md`
+  - `analysis/reports/smoketest_buffers_summary.png`
+  - `artefacts/wp0_6_radiance_smoketest/`
+- Diagnostics / sanity checks:
+  - No low pixel-count warnings (<10) across triad geometries.
+  - Anchor check uses inside mean values; urban-edge not always brightest (remote island shows higher mean in 2018/2024).
+  - Raster metadata shows scale=10 for 2024 only; stats computed on raw stored values (scale/offset not applied) pending clarification.
+  - `uv run pytest` (11 passed).
+  - `uv run python -m build` (sdist + wheel).
+- Notes:
+  - Remote triad (Lizard Island) may include local lighting; treat anchor check as qualitative only for smoke-test.
+- Next steps:
+  - Proceed to WP0.7 distance-to-edge penetration profiles (smoke-test).

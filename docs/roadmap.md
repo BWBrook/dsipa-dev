@@ -61,10 +61,10 @@ At minimum:
 - [x] **WP0.4 — Smoke-test dataset slice: minimal region pipeline inputs prepared**
 
 ### Milestone 0.3.x — Layer A metric engine (aim: correct metrics on smoke-test slice)
-- [ ] **WP0.5 — Protected-area geometry processing + stable IDs**
-- [ ] **WP0.6 — Radiance summarisation inside PAs + outside buffers (smoke-test)**
-- [ ] **WP0.7 — Distance-to-edge penetration profiles (smoke-test)**
-- [ ] **WP0.8 — Structured outputs + schema_version + regression tests (smoke-test)**
+- [x] **WP0.5 — Protected-area geometry processing + stable IDs**
+- [x] **WP0.6 — Radiance summarisation inside PAs + outside buffers (smoke-test)**
+- [x] **WP0.7 — Distance-to-edge penetration profiles (smoke-test)**
+- [x] **WP0.8 — Structured outputs + schema_version + regression tests (smoke-test)**
 
 ### Milestone 0.4.x — Layer A national run + sanity (aim: national tables + core sanity)
 - [ ] **WP0.9 — National run: Layer A metric tables produced**

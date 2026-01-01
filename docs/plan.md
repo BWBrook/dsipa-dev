@@ -163,8 +163,8 @@ Bats and lighting (Layer B candidates):
 ## 10) Current status (agent must keep updated)
 
 - Current phase: Milestone 0.3.x — Layer A metric engine (smoke-test)
-- Recently completed: WP0.3 data-source selection/provenance and WP0.4 smoke-test triad definition + QA harness.
+- Recently completed: WP0.6/0.7 smoke-test radiance outputs + WP0.8 schema reference and regression tests.
 - Immediate next steps (should match the first unchecked WP in `docs/roadmap.md`):
-  1) WP0.5 — Protected-area geometry processing + stable IDs.
-  2) WP0.6 — Radiance summarisation inside PAs + outside buffers (smoke-test).
-  3) WP0.7 — Distance-to-edge penetration profiles (smoke-test).
+  1) WP0.9 — National run: Layer A metric tables produced.
+  2) WP0.10 — Layer A sanity suite: anchors, missingness, invariants, and sensitivity checks.
+  3) WP0.11 — Trend estimation + inside-vs-outside retention indices.

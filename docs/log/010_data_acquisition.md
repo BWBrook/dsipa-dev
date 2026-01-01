@@ -19,3 +19,10 @@
 - Sanity verdict: pass (metadata downloads and inventory report align with chosen sources).
 - Next steps:
   - Begin WP0.4 smoke-test triad definition and input preparation.
+
+---
+
+## 2026-01-01 update — Night-lights source switch
+
+- Switched night-lights source to Zenodo v0.4 (OpenGeoHub/Hengl) DOI 10.5281/zenodo.17294744 due to EOG auth gate.
+- Updated data inventory and provenance records to reflect Zenodo source and smoke-test years (2013, 2018, 2024).

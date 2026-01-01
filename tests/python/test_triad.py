@@ -1,10 +1,12 @@
-import pandas as pd
 import geopandas as gpd
+import pandas as pd
 
-TRIAD_INDEX = "data/processed/smoke_test_triad_index_v0_1_0.csv"
-TRIAD_GEOMS = "data/processed/smoke_test_triad_geoms_v0_1_0.gpkg"
-TRIAD_RINGS = "data/processed/smoke_test_triad_rings_v0_1_0.csv"
-TRIAD_BUFFERS = "data/processed/smoke_test_triad_buffers_v0_1_0.gpkg"
+from dsipa import schema as dschema
+
+TRIAD_INDEX = dschema.TRIAD_INDEX_CSV
+TRIAD_GEOMS = dschema.TRIAD_GEOMS_GPKG
+TRIAD_RINGS = dschema.TRIAD_RINGS_CSV
+TRIAD_BUFFERS = dschema.TRIAD_BUFFERS_GPKG
 
 EXPECTED_IDS = {"TAS_50483", "NSW_N0856", "QLD_0117LZI001"}
 EXPECTED_ROLES = {"urban_edge", "peri_urban", "remote"}
@@ -17,13 +19,14 @@ def test_triad_index_schema_and_ids():
     assert len(df) == 3
     assert set(df["triad_role"]) == EXPECTED_ROLES
     assert set(df["pa_id"]) == EXPECTED_IDS
-    required_cols = {"schema_version", "triad_role", "pa_id", "name", "state", "area_km2", "distance_km"}
-    assert required_cols.issubset(df.columns)
+    assert set(df.columns) == set(dschema.TRIAD_INDEX_COLUMNS)
+    assert set(df["schema_version"]) == {dschema.SCHEMA_VERSION}
 
 
 def test_triad_geometries_valid():
     gdf = gpd.read_file(TRIAD_GEOMS)
     assert len(gdf) == 3
+    assert set(gdf.columns) == set(dschema.TRIAD_GEOMS_COLUMNS)
     assert gdf.geometry.notna().all()
     assert (~gdf.geometry.is_empty).all()
     assert gdf.is_valid.all()
@@ -32,6 +35,7 @@ def test_triad_geometries_valid():
 def test_triad_ring_bins_complete_and_ordered():
     df = pd.read_csv(TRIAD_RINGS)
     assert len(df) == 9
+    assert set(df.columns) == set(dschema.TRIAD_RINGS_COLUMNS)
     for pa_id in EXPECTED_IDS:
         subset = df[df["pa_id"] == pa_id].sort_values("ring_index")
         assert list(zip(subset["ring_inner_km"], subset["ring_outer_km"])) == EXPECTED_RING_BINS
@@ -40,4 +44,5 @@ def test_triad_ring_bins_complete_and_ordered():
 def test_triad_buffers_complete():
     gdf = gpd.read_file(TRIAD_BUFFERS)
     assert len(gdf) == 6
+    assert set(gdf.columns) == set(dschema.TRIAD_BUFFERS_COLUMNS)
     assert set(gdf["buffer_km"]) == EXPECTED_BUFFER_KM
