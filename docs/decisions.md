@@ -5,7 +5,7 @@ Mark superseded items in **Status** (active / superseded / reverted) rather than
 
 | Date (UTC) | Decision ID | Decision            | Rationale / evidence | Status | Links (log/commit/artefact) |
 | ---------- | ----------- | ------------------- | -------------------- | ------ | --------------------------- |
-| _[fill]_   | _DEC-001_   | _[what was chosen]_ | _[why]_              | active | _[paths]_                   |
+| 2026-01-01 | DEC-001     | Python 3.12 + uv-managed environment; package via pyproject/setuptools | Matches repo guidance; uv available; enables reproducible builds/tests | active | docs/log/000_bootstrap.md |
 
 ---
 

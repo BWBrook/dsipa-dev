@@ -53,8 +53,8 @@ At minimum:
 ## 3) Priority Queue (strict order)
 
 ### Milestone 0.1.x — Bootstrap & scaffolding (aim: runnable skeleton + guardrails)
-- [ ] **WP0.1 — Repo bootstrap: environments, test harness, and run skeleton**
-- [ ] **WP0.2 — Logging/decision system operational + roadmap discipline check**
+- [x] **WP0.1 — Repo bootstrap: environments, test harness, and run skeleton**
+- [x] **WP0.2 — Logging/decision system operational + roadmap discipline check**
 
 ### Milestone 0.2.x — Data provenance & acquisition (aim: reproducible downloads + provenance)
 - [ ] **WP0.3 — Choose and lock Layer A data sources (CAPAD + night-lights) with provenance**

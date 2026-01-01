@@ -37,6 +37,35 @@ This is an “AI for Science” autonomy experiment:
 
 ---
 
+## Quickstart (bootstrap)
+
+This repo targets Python 3.12 and is managed with `uv`.
+
+Setup (recommended):
+```bash
+uv venv
+uv pip install -e ".[dev]"
+```
+
+Run the bootstrap entrypoint (writes a placeholder artefact + manifest):
+```bash
+dsipa-run
+```
+
+If you prefer not to install the package yet:
+```bash
+PYTHONPATH=src/python python -m dsipa.run
+```
+
+Artefacts are written to `artefacts/wp0_1_bootstrap/`.
+
+Run tests:
+```bash
+pytest
+```
+
+---
+
 ## Collaboration and review
 
 If you are running Codex in this repo, follow `docs/roadmap.md` strictly.

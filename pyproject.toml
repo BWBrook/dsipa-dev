@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dsipa-nbs"
+version = "0.1.0"
+description = "Dark-Sky Integrity of Protected Areas & Nocturnal Biodiversity Signals (Australia)"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  { name = "DSIPA-NBS contributors" }
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "build>=1.0"
+]
+
+[project.scripts]
+dsipa-run = "dsipa.run:main"
+
+[tool.setuptools]
+package-dir = {"" = "src/python"}
+packages = ["dsipa"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-q"
+testpaths = ["tests/python"]
+pythonpath = ["src/python"]

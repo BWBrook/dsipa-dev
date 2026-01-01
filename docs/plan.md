@@ -162,9 +162,9 @@ Bats and lighting (Layer B candidates):
 
 ## 10) Current status (agent must keep updated)
 
-- Current phase:
-- Recently completed:
+- Current phase: Milestone 0.1.x — Bootstrap & scaffolding
+- Recently completed: WP0.1 repo bootstrap (env/tests/run skeleton) and WP0.2 logging/decision system setup.
 - Immediate next steps (should match the first unchecked WP in `docs/roadmap.md`):
-  1)
-  2)
-  3)
+  1) WP0.3 — Choose and lock Layer A data sources (CAPAD + night-lights) with provenance.
+  2) WP0.4 — Define smoke-test triad and prepare minimal slice inputs.
+  3) Draft a data inventory report for selected products.
