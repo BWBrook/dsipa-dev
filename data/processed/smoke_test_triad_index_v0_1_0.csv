@@ -1,4 +1,0 @@
-schema_version,triad_role,pa_id,pa_pid,name,state,iucn,area_km2,distance_km,nearest_city
-0.1.0,urban_edge,TAS_50483,TAS_50483,Wellington Park,TAS,II,180.25382689983934,15.75362019605176,Hobart
-0.1.0,peri_urban,NSW_N0856,NSW_N0856,Coornartha,NSW,Ia,11.837729451095942,100.07983202030033,Canberra
-0.1.0,remote,QLD_0117LZI001,QLD_0117LZI001,Lizard Island,QLD,II,9.372439828859603,1620.4594523198762,Darwin

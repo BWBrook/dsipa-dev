@@ -44,8 +44,10 @@ Every key figure/table/model must have an entry here.
 
 - Artefact: `manuscript/figures/fig_layerA_baseline_map.png`
 - What it shows (plain language):
-  - National map of inside-PA mean radiance in 2024 (scaled units).
+  - National map of inside-PA mean radiance in 2024 (scaled units), with missing PAs shown in grey.
   - Bright clusters near major cities; large dark regions in remote interiors.
+- Plot settings:
+  - Color scale clipped at the 99th percentile to reduce outlier dominance.
 - Relation to hypotheses:
   - Supports H1 that many PAs are dark while some are exposed to higher ALAN.
 - Sanity verdict (pass/warn/fail) and why:
@@ -59,46 +61,59 @@ Every key figure/table/model must have an entry here.
 
 - Artefact: `manuscript/figures/fig_layerA_trend_distribution.png`
 - What it shows (plain language):
-  - Distribution of Theil-Sen inside slopes (median radiance) for PAs with >=8 valid years.
-  - Most slopes near zero, with a right tail of brightening PAs.
+  - Distribution of Theil-Sen inside slopes based on **mean** radiance (primary), with a non-zero tail.
+  - Median-based trends retained as robustness (mostly zero).
 - Relation to hypotheses:
   - Consistent with H1: many stable/dark PAs with a subset brightening.
 - Sanity verdict (pass/warn/fail) and why:
   - pass — mean inside radiance increases modestly over time; no abrupt step changes observed.
 - Surprises / concerns:
-  - Only ~40% of PAs meet the minimum valid-pixel threshold for trend estimation.
+  - ~90% of mean-based slopes are still exactly zero; non-zero tail now visible but sparse.
 - Follow-up tasks:
   - [ ] Sensitivity: test alternative thresholds for valid pixels / years.
 
-### FIG3_EDGE_penetration_profiles_examples
+### FIG3_EDGE_penetration_profiles_aggregate
 
-- Artefact: `manuscript/figures/fig_layerA_edge_profiles_examples.png`
+- Artefact: `manuscript/figures/fig_layerA_edge_profiles_aggregate.png`
 - What it shows (plain language):
-  - Edge-to-core radiance profiles for three example PAs (triad IDs) across 2013/2018/2024.
-  - Urban-adjacent example shows elevated near-edge radiance relative to interior.
+  - Aggregated edge-to-core profile (median + IQR) for PAs with complete ring coverage in 2024.
+  - One example PA with complete rings across anchor years for context.
 - Relation to hypotheses:
   - Supports H2: edge gradients appear in developed contexts.
 - Sanity verdict (pass/warn/fail) and why:
-  - warn — outer ring coverage is sparse for small PAs.
+  - pass — aggregate profile uses only complete rings; missingness is handled explicitly.
 - Surprises / concerns:
-  - Ring 5–10 km bins are frequently missing for small PAs nationally.
+  - Ring 5–10 km bins are still frequently missing nationally; aggregate uses a subset.
 - Follow-up tasks:
   - [ ] Consider adaptive rings or minimum-area filters for penetration metrics.
 
-### FIG4_VULNERABILITY_predictor_effects_and_ranked_list
+### FIG4_RETENTION_quadrant
 
-- Artefact: `manuscript/figures/fig_layerA_vulnerability_coefficients.png`
+- Artefact: `manuscript/figures/fig_layerA_retention_quadrant.png`
 - What it shows (plain language):
-  - Standardized coefficients for predictors of inside brightening slopes.
-  - Effect sizes are small; model explains little variance (R2 ~0.01).
+  - Quadrant plot of inside vs 1 km buffer mean trends, highlighting retention vs encroachment patterns.
 - Relation to hypotheses:
-  - Suggests vulnerability predictors are weak under current covariate set.
+  - Directly aligns with H1/H2 by contrasting inside vs outside trend directions.
 - Sanity verdict (pass/warn/fail) and why:
-  - warn — low explanatory power implies limited predictive leverage.
+  - pass — quadrants are interpretable; some PAs show inside brightening > buffer.
 - Surprises / concerns:
-  - Distance to city has only a small negative coefficient; not strongly predictive.
+  - Quadrant patterns are sparse in some regions due to missingness.
 - Follow-up tasks:
-  - [ ] Consider additional predictors (population density, land-use context) if available.
+  - [ ] Consider adding uncertainty bands or density contours for the quadrant plot.
+
+### TAB1_TOP_risk_protected_areas
+
+- Artefact: `analysis/reports/risk_rankings_and_quadrants.md`
+- What it shows (plain language):
+  - Top-ranked PAs by inside brightening, retention, and combined risk score (mean-based trends).
+- Relation to hypotheses:
+  - Supports H1/H2 by identifying PAs where inside brightening exceeds outside trends.
+- Sanity verdict (pass/warn/fail) and why:
+  - pass — rankings align with urban-adjacent PAs; report is transparent.
+- Surprises / concerns:
+  - Some high-retention ranks occur in remote areas with negative inside slopes; interpret cautiously.
+- Follow-up tasks:
+  - [ ] Add confidence intervals for risk scores in later iterations.
 
 ### [RESULT-ID]
 
@@ -123,8 +138,8 @@ Every key figure/table/model must have an entry here.
 
 - FIG1_ALAN_baseline_map_inside_PA
 - FIG2_TRENDS_distribution_and_hotspots
-- FIG3_EDGE_penetration_profiles_examples
-- FIG4_VULNERABILITY_predictor_effects_and_ranked_list
+- FIG3_EDGE_penetration_profiles_aggregate
+- FIG4_RETENTION_quadrant
 - TAB1_TOP_risk_protected_areas
 
 ## Suggested IDs for Layer B (optional)
@@ -137,10 +152,10 @@ Every key figure/table/model must have an entry here.
 ## Summary (keep updated once results stabilise)
 
 When the results are coherent enough for manuscript drafting, write a short summary here:
-- Layer A story: National PA metrics show a large fraction of protected areas with very low (often zero) inside radiance, alongside a subset of PAs with consistently higher values near urban centres. Trend estimation (2013–2024) indicates mostly stable inside radiance with a right tail of brightening PAs; inside mean radiance rises modestly over time without abrupt step changes.
+- Layer A story: National PA metrics show a large fraction of protected areas with very low (often zero) inside radiance, alongside a subset of PAs with consistently higher values near urban centres. Trend estimation (2013–2024) using mean radiance shows a non-zero tail of brightening PAs; median trends remain mostly zero. Inside mean radiance rises modestly over time without abrupt step changes.
 - Layer B: not attempted yet.
 - Limitations and mitigations:
   - Inside coverage is limited for small PAs; we use a minimum valid-pixel threshold and report missingness explicitly.
   - Ring profiles for outer bins are sparse; consider adaptive ring widths or minimum-area filters.
   - Scaling metadata changes in 2022–2024; we apply scale/offset metadata and document it.
-  - Vulnerability model explains little variance with current predictors; treat as exploratory.
+  - Risk/retention rankings are descriptive; do not imply causality and still sensitive to missingness.

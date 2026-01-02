@@ -9,3 +9,5 @@ def test_risk_rankings_schema_and_ranks():
     assert set(df["schema_version"]) == {dschema.SCHEMA_VERSION}
     assert df["rank_slope_inside"].min() >= 1
     assert df["rank_retention_1km"].min() >= 1
+    assert df["rank_retention_5km"].min() >= 1
+    assert df["rank_risk_score"].min() >= 1

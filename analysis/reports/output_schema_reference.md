@@ -1,14 +1,14 @@
 # Output schema reference
 
-Generated: 2026-01-01 10:01 UTC
+Generated: 2026-01-02 02:15 UTC
 
-Schema version: 0.1.0
+Schema version: 0.2.0
 
 Migration policy: Any change to required columns or their meaning requires a schema_version bump and a full rerun. No automatic migration is provided.
 
 ## smoke_test_triad_index
 
-File: `data/processed/smoke_test_triad_index_v0_1_0.csv`
+File: `data/processed/smoke_test_triad_index_v0_2_0.csv`
 Format: csv
 
 Triad selection table (three protected areas).
@@ -28,7 +28,7 @@ Triad selection table (three protected areas).
 
 ## smoke_test_triad_geoms
 
-File: `data/processed/smoke_test_triad_geoms_v0_1_0.gpkg`
+File: `data/processed/smoke_test_triad_geoms_v0_2_0.gpkg`
 Format: gpkg
 
 Triad geometries with attributes (EPSG:3577).
@@ -48,7 +48,7 @@ Triad geometries with attributes (EPSG:3577).
 
 ## smoke_test_triad_rings
 
-File: `data/processed/smoke_test_triad_rings_v0_1_0.csv`
+File: `data/processed/smoke_test_triad_rings_v0_2_0.csv`
 Format: csv
 
 Triad inside-ring summary table (area per ring).
@@ -64,7 +64,7 @@ Triad inside-ring summary table (area per ring).
 
 ## smoke_test_triad_buffers
 
-File: `data/processed/smoke_test_triad_buffers_v0_1_0.gpkg`
+File: `data/processed/smoke_test_triad_buffers_v0_2_0.gpkg`
 Format: gpkg
 
 Triad outside buffers (difference between buffer and PA).
@@ -78,7 +78,7 @@ Triad outside buffers (difference between buffer and PA).
 
 ## pa_geometries
 
-File: `data/processed/pa_geometries_v0_1_0.csv`
+File: `data/processed/pa_geometries_v0_2_0.csv`
 Format: csv
 
 Processed CAPAD geometries (dissolved by PA_ID).
@@ -110,7 +110,7 @@ Notes:
 
 ## pa_radiance_buffers_smoketest
 
-File: `data/processed/pa_radiance_buffers_smoketest_v0_1_0.csv`
+File: `data/processed/pa_radiance_buffers_smoketest_v0_2_0.csv`
 Format: csv
 
 Smoke-test radiance summaries inside PAs and outside buffers.
@@ -139,7 +139,7 @@ Notes:
 
 ## pa_edge_profiles_smoketest
 
-File: `data/processed/pa_edge_profiles_smoketest_v0_1_0.csv`
+File: `data/processed/pa_edge_profiles_smoketest_v0_2_0.csv`
 Format: csv
 
 Smoke-test inside ring (distance-to-edge) radiance profiles.
@@ -169,7 +169,7 @@ Notes:
 
 ## pa_radiance_buffers_national
 
-File: `data/processed/pa_radiance_buffers_national_v0_1_0.csv`
+File: `data/processed/pa_radiance_buffers_national_v0_2_0.csv`
 Format: csv
 
 National radiance summaries inside PAs and outside buffers.
@@ -197,7 +197,7 @@ Notes:
 
 ## pa_edge_profiles_national
 
-File: `data/processed/pa_edge_profiles_national_v0_1_0.csv`
+File: `data/processed/pa_edge_profiles_national_v0_2_0.csv`
 Format: csv
 
 National inside ring (distance-to-edge) radiance profiles.
@@ -226,7 +226,7 @@ Notes:
 
 ## pa_trends
 
-File: `data/processed/pa_trends_v0_1_0.csv`
+File: `data/processed/pa_trends_v0_2_0.csv`
 Format: csv
 
 Protected-area trend estimates and retention indices.
@@ -236,32 +236,41 @@ Protected-area trend estimates and retention indices.
 | schema_version | string | - | Schema version for trend outputs. |
 | pa_id | string | - | CAPAD PA_ID. |
 | n_years_inside | int | years | Valid years used for inside trend. |
-| slope_inside | float | scaled/year | Theil-Sen slope for inside median. |
-| intercept_inside | float | scaled | Theil-Sen intercept for inside median. |
+| slope_inside | float | scaled/year | Theil-Sen slope for inside metric. |
+| intercept_inside | float | scaled | Theil-Sen intercept for inside metric. |
 | n_years_buffer_1km | int | years | Valid years used for 1 km buffer trend. |
-| slope_buffer_1km | float | scaled/year | Theil-Sen slope for 1 km buffer median. |
-| intercept_buffer_1km | float | scaled | Theil-Sen intercept for 1 km buffer median. |
+| slope_buffer_1km | float | scaled/year | Theil-Sen slope for 1 km buffer metric. |
+| intercept_buffer_1km | float | scaled | Theil-Sen intercept for 1 km buffer metric. |
 | n_years_buffer_5km | int | years | Valid years used for 5 km buffer trend. |
-| slope_buffer_5km | float | scaled/year | Theil-Sen slope for 5 km buffer median. |
-| intercept_buffer_5km | float | scaled | Theil-Sen intercept for 5 km buffer median. |
+| slope_buffer_5km | float | scaled/year | Theil-Sen slope for 5 km buffer metric. |
+| intercept_buffer_5km | float | scaled | Theil-Sen intercept for 5 km buffer metric. |
 | method | string | - | Trend estimator name. |
-| metric | string | - | Metric used for trends (e.g., median). |
+| metric | string | - | Metric used for trends (mean or median). |
 | retention_index_1km | float | scaled/year | Inside slope minus 1 km buffer slope. |
 | retention_index_5km | float | scaled/year | Inside slope minus 5 km buffer slope. |
 
 ## pa_risk_rankings
 
-File: `data/processed/pa_risk_rankings_v0_1_0.csv`
+File: `data/processed/pa_risk_rankings_v0_2_0.csv`
 Format: csv
 
-Ranked protected areas by brightening/retention metrics.
+Ranked protected areas by brightening/retention metrics (mean trends).
 
 | Column | Type | Units | Description |
 | --- | --- | --- | --- |
 | schema_version | string | - | Schema version for risk rankings. |
 | pa_id | string | - | CAPAD PA_ID. |
-| slope_inside | float | scaled/year | Inside median trend slope. |
+| name | string | - | Protected area name. |
+| state | string | - | State or territory code. |
+| area_km2 | float | km2 | Protected area size. |
+| distance_km | float | km | Distance to nearest major city. |
+| slope_inside | float | scaled/year | Inside mean trend slope. |
+| slope_buffer_1km | float | scaled/year | 1 km buffer mean trend slope. |
+| slope_buffer_5km | float | scaled/year | 5 km buffer mean trend slope. |
 | retention_index_1km | float | scaled/year | Inside minus 1 km buffer slope. |
 | retention_index_5km | float | scaled/year | Inside minus 5 km buffer slope. |
+| risk_score | float | - | Mean z-score of inside slope and retention indices. |
 | rank_slope_inside | int | - | Rank by slope_inside (1=largest brightening). |
 | rank_retention_1km | int | - | Rank by retention_index_1km (1=largest inside-outside contrast). |
+| rank_retention_5km | int | - | Rank by retention_index_5km (1=largest inside-outside contrast). |
+| rank_risk_score | int | - | Rank by combined risk score (1=highest risk). |

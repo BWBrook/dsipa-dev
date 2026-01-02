@@ -1,4 +1,4 @@
-"""Layer A sanity dashboard (WP0.10)."""
+"""Layer A sanity dashboard (WP0.10b)."""
 
 from __future__ import annotations
 
@@ -38,6 +38,24 @@ def _build_city_gdf() -> gpd.GeoDataFrame:
     return gpd.GeoDataFrame(rows, columns=["city", "geometry"], crs="EPSG:4326").to_crs("EPSG:3577")
 
 
+def _assign_distance_band(distance_km: float) -> str:
+    if distance_km <= 20.0:
+        return "urban_0_20km"
+    if distance_km <= 100.0:
+        return "peri_20_100km"
+    if distance_km >= 300.0:
+        return "remote_300km_plus"
+    return "mid_100_300km"
+
+
+def _assign_area_quartiles(area_km2: pd.Series) -> pd.Series:
+    try:
+        return pd.qcut(area_km2, q=4, labels=["Q1", "Q2", "Q3", "Q4"])
+    except ValueError:
+        ranked = area_km2.rank(method="first")
+        return pd.qcut(ranked, q=4, labels=["Q1", "Q2", "Q3", "Q4"])
+
+
 def _attach_city_distance(gdf: gpd.GeoDataFrame) -> pd.DataFrame:
     gdf = gdf.to_crs("EPSG:3577").copy()
     gdf["centroid"] = gdf.geometry.centroid
@@ -53,7 +71,9 @@ def _attach_city_distance(gdf: gpd.GeoDataFrame) -> pd.DataFrame:
         nearest_dist_km.append(distances[idx] / 1000.0)
     gdf["nearest_city"] = nearest_city
     gdf["distance_km"] = nearest_dist_km
-    return gdf[["pa_id", "nearest_city", "distance_km"]]
+    gdf["distance_band"] = gdf["distance_km"].apply(_assign_distance_band)
+    gdf["area_quartile"] = _assign_area_quartiles(gdf["area_km2"])
+    return gdf[["pa_id", "nearest_city", "distance_km", "distance_band", "area_quartile", "area_km2"]]
 
 
 def _invariant_checks(df: pd.DataFrame) -> list[str]:
@@ -65,14 +85,16 @@ def _invariant_checks(df: pd.DataFrame) -> list[str]:
 
 
 def _anchor_checks(df_inside: pd.DataFrame, pa_meta: pd.DataFrame) -> list[str]:
-    lines = ["## Anchor checks", ""]
+    lines = ["## Anchor checks (inside mean radiance, by distance bands)", ""]
     merged = df_inside.merge(pa_meta, on="pa_id", how="left")
     years = [2013, 2018, 2024]
     for year in years:
         subset = merged[merged["year"] == year]
         urban = subset[subset["distance_km"] <= 20.0]
         remote = subset[subset["distance_km"] >= 300.0]
-        lines.append(f"Year {year}: urban median={urban['mean'].median():.3f}, remote median={remote['mean'].median():.3f}")
+        lines.append(
+            f"Year {year}: urban (<=20 km) median={urban['mean'].median():.3f}, remote (>=300 km) median={remote['mean'].median():.3f}"
+        )
     return lines
 
 
@@ -83,6 +105,42 @@ def _sensitivity_checks(df_inside: pd.DataFrame) -> list[str]:
     for threshold in [MIN_VALID_PIXELS, ALT_VALID_PIXELS]:
         frac = (df_inside["valid_pixel_count"] >= threshold).mean()
         lines.append(f"Fraction inside with >= {threshold} valid pixels: {frac:.3f}")
+    return lines
+
+
+def _stratified_inside_vs_buffer(
+    radiance_df: pd.DataFrame,
+    pa_meta: pd.DataFrame,
+    *,
+    year: int,
+    buffer_km: float,
+) -> list[str]:
+    subset = radiance_df[
+        (radiance_df["year"] == year)
+        & (
+            (radiance_df["zone"] == "inside")
+            | ((radiance_df["zone"] == "buffer") & (radiance_df["buffer_km"] == buffer_km))
+        )
+    ].copy()
+    subset = subset[subset["valid_pixel_count"] >= MIN_VALID_PIXELS]
+    merged = subset.merge(pa_meta, on="pa_id", how="left")
+    grouped = (
+        merged.groupby(["distance_band", "area_quartile", "zone"], observed=True)["mean"]
+        .median()
+        .unstack("zone")
+        .rename(columns={"inside": "inside_mean", "buffer": f"buffer_{buffer_km}km_mean"})
+    )
+    grouped = grouped.dropna(subset=["inside_mean", f"buffer_{buffer_km}km_mean"])
+    grouped[f"inside_minus_buffer_{buffer_km}km"] = (
+        grouped["inside_mean"] - grouped[f"buffer_{buffer_km}km_mean"]
+    )
+    grouped = grouped.reset_index().sort_values(["distance_band", "area_quartile"])
+    lines = [
+        f"### Stratified inside vs buffer ({buffer_km:.0f} km) — year {year}",
+        "",
+        grouped.round(3).to_string(index=False),
+        "",
+    ]
     return lines
 
 
@@ -136,28 +194,36 @@ def write_report(
         else "No ring rows below threshold."
     )
     lines.append("")
+    lines.append("## Stratified inside vs buffer (median of means)")
+    lines.append("")
+    lines.append(
+        "Bands: urban<=20 km, peri=20–100 km, mid=100–300 km, remote>=300 km; area quartiles computed across all PAs."
+    )
+    lines.append("")
+    lines.extend(_stratified_inside_vs_buffer(radiance_df, pa_meta, year=2024, buffer_km=1.0))
+    lines.extend(_stratified_inside_vs_buffer(radiance_df, pa_meta, year=2024, buffer_km=5.0))
     lines.append(f"Plot: {plot_path.name}")
 
     report_path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def write_artefact(report_path: Path, plot_path: Path, root: Path) -> Path:
-    artefact_dir = root / "artefacts" / "wp0_10_layerA_sanity"
+    artefact_dir = root / "artefacts" / "wp0_10b_layerA_sanity"
     artefact_dir.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(report_path, artefact_dir / report_path.name)
     shutil.copyfile(plot_path, artefact_dir / plot_path.name)
 
     manifest = build_manifest(
-        run_id="wp0_10_layerA_sanity",
-        wp="WP0.10",
+        run_id="wp0_10b_layerA_sanity",
+        wp="WP0.10b",
         root=root,
         outputs=[report_path.name, plot_path.name],
-        notes="WP0.10 Layer A sanity dashboard",
+        notes="WP0.10b Layer A sanity dashboard",
     )
     write_manifest(artefact_dir / "MANIFEST.json", manifest)
 
     (artefact_dir / "README.txt").write_text(
-        "WP0.10 Layer A sanity artefact. Contains sanity dashboard and sensitivity plot.\n",
+        "WP0.10b Layer A sanity artefact. Contains sanity dashboard and sensitivity plot.\n",
         encoding="utf-8",
     )
     return artefact_dir

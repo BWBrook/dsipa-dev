@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-SCHEMA_VERSION = "0.1.0"
+SCHEMA_VERSION = "0.2.0"
 SCHEMA_SLUG = SCHEMA_VERSION.replace(".", "_")
 
 TRIAD_INDEX_CSV = f"data/processed/smoke_test_triad_index_v{SCHEMA_SLUG}.csv"
@@ -296,16 +296,16 @@ PA_TRENDS_SCHEMA = OutputSchema(
         ColumnSpec("schema_version", "string", "-", "Schema version for trend outputs."),
         ColumnSpec("pa_id", "string", "-", "CAPAD PA_ID."),
         ColumnSpec("n_years_inside", "int", "years", "Valid years used for inside trend."),
-        ColumnSpec("slope_inside", "float", "scaled/year", "Theil-Sen slope for inside median."),
-        ColumnSpec("intercept_inside", "float", "scaled", "Theil-Sen intercept for inside median."),
+        ColumnSpec("slope_inside", "float", "scaled/year", "Theil-Sen slope for inside metric."),
+        ColumnSpec("intercept_inside", "float", "scaled", "Theil-Sen intercept for inside metric."),
         ColumnSpec("n_years_buffer_1km", "int", "years", "Valid years used for 1 km buffer trend."),
-        ColumnSpec("slope_buffer_1km", "float", "scaled/year", "Theil-Sen slope for 1 km buffer median."),
-        ColumnSpec("intercept_buffer_1km", "float", "scaled", "Theil-Sen intercept for 1 km buffer median."),
+        ColumnSpec("slope_buffer_1km", "float", "scaled/year", "Theil-Sen slope for 1 km buffer metric."),
+        ColumnSpec("intercept_buffer_1km", "float", "scaled", "Theil-Sen intercept for 1 km buffer metric."),
         ColumnSpec("n_years_buffer_5km", "int", "years", "Valid years used for 5 km buffer trend."),
-        ColumnSpec("slope_buffer_5km", "float", "scaled/year", "Theil-Sen slope for 5 km buffer median."),
-        ColumnSpec("intercept_buffer_5km", "float", "scaled", "Theil-Sen intercept for 5 km buffer median."),
+        ColumnSpec("slope_buffer_5km", "float", "scaled/year", "Theil-Sen slope for 5 km buffer metric."),
+        ColumnSpec("intercept_buffer_5km", "float", "scaled", "Theil-Sen intercept for 5 km buffer metric."),
         ColumnSpec("method", "string", "-", "Trend estimator name."),
-        ColumnSpec("metric", "string", "-", "Metric used for trends (e.g., median)."),
+        ColumnSpec("metric", "string", "-", "Metric used for trends (mean or median)."),
         ColumnSpec("retention_index_1km", "float", "scaled/year", "Inside slope minus 1 km buffer slope."),
         ColumnSpec("retention_index_5km", "float", "scaled/year", "Inside slope minus 5 km buffer slope."),
     ),
@@ -315,19 +315,38 @@ PA_RISK_RANKINGS_SCHEMA = OutputSchema(
     key="pa_risk_rankings",
     filename=PA_RISK_RANKINGS_CSV,
     file_type="csv",
-    description="Ranked protected areas by brightening/retention metrics.",
+    description="Ranked protected areas by brightening/retention metrics (mean trends).",
     columns=(
         ColumnSpec("schema_version", "string", "-", "Schema version for risk rankings."),
         ColumnSpec("pa_id", "string", "-", "CAPAD PA_ID."),
-        ColumnSpec("slope_inside", "float", "scaled/year", "Inside median trend slope."),
+        ColumnSpec("name", "string", "-", "Protected area name."),
+        ColumnSpec("state", "string", "-", "State or territory code."),
+        ColumnSpec("area_km2", "float", "km2", "Protected area size."),
+        ColumnSpec("distance_km", "float", "km", "Distance to nearest major city."),
+        ColumnSpec("slope_inside", "float", "scaled/year", "Inside mean trend slope."),
+        ColumnSpec("slope_buffer_1km", "float", "scaled/year", "1 km buffer mean trend slope."),
+        ColumnSpec("slope_buffer_5km", "float", "scaled/year", "5 km buffer mean trend slope."),
         ColumnSpec("retention_index_1km", "float", "scaled/year", "Inside minus 1 km buffer slope."),
         ColumnSpec("retention_index_5km", "float", "scaled/year", "Inside minus 5 km buffer slope."),
+        ColumnSpec("risk_score", "float", "-", "Mean z-score of inside slope and retention indices."),
         ColumnSpec("rank_slope_inside", "int", "-", "Rank by slope_inside (1=largest brightening)."),
         ColumnSpec(
             "rank_retention_1km",
             "int",
             "-",
             "Rank by retention_index_1km (1=largest inside-outside contrast).",
+        ),
+        ColumnSpec(
+            "rank_retention_5km",
+            "int",
+            "-",
+            "Rank by retention_index_5km (1=largest inside-outside contrast).",
+        ),
+        ColumnSpec(
+            "rank_risk_score",
+            "int",
+            "-",
+            "Rank by combined risk score (1=highest risk).",
         ),
     ),
 )

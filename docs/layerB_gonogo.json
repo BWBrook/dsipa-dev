@@ -1,0 +1,81 @@
+{
+  "version": "0.1.0",
+  "decision_date_utc": "2026-01-02",
+  "status": "conditional-go",
+  "scope": {
+    "spatial": "Australia; occurrences inside terrestrial protected areas and within 10 km buffers (assigned to nearest PA).",
+    "temporal_years": [
+      2013,
+      2024
+    ]
+  },
+  "focal_taxa": [
+    {
+      "group": "Microbats (Chiroptera excluding Pteropodidae)",
+      "rationale": "Nocturnal insectivores with evidence of ALAN sensitivity; aligns with Layer A hypothesis.",
+      "inclusions": [
+        "Vespertilionidae",
+        "Molossidae",
+        "Hipposideridae",
+        "Rhinolophidae"
+      ],
+      "exclusions": [
+        "Pteropodidae (fruit bats)"
+      ],
+      "expected_response": "Negative association with ALAN or weaker positive association than controls."
+    }
+  ],
+  "negative_controls": [
+    {
+      "group": "Diurnal birds (Aves; primarily Passeriformes)",
+      "rationale": "High observer effort; expected to be neutral or positively associated with ALAN due to sampling bias.",
+      "expected_response": "Neutral/positive; if similar to focal taxa, interpret as bias."
+    },
+    {
+      "group": "Diurnal reptiles (Squamata; diurnal subset)",
+      "rationale": "Field-observation driven; provides non-nocturnal control.",
+      "expected_response": "Neutral/positive; strong negative would question ALAN-specific inference."
+    }
+  ],
+  "bias_strategy": {
+    "filters": [
+      "Year 2013-2024 only",
+      "Coordinate uncertainty <= 1000 m",
+      "Remove captive/escaped/cultivated records",
+      "Deduplicate per species per day per 1 km grid cell",
+      "Exclude records without species-level identification"
+    ],
+    "background": "Target-group background sampled from all ALA records of the same class within the same time window and spatial scope.",
+    "sampling_covariates": [
+      "Local record density (kernel of all ALA records)",
+      "Distance to roads/settlements if available (optional)"
+    ],
+    "spatial_blocking_km": 50,
+    "sensitivity_checks": [
+      "Alternative ALAN summaries (mean vs median)",
+      "Vary buffer radius (inside, 1 km, 5 km, 10 km)",
+      "Exclude records within 5 km of major urban cores",
+      "Temporal split (2013-2018 vs 2019-2024)"
+    ],
+    "falsification_checks": [
+      "Run identical models on negative controls",
+      "Shuffle ALAN values within bioregions"
+    ]
+  },
+  "go_no_go_criteria": [
+    ">= 5,000 focal records after filtering within spatial scope",
+    ">= 15 focal species with >= 50 records each",
+    ">= 80% of focal records have valid ALAN covariates",
+    ">= 5,000 records for each negative control group after filtering",
+    "Bias controls (target-group background, spatial blocking) are feasible at national scale"
+  ],
+  "data_sources": [
+    "Atlas of Living Australia (ALA) occurrence downloads (CC-BY)",
+    "CAPAD 2024 protected areas (for spatial scope)",
+    "Zenodo VIIRS night-lights (Layer A rasters)"
+  ],
+  "notes": [
+    "Proceed to WP0.15 only if criteria are met; otherwise stop at descriptive summaries without causal language.",
+    "Layer B is optional and contingent on negative-control results."
+  ]
+}

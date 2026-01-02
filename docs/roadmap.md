@@ -75,9 +75,16 @@ At minimum:
 - [x] **WP0.12 — Vulnerability model: predictors of brightening/penetration**
 - [x] **WP0.13 — Paper-ready Layer A figure set + interpretation notes**
 
+### Milestone 0.5.1 — Layer A metric correction + publishable figures (PI gate)
+_(Required before any Layer B acquisition.)_
+- [x] **WP0.10b — Sanity suite upgrade: stratified invariants (area quartiles + city-distance bands)**
+- [x] **WP0.11b — Trend/retention re-derivation using mean radiance (median retained as robustness)**
+- [x] **WP0.12b — Risk/retention results module (ranked table + quadrant plot; replace OLS story)**
+- [x] **WP0.13b — Figure set revision: baseline missingness + aggregated edge profiles + mean trend distribution**
+
 ### Milestone 0.6.x — Layer B (optional): nocturnal biodiversity signal module
 (Only proceed if Layer A is stable and the roadmap has not been reordered to skip required sanity work.)
-- [ ] **WP0.14 — Layer B go/no-go: focal taxa + negative controls + bias strategy (decision)**
+- [x] **WP0.14 — Layer B go/no-go: focal taxa + negative controls + bias strategy (decision)**
 - [ ] **WP0.15 — Layer B data acquisition + provenance + quality filters**
 - [ ] **WP0.16 — Layer B modelling + falsification checks + interpretation**
 
