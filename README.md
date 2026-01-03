@@ -38,6 +38,12 @@ This is an “AI for Science” autonomy experiment:
 
 Note: Large derived outputs (national tables, large GPKGs, and `artefacts/`) are not tracked in git. They are regenerated via the pipeline and archived to Zenodo for paper release. Smoke-test outputs remain in-repo to support fast regression tests.
 
+Zenodo helper:
+```bash
+analysis/zenodo_release_checklist.sh
+```
+This writes a checklist + SHA256 manifest to `analysis/reports/zenodo_release_checklist_YYYY-MM-DD.md`.
+
 ---
 
 ## Quickstart (bootstrap)

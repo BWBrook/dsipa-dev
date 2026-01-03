@@ -6,6 +6,7 @@ Date: 2026-01-03
 - Added gitignore patterns for national-scale derived tables under `data/processed/`.
 - Removed tracked national outputs (radiance buffers, edge profiles, buffer validity, trends, risk rankings) from git history going forward.
 - Updated tests to skip when national outputs are absent; smoke-test fixtures remain in-repo.
+- Added `analysis/zenodo_release_checklist.sh` to generate a Zenodo upload checklist + checksum manifest.
 
 ## Rationale
 National outputs are large and reproducible; tracking them in git bloats the repo and triggers snapshot warnings. They will be archived via Zenodo for paper release.
