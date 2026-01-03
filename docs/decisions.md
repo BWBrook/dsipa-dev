@@ -27,6 +27,7 @@ Mark superseded items in **Status** (active / superseded / reverted) rather than
 | 2026-01-02 | DEC-019     | Add cached union geometries + optional statewise runner for Layer A metrics to control runtime | National raster summaries are slow; cached unions and statewise merge enable resumable, auditable runs without changing outputs | active | docs/log/095_layerA_validity_censoring.md |
 | 2026-01-02 | DEC-020     | Buffer validity overlap metrics computed on land-masked overlap (land_union \ PAs); effective_land_area_km2 equals land-unprotected area | Aligns overlap metric with land-only ALAN interpretation and avoids per-buffer intersections with full PA union | active | docs/log/096_layerA_performance.md |
 | 2026-01-02 | DEC-021     | Simplify PA geometries by 500 m tolerance + use buffer resolution=1 (quadrant segments) for buffer/ring construction | 500 m raster resolution permits pixel-scale simplification; reduces buffer/ring compute time substantially | active | docs/log/096_layerA_performance.md |
+| 2026-01-03 | DEC-022     | Do not track `artefacts/` in git; artefacts live locally and are archived to Zenodo for paper release | Artefacts are large and reproducible from pipeline; keeping them out of git avoids snapshot/size warnings while preserving reproducibility | active | docs/log/097_gate_0_5_2.md |
 
 ---
 

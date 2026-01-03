@@ -7,6 +7,7 @@ dist/
 build/
 *.zip
 analysis/state_runs/
+artefacts/
 
 # Large binary data artefacts (kept locally; reproducible via scripts)
 data/raw/*.tif
