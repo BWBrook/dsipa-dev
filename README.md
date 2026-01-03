@@ -36,6 +36,8 @@ This is an “AI for Science” autonomy experiment:
 - `manuscript/` — paper draft and figures.
 - `tests/` — automated tests and domain sanity checks.
 
+Note: Large derived outputs (national tables, large GPKGs, and `artefacts/`) are not tracked in git. They are regenerated via the pipeline and archived to Zenodo for paper release. Smoke-test outputs remain in-repo to support fast regression tests.
+
 ---
 
 ## Quickstart (bootstrap)

@@ -54,6 +54,13 @@ data/processed/**/*.hdf
 data/processed/**/*.grd
 data/processed/**/*.img
 data/processed/cache/
+
+# National-scale derived tables (archived via Zenodo; regenerate via pipeline)
+data/processed/pa_radiance_buffers_national_v*.csv
+data/processed/pa_edge_profiles_national_v*.csv
+data/processed/pa_buffer_validity_v*.csv
+data/processed/pa_trends_v*.csv
+data/processed/pa_risk_rankings_v*.csv
 artefacts/**/*.tif
 artefacts/**/*.tiff
 artefacts/**/*.gpkg

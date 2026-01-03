@@ -1,9 +1,14 @@
+from pathlib import Path
+
 import pandas as pd
+import pytest
 
 from dsipa import schema as dschema
 
 
 def test_inside_valid_fraction_reasonable():
+    if not Path(dschema.RADIANCE_BUFFERS_NATIONAL_CSV).exists():
+        pytest.skip("National radiance outputs not present; regenerate via pipeline.")
     df = pd.read_csv(dschema.RADIANCE_BUFFERS_NATIONAL_CSV)
     inside = df[df["zone"] == "inside"]
     frac_valid = (inside["valid_pixel_count"] >= 10).mean()
@@ -11,6 +16,8 @@ def test_inside_valid_fraction_reasonable():
 
 
 def test_scale_metadata_by_year():
+    if not Path(dschema.RADIANCE_BUFFERS_NATIONAL_CSV).exists():
+        pytest.skip("National radiance outputs not present; regenerate via pipeline.")
     df = pd.read_csv(dschema.RADIANCE_BUFFERS_NATIONAL_CSV)
     inside = df[df["zone"] == "inside"]
     scale_by_year = inside.groupby("year")["scale_metadata"].median()
@@ -22,6 +29,8 @@ def test_scale_metadata_by_year():
 
 
 def test_ring_usability_low_fraction():
+    if not Path(dschema.EDGE_PROFILES_NATIONAL_CSV).exists():
+        pytest.skip("National edge profiles not present; regenerate via pipeline.")
     df = pd.read_csv(dschema.EDGE_PROFILES_NATIONAL_CSV)
     valid = df[df["valid_pixel_count"] >= 10]
     if valid.empty:

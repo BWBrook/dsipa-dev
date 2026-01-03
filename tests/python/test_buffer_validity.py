@@ -1,9 +1,14 @@
+from pathlib import Path
+
 import pandas as pd
+import pytest
 
 from dsipa import schema as dschema
 
 
 def test_buffer_validity_schema_and_ranges():
+    if not Path(dschema.PA_BUFFER_VALIDITY_CSV).exists():
+        pytest.skip("Buffer validity table not present; regenerate via pipeline.")
     df = pd.read_csv(dschema.PA_BUFFER_VALIDITY_CSV)
     assert set(df.columns) == set(dschema.PA_BUFFER_VALIDITY_COLUMNS)
     assert set(df["schema_version"]) == {dschema.SCHEMA_VERSION}

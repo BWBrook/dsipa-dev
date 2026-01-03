@@ -2,6 +2,8 @@
 
 Record every dataset placed under `data/raw/` and the derived products under `data/processed/`.
 
+Note: Large derived outputs (national-scale tables and large GPKG files) are not tracked in git. They are reproducible via the pipeline and are archived to Zenodo for paper release.
+
 | Name | Source URL / DOI | Version / date fetched | License | Checksum (algorithm noted) | Notes |
 | --- | --- | --- | --- | --- | --- |
 | CAPAD 2024 technical specifications (PDF) | https://www.dcceew.gov.au/sites/default/files/documents/capad-2024-tech-spec.pdf | CAPAD 2024; fetched 2026-01-01 | CC BY 4.0 | bdf7c15be087793dcfa27af38eb5dd56a66672ba3d8d88ba3ac2313456a51947 | Metadata file; spatial data accessed via DCCEEW CAPAD MapServer/FeatureServer. |
@@ -29,10 +31,11 @@ Record every dataset placed under `data/raw/` and the derived products under `da
 | pa_geometries_v0_2_0.csv | src/python/dsipa/pa_geometry.py | Generated 2026-01-02; schema v0.2.0 | Derived (CAPAD CC BY 4.0) | 0883a0c0009d079fbe90b4d61f21919f11dd69023bc35a910169a85b569e82ce | Tabular descriptors for processed PA geometries. |
 | pa_radiance_buffers_smoketest_v0_2_0.csv | src/python/dsipa/radiance_smoketest.py | Generated 2026-01-02; schema v0.2.0 | Derived (Zenodo nightlights CC BY 4.0) | a0e92162d5457b05974f22c09ba8c99718970d0ec57f12a85252947dc3c37897 | Smoke-test radiance summaries (inside + buffers) for triad years. |
 | pa_edge_profiles_smoketest_v0_2_0.csv | src/python/dsipa/ring_profiles_smoketest.py | Generated 2026-01-02; schema v0.2.0 | Derived (Zenodo nightlights CC BY 4.0) | f4f2b9e05879e404d60b6bd9fd2c814e1e95cebc9ba65fcc7b482e57fcf80e0e | Smoke-test edge profile summaries (inside rings). |
-| pa_radiance_buffers_national_v0_2_0.csv | src/python/dsipa/layerA_national.py | Generated 2026-01-02; schema v0.2.0 | Derived (Zenodo nightlights CC BY 4.0) | fee3c7d4f75539b6bac51cbf8742824eaf4f4368d756a9f750e92171d49baf01 | National radiance summaries (inside + buffers) for 2013–2024. |
-| pa_edge_profiles_national_v0_2_0.csv | src/python/dsipa/layerA_national.py | Generated 2026-01-02; schema v0.2.0 | Derived (Zenodo nightlights CC BY 4.0) | 21bf4ec78005365fdd9a8dacf29543b8e83424ed9002f5d0b2cf848c925b7f60 | National edge profile summaries (inside rings) for 2013–2024. |
-| pa_trends_v0_2_0.csv | src/python/dsipa/trends.py | Generated 2026-01-02; schema v0.2.0 | Derived (Zenodo nightlights CC BY 4.0) | 45b6592547111abecfa1340c5117a9abce09bfe1360b02fdb026e7878949cb29 | Trend estimates and retention indices (mean primary; median retained). |
-| pa_risk_rankings_v0_2_0.csv | src/python/dsipa/vulnerability_model.py | Generated 2026-01-02; schema v0.2.0 | Derived (Zenodo nightlights CC BY 4.0) | c288682fbbcae9c91b3439091e52e41ee04e71d45ba634c6e6d057987fde74fb | Ranked PAs by brightening, retention, and combined risk score. |
+| pa_radiance_buffers_national_v0_3_0.csv | src/python/dsipa/layerA_national.py | Generated 2026-01-03; schema v0.3.0 | Derived (Zenodo nightlights CC BY 4.0) | 33f354c6447c3108d69f4461a727eae7f52cc6b023ce47f37bc6459fff1cb9df | National radiance summaries (inside + buffers) for 2013–2024; not tracked in git. |
+| pa_edge_profiles_national_v0_3_0.csv | src/python/dsipa/layerA_national.py | Generated 2026-01-03; schema v0.3.0 | Derived (Zenodo nightlights CC BY 4.0) | 4af7830beab5a286371aabf38d344dac4fa216b9ae0b4252c19db74ab2ccb8b5 | National edge profile summaries (inside rings) for 2013–2024; not tracked in git. |
+| pa_buffer_validity_v0_3_0.csv | src/python/dsipa/layerA_national.py | Generated 2026-01-03; schema v0.3.0 | Derived (CAPAD + Natural Earth) | 1e7f8d152a2f59f5c0c57b5b9acd310ac04eb11faec4e011018567094807ac8a | Buffer land/overlap validity descriptors; not tracked in git. |
+| pa_trends_v0_3_0.csv | src/python/dsipa/trends.py | Generated 2026-01-03; schema v0.3.0 | Derived (Zenodo nightlights CC BY 4.0) | 000ae620f537e3d3e70abf2d76f0f9da7f9ec27c804588940651812a23b6259f | Trend estimates and retention indices (mean primary + censoring-aware metrics); not tracked in git. |
+| pa_risk_rankings_v0_3_0.csv | src/python/dsipa/vulnerability_model.py | Generated 2026-01-03; schema v0.3.0 | Derived (Zenodo nightlights CC BY 4.0) | 9ac0a201a1b9d1d199e6a68e977032ccceac45b62ee4a29a1cd58c3c38f47624 | Category-safe rankings (inside brightening, buffer brightening, internalisation, external pressure); not tracked in git. |
 
 Notes:
 - Checksums default to sha256 unless otherwise stated. Nightlights GeoTIFF checksums are MD5 (32 hex characters), matching `src/python/dsipa/nightlights.py`.

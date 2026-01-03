@@ -1,9 +1,14 @@
+from pathlib import Path
+
 import pandas as pd
+import pytest
 
 from dsipa import schema as dschema
 
 
 def test_risk_rankings_schema_and_ranks():
+    if not Path(dschema.PA_RISK_RANKINGS_CSV).exists():
+        pytest.skip("Risk rankings not present; regenerate via pipeline.")
     df = pd.read_csv(dschema.PA_RISK_RANKINGS_CSV)
     assert set(df.columns) == set(dschema.PA_RISK_RANKINGS_COLUMNS)
     assert set(df["schema_version"]) == {dschema.SCHEMA_VERSION}
