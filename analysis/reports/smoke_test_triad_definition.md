@@ -1,6 +1,6 @@
 # Smoke-test triad definition (WP0.4)
 
-Generated: 2026-01-01 05:03 UTC
+Generated: 2026-01-03 10:39 UTC
 
 ## Selection rule
 
@@ -16,6 +16,6 @@ Generated: 2026-01-01 05:03 UTC
 
 | schema_version | triad_role | pa_id | pa_pid | name | state | iucn | area_km2 | distance_km | nearest_city |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 0.1.0 | urban_edge | TAS_50483 | TAS_50483 | Wellington Park | TAS | II | 180.25 | 15.75 | Hobart |
-| 0.1.0 | peri_urban | NSW_N0856 | NSW_N0856 | Coornartha | NSW | Ia | 11.84 | 100.08 | Canberra |
-| 0.1.0 | remote | QLD_0117LZI001 | QLD_0117LZI001 | Lizard Island | QLD | II | 9.37 | 1620.46 | Darwin |
+| 0.3.0 | urban_edge | TAS_50483 | TAS_50483 | Wellington Park | TAS | II | 180.25 | 15.75 | Hobart |
+| 0.3.0 | peri_urban | NSW_N0856 | NSW_N0856 | Coornartha | NSW | Ia | 11.84 | 100.08 | Canberra |
+| 0.3.0 | remote | QLD_0117LZI001 | QLD_0117LZI001 | Lizard Island | QLD | II | 9.37 | 1620.46 | Darwin |

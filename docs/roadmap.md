@@ -82,8 +82,16 @@ _(Required before any Layer B acquisition.)_
 - [x] **WP0.12b — Risk/retention results module (ranked table + quadrant plot; replace OLS story)**
 - [x] **WP0.13b — Figure set revision: baseline missingness + aggregated edge profiles + mean trend distribution**
 
+### Milestone 0.5.2 — Layer A validity + censoring (PI gate)
+_(Required before any Layer B acquisition.)_
+- [x] **WP0.4b — Smoke-test paths + manifest hygiene (quick engineering credibility win)**
+- [x] **WP0.10c — Buffer validity decomposition + corrected buffers (land + non-PA)**
+- [x] **WP0.11c — Censoring-aware exposure metrics + trends**
+- [x] **WP0.12c — Risk/retention semantics fix (category-safe rankings + robust quadrant plot)**
+- [x] **WP0.13c — Figure set revision under censoring/selection**
+
 ### Milestone 0.6.x — Layer B (optional): nocturnal biodiversity signal module
-(Only proceed if Layer A is stable and the roadmap has not been reordered to skip required sanity work.)
+(Only proceed if Layer A is stable and Milestone 0.5.2 is complete.)
 - [x] **WP0.14 — Layer B go/no-go: focal taxa + negative controls + bias strategy (decision)**
 - [ ] **WP0.15 — Layer B data acquisition + provenance + quality filters**
 - [ ] **WP0.16 — Layer B modelling + falsification checks + interpretation**

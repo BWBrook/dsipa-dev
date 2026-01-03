@@ -15,4 +15,8 @@ def test_build_manifest_contains_core_keys():
     assert "created_utc" in manifest
     assert "python" in manifest
     assert "platform" in manifest
+    assert "packages" in manifest
+    assert "data_manifest" in manifest
+    assert "inputs" in manifest
+    assert "warnings" in manifest
     assert manifest["outputs"] == ["placeholder.txt"]

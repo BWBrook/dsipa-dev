@@ -162,9 +162,8 @@ Bats and lighting (Layer B candidates):
 
 ## 10) Current status (agent must keep updated)
 
-- Current phase: Milestone 0.5.1 complete — awaiting PI gate review before Layer B
-- Recently completed: WP0.10b–WP0.13b (Layer A metric correction + revised figures).
+- Current phase: Milestone 0.5.2 complete — Layer A validity + censoring gate ready for PI review.
+- Recently completed: Milestone 0.5.2 (WP0.4b–WP0.13c; buffer validity, censoring-aware metrics, category-safe rankings, figure revisions).
 - Immediate next steps (should match the first unchecked WP in `docs/roadmap.md`):
-  1) PI gate review for Milestone 0.5.1 (send ZIP with pa_geometries GPKG included).
-  2) WP0.15 — Layer B data acquisition + provenance + quality filters (only after PI sign-off).
-  3) WP0.16 — Layer B modelling + falsification checks + interpretation.
+  1) Package PI gate bundle for Milestone 0.5.2 (include pa_geometries GPKG and updated artefacts).
+  2) Await PI sign-off before any Layer B acquisition (WP0.15 remains blocked).

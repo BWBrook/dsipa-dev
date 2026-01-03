@@ -16,16 +16,23 @@ import numpy as np
 import pandas as pd
 import rasterio
 from rasterio.mask import mask
-from shapely.geometry import Point
+from shapely.geometry import GeometryCollection, Point
+try:
+    from shapely.errors import GEOSException
+except Exception:  # pragma: no cover
+    GEOSException = Exception
 from shapely import wkb
 
+from dsipa.landmask import download_landmask
 from dsipa.manifest import build_manifest, write_manifest
 from dsipa.nightlights import CORE_YEARS, download_year
 from dsipa.paths import find_repo_root
 from dsipa.schema import (
     EDGE_PROFILES_NATIONAL_CSV,
     PA_GEOMETRIES_GPKG,
+    PA_BUFFER_VALIDITY_CSV,
     RADIANCE_BUFFERS_NATIONAL_CSV,
+    SCHEMA_SLUG,
     SCHEMA_VERSION,
 )
 from dsipa.triad import CITY_POINTS, RING_BINS_KM
@@ -37,6 +44,14 @@ except ImportError:  # pragma: no cover
 
 BUFFER_DISTANCES_KM = (1.0, 5.0)
 MIN_VALID_PIXELS = 10
+BUFFER_TYPES = ("raw", "land", "land_unprotected")
+PRIMARY_BUFFER_TYPE = "land_unprotected"
+LANDMASK_DIR = "data/raw/ne_110m_land"
+LAND_UNION_CACHE = "data/processed/cache/land_union_ne_110m.wkb"
+PA_UNION_CACHE = f"data/processed/cache/pa_union_v{SCHEMA_SLUG}.wkb"
+LAND_UNPROTECTED_CACHE = f"data/processed/cache/land_unprotected_union_v{SCHEMA_SLUG}.wkb"
+BUFFER_QUAD_SEGS = 1
+GEOM_SIMPLIFY_TOLERANCE_M = 500.0
 
 REPORT_PATH = "analysis/reports/national_layerA_coverage_and_sanity.md"
 PLOT_PATH = "analysis/reports/national_layerA_distributions.png"
@@ -80,6 +95,8 @@ def _stats_for_geom(
             "min": np.nan,
             "max": np.nan,
             "std": np.nan,
+            "frac_gt0": np.nan,
+            "p95": np.nan,
         }
 
     nodata = dataset.nodata
@@ -95,6 +112,8 @@ def _stats_for_geom(
             "min": np.nan,
             "max": np.nan,
             "std": np.nan,
+            "frac_gt0": np.nan,
+            "p95": np.nan,
         }
     band = data[0]
 
@@ -117,6 +136,8 @@ def _stats_for_geom(
             "min": np.nan,
             "max": np.nan,
             "std": np.nan,
+            "frac_gt0": np.nan,
+            "p95": np.nan,
         }
 
     valid = _apply_scale(valid, scale, offset)
@@ -129,6 +150,8 @@ def _stats_for_geom(
         "min": float(np.min(valid)),
         "max": float(np.max(valid)),
         "std": float(np.std(valid)),
+        "frac_gt0": float(np.mean(valid > 0)),
+        "p95": float(np.quantile(valid, 0.95)),
     }
 
 
@@ -164,9 +187,87 @@ def _safe_difference(a, b):
         return make_valid(a).difference(make_valid(b))
 
 
+def _safe_intersection(a, b):
+    if a is None or a.is_empty:
+        return a
+    if b is None or b.is_empty:
+        return b
+    try:
+        return a.intersection(b)
+    except Exception:
+        return make_valid(a).intersection(make_valid(b))
+
+
+def _safe_intersection_series(series: gpd.GeoSeries, other) -> gpd.GeoSeries:
+    try:
+        return series.intersection(other)
+    except GEOSException:
+        return gpd.GeoSeries(
+            [_safe_intersection(geom, other) for geom in series],
+            index=series.index,
+            crs=series.crs,
+        )
+
+
 def _chunk_records(records: list[dict], chunk_size: int) -> Iterable[list[dict]]:
     for i in range(0, len(records), chunk_size):
         yield records[i : i + chunk_size]
+
+
+def _load_landmask_union(root: Path):
+    cache_path = root / LAND_UNION_CACHE
+    if cache_path.exists():
+        return wkb.loads(cache_path.read_bytes())
+    land_dir = root / LANDMASK_DIR
+    land_path = download_landmask(land_dir)
+    land_gdf = gpd.read_file(land_path)
+    if land_gdf.empty:
+        raise RuntimeError(f"Landmask data empty at {land_path}")
+    land_gdf = land_gdf.to_crs("EPSG:3577")
+    land_gdf["geometry"] = land_gdf.geometry.apply(_safe_geom)
+    land_gdf = land_gdf[~land_gdf.geometry.is_empty]
+    try:
+        union_geom = land_gdf.geometry.union_all()
+    except AttributeError:  # pragma: no cover
+        union_geom = land_gdf.geometry.unary_union
+    land_union = _safe_geom(union_geom)
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+    cache_path.write_bytes(wkb.dumps(land_union))
+    return land_union
+
+
+def _load_pa_union(root: Path, pa_gdf: gpd.GeoDataFrame):
+    cache_path = root / PA_UNION_CACHE
+    if cache_path.exists():
+        return wkb.loads(cache_path.read_bytes())
+    try:
+        union_geom = pa_gdf.geometry.union_all()
+    except AttributeError:  # pragma: no cover
+        union_geom = pa_gdf.geometry.unary_union
+    union_geom = _safe_geom(union_geom)
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+    cache_path.write_bytes(wkb.dumps(union_geom))
+    return union_geom
+
+
+def _load_land_unprotected_union(
+    root: Path,
+    land_union,
+    pa_union,
+):
+    if land_union is None:
+        return None
+    if pa_union is None:
+        return land_union
+    cache_path = root / LAND_UNPROTECTED_CACHE
+    if cache_path.exists():
+        cached = wkb.loads(cache_path.read_bytes())
+        return _safe_geom(cached)
+    land_unprotected = _safe_difference(land_union, pa_union)
+    land_unprotected = _safe_geom(land_unprotected)
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+    cache_path.write_bytes(wkb.dumps(land_unprotected))
+    return land_unprotected
 
 
 def _compute_chunk(
@@ -261,52 +362,187 @@ def _attach_city_distance(gdf: gpd.GeoDataFrame) -> pd.DataFrame:
     return gdf[["pa_id", "nearest_city", "distance_km"]]
 
 
-def build_buffers(pa_gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
-    records = []
-    for _, row in pa_gdf.iterrows():
-        base = _safe_geom(row.geometry)
-        if base is None or base.is_empty:
+def build_buffers(
+    pa_gdf: gpd.GeoDataFrame,
+    *,
+    land_union,
+    pa_union,
+    land_unprotected_union=None,
+) -> tuple[gpd.GeoDataFrame, pd.DataFrame]:
+    if land_unprotected_union is None:
+        if land_union is None:
+            land_unprotected_union = None
+        elif pa_union is None:
+            land_unprotected_union = land_union
+        else:
+            land_unprotected_union = _safe_difference(land_union, pa_union)
+
+    base = pa_gdf[["pa_id", "geometry"]].copy()
+    base["geometry"] = base.geometry.apply(_safe_geom).simplify(
+        GEOM_SIMPLIFY_TOLERANCE_M, preserve_topology=True
+    )
+    base = base[~base.geometry.is_empty]
+
+    buffer_frames: list[gpd.GeoDataFrame] = []
+    validity_frames: list[pd.DataFrame] = []
+
+    for dist_km in BUFFER_DISTANCES_KM:
+        buffer_geom = base.geometry.buffer(dist_km * 1000.0, resolution=BUFFER_QUAD_SEGS)
+        outside = buffer_geom.difference(base.geometry)
+        valid_mask = ~outside.is_empty
+        if not valid_mask.any():
             continue
-        for dist_km in BUFFER_DISTANCES_KM:
-            buffer_geom = _safe_geom(base.buffer(dist_km * 1000.0))
-            outside = _safe_geom(_safe_difference(buffer_geom, base)) if buffer_geom is not None else buffer_geom
-            records.append(
+        outside = outside[valid_mask]
+        pa_ids = base.loc[valid_mask, "pa_id"].to_numpy()
+
+        raw_area = outside.area.to_numpy()
+        if land_union is not None:
+            land_geom = _safe_intersection_series(outside, land_union)
+            land_area = land_geom.area.to_numpy()
+        else:
+            land_geom = None
+            land_area = np.zeros_like(raw_area)
+
+        if land_unprotected_union is not None:
+            land_unprotected = _safe_intersection_series(outside, land_unprotected_union)
+            land_unprotected_area = land_unprotected.area.to_numpy()
+        else:
+            land_unprotected = land_geom
+            land_unprotected_area = land_area
+
+        overlap_area = np.maximum(land_area - land_unprotected_area, 0.0)
+        effective_land_area = land_unprotected_area
+
+        land_fraction = np.where(raw_area > 0, land_area / raw_area, 0.0)
+        protected_overlap_fraction = np.where(raw_area > 0, overlap_area / raw_area, 0.0)
+        land_fraction = np.clip(land_fraction, 0.0, 1.0)
+        protected_overlap_fraction = np.clip(protected_overlap_fraction, 0.0, 1.0)
+
+        validity_frames.append(
+            pd.DataFrame(
                 {
-                    "pa_id": row["pa_id"],
-                    "buffer_km": dist_km,
-                    "geometry": outside,
+                    "pa_id": pa_ids,
+                    "buffer_km": float(dist_km),
+                    "buffer_area_km2": raw_area / 1_000_000.0,
+                    "land_area_km2": land_area / 1_000_000.0,
+                    "protected_overlap_km2": overlap_area / 1_000_000.0,
+                    "effective_land_area_km2": effective_land_area / 1_000_000.0,
+                    "land_fraction": land_fraction,
+                    "protected_overlap_fraction": protected_overlap_fraction,
                 }
             )
-    return gpd.GeoDataFrame(records, crs=pa_gdf.crs)
+        )
+
+        buffer_frames.append(
+            gpd.GeoDataFrame(
+                {
+                    "pa_id": pa_ids,
+                    "buffer_km": float(dist_km),
+                    "buffer_type": "raw",
+                    "geometry": outside,
+                },
+                crs=pa_gdf.crs,
+            )
+        )
+
+        if land_geom is not None:
+            land_mask = ~land_geom.is_empty
+            if land_mask.any():
+                buffer_frames.append(
+                    gpd.GeoDataFrame(
+                        {
+                            "pa_id": pa_ids[land_mask],
+                            "buffer_km": float(dist_km),
+                            "buffer_type": "land",
+                            "geometry": land_geom[land_mask],
+                        },
+                        crs=pa_gdf.crs,
+                    )
+                )
+            if land_unprotected is not None:
+                land_unprotected_mask = ~land_unprotected.is_empty
+                if land_unprotected_mask.any():
+                    buffer_frames.append(
+                        gpd.GeoDataFrame(
+                            {
+                                "pa_id": pa_ids[land_unprotected_mask],
+                                "buffer_km": float(dist_km),
+                                "buffer_type": "land_unprotected",
+                                "geometry": land_unprotected[land_unprotected_mask],
+                            },
+                            crs=pa_gdf.crs,
+                        )
+                    )
+
+    buffers = (
+        gpd.GeoDataFrame(pd.concat(buffer_frames, ignore_index=True), crs=pa_gdf.crs)
+        if buffer_frames
+        else gpd.GeoDataFrame(columns=["pa_id", "buffer_km", "buffer_type", "geometry"], crs=pa_gdf.crs)
+    )
+    validity = (
+        pd.concat(validity_frames, ignore_index=True)
+        if validity_frames
+        else pd.DataFrame(
+            columns=[
+                "pa_id",
+                "buffer_km",
+                "buffer_area_km2",
+                "land_area_km2",
+                "protected_overlap_km2",
+                "effective_land_area_km2",
+                "land_fraction",
+                "protected_overlap_fraction",
+            ]
+        )
+    )
+
+    return buffers, validity
 
 
 def build_rings(pa_gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
-    records = []
-    for _, row in pa_gdf.iterrows():
-        base = _safe_geom(row.geometry)
-        if base is None or base.is_empty:
-            continue
-        for idx, (inner_km, outer_km) in enumerate(RING_BINS_KM):
-            inner_geom = base if inner_km == 0 else _safe_geom(base.buffer(-inner_km * 1000.0))
-            if inner_geom is None or inner_geom.is_empty:
-                ring_geom = inner_geom
-            else:
-                outer_geom = _safe_geom(base.buffer(-outer_km * 1000.0))
-                ring_geom = (
-                    inner_geom
-                    if outer_geom is None or outer_geom.is_empty
-                    else _safe_difference(inner_geom, outer_geom)
+    base = pa_gdf[["pa_id", "geometry"]].copy()
+    base["geometry"] = base.geometry.apply(_safe_geom)
+    base = base[~base.geometry.is_empty]
+    area_km2 = base.geometry.area.to_numpy() / 1_000_000.0
+
+    ring_frames: list[gpd.GeoDataFrame] = []
+    for idx, (inner_km, outer_km) in enumerate(RING_BINS_KM):
+        inner_threshold = np.pi * (inner_km**2)
+        if inner_km == 0:
+            inner_geom = base.geometry
+        else:
+            inner_geom = gpd.GeoSeries(
+                [GeometryCollection()] * len(base), index=base.index, crs=pa_gdf.crs
+            )
+            inner_mask = area_km2 >= inner_threshold
+            if inner_mask.any():
+                inner_geom.loc[inner_mask] = base.geometry.loc[inner_mask].buffer(
+                    -inner_km * 1000.0, resolution=BUFFER_QUAD_SEGS
                 )
-            records.append(
+
+        ring_geom = inner_geom.copy()
+        outer_threshold = np.pi * (outer_km**2)
+        outer_mask = area_km2 >= outer_threshold
+        if outer_mask.any():
+            outer_geom = base.geometry.loc[outer_mask].buffer(
+                -outer_km * 1000.0, resolution=BUFFER_QUAD_SEGS
+            )
+            ring_geom.loc[outer_mask] = inner_geom.loc[outer_mask].difference(outer_geom)
+
+        ring_frames.append(
+            gpd.GeoDataFrame(
                 {
-                    "pa_id": row["pa_id"],
+                    "pa_id": base["pa_id"].to_numpy(),
                     "ring_index": idx,
                     "ring_inner_km": float(inner_km),
                     "ring_outer_km": float(outer_km),
                     "geometry": ring_geom,
-                }
+                },
+                crs=pa_gdf.crs,
             )
-    return gpd.GeoDataFrame(records, crs=pa_gdf.crs)
+        )
+
+    return gpd.GeoDataFrame(pd.concat(ring_frames, ignore_index=True), crs=pa_gdf.crs)
 
 
 def _load_pa_geoms(root: Path) -> gpd.GeoDataFrame:
@@ -314,6 +550,30 @@ def _load_pa_geoms(root: Path) -> gpd.GeoDataFrame:
     if gdf.empty:
         raise RuntimeError("PA geometry file is empty.")
     return gdf
+
+
+def _filter_pas(
+    gdf: gpd.GeoDataFrame,
+    *,
+    states: list[str] | None,
+    pa_limit: int | None,
+    sample: str,
+    seed: int,
+) -> gpd.GeoDataFrame:
+    filtered = gdf.copy()
+    if states:
+        state_upper = [state.strip().upper() for state in states if state.strip()]
+        if "STATE" not in filtered.columns:
+            raise ValueError("STATE column missing from PA geometries; cannot filter by state.")
+        filtered = filtered[filtered["STATE"].isin(state_upper)]
+    if pa_limit is not None and pa_limit > 0 and len(filtered) > pa_limit:
+        if sample == "largest":
+            filtered = filtered.sort_values("area_km2", ascending=False).head(pa_limit)
+        elif sample == "random":
+            filtered = filtered.sample(n=pa_limit, random_state=seed)
+        else:
+            filtered = filtered.sort_values("pa_id").head(pa_limit)
+    return filtered
 
 
 def summarise_buffers(
@@ -324,13 +584,25 @@ def summarise_buffers(
     *,
     workers: int,
     chunk_size: int,
-) -> tuple[pd.DataFrame, list[RasterMeta]]:
+    land_union=None,
+    pa_union=None,
+) -> tuple[pd.DataFrame, pd.DataFrame, list[RasterMeta]]:
     records: list[dict] = []
     meta_records: list[RasterMeta] = []
 
     years = list(years)
     inside = pa_gdf[["pa_id", "geometry"]].copy()
-    buffers = build_buffers(pa_gdf)
+    if land_union is None:
+        land_union = _load_landmask_union(find_repo_root())
+    if pa_union is None:
+        pa_union = _load_pa_union(find_repo_root(), pa_gdf)
+    land_unprotected_union = _load_land_unprotected_union(find_repo_root(), land_union, pa_union)
+    buffers, validity_df = build_buffers(
+        pa_gdf,
+        land_union=land_union,
+        pa_union=pa_union,
+        land_unprotected_union=land_unprotected_union,
+    )
 
     sample_raster = download_year(years[0], raw_dir)
     with rasterio.open(sample_raster.path) as dataset:
@@ -344,6 +616,7 @@ def summarise_buffers(
             "pa_id": row["pa_id"],
             "zone": "inside",
             "buffer_km": np.nan,
+            "buffer_type": "inside",
             "geometry": row.geometry.wkb,
         }
         for _, row in inside_crs.iterrows()
@@ -353,6 +626,7 @@ def summarise_buffers(
             "pa_id": row["pa_id"],
             "zone": "buffer",
             "buffer_km": float(row["buffer_km"]),
+            "buffer_type": row["buffer_type"],
             "geometry": row.geometry.wkb,
         }
         for _, row in buffers_crs.iterrows()
@@ -378,7 +652,7 @@ def summarise_buffers(
         )
         records.extend(results)
 
-    return pd.DataFrame(records), meta_records
+    return pd.DataFrame(records), validity_df, meta_records
 
 
 def summarise_rings(
@@ -464,7 +738,11 @@ def _anchor_summary(df_inside: pd.DataFrame, pa_meta: pd.DataFrame, years: Itera
 def _inside_vs_buffer_check(df_buffers: pd.DataFrame) -> list[str]:
     lines = ["## Inside vs buffer sanity", ""]
     inside = df_buffers[df_buffers["zone"] == "inside"]
-    buffer1 = df_buffers[(df_buffers["zone"] == "buffer") & (df_buffers["buffer_km"] == 1.0)]
+    buffer1 = df_buffers[
+        (df_buffers["zone"] == "buffer")
+        & (df_buffers["buffer_km"] == 1.0)
+        & (df_buffers["buffer_type"] == PRIMARY_BUFFER_TYPE)
+    ]
     merged = inside.merge(
         buffer1,
         on=["pa_id", "year"],
@@ -475,7 +753,9 @@ def _inside_vs_buffer_check(df_buffers: pd.DataFrame) -> list[str]:
         lines.append("No comparable inside/buffer rows after filtering.")
         return lines
     frac = (merged["mean_buffer1"] > merged["mean_inside"]).mean()
-    lines.append(f"Fraction with buffer1 mean > inside mean: {frac:.3f} (n={len(merged)})")
+    lines.append(
+        f"Fraction with buffer1 mean > inside mean ({PRIMARY_BUFFER_TYPE}): {frac:.3f} (n={len(merged)})"
+    )
     return lines
 
 
@@ -500,6 +780,30 @@ def _write_plot(df: pd.DataFrame, plot_path: Path) -> None:
     plt.close(fig)
 
 
+def _buffer_validity_summary(validity_df: pd.DataFrame) -> list[str]:
+    if validity_df.empty:
+        return ["## Buffer validity summary", "", "No buffer validity records available.", ""]
+    summary = (
+        validity_df.groupby("buffer_km")[
+            ["land_fraction", "protected_overlap_fraction", "effective_land_area_km2"]
+        ]
+        .median()
+        .reset_index()
+    )
+    low_land = (validity_df["land_fraction"] < 0.5).mean()
+    high_overlap = (validity_df["protected_overlap_fraction"] > 0.25).mean()
+    lines = [
+        "## Buffer validity summary",
+        "",
+        summary.round(3).to_string(index=False),
+        "",
+        f"Fraction of buffers with land_fraction < 0.5: {low_land:.3f}",
+        f"Fraction of buffers with protected_overlap_fraction > 0.25: {high_overlap:.3f}",
+        "",
+    ]
+    return lines
+
+
 def write_report(
     *,
     radiance_df: pd.DataFrame,
@@ -509,6 +813,8 @@ def write_report(
     report_path: Path,
     plot_path: Path,
     min_valid_pixels: int,
+    buffer_validity: pd.DataFrame,
+    subset_note: str | None = None,
 ) -> None:
     report_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -524,7 +830,7 @@ def write_report(
     coverage_df["buffer_km"] = coverage_df["buffer_km"].fillna(-1)
     coverage = (
         coverage_df.assign(valid_ok=coverage_df["valid_pixel_count"] >= min_valid_pixels)
-        .groupby(["year", "zone", "buffer_km"])["valid_ok"]
+        .groupby(["year", "zone", "buffer_type", "buffer_km"])["valid_ok"]
         .mean()
         .reset_index()
     )
@@ -544,6 +850,19 @@ def write_report(
         "## Raster metadata (per year)",
         *meta_lines,
         "",
+    ]
+    if subset_note:
+        lines.extend(
+            [
+                "## Subset selection",
+                "",
+                subset_note,
+                "",
+            ]
+        )
+
+    lines.extend(
+        [
         f"Minimum valid pixels per zone: {min_valid_pixels}",
         "",
         "## Coverage by zone (fraction with valid pixels)",
@@ -551,11 +870,13 @@ def write_report(
         "Note: buffer_km=-1 denotes inside-zone rows.",
         coverage.to_string(index=False),
         "",
+        *_buffer_validity_summary(buffer_validity),
         "## Coverage by ring (fraction with valid pixels)",
         "",
         ring_coverage.to_string(index=False),
         "",
-    ]
+        ]
+    )
 
     lines.extend(_anchor_summary(radiance_df[radiance_df["zone"] == "inside"], pa_meta, [2013, 2018, 2024]))
     lines.append("")
@@ -572,12 +893,29 @@ def write_outputs(df: pd.DataFrame, path: Path) -> Path:
     return path
 
 
+def write_buffer_validity(df: pd.DataFrame, path: Path) -> Path:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    df_out = df.copy()
+    df_out["schema_version"] = SCHEMA_VERSION
+    df_out.to_csv(path, index=False)
+    return path
+
+
+def _resolve_output_path(root: Path, output_dir: str | None, default_path: str) -> Path:
+    if output_dir is None:
+        return root / default_path
+    out_root = root / output_dir
+    out_root.mkdir(parents=True, exist_ok=True)
+    return out_root / Path(default_path).name
+
+
 def write_artefact(
     *,
     report_path: Path,
     plot_path: Path,
     radiance_path: Path,
     ring_path: Path,
+    buffer_validity_path: Path,
     root: Path,
 ) -> Path:
     artefact_dir = root / "artefacts" / "wp0_9_layerA_national"
@@ -587,12 +925,20 @@ def write_artefact(
     shutil.copyfile(plot_path, artefact_dir / plot_path.name)
     shutil.copyfile(radiance_path, artefact_dir / radiance_path.name)
     shutil.copyfile(ring_path, artefact_dir / ring_path.name)
+    shutil.copyfile(buffer_validity_path, artefact_dir / buffer_validity_path.name)
 
     manifest = build_manifest(
         run_id="wp0_9_layerA_national",
         wp="WP0.9",
         root=root,
-        outputs=[report_path.name, plot_path.name, radiance_path.name, ring_path.name],
+        outputs=[
+            report_path.name,
+            plot_path.name,
+            radiance_path.name,
+            ring_path.name,
+            buffer_validity_path.name,
+        ],
+        inputs=[PA_GEOMETRIES_GPKG, "data/raw/nightlights_zenodo_v0_4", LANDMASK_DIR],
         notes="WP0.9 national Layer A outputs",
     )
     write_manifest(artefact_dir / "MANIFEST.json", manifest)
@@ -642,6 +988,34 @@ def build_parser() -> argparse.ArgumentParser:
         help="Only compute ring summaries.",
     )
     parser.add_argument(
+        "--states",
+        default=None,
+        help="Comma-separated state codes to subset (e.g., TAS,NSW).",
+    )
+    parser.add_argument(
+        "--pa-limit",
+        type=int,
+        default=None,
+        help="Limit number of PAs for quick runs (applied after state filter).",
+    )
+    parser.add_argument(
+        "--pa-sample",
+        choices=["largest", "random", "first"],
+        default="largest",
+        help="Sampling strategy for --pa-limit (default: largest by area).",
+    )
+    parser.add_argument(
+        "--pa-seed",
+        type=int,
+        default=42,
+        help="Random seed for --pa-sample=random.",
+    )
+    parser.add_argument(
+        "--output-dir",
+        default=None,
+        help="Optional output directory for subset runs (writes filenames into this folder).",
+    )
+    parser.add_argument(
         "--skip-artefact",
         action="store_true",
         help="Skip writing the canonical artefact folder.",
@@ -654,28 +1028,55 @@ def main(argv: list[str] | None = None) -> int:
     root = find_repo_root()
     raw_dir = root / "data" / "raw" / "nightlights_zenodo_v0_4"
 
-    pa_gdf = _load_pa_geoms(root)
+    pa_gdf_all = _load_pa_geoms(root)
+    state_list = args.states.split(",") if args.states else None
+    pa_gdf = _filter_pas(
+        pa_gdf_all,
+        states=state_list,
+        pa_limit=args.pa_limit,
+        sample=args.pa_sample,
+        seed=args.pa_seed,
+    )
+    if pa_gdf.empty:
+        raise RuntimeError("PA filter returned zero features.")
     pa_meta = _attach_city_distance(pa_gdf)
+    subset_note = None
+    if state_list or args.pa_limit:
+        subset_note = (
+            f"States={state_list or 'all'}; pa_limit={args.pa_limit or 'none'}; "
+            f"sample={args.pa_sample}; seed={args.pa_seed}."
+        )
+    land_union = _load_landmask_union(root)
+    pa_union = _load_pa_union(root, pa_gdf_all)
 
     if args.buffers_only and args.rings_only:
         raise SystemExit("Choose at most one of --buffers-only or --rings-only.")
 
     radiance_df = pd.DataFrame()
     ring_df = pd.DataFrame()
+    buffer_validity_df = pd.DataFrame()
     meta_records: list[RasterMeta] = []
 
     if not args.rings_only:
-        radiance_df, meta_records = summarise_buffers(
+        radiance_df, buffer_validity_df, meta_records = summarise_buffers(
             args.years,
             pa_gdf,
             raw_dir,
             args.min_valid_pixels,
             workers=args.workers,
             chunk_size=args.chunk_size,
+            land_union=land_union,
+            pa_union=pa_union,
         )
-        radiance_path = write_outputs(radiance_df, root / RADIANCE_BUFFERS_NATIONAL_CSV)
+        radiance_path = write_outputs(
+            radiance_df, _resolve_output_path(root, args.output_dir, RADIANCE_BUFFERS_NATIONAL_CSV)
+        )
+        buffer_validity_path = write_buffer_validity(
+            buffer_validity_df, _resolve_output_path(root, args.output_dir, PA_BUFFER_VALIDITY_CSV)
+        )
     else:
         radiance_path = None
+        buffer_validity_path = None
 
     if not args.buffers_only:
         ring_df, ring_meta = summarise_rings(
@@ -687,13 +1088,15 @@ def main(argv: list[str] | None = None) -> int:
             chunk_size=args.chunk_size,
         )
         meta_records.extend(ring_meta)
-        ring_path = write_outputs(ring_df, root / EDGE_PROFILES_NATIONAL_CSV)
+        ring_path = write_outputs(
+            ring_df, _resolve_output_path(root, args.output_dir, EDGE_PROFILES_NATIONAL_CSV)
+        )
     else:
         ring_path = None
 
     if not args.buffers_only and not args.rings_only:
-        report_path = root / REPORT_PATH
-        plot_path = root / PLOT_PATH
+        report_path = _resolve_output_path(root, args.output_dir, REPORT_PATH)
+        plot_path = _resolve_output_path(root, args.output_dir, PLOT_PATH)
         _write_plot(radiance_df, plot_path)
         write_report(
             radiance_df=radiance_df,
@@ -703,6 +1106,8 @@ def main(argv: list[str] | None = None) -> int:
             report_path=report_path,
             plot_path=plot_path,
             min_valid_pixels=args.min_valid_pixels,
+            buffer_validity=buffer_validity_df,
+            subset_note=subset_note,
         )
 
         if not args.skip_artefact:
@@ -711,6 +1116,7 @@ def main(argv: list[str] | None = None) -> int:
                 plot_path=plot_path,
                 radiance_path=radiance_path,
                 ring_path=ring_path,
+                buffer_validity_path=buffer_validity_path,
                 root=root,
             )
 

@@ -34,6 +34,14 @@ def _query_url(params: dict) -> str:
     return CAPAD_MAPSERVER + f"/{params.pop('layer')}/query?" + urllib.parse.urlencode(params)
 
 
+def fetch_service_metadata() -> dict:
+    return _fetch_json(CAPAD_MAPSERVER + "?f=pjson")
+
+
+def fetch_layer_metadata(layer: int) -> dict:
+    return _fetch_json(f"{CAPAD_MAPSERVER}/{layer}?f=pjson")
+
+
 def fetch_count(query: CapadQuery) -> int:
     params = {
         "layer": query.layer,

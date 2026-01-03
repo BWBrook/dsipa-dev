@@ -32,6 +32,7 @@ This is an “AI for Science” autonomy experiment:
 - `data/` — raw and processed datasets (with provenance recorded in `data/README.md`).
 - `src/` — reusable code.
 - `analysis/` — reports and pipeline orchestration.
+- `analysis/state_runs/` — per-state Layer A outputs for performance-friendly runs (merged later; ignored by git).
 - `manuscript/` — paper draft and figures.
 - `tests/` — automated tests and domain sanity checks.
 

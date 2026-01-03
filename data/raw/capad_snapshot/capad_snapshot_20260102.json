@@ -1,0 +1,953 @@
+{
+  "generated_utc": "2026-01-02 12:15 UTC",
+  "service_metadata": {
+    "currentVersion": 10.91,
+    "cimVersion": "2.9.0",
+    "serviceDescription": "<DIV STYLE=\"text-align:Left;font-size:12pt\"><DIV><DIV><P><SPAN>Web Service for Collaborative Australian Protected Areas Database (CAPAD) 20</SPAN><SPAN>2</SPAN><SPAN>4</SPAN><SPAN>. CAPAD provides both spatial and text information about government, Indigenous and privately protected areas for continental Australia.</SPAN></P><P><SPAN /></P><P><SPAN>The Collaborative Australian Protected Areas Database (CAPAD) provides both spatial and textual information about government, Indigenous and privately protected areas for Australia, in both the marine and terrestrial environments. State, Territory and the large NGO conservation agencies supplied data current for 30 June 202</SPAN><SPAN>4</SPAN><SPAN>. This is the </SPAN><SPAN>thirteen</SPAN><SPAN>th version of the terrestrial database, with previous versions released in 1997, 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018</SPAN><SPAN>,</SPAN><SPAN> 2020</SPAN><SPAN> and 2022</SPAN><SPAN>.</SPAN></P><P><SPAN /></P><P><SPAN>CAPAD provides a snapshot of protected areas that meet the IUCN definition of a protected area: \"A protected area is a clearly defined geographical space, recognised, dedicated and managed, through legal or other effective means, to achieve the long term conservation of nature with associated ecosystem services and cultural values.\" (IUCN Definition 2008).</SPAN></P><P><SPAN /></P><P><SPAN>The department publishes a summary of the CAPAD data biennially on its website at http://www.environment.gov.au/capad/.</SPAN></P></DIV></DIV></DIV>",
+    "mapName": "Australias_Protected_Areas",
+    "description": "Web Service for Collaborative Australian Protected Areas Database (CAPAD) 2024. CAPAD provides both spatial and text information about government, Indigenous and privately protected areas for continental Australia.The Collaborative Australian Protected Areas Database (CAPAD) provides both spatial and textual information about government, Indigenous and privately protected areas for Australia, in both the marine and terrestrial environments. State, Territory and the large NGO conservation agencies supplied data current for 30 June 2024. This is the thirteenth version of the terrestrial database, with previous versions released in 1997, 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020 and 2022.CAPAD provides a snapshot of protected areas that meet the IUCN definition of a protected area: \"A protected area is a clearly defined geographical space, recognised, dedicated and managed, through legal or other effective means, to achieve the long term conservation of nature with associated ecosystem services and cultural values.\" (IUCN Definition 2008).The department publishes a summary of the CAPAD data biennially on its website at http://www.environment.gov.au/capad/.",
+    "copyrightText": "Australian Government, Department of Climate Change, Energy, the Environment and Water 2025",
+    "supportsDynamicLayers": true,
+    "layers": [
+      {
+        "id": 0,
+        "name": "Protected Areas (CAPAD)",
+        "parentLayerId": -1,
+        "defaultVisibility": true,
+        "subLayerIds": null,
+        "minScale": 40000000,
+        "maxScale": 0,
+        "type": "Feature Layer",
+        "geometryType": "esriGeometryPolygon",
+        "supportsDynamicLegends": true
+      },
+      {
+        "id": 1,
+        "name": "Marine Protected Areas (CAPAD)",
+        "parentLayerId": -1,
+        "defaultVisibility": true,
+        "subLayerIds": null,
+        "minScale": 40000000,
+        "maxScale": 0,
+        "type": "Feature Layer",
+        "geometryType": "esriGeometryPolygon",
+        "supportsDynamicLegends": true
+      }
+    ],
+    "tables": [],
+    "spatialReference": {
+      "wkid": 4283,
+      "latestWkid": 4283,
+      "xyTolerance": 8.983152841195215e-09,
+      "zTolerance": 0.001,
+      "mTolerance": 0.001,
+      "falseX": -400,
+      "falseY": -400,
+      "xyUnits": 999999999.9999999,
+      "falseZ": -100000,
+      "zUnits": 10000,
+      "falseM": -100000,
+      "mUnits": 10000
+    },
+    "singleFusedMapCache": false,
+    "initialExtent": {
+      "xmin": 106.25156523650264,
+      "ymin": -57.487713811389355,
+      "xmax": 169.26490935204134,
+      "ymax": -4.9551606048637105,
+      "spatialReference": {
+        "wkid": 4283,
+        "latestWkid": 4283,
+        "xyTolerance": 8.983152841195215e-09,
+        "zTolerance": 0.001,
+        "mTolerance": 0.001,
+        "falseX": -400,
+        "falseY": -400,
+        "xyUnits": 999999999.9999999,
+        "falseZ": -100000,
+        "zUnits": 10000,
+        "falseM": -100000,
+        "mUnits": 10000
+      }
+    },
+    "fullExtent": {
+      "xmin": 60.879270549000005,
+      "ymin": -72.949998849,
+      "xmax": 170.36666666800002,
+      "ymax": -8.473406972000019,
+      "spatialReference": {
+        "wkid": 4283,
+        "latestWkid": 4283,
+        "xyTolerance": 8.983152841195215e-09,
+        "zTolerance": 0.001,
+        "mTolerance": 0.001,
+        "falseX": -400,
+        "falseY": -400,
+        "xyUnits": 999999999.9999999,
+        "falseZ": -100000,
+        "zUnits": 10000,
+        "falseM": -100000,
+        "mUnits": 10000
+      }
+    },
+    "datesInUnknownTimezone": false,
+    "minScale": 40000000,
+    "maxScale": 0,
+    "units": "esriDecimalDegrees",
+    "supportedImageFormatTypes": "PNG32,PNG24,PNG,JPG,DIB,TIFF,EMF,PS,PDF,GIF,SVG,SVGZ,BMP",
+    "documentInfo": {
+      "Title": "Collaborative Australian Protected Areas Database (CAPAD)",
+      "Author": "",
+      "Comments": "Web Service for Collaborative Australian Protected Areas Database (CAPAD) 2024. CAPAD provides both spatial and text information about government, Indigenous and privately protected areas for continental Australia.The Collaborative Australian Protected Areas Database (CAPAD) provides both spatial and textual information about government, Indigenous and privately protected areas for Australia, in both the marine and terrestrial environments. State, Territory and the large NGO conservation agencies supplied data current for 30 June 2024. This is the thirteenth version of the terrestrial database, with previous versions released in 1997, 2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020 and 2022.CAPAD provides a snapshot of protected areas that meet the IUCN definition of a protected area: \"A protected area is a clearly defined geographical space, recognised, dedicated and managed, through legal or other effective means, to achieve the long term conservation of nature with associated ecosystem services and cultural values.\" (IUCN Definition 2008).The department publishes a summary of the CAPAD data biennially on its website at http://www.environment.gov.au/capad/.",
+      "Subject": "Collaborative Australian Protected Areas Database (CAPAD) 2024",
+      "Category": "",
+      "AntialiasingMode": "Fast",
+      "TextAntialiasingMode": "Force",
+      "Version": "2.9.0",
+      "Keywords": "Terrestrial,Marine,Protected Areas,CAPAD,Reserves,IUCN"
+    },
+    "capabilities": "Map,Query,Data",
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "exportTilesAllowed": false,
+    "referenceScale": 0.0,
+    "datumTransformations": [
+      {
+        "geoTransforms": [
+          {
+            "wkid": 108001,
+            "latestWkid": 1241,
+            "transformForward": true,
+            "name": "NAD_1927_To_NAD_1983_NADCON"
+          }
+        ]
+      },
+      {
+        "geoTransforms": [
+          {
+            "wkid": 108001,
+            "latestWkid": 1241,
+            "transformForward": false,
+            "name": "NAD_1927_To_NAD_1983_NADCON"
+          }
+        ]
+      },
+      {
+        "geoTransforms": [
+          {
+            "wkid": 9688,
+            "latestWkid": 9688,
+            "transformForward": true,
+            "name": "GDA_1994_To_WGS_1984_2"
+          }
+        ]
+      },
+      {
+        "geoTransforms": [
+          {
+            "wkid": 9688,
+            "latestWkid": 9688,
+            "transformForward": false,
+            "name": "GDA_1994_To_WGS_1984_2"
+          }
+        ]
+      }
+    ],
+    "supportsDatumTransformation": true,
+    "archivingInfo": {
+      "supportsHistoricMoment": false
+    },
+    "supportsClipping": true,
+    "supportsSpatialFilter": true,
+    "supportsTimeRelation": true,
+    "supportsQueryDataElements": true,
+    "maxRecordCount": 15000,
+    "maxImageHeight": 4096,
+    "maxImageWidth": 4096,
+    "supportedExtensions": "FeatureServer, WMSServer",
+    "resampling": false
+  },
+  "layer_metadata": {
+    "currentVersion": 10.91,
+    "cimVersion": "2.9.0",
+    "id": 0,
+    "name": "Protected Areas (CAPAD)",
+    "type": "Feature Layer",
+    "description": "The Collaborative Australian Protected Areas Database (CAPAD) provides both spatial and textual information about government, Indigenous and privately protected areas for Australia, in both the marine and terrestrial environments. State, Territory and the large NGO conservation agencies supplied data current for 30 June 2024. CAPAD provides a snapshot of protected areas that meet the IUCN definition of a protected area: \"A protected area is a clearly defined geographical space, recognised, dedicated and managed, through legal or other effective means, to achieve the long term conservation of nature with associated ecosystem services and cultural values.\" (IUCN Definition 2008).The department publishes a summary of the CAPAD data biennially on its website at https://www.dcceew.gov.au/environment/land/nrs/science/capad.",
+    "geometryType": "esriGeometryPolygon",
+    "sourceSpatialReference": {
+      "wkid": 4283,
+      "latestWkid": 4283,
+      "xyTolerance": 8.98315284119521e-09,
+      "zTolerance": 0.001,
+      "mTolerance": 0.001,
+      "falseX": -400,
+      "falseY": -400,
+      "xyUnits": 999999999.9999999,
+      "falseZ": 0,
+      "zUnits": 1,
+      "falseM": 0,
+      "mUnits": 1
+    },
+    "copyrightText": "Australian Government Department of Climate Change, Energy, the Environment and Water 2025",
+    "parentLayer": null,
+    "subLayers": [],
+    "minScale": 40000000,
+    "maxScale": 0,
+    "referenceScale": 0.0,
+    "drawingInfo": {
+      "renderer": {
+        "type": "uniqueValue",
+        "field1": "NRS_MPA",
+        "field2": "EPBC",
+        "uniqueValueInfos": [
+          {
+            "symbol": {
+              "type": "esriSFS",
+              "style": "esriSFSSolid",
+              "color": [
+                181,
+                214,
+                159,
+                255
+              ],
+              "outline": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  112,
+                  168,
+                  0,
+                  255
+                ],
+                "width": 1
+              }
+            },
+            "value": "<Null>,Commonwealth",
+            "label": "Terrestrial Protected Area"
+          },
+          {
+            "symbol": {
+              "type": "esriSFS",
+              "style": "esriSFSSolid",
+              "color": [
+                181,
+                214,
+                159,
+                255
+              ],
+              "outline": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  112,
+                  168,
+                  0,
+                  255
+                ],
+                "width": 1
+              }
+            },
+            "value": "<Null>,Indigenous",
+            "label": "Terrestrial Protected Area"
+          },
+          {
+            "symbol": {
+              "type": "esriSFS",
+              "style": "esriSFSSolid",
+              "color": [
+                181,
+                214,
+                159,
+                255
+              ],
+              "outline": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  112,
+                  168,
+                  0,
+                  255
+                ],
+                "width": 1
+              }
+            },
+            "value": "<Null>,Private",
+            "label": "Terrestrial Protected Area"
+          },
+          {
+            "symbol": {
+              "type": "esriSFS",
+              "style": "esriSFSSolid",
+              "color": [
+                181,
+                214,
+                159,
+                255
+              ],
+              "outline": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": [
+                  112,
+                  168,
+                  0,
+                  255
+                ],
+                "width": 1
+              }
+            },
+            "value": "<Null>,State",
+            "label": "Terrestrial Protected Area"
+          }
+        ],
+        "fieldDelimiter": ",",
+        "authoringInfo": {
+          "colorRamp": {
+            "type": "multipart",
+            "colorRamps": [
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  212,
+                  213,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  212,
+                  213,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  196,
+                  252,
+                  179,
+                  255
+                ],
+                "toColor": [
+                  196,
+                  252,
+                  179,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  252,
+                  216,
+                  187,
+                  255
+                ],
+                "toColor": [
+                  252,
+                  216,
+                  187,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  189,
+                  252,
+                  249,
+                  255
+                ],
+                "toColor": [
+                  189,
+                  252,
+                  249,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  251,
+                  179,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  251,
+                  179,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  252,
+                  192,
+                  211,
+                  255
+                ],
+                "toColor": [
+                  252,
+                  192,
+                  211,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  234,
+                  252,
+                  215,
+                  255
+                ],
+                "toColor": [
+                  234,
+                  252,
+                  215,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  194,
+                  179,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  194,
+                  179,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  250,
+                  252,
+                  179,
+                  255
+                ],
+                "toColor": [
+                  250,
+                  252,
+                  179,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  179,
+                  252,
+                  216,
+                  255
+                ],
+                "toColor": [
+                  179,
+                  252,
+                  216,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  215,
+                  238,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  215,
+                  238,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  252,
+                  210,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  252,
+                  210,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  252,
+                  200,
+                  189,
+                  255
+                ],
+                "toColor": [
+                  252,
+                  200,
+                  189,
+                  255
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "scaleSymbols": true,
+      "transparency": 0,
+      "labelingInfo": [
+        {
+          "labelExpressionInfo": {
+            "expression": "$feature.Name + \" \" + $feature.TYPE_ABBR",
+            "title": "Custom"
+          },
+          "labelPlacement": "esriServerPolygonPlacementAlwaysHorizontal",
+          "removeDuplicates": "all",
+          "removeDuplicatesDistance": 216,
+          "multiPart": "labelLargest",
+          "deconflictionStrategy": "static",
+          "repeatLabel": false,
+          "allowOverrun": true,
+          "stackLabel": false,
+          "useCodedValues": true,
+          "maxScale": 0,
+          "minScale": 2000000,
+          "name": "Terrestrial",
+          "priority": -1,
+          "symbol": {
+            "type": "esriTS",
+            "color": [
+              34,
+              51,
+              0,
+              255
+            ],
+            "backgroundColor": null,
+            "borderLineColor": null,
+            "borderLineSize": null,
+            "verticalAlignment": "bottom",
+            "horizontalAlignment": "left",
+            "rightToLeft": false,
+            "angle": 0,
+            "xoffset": 0,
+            "yoffset": 0,
+            "kerning": true,
+            "haloColor": null,
+            "haloSize": null,
+            "font": {
+              "family": "Arial",
+              "size": 8,
+              "style": "normal",
+              "weight": "normal",
+              "decoration": "none"
+            }
+          }
+        },
+        {
+          "labelExpressionInfo": {
+            "expression": "$feature.Name + \" \" + $feature.TYPE_ABBR",
+            "title": "Custom"
+          },
+          "labelPlacement": "esriServerPolygonPlacementAlwaysHorizontal",
+          "removeDuplicates": "all",
+          "removeDuplicatesDistance": 0,
+          "multiPart": "labelLargest",
+          "deconflictionStrategy": "static",
+          "repeatLabel": false,
+          "allowOverrun": true,
+          "stackLabel": false,
+          "useCodedValues": true,
+          "maxScale": 0,
+          "minScale": 2000000,
+          "name": "Marine",
+          "priority": -1,
+          "symbol": {
+            "type": "esriTS",
+            "color": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "backgroundColor": null,
+            "borderLineColor": null,
+            "borderLineSize": null,
+            "verticalAlignment": "bottom",
+            "horizontalAlignment": "left",
+            "rightToLeft": false,
+            "angle": 0,
+            "xoffset": 0,
+            "yoffset": 0,
+            "kerning": true,
+            "haloColor": null,
+            "haloSize": null,
+            "font": {
+              "family": "Arial",
+              "size": 8,
+              "style": "normal",
+              "weight": "normal",
+              "decoration": "none"
+            }
+          }
+        }
+      ]
+    },
+    "defaultVisibility": true,
+    "extent": {
+      "xmin": 60.879270549000005,
+      "ymin": -72.949998849,
+      "xmax": 170.36666666800002,
+      "ymax": -8.473406972000019,
+      "spatialReference": {
+        "wkid": 4283,
+        "latestWkid": 4283,
+        "xyTolerance": 8.983152841195215e-09,
+        "zTolerance": 0.001,
+        "mTolerance": 0.001,
+        "falseX": -400,
+        "falseY": -400,
+        "xyUnits": 999999999.9999999,
+        "falseZ": -100000,
+        "zUnits": 10000,
+        "falseM": -100000,
+        "mUnits": 10000
+      }
+    },
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "displayField": "NAME",
+    "typeIdField": null,
+    "subtypeFieldName": null,
+    "subtypeField": null,
+    "defaultSubtypeCode": null,
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "domain": null
+      },
+      {
+        "name": "PA_ID",
+        "type": "esriFieldTypeString",
+        "alias": "PA_ID",
+        "length": 20,
+        "domain": null
+      },
+      {
+        "name": "PA_PID",
+        "type": "esriFieldTypeString",
+        "alias": "PA_PID",
+        "length": 20,
+        "domain": null
+      },
+      {
+        "name": "NAME",
+        "type": "esriFieldTypeString",
+        "alias": "NAME",
+        "length": 255,
+        "domain": null
+      },
+      {
+        "name": "TYPE",
+        "type": "esriFieldTypeString",
+        "alias": "TYPE",
+        "length": 60,
+        "domain": null
+      },
+      {
+        "name": "TYPE_ABBR",
+        "type": "esriFieldTypeString",
+        "alias": "TYPE_ABBR",
+        "length": 10,
+        "domain": null
+      },
+      {
+        "name": "IUCN",
+        "type": "esriFieldTypeString",
+        "alias": "IUCN",
+        "length": 5,
+        "domain": null
+      },
+      {
+        "name": "NRS_PA",
+        "type": "esriFieldTypeString",
+        "alias": "NRS_PA",
+        "length": 5,
+        "domain": null
+      },
+      {
+        "name": "NRS_MPA",
+        "type": "esriFieldTypeString",
+        "alias": "NRS_MPA",
+        "length": 5,
+        "domain": null
+      },
+      {
+        "name": "GAZ_AREA",
+        "type": "esriFieldTypeDouble",
+        "alias": "GAZ_AREA",
+        "domain": null
+      },
+      {
+        "name": "GIS_AREA",
+        "type": "esriFieldTypeDouble",
+        "alias": "GIS_AREA",
+        "domain": null
+      },
+      {
+        "name": "GAZ_DATE",
+        "type": "esriFieldTypeDate",
+        "alias": "GAZ_DATE",
+        "length": 8,
+        "domain": null
+      },
+      {
+        "name": "LATEST_GAZ",
+        "type": "esriFieldTypeDate",
+        "alias": "LATEST_GAZ",
+        "length": 8,
+        "domain": null
+      },
+      {
+        "name": "STATE",
+        "type": "esriFieldTypeString",
+        "alias": "STATE",
+        "length": 4,
+        "domain": null
+      },
+      {
+        "name": "AUTHORITY",
+        "type": "esriFieldTypeString",
+        "alias": "AUTHORITY",
+        "length": 15,
+        "domain": null
+      },
+      {
+        "name": "DATASOURCE",
+        "type": "esriFieldTypeString",
+        "alias": "DATASOURCE",
+        "length": 20,
+        "domain": null
+      },
+      {
+        "name": "GOVERNANCE",
+        "type": "esriFieldTypeString",
+        "alias": "GOVERNANCE",
+        "length": 3,
+        "domain": null
+      },
+      {
+        "name": "COMMENTS",
+        "type": "esriFieldTypeString",
+        "alias": "COMMENTS",
+        "length": 120,
+        "domain": null
+      },
+      {
+        "name": "ENVIRON",
+        "type": "esriFieldTypeString",
+        "alias": "ENVIRON",
+        "length": 3,
+        "domain": null
+      },
+      {
+        "name": "OVERLAP",
+        "type": "esriFieldTypeString",
+        "alias": "OVERLAP",
+        "length": 3,
+        "domain": null
+      },
+      {
+        "name": "MGT_PLAN",
+        "type": "esriFieldTypeString",
+        "alias": "MGT_PLAN",
+        "length": 3,
+        "domain": null
+      },
+      {
+        "name": "RES_NUMBER",
+        "type": "esriFieldTypeString",
+        "alias": "RES_NUMBER",
+        "length": 15,
+        "domain": null
+      },
+      {
+        "name": "ZONE_TYPE",
+        "type": "esriFieldTypeString",
+        "alias": "ZONE_TYPE",
+        "length": 150,
+        "domain": null
+      },
+      {
+        "name": "EPBC",
+        "type": "esriFieldTypeString",
+        "alias": "EPBC",
+        "length": 15,
+        "domain": null
+      },
+      {
+        "name": "LONGITUDE",
+        "type": "esriFieldTypeDouble",
+        "alias": "LONGITUDE",
+        "domain": null
+      },
+      {
+        "name": "LATITUDE",
+        "type": "esriFieldTypeDouble",
+        "alias": "LATITUDE",
+        "domain": null
+      },
+      {
+        "name": "PA_SYSTEM",
+        "type": "esriFieldTypeString",
+        "alias": "PA_SYSTEM",
+        "length": 20,
+        "domain": null
+      },
+      {
+        "name": "SHAPE",
+        "type": "esriFieldTypeGeometry",
+        "alias": "SHAPE",
+        "domain": null
+      },
+      {
+        "name": "SHAPE.AREA",
+        "type": "esriFieldTypeDouble",
+        "alias": "SHAPE.AREA",
+        "domain": null
+      },
+      {
+        "name": "SHAPE.LEN",
+        "type": "esriFieldTypeDouble",
+        "alias": "SHAPE.LEN",
+        "domain": null
+      }
+    ],
+    "geometryField": {
+      "name": "SHAPE",
+      "type": "esriFieldTypeGeometry",
+      "alias": "SHAPE"
+    },
+    "indexes": [
+      {
+        "name": "R343_SDE_ROWID_UK",
+        "fields": "OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": ""
+      },
+      {
+        "name": "A273_IX1",
+        "fields": "SHAPE",
+        "isAscending": true,
+        "isUnique": true,
+        "description": ""
+      }
+    ],
+    "subtypes": [],
+    "relationships": [],
+    "canModifyLayer": true,
+    "canScaleSymbols": false,
+    "hasLabels": true,
+    "capabilities": "Map,Query,Data",
+    "maxRecordCount": 15000,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "isDataVersioned": false,
+    "ownershipBasedAccessControlForFeatures": {
+      "allowOthersToQuery": true
+    },
+    "useStandardizedQueries": true,
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelRelation"
+    ],
+    "advancedQueryCapabilities": {
+      "useStandardizedQueries": true,
+      "supportsStatistics": true,
+      "supportsPercentileStatistics": true,
+      "supportsHavingClause": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsCountDistinct": true,
+      "supportsPagination": true,
+      "supportsLod": false,
+      "supportsQueryWithLodSR": false,
+      "supportsTrueCurve": true,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsReturningQueryExtent": true,
+      "supportsQueryWithDistance": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsSqlFormat": false,
+      "supportsQueryAnalytic": true
+    },
+    "supportsDatumTransformation": true,
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsAsync": false,
+      "supportsPercentileAnalytic": true
+    },
+    "dateFieldsTimeReference": null,
+    "preferredTimeReference": null,
+    "datesInUnknownTimezone": false,
+    "hasGeometryProperties": true,
+    "geometryProperties": {
+      "shapeAreaFieldName": "SHAPE.AREA",
+      "shapeLengthFieldName": "SHAPE.LEN",
+      "units": "esriDecimalDegrees"
+    },
+    "hasMetadata": true,
+    "isDataArchived": false,
+    "archivingInfo": {
+      "supportsQueryWithHistoricMoment": false,
+      "startArchivingMoment": -1
+    },
+    "supportsCoordinatesQuantization": true,
+    "supportsDynamicLegends": true
+  },
+  "query": {
+    "layer": 0,
+    "where": "NRS_PA='Y'",
+    "out_fields": "*",
+    "out_sr": 4326,
+    "chunk_size": 2000
+  },
+  "feature_count": 14403,
+  "pa_id_hash_sha256": "148a813156bc1bb6b94bbf8a0455c517a951985ff03de6d8e18199dc627e53cf"
+}

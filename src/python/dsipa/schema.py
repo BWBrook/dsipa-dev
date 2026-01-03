@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-SCHEMA_VERSION = "0.2.0"
+SCHEMA_VERSION = "0.3.0"
 SCHEMA_SLUG = SCHEMA_VERSION.replace(".", "_")
 
 TRIAD_INDEX_CSV = f"data/processed/smoke_test_triad_index_v{SCHEMA_SLUG}.csv"
@@ -23,6 +23,9 @@ EDGE_PROFILES_SMOKETEST_CSV = (
 )
 RADIANCE_BUFFERS_NATIONAL_CSV = (
     f"data/processed/pa_radiance_buffers_national_v{SCHEMA_SLUG}.csv"
+)
+PA_BUFFER_VALIDITY_CSV = (
+    f"data/processed/pa_buffer_validity_v{SCHEMA_SLUG}.csv"
 )
 EDGE_PROFILES_NATIONAL_CSV = (
     f"data/processed/pa_edge_profiles_national_v{SCHEMA_SLUG}.csv"
@@ -187,6 +190,12 @@ RADIANCE_BUFFERS_SMOKETEST_SCHEMA = OutputSchema(
         ColumnSpec("year", "int", "year", "Observation year."),
         ColumnSpec("zone", "string", "-", "Zone label: inside or buffer."),
         ColumnSpec("buffer_km", "float", "km", "Buffer distance for zone=buffer; NA for inside."),
+        ColumnSpec(
+            "buffer_type",
+            "string",
+            "-",
+            "Buffer variant: raw, land, land_unprotected (inside for zone=inside).",
+        ),
         ColumnSpec("scale_metadata", "float", "-", "Raster scale metadata (GeoTIFF)."),
         ColumnSpec("offset_metadata", "float", "-", "Raster offset metadata (GeoTIFF)."),
         ColumnSpec("pixel_count", "int", "pixels", "Total pixels sampled (incl. invalid)."),
@@ -197,6 +206,8 @@ RADIANCE_BUFFERS_SMOKETEST_SCHEMA = OutputSchema(
         ColumnSpec("min", "float", "scaled", "Minimum valid pixel value (scale/offset applied)."),
         ColumnSpec("max", "float", "scaled", "Maximum valid pixel value (scale/offset applied)."),
         ColumnSpec("std", "float", "scaled", "Standard deviation of valid pixel values (scale/offset applied)."),
+        ColumnSpec("frac_gt0", "float", "-", "Fraction of valid pixels greater than 0."),
+        ColumnSpec("p95", "float", "scaled", "95th percentile of valid pixel values."),
     ),
     notes=(
         "Statistics are computed on scaled raster values; scale/offset metadata applied.",
@@ -226,6 +237,8 @@ EDGE_PROFILES_SMOKETEST_SCHEMA = OutputSchema(
         ColumnSpec("min", "float", "scaled", "Minimum valid pixel value (scale/offset applied)."),
         ColumnSpec("max", "float", "scaled", "Maximum valid pixel value (scale/offset applied)."),
         ColumnSpec("std", "float", "scaled", "Standard deviation of valid pixel values (scale/offset applied)."),
+        ColumnSpec("frac_gt0", "float", "-", "Fraction of valid pixels greater than 0."),
+        ColumnSpec("p95", "float", "scaled", "95th percentile of valid pixel values."),
     ),
     notes=(
         "Statistics are computed on scaled raster values; scale/offset metadata applied.",
@@ -243,6 +256,12 @@ RADIANCE_BUFFERS_NATIONAL_SCHEMA = OutputSchema(
         ColumnSpec("year", "int", "year", "Observation year."),
         ColumnSpec("zone", "string", "-", "Zone label: inside or buffer."),
         ColumnSpec("buffer_km", "float", "km", "Buffer distance for zone=buffer; NA for inside."),
+        ColumnSpec(
+            "buffer_type",
+            "string",
+            "-",
+            "Buffer variant: raw, land, land_unprotected (inside for zone=inside).",
+        ),
         ColumnSpec("scale_metadata", "float", "-", "Raster scale metadata (GeoTIFF)."),
         ColumnSpec("offset_metadata", "float", "-", "Raster offset metadata (GeoTIFF)."),
         ColumnSpec("pixel_count", "int", "pixels", "Total pixels sampled (incl. invalid)."),
@@ -253,9 +272,44 @@ RADIANCE_BUFFERS_NATIONAL_SCHEMA = OutputSchema(
         ColumnSpec("min", "float", "scaled", "Minimum valid pixel value (scale/offset applied)."),
         ColumnSpec("max", "float", "scaled", "Maximum valid pixel value (scale/offset applied)."),
         ColumnSpec("std", "float", "scaled", "Standard deviation of valid pixel values (scale/offset applied)."),
+        ColumnSpec("frac_gt0", "float", "-", "Fraction of valid pixels greater than 0."),
+        ColumnSpec("p95", "float", "scaled", "95th percentile of valid pixel values."),
     ),
     notes=(
         "Statistics are computed on scaled raster values; scale/offset metadata applied.",
+    ),
+)
+
+PA_BUFFER_VALIDITY_SCHEMA = OutputSchema(
+    key="pa_buffer_validity",
+    filename=PA_BUFFER_VALIDITY_CSV,
+    file_type="csv",
+    description="Buffer validity descriptors (land fraction + protected overlap).",
+    columns=(
+        ColumnSpec("schema_version", "string", "-", "Schema version for buffer validity outputs."),
+        ColumnSpec("pa_id", "string", "-", "CAPAD PA_ID."),
+        ColumnSpec("buffer_km", "float", "km", "Buffer distance."),
+        ColumnSpec("buffer_area_km2", "float", "km2", "Raw buffer area (outside PA)."),
+        ColumnSpec("land_area_km2", "float", "km2", "Land area within buffer."),
+        ColumnSpec(
+            "protected_overlap_km2",
+            "float",
+            "km2",
+            "Overlap area with protected areas (land-masked).",
+        ),
+        ColumnSpec(
+            "effective_land_area_km2",
+            "float",
+            "km2",
+            "Land area excluding protected-overlap area.",
+        ),
+        ColumnSpec("land_fraction", "float", "-", "Land area fraction of raw buffer."),
+        ColumnSpec(
+            "protected_overlap_fraction",
+            "float",
+            "-",
+            "Protected overlap fraction of raw buffer (land-masked).",
+        ),
     ),
 )
 
@@ -281,6 +335,8 @@ EDGE_PROFILES_NATIONAL_SCHEMA = OutputSchema(
         ColumnSpec("min", "float", "scaled", "Minimum valid pixel value (scale/offset applied)."),
         ColumnSpec("max", "float", "scaled", "Maximum valid pixel value (scale/offset applied)."),
         ColumnSpec("std", "float", "scaled", "Standard deviation of valid pixel values (scale/offset applied)."),
+        ColumnSpec("frac_gt0", "float", "-", "Fraction of valid pixels greater than 0."),
+        ColumnSpec("p95", "float", "scaled", "95th percentile of valid pixel values."),
     ),
     notes=(
         "Statistics are computed on scaled raster values; scale/offset metadata applied.",
@@ -295,6 +351,13 @@ PA_TRENDS_SCHEMA = OutputSchema(
     columns=(
         ColumnSpec("schema_version", "string", "-", "Schema version for trend outputs."),
         ColumnSpec("pa_id", "string", "-", "CAPAD PA_ID."),
+        ColumnSpec(
+            "buffer_type",
+            "string",
+            "-",
+            "Buffer variant used for outside trends (raw, land, land_unprotected).",
+        ),
+        ColumnSpec("metric", "string", "-", "Metric used for trends."),
         ColumnSpec("n_years_inside", "int", "years", "Valid years used for inside trend."),
         ColumnSpec("slope_inside", "float", "scaled/year", "Theil-Sen slope for inside metric."),
         ColumnSpec("intercept_inside", "float", "scaled", "Theil-Sen intercept for inside metric."),
@@ -305,7 +368,6 @@ PA_TRENDS_SCHEMA = OutputSchema(
         ColumnSpec("slope_buffer_5km", "float", "scaled/year", "Theil-Sen slope for 5 km buffer metric."),
         ColumnSpec("intercept_buffer_5km", "float", "scaled", "Theil-Sen intercept for 5 km buffer metric."),
         ColumnSpec("method", "string", "-", "Trend estimator name."),
-        ColumnSpec("metric", "string", "-", "Metric used for trends (mean or median)."),
         ColumnSpec("retention_index_1km", "float", "scaled/year", "Inside slope minus 1 km buffer slope."),
         ColumnSpec("retention_index_5km", "float", "scaled/year", "Inside slope minus 5 km buffer slope."),
     ),
@@ -315,7 +377,7 @@ PA_RISK_RANKINGS_SCHEMA = OutputSchema(
     key="pa_risk_rankings",
     filename=PA_RISK_RANKINGS_CSV,
     file_type="csv",
-    description="Ranked protected areas by brightening/retention metrics (mean trends).",
+    description="Ranked protected areas by brightening/retention categories.",
     columns=(
         ColumnSpec("schema_version", "string", "-", "Schema version for risk rankings."),
         ColumnSpec("pa_id", "string", "-", "CAPAD PA_ID."),
@@ -323,31 +385,36 @@ PA_RISK_RANKINGS_SCHEMA = OutputSchema(
         ColumnSpec("state", "string", "-", "State or territory code."),
         ColumnSpec("area_km2", "float", "km2", "Protected area size."),
         ColumnSpec("distance_km", "float", "km", "Distance to nearest major city."),
+        ColumnSpec(
+            "buffer_type",
+            "string",
+            "-",
+            "Buffer variant used for outside trends (raw, land, land_unprotected).",
+        ),
+        ColumnSpec("metric", "string", "-", "Metric used for trends."),
         ColumnSpec("slope_inside", "float", "scaled/year", "Inside mean trend slope."),
         ColumnSpec("slope_buffer_1km", "float", "scaled/year", "1 km buffer mean trend slope."),
         ColumnSpec("slope_buffer_5km", "float", "scaled/year", "5 km buffer mean trend slope."),
         ColumnSpec("retention_index_1km", "float", "scaled/year", "Inside minus 1 km buffer slope."),
         ColumnSpec("retention_index_5km", "float", "scaled/year", "Inside minus 5 km buffer slope."),
-        ColumnSpec("risk_score", "float", "-", "Mean z-score of inside slope and retention indices."),
-        ColumnSpec("rank_slope_inside", "int", "-", "Rank by slope_inside (1=largest brightening)."),
+        ColumnSpec("inside_brightening", "bool", "-", "Inside slope > 0."),
+        ColumnSpec("buffer_brightening_1km", "bool", "-", "Buffer 1 km slope > 0."),
         ColumnSpec(
-            "rank_retention_1km",
-            "int",
+            "internalisation_1km",
+            "bool",
             "-",
-            "Rank by retention_index_1km (1=largest inside-outside contrast).",
+            "Inside slope > 0 and inside slope > buffer 1 km slope.",
         ),
         ColumnSpec(
-            "rank_retention_5km",
-            "int",
+            "external_pressure_1km",
+            "bool",
             "-",
-            "Rank by retention_index_5km (1=largest inside-outside contrast).",
+            "Buffer 1 km slope > 0 while inside slope <= 0.",
         ),
-        ColumnSpec(
-            "rank_risk_score",
-            "int",
-            "-",
-            "Rank by combined risk score (1=highest risk).",
-        ),
+        ColumnSpec("rank_inside_brightening", "int", "-", "Rank by inside brightening (1=largest)."),
+        ColumnSpec("rank_buffer_brightening_1km", "int", "-", "Rank by buffer 1 km brightening."),
+        ColumnSpec("rank_internalisation_1km", "int", "-", "Rank by internalisation contrast."),
+        ColumnSpec("rank_external_pressure_1km", "int", "-", "Rank by external pressure."),
     ),
 )
 
@@ -360,6 +427,7 @@ OUTPUT_SCHEMAS = (
     RADIANCE_BUFFERS_SMOKETEST_SCHEMA,
     EDGE_PROFILES_SMOKETEST_SCHEMA,
     RADIANCE_BUFFERS_NATIONAL_SCHEMA,
+    PA_BUFFER_VALIDITY_SCHEMA,
     EDGE_PROFILES_NATIONAL_SCHEMA,
     PA_TRENDS_SCHEMA,
     PA_RISK_RANKINGS_SCHEMA,
@@ -375,6 +443,7 @@ PA_GEOMETRIES_COLUMNS = PA_GEOMETRIES_SCHEMA.column_names
 RADIANCE_BUFFERS_SMOKETEST_COLUMNS = RADIANCE_BUFFERS_SMOKETEST_SCHEMA.column_names
 EDGE_PROFILES_SMOKETEST_COLUMNS = EDGE_PROFILES_SMOKETEST_SCHEMA.column_names
 RADIANCE_BUFFERS_NATIONAL_COLUMNS = RADIANCE_BUFFERS_NATIONAL_SCHEMA.column_names
+PA_BUFFER_VALIDITY_COLUMNS = PA_BUFFER_VALIDITY_SCHEMA.column_names
 EDGE_PROFILES_NATIONAL_COLUMNS = EDGE_PROFILES_NATIONAL_SCHEMA.column_names
 PA_TRENDS_COLUMNS = PA_TRENDS_SCHEMA.column_names
 PA_RISK_RANKINGS_COLUMNS = PA_RISK_RANKINGS_SCHEMA.column_names

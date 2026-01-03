@@ -2,7 +2,7 @@
 
 Record every dataset placed under `data/raw/` and the derived products under `data/processed/`.
 
-| Name | Source URL / DOI | Version / date fetched | License | Checksum (e.g., sha256) | Notes |
+| Name | Source URL / DOI | Version / date fetched | License | Checksum (algorithm noted) | Notes |
 | --- | --- | --- | --- | --- | --- |
 | CAPAD 2024 technical specifications (PDF) | https://www.dcceew.gov.au/sites/default/files/documents/capad-2024-tech-spec.pdf | CAPAD 2024; fetched 2026-01-01 | CC BY 4.0 | bdf7c15be087793dcfa27af38eb5dd56a66672ba3d8d88ba3ac2313456a51947 | Metadata file; spatial data accessed via DCCEEW CAPAD MapServer/FeatureServer. |
 | CAPAD 2024 spatial data (ArcGIS REST service) | https://gis.environment.gov.au/gispubmap/rest/services/ogc_services/CAPAD/MapServer | CAPAD 2024 (snapshot 2024-06-30) | CC BY 4.0 | N/A (service) | Primary protected-area geometry source; to be downloaded via REST in WP0.4+. |
@@ -33,6 +33,9 @@ Record every dataset placed under `data/raw/` and the derived products under `da
 | pa_edge_profiles_national_v0_2_0.csv | src/python/dsipa/layerA_national.py | Generated 2026-01-02; schema v0.2.0 | Derived (Zenodo nightlights CC BY 4.0) | 21bf4ec78005365fdd9a8dacf29543b8e83424ed9002f5d0b2cf848c925b7f60 | National edge profile summaries (inside rings) for 2013–2024. |
 | pa_trends_v0_2_0.csv | src/python/dsipa/trends.py | Generated 2026-01-02; schema v0.2.0 | Derived (Zenodo nightlights CC BY 4.0) | 45b6592547111abecfa1340c5117a9abce09bfe1360b02fdb026e7878949cb29 | Trend estimates and retention indices (mean primary; median retained). |
 | pa_risk_rankings_v0_2_0.csv | src/python/dsipa/vulnerability_model.py | Generated 2026-01-02; schema v0.2.0 | Derived (Zenodo nightlights CC BY 4.0) | c288682fbbcae9c91b3439091e52e41ee04e71d45ba634c6e6d057987fde74fb | Ranked PAs by brightening, retention, and combined risk score. |
+
+Notes:
+- Checksums default to sha256 unless otherwise stated. Nightlights GeoTIFF checksums are MD5 (32 hex characters), matching `src/python/dsipa/nightlights.py`.
 
 Rules:
 - Do not hand-edit files in `data/raw/`; recreate via scripts.

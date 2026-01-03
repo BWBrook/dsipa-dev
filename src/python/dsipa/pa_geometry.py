@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import shutil
 from datetime import datetime, timezone
@@ -12,7 +13,7 @@ import geopandas as gpd
 import numpy as np
 import pandas as pd
 
-from dsipa.capad import CapadQuery, fetch_gdf
+from dsipa.capad import CapadQuery, fetch_gdf, fetch_layer_metadata, fetch_service_metadata
 from dsipa.manifest import build_manifest, write_manifest
 from dsipa.paths import find_repo_root
 from dsipa.schema import PA_GEOMETRIES_CSV, PA_GEOMETRIES_GPKG, SCHEMA_VERSION
@@ -40,11 +41,47 @@ def _fix_geometry(geom):
     return geom
 
 
-def process_capad() -> gpd.GeoDataFrame:
+def _hash_geometries(gdf: gpd.GeoDataFrame) -> str:
+    digest = hashlib.sha256()
+    ordered = gdf.sort_values("PA_ID")
+    for _, row in ordered.iterrows():
+        digest.update(str(row["PA_ID"]).encode("utf-8"))
+        geom = row.geometry
+        if geom is not None:
+            digest.update(geom.wkb)
+    return digest.hexdigest()
+
+
+def write_capad_snapshot(root: Path, query: CapadQuery, gdf: gpd.GeoDataFrame) -> Path:
+    snapshot_dir = root / "data" / "raw" / "capad_snapshot"
+    snapshot_dir.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "generated_utc": _now_utc(),
+        "service_metadata": fetch_service_metadata(),
+        "layer_metadata": fetch_layer_metadata(query.layer),
+        "query": {
+            "layer": query.layer,
+            "where": query.where,
+            "out_fields": query.out_fields,
+            "out_sr": query.out_sr,
+            "chunk_size": query.chunk_size,
+        },
+        "feature_count": int(len(gdf)),
+        "pa_id_hash_sha256": _hash_geometries(gdf[["PA_ID", "geometry"]].copy()),
+    }
+    snapshot_path = snapshot_dir / f"capad_snapshot_{datetime.now(timezone.utc).strftime('%Y%m%d')}.json"
+    snapshot_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    return snapshot_path
+
+
+def process_capad(root: Path | None = None) -> gpd.GeoDataFrame:
     query = CapadQuery(layer=CAPAD_LAYER, where=CAPAD_WHERE, out_sr=4326)
     gdf = fetch_gdf(query)
     if gdf.empty:
         raise RuntimeError("CAPAD query returned no features.")
+
+    if root is not None:
+        write_capad_snapshot(root, query, gdf)
 
     gdf = gdf.copy()
     gdf["valid_original"] = gdf.geometry.is_valid
@@ -178,6 +215,7 @@ def write_artefact(outputs: dict[str, Path], qc_report: Path, root: Path) -> Pat
         wp="WP0.5",
         root=root,
         outputs=[qc_report.name, outputs["csv"].name, outputs["gpkg"].name],
+        inputs=["CAPAD MapServer layer 0 (NRS_PA='Y')"],
         notes="WP0.5 protected-area geometry processing",
     )
     write_manifest(artefact_dir / "MANIFEST.json", manifest)
@@ -203,7 +241,7 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     root = find_repo_root()
 
-    gdf = process_capad()
+    gdf = process_capad(root)
     outputs = write_outputs(gdf, root)
 
     qc_report = root / "analysis" / "reports" / "pa_geometry_qc.md"

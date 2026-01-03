@@ -1,6 +1,6 @@
 # Smoke-test radiance buffers sanity report
 
-Generated: 2026-01-01 08:45 UTC
+Generated: 2026-01-03 10:39 UTC
 
 ## Raster metadata (per year)
 - 2013: dtype=int16, nodata=-32768.0, scale=1.0, offset=0.0

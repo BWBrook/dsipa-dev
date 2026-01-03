@@ -18,11 +18,11 @@ from rasterio.mask import mask
 from dsipa.manifest import build_manifest, write_manifest
 from dsipa.nightlights import download_year
 from dsipa.paths import find_repo_root
-from dsipa.schema import EDGE_PROFILES_SMOKETEST_CSV, SCHEMA_VERSION
+from dsipa.schema import EDGE_PROFILES_SMOKETEST_CSV, SCHEMA_VERSION, TRIAD_GEOMS_GPKG
 from dsipa.triad import RING_BINS_KM, build_rings
 SMOKETEST_YEARS = [2013, 2018, 2024]
 
-TRIAD_GEOMS = "data/processed/smoke_test_triad_geoms_v0_1_0.gpkg"
+TRIAD_GEOMS = TRIAD_GEOMS_GPKG
 OUTPUT_TABLE = EDGE_PROFILES_SMOKETEST_CSV
 REPORT_PATH = "analysis/reports/smoketest_edge_profiles.md"
 PLOT_PATH = "analysis/reports/smoketest_edge_profiles.png"
@@ -94,6 +94,8 @@ def _stats_for_geom(
             "min": np.nan,
             "max": np.nan,
             "std": np.nan,
+            "frac_gt0": np.nan,
+            "p95": np.nan,
         }
 
     return {
@@ -105,6 +107,8 @@ def _stats_for_geom(
         "min": float(np.min(valid)),
         "max": float(np.max(valid)),
         "std": float(np.std(valid)),
+        "frac_gt0": float(np.mean(valid > 0)),
+        "p95": float(np.quantile(valid, 0.95)),
     }
 
 
@@ -265,6 +269,7 @@ def write_artefact(report_path: Path, plot_path: Path, table_path: Path, root: P
         wp="WP0.7",
         root=root,
         outputs=[report_path.name, plot_path.name, table_path.name],
+        inputs=[TRIAD_GEOMS, "data/raw/nightlights_zenodo_v0_4"],
         notes="WP0.7 smoke-test edge profiles",
     )
     write_manifest(artefact_dir / "MANIFEST.json", manifest)

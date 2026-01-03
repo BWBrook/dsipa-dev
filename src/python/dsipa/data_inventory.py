@@ -43,6 +43,15 @@ Source URLs:
 Source URLs:
 - https://doi.org/10.5281/zenodo.17294744
 - https://zenodo.org/records/17294744
+
+## Land/sea mask — Natural Earth land polygons (110m)
+
+- Source: Natural Earth 1:110m land polygons (ne_110m_land).
+- Use: land fraction + buffer validity checks; excludes ocean from outside buffers.
+- License: Public domain (Natural Earth).
+
+Source URL:
+- https://naturalearth.s3.amazonaws.com/110m_physical/ne_110m_land.zip
 """.format(timestamp=timestamp)
 
 

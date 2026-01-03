@@ -12,10 +12,26 @@ def test_national_radiance_schema_and_counts():
     inside = df[df["zone"] == "inside"]
     buffers = df[df["zone"] == "buffer"]
     assert len(inside) == n_pa * n_years
+    assert set(inside["buffer_type"]) == {"inside"}
     buffer_distances = buffers["buffer_km"].unique().tolist()
-    assert len(buffers) == n_pa * n_years * len(buffer_distances)
+    raw_buffers = buffers[buffers["buffer_type"] == "raw"]
+    assert len(raw_buffers) == n_pa * n_years * len(buffer_distances)
     assert (df["valid_fraction"] >= 0).all()
     assert (df["valid_fraction"] <= 1).all()
+    if "frac_gt0" in df.columns:
+        assert (df["frac_gt0"].dropna() >= 0).all()
+        assert (df["frac_gt0"].dropna() <= 1).all()
+    if "p95" in df.columns:
+        valid = df.dropna(subset=["p95", "median", "min"])
+        assert (valid["p95"] >= valid["median"]).all()
+        assert (valid["median"] >= valid["min"]).all()
+
+    low_valid = df[df["valid_pixel_count"] < 10]
+    if not low_valid.empty:
+        assert low_valid["mean"].isna().all()
+        assert low_valid["median"].isna().all()
+        assert low_valid["frac_gt0"].isna().all()
+        assert low_valid["p95"].isna().all()
 
 
 def test_national_edge_profiles_schema_and_counts():
@@ -28,3 +44,10 @@ def test_national_edge_profiles_schema_and_counts():
     assert len(df) == n_pa * n_years * n_rings
     assert (df["valid_fraction"] >= 0).all()
     assert (df["valid_fraction"] <= 1).all()
+    if "frac_gt0" in df.columns:
+        assert (df["frac_gt0"].dropna() >= 0).all()
+        assert (df["frac_gt0"].dropna() <= 1).all()
+    if "p95" in df.columns:
+        valid = df.dropna(subset=["p95", "median", "min"])
+        assert (valid["p95"] >= valid["median"]).all()
+        assert (valid["median"] >= valid["min"]).all()

@@ -1,83 +1,109 @@
 # Risk rankings and retention quadrants
 
-Generated: 2026-01-02 02:22 UTC
+Generated: 2026-01-03 10:41 UTC
 
-Metric: mean radiance trends (Theil-Sen); n=4426; min years=8
+Metric: mean radiance trends (Theil-Sen); buffer=land_unprotected; n=3857; min years=8
+Inside brightening threshold: slope > 0.0
+Quadrant counts (buffer vs inside slopes): Q1(+,+)=304, Q2(-,+)=55, Q3(-,-)=3308, Q4(+,-)=190
 
-## Top 20 by inside brightening (mean slope)
+## Top 20 by inside brightening (slope_inside > 0)
 
-         pa_id                         name state  area_km2  distance_km  slope_inside  retention_index_1km  retention_index_5km  risk_score  rank_slope_inside
-      WA_27575                     Neerabup    WA    9.7348      33.3037        8.1497               4.3664               6.6054     22.7210                  1
-      VIC_4007 Craigieburn Grassland N.C.R.   VIC    3.4402      21.6936        7.3968              -0.9435               1.3025      9.3888                  2
-       SA_0038               Torrens Island    SA    6.3874      17.1613        3.7269               0.4381               2.1606      7.7302                  3
-     NSW_N1123                   Wianamatta   NSW    7.3712      44.6122        3.3333               0.0527              -0.8887      2.5082                  4
-     NSW_N0083                    Lane Cove   NSW    7.1858      13.9970        2.8718               1.4551               1.8647      7.2487                  5
-      WA_21708               Lake Joondalup    WA    4.4814      24.6057        2.7500               0.9592               1.6296      6.3234                  6
-      WA_53313              Unnamed WA53313    WA    6.0989      23.1356        2.1680              -0.8836              -0.7371      0.5692                  7
-     NSW_N0598                Windsor Downs   NSW    3.6430      44.7057        2.1429               0.8861               0.1977      3.4908                  8
-        ACT_33                 Goorooyarroo   ACT    8.2898      10.7372        2.0040               0.9847               1.9918      6.0294                  9
-      WA_48325                   Swan River    WA   29.9888       4.2098        1.9351               0.1382               0.0716      2.4001                 10
-     NSW_N0938                     Prospect   NSW    3.2558      29.9943        1.9048              -2.6786              -4.7959     -7.2404                 11
-     NSW_N0877                     Worrigee   NSW    2.2932     128.0891        1.7628              -1.1651               0.9081      2.2485                 12
-      WA_39584                    Henderson    WA    2.9812      25.4388        1.7308               0.1890               1.3033      4.0045                 13
-      NT_PA115               Charles Darwin    NT   13.0280       3.7069        1.6862              -1.0591               0.9158      2.2683                 14
-      WA_26351                 Goegrup Lake    WA    3.1965      63.7754        1.6544               0.2210               0.4406      2.6934                 15
-        ACT_53               Molonglo River   ACT   12.0729      10.3215        1.6136              -0.7947               2.3130      4.4543                 16
-     NSW_N1210                   Yiraaldiya   NSW    5.3884      41.5547        1.4516              -2.6377              -3.6849     -6.1015                 17
-       SA_0244                Cobbler Creek    SA    2.6687      18.3593        1.4286              -0.6759               0.4621      1.6626                 18
-QLD_0966DSY001                   Daisy Hill   QLD    7.8354      22.1864        1.4244               0.0470              -0.2618      1.2564                 19
-       SA_0095                   Black Hill    SA    7.5967      12.7145        1.3690               0.1555               0.6032      2.5482                 20
+         pa_id                         name state  area_km2  distance_km  slope_inside  slope_buffer_1km  retention_index_1km  retention_index_5km  rank_inside_brightening
+      WA_27575                     Neerabup    WA    9.7348      33.3037        8.1497            3.5217               4.6280               6.6934                        1
+      VIC_4007 Craigieburn Grassland N.C.R.   VIC    3.4402      21.6936        7.3968            8.2129              -0.8161               1.0121                        2
+       SA_0038               Torrens Island    SA    6.3874      17.1613        3.7269            3.2756               0.4512               2.3319                        3
+     NSW_N1123                   Wianamatta   NSW    7.3712      44.6122        3.3333            3.4737              -0.1404              -1.3400                        4
+     NSW_N0083                    Lane Cove   NSW    7.1858      13.9970        2.8718            1.5921               1.2797               1.8699                        5
+      WA_21708               Lake Joondalup    WA    4.4814      24.6057        2.7500            2.0192               0.7308               1.9059                        6
+      WA_53313              Unnamed WA53313    WA    6.0989      23.1356        2.1680            2.6269              -0.4590              -0.6776                        7
+     NSW_N0598                Windsor Downs   NSW    3.6430      44.7057        2.1429            1.9936               0.1493               0.4495                        8
+        ACT_33                 Goorooyarroo   ACT    8.2898      10.7372        2.0040            0.7871               1.2169               2.1681                        9
+     NSW_N0938                     Prospect   NSW    3.2558      29.9943        1.9048            4.8856              -2.9809              -4.9084                       10
+     NSW_N0877                     Worrigee   NSW    2.2932     128.0891        1.7628            3.1364              -1.3735               0.6623                       11
+      WA_39584                    Henderson    WA    2.9812      25.4388        1.7308           -0.0625               1.7933              -0.3418                       12
+      NT_PA115               Charles Darwin    NT   13.0280       3.7069        1.6862            2.7381              -1.0519               0.9124                       13
+      WA_26351                 Goegrup Lake    WA    3.1965      63.7754        1.6544            1.7073              -0.0529               0.2552                       14
+        ACT_53               Molonglo River   ACT   12.0729      10.3215        1.6136            2.7897              -1.1761               2.0839                       15
+     NSW_N1210                   Yiraaldiya   NSW    5.3884      41.5547        1.4516            4.8026              -3.3510              -4.7933                       16
+       SA_0244                Cobbler Creek    SA    2.6687      18.3593        1.4286            1.5667              -0.1381               0.5444                       17
+QLD_0966DSY001                   Daisy Hill   QLD    7.8354      22.1864        1.4244            1.6713              -0.2469              -0.2108                       18
+       SA_0095                   Black Hill    SA    7.5967      12.7145        1.3690            1.2847               0.0843               0.5722                       19
+        ACT_13                   Mt Ainslie   ACT    6.3679       3.4871        1.3403            1.7826              -0.4423               1.5545                       20
 
-## Top 20 by retention (inside minus buffer, 1 km)
+## Top 20 by buffer brightening (buffer slope > 0)
 
-         pa_id                             name state  area_km2  distance_km  slope_inside  retention_index_1km  retention_index_5km  risk_score  rank_retention_1km
-       WA_2803                         Murujuga    WA   51.3753    1276.0831       -8.4234              21.0700              -0.9609      8.0195                   1
-      WA_27575                         Neerabup    WA    9.7348      33.3037        8.1497               4.3664               6.6054     22.7210                   2
-       WA_1720                       Kings Park    WA    4.0064       3.0206       -1.4931               3.1062              -3.2526     -3.6351                   3
-        ACT_09           Jerrabomberra Wetlands   ACT    2.0579       4.1846        0.3632               2.5357               0.2875      3.0936                   4
-     QLD_NR128                     German Creek   QLD    3.2698     665.2693       -4.1901               2.5322              -0.4058     -3.0633                   5
-        ACT_18                        Mt Taylor   ACT    2.9992      11.1329       -0.7456               2.4551               1.0019      2.8059                   6
-        ACT_24                 Tuggeranong Hill   ACT    3.6342      19.3802       -1.0799               2.4383               0.1047      1.1092                   7
-        ACT_25                     Urambi Hills   ACT    2.4601      15.2488       -1.1111               2.4200               0.6406      1.8362                   8
-        ACT_03                   Black Mountain   ACT    4.3443       3.2197       -1.0373               2.2164               0.3925      1.3760                   9
-        ACT_29             Gungaderra Grassland   ACT    2.9704       8.0028       -0.6250               2.1010               0.8324      2.3774                  10
-        ACT_21                         Red Hill   ACT    2.9278       5.8265        0.3596               1.9761               1.6085      4.5056                  11
-        ACT_05                   Cooleman Ridge   ACT    1.8705      12.4065       -0.1667               1.6347               0.9012      2.5759                  12
-        ACT_27                   Mulligans Flat   ACT    9.8403      13.1054        1.0799               1.6033               0.5542      3.4525                  13
-QLD_0470MWT001                  Mount Whitfield   QLD    3.2854    1395.3625        0.5444               1.5003              -0.7838      0.8106                  14
-     NSW_N0083                        Lane Cove   NSW    7.1858      13.9970        2.8718               1.4551               1.8647      7.2487                  15
-        ACT_08                     Isaacs Ridge   ACT    3.6681      10.1731        0.5000               1.2022               1.4914      3.7980                  16
-        NT_PA6                        Casuarina    NT   13.6575      12.9081       -0.0926               1.0928              -0.3707      0.3241                  17
-        ACT_33                     Goorooyarroo   ACT    8.2898      10.7372        2.0040               0.9847               1.9918      6.0294                  18
-      WA_21708                   Lake Joondalup    WA    4.4814      24.6057        2.7500               0.9592               1.6296      6.3234                  19
-      VIC_3365 Langwarrin Flora & Fauna Reserve   VIC    2.1544      43.8749        1.0714               0.9286               0.3000      2.4666                  20
+         pa_id                            name state  area_km2  distance_km  slope_inside  slope_buffer_1km  retention_index_1km  retention_index_5km  rank_buffer_brightening_1km
+      VIC_4007    Craigieburn Grassland N.C.R.   VIC    3.4402      21.6936        7.3968            8.2129              -0.8161               1.0121                            1
+     NSW_N0938                        Prospect   NSW    3.2558      29.9943        1.9048            4.8856              -2.9809              -4.9084                            2
+     NSW_N1210                      Yiraaldiya   NSW    5.3884      41.5547        1.4516            4.8026              -3.3510              -4.7933                            3
+      WA_27575                        Neerabup    WA    9.7348      33.3037        8.1497            3.5217               4.6280               6.6934                            4
+     NSW_N1123                      Wianamatta   NSW    7.3712      44.6122        3.3333            3.4737              -0.1404              -1.3400                            5
+       SA_0038                  Torrens Island    SA    6.3874      17.1613        3.7269            3.2756               0.4512               2.3319                            6
+     NSW_N0877                        Worrigee   NSW    2.2932     128.0891        1.7628            3.1364              -1.3735               0.6623                            7
+        ACT_53                  Molonglo River   ACT   12.0729      10.3215        1.6136            2.7897              -1.1761               2.0839                            8
+      NT_PA115                  Charles Darwin    NT   13.0280       3.7069        1.6862            2.7381              -1.0519               0.9124                            9
+      WA_53313                 Unnamed WA53313    WA    6.0989      23.1356        2.1680            2.6269              -0.4590              -0.6776                           10
+      WA_29241  Harry Waring Marsupial Reserve    WA    2.3174      24.1078        0.6597            2.5463              -1.8866              -1.4909                           11
+      VIC_4522          Mount Sugarloaf N.C.R.   VIC    7.1920     127.6533        0.2326            2.1076              -1.8751              -0.2098                           12
+      WA_24781                Forrestdale Lake    WA    2.4624      24.1855        1.3329            2.0918              -0.7589              -2.7809                           13
+      WA_21708                  Lake Joondalup    WA    4.4814      24.6057        2.7500            2.0192               0.7308               1.9059                           14
+     NSW_N1208                        Killalea   NSW    2.6341      88.0779        0.8013            2.0008              -1.1995              -0.1436                           15
+     NSW_N0551                     Towra Point   NSW    6.3325      17.0976        1.0185            2.0000              -0.9815              -0.3823                           16
+     NSW_N0598                   Windsor Downs   NSW    3.6430      44.7057        2.1429            1.9936               0.1493               0.4495                           17
+       NT_PA48 Alice Springs Telegraph Station    NT   20.0348    1278.2243        0.4717            1.8523              -1.3806              -0.3929                           18
+     NSW_N0863                     Kemps Creek   NSW    1.9757      37.1833        0.9524            1.8311              -0.8787              -0.6783                           19
+QLD_0432PKT001                        Plunkett   QLD    7.8195      39.8880        1.2821            1.7918              -0.5097               0.0801                           20
 
-## Top 20 by combined risk score
+## Top 20 by internalisation (inside > buffer)
 
-     pa_id                         name state  area_km2  distance_km  slope_inside  retention_index_1km  retention_index_5km  risk_score  rank_risk_score
-  WA_27575                     Neerabup    WA    9.7348      33.3037        8.1497               4.3664               6.6054     22.7210                1
-  VIC_4007 Craigieburn Grassland N.C.R.   VIC    3.4402      21.6936        7.3968              -0.9435               1.3025      9.3888                2
-   WA_2803                     Murujuga    WA   51.3753    1276.0831       -8.4234              21.0700              -0.9609      8.0195                3
-   SA_0038               Torrens Island    SA    6.3874      17.1613        3.7269               0.4381               2.1606      7.7302                4
- NSW_N0083                    Lane Cove   NSW    7.1858      13.9970        2.8718               1.4551               1.8647      7.2487                5
-  WA_21708               Lake Joondalup    WA    4.4814      24.6057        2.7500               0.9592               1.6296      6.3234                6
-    ACT_33                 Goorooyarroo   ACT    8.2898      10.7372        2.0040               0.9847               1.9918      6.0294                7
-    ACT_21                     Red Hill   ACT    2.9278       5.8265        0.3596               1.9761               1.6085      4.5056                8
-    ACT_53               Molonglo River   ACT   12.0729      10.3215        1.6136              -0.7947               2.3130      4.4543                9
-  WA_39584                    Henderson    WA    2.9812      25.4388        1.7308               0.1890               1.3033      4.0045               10
-    ACT_08                 Isaacs Ridge   ACT    3.6681      10.1731        0.5000               1.2022               1.4914      3.7980               11
- NSW_N0598                Windsor Downs   NSW    3.6430      44.7057        2.1429               0.8861               0.1977      3.4908               12
-    ACT_27               Mulligans Flat   ACT    9.8403      13.1054        1.0799               1.6033               0.5542      3.4525               13
-    ACT_46                    Woodstock   ACT    6.7438      15.3078        1.3523              -0.7985               1.7890      3.3942               14
-    ACT_09       Jerrabomberra Wetlands   ACT    2.0579       4.1846        0.3632               2.5357               0.2875      3.0936               15
-    ACT_13                   Mt Ainslie   ACT    6.3679       3.4871        1.3403              -0.3569               1.1837      2.8983               16
-    ACT_18                    Mt Taylor   ACT    2.9992      11.1329       -0.7456               2.4551               1.0019      2.8059               17
-  WA_26351                 Goegrup Lake    WA    3.1965      63.7754        1.6544               0.2210               0.4406      2.6934               18
-QLD_NR1921          Brian Burke Reserve   QLD    2.6836      20.6267        0.8889               0.6490               0.7203      2.6196               19
-    ACT_05               Cooleman Ridge   ACT    1.8705      12.4065       -0.1667               1.6347               0.9012      2.5759               20
+         pa_id                   name state  area_km2  distance_km  slope_inside  slope_buffer_1km  retention_index_1km  retention_index_5km  rank_internalisation_1km
+      WA_27575               Neerabup    WA    9.7348      33.3037        8.1497            3.5217               4.6280               6.6934                         1
+        ACT_09 Jerrabomberra Wetlands   ACT    2.0579       4.1846        0.3632           -3.3410               3.7043               0.7053                         2
+        ACT_21               Red Hill   ACT    2.9278       5.8265        0.3596           -1.8431               2.2028               2.3871                         3
+      WA_39584              Henderson    WA    2.9812      25.4388        1.7308           -0.0625               1.7933              -0.3418                         4
+QLD_0470MWT001        Mount Whitfield   QLD    3.2854    1395.3625        0.5444           -0.9184               1.4628               0.0909                         5
+        ACT_08           Isaacs Ridge   ACT    3.6681      10.1731        0.5000           -0.9277               1.4277               1.3950                         6
+     NSW_N0083              Lane Cove   NSW    7.1858      13.9970        2.8718            1.5921               1.2797               1.8699                         7
+        ACT_33           Goorooyarroo   ACT    8.2898      10.7372        2.0040            0.7871               1.2169               2.1681                         8
+      WA_15556          Thomsons Lake    WA    5.5091      22.2183        0.4176           -0.6000               1.0176              -3.6095                         9
+        ACT_51                Melrose   ACT    1.9679      18.3522        0.2724           -0.5971               0.8695               1.3099                        10
+       NT_PA57                Kuyunba    NT    6.2889    1292.2611        0.5000           -0.2397               0.7397               0.5934                        11
+      WA_21708         Lake Joondalup    WA    4.4814      24.6057        2.7500            2.0192               0.7308               1.9059                        12
+     NSW_N0791        Marshalls Creek   NSW    1.5362     126.7663        0.2814           -0.4226               0.7040               0.4101                        13
+      WA_35283        Unnamed WA35283    WA    2.7069      66.0806        0.5774           -0.1092               0.6865              -0.2781                        14
+    QLD_NR1921    Brian Burke Reserve   QLD    2.6836      20.6267        0.8889            0.2404               0.6485               0.7206                        15
+     QLD_NR295 Stanwell Power Station   QLD    6.3596     517.2928        0.4330           -0.1923               0.6253               0.5360                        16
+       SA_0239            Sturt Gorge    SA    4.3560      12.6059        0.6254            0.0227               0.6027              -0.4182                        17
+      VIC_3695       The Pines F.F.R.   VIC    2.0614      38.9399        1.0256            0.4296               0.5960              -0.5690                        18
+     TAS_50789           Renison Bell   TAS    7.5424     198.9312        0.6889            0.1578               0.5311               0.6637                        19
+    QLD_NR3313    Leslie Harrison Dam   QLD    3.0932      16.3186        0.8464            0.3440               0.5024              -0.3762                        20
+
+## Top 20 by external pressure (buffer > 0, inside <= 0)
+
+         pa_id               name state  area_km2  distance_km  slope_inside  slope_buffer_1km  retention_index_1km  retention_index_5km  rank_external_pressure_1km
+       SA_0569      Poonthie Ruwe    SA    2.4148      90.1386        0.0000            0.8816              -0.8816              -0.4963                           1
+QLD_0596MCL001       Mount Coolum   QLD    3.6340      99.4831       -0.0956            0.8018              -0.8974              -0.7529                           2
+     NSW_N1142           Bungonia   NSW    7.6899      96.9997        0.0000            0.5046              -0.5046              -0.1625                           3
+     TAS_50387         Long Reach   TAS    3.2324     189.5379       -0.8248            0.4879              -1.3127              -0.8787                           4
+      WA_05225         Torndirrup    WA   40.2165     398.5689        0.0000            0.4167              -0.4167              -0.1481                           5
+      VIC_1328   Bumbang I262 B.R   VIC    5.6238     378.4993        0.0000            0.3525              -0.3525              -0.1540                           6
+     TAS_12645          Casvarina   TAS    1.8532     171.9390        0.0000            0.3409              -0.3409              -0.1639                           7
+       VIC_459 Lake Corringle W.R   VIC    9.2204     282.4889        0.0000            0.3398              -0.3398              -0.4123                           8
+       SA_0220          Loch Luna    SA   20.6969     182.1513        0.0000            0.3386              -0.3386              -0.1695                           9
+     NSW_N0900               Kuma   NSW    1.8388     108.6098        0.0000            0.3247              -0.3247              -0.5961                          10
+QLD_1069MCP001           Mapleton   QLD    3.5950      99.8435        0.0000            0.3010              -0.3010              -0.3429                          11
+      WA_27621        Twin Swamps    WA    1.5532      29.6285        0.0000            0.2862              -0.2862              -1.1224                          12
+     NSW_N0975             Tiraki   NSW    6.1272     131.9349        0.0000            0.2689              -0.2689              -0.3403                          13
+      VIC_4746   Devilbend N.F.R.   VIC   10.0689      54.7105        0.0000            0.2634              -0.2634              -0.2314                          14
+     TAS_50735         Middle Arm   TAS    1.9443     188.2275        0.0000            0.2556              -0.2556               0.0534                          15
+     NSW_N0433       Goorooyarroo   NSW    3.1178      11.3952        0.0000            0.2532              -0.2532              -0.0500                          16
+        ACT_48         Kinleyside   ACT    2.2720      13.7299       -0.5093            0.2484              -0.7577              -0.4679                          17
+QLD_0105KEP001 Keppel Bay Islands   QLD    7.2602     530.9660        0.0000            0.2422              -0.2422              -0.1607                          18
+     TAS_21491        Cotton Bush   TAS    2.2257      28.8712        0.0000            0.2387              -0.2387              -0.1343                          19
+QLD_0541WCA001 Wild Cattle Island   QLD    5.9144     422.0944        0.0000            0.2364              -0.2364              -0.1391                          20
 
 ## Notes
-- Risk score = mean of z-scored inside slope, retention_1km, retention_5km.
 - Rankings are descriptive; no causal attribution implied.
+- Quadrant figure is clipped to the 1st–99th percentiles of slopes for readability.
 
 Figure: fig_layerA_retention_quadrant.png

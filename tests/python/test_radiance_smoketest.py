@@ -28,3 +28,5 @@ def test_radiance_smoketest_buffer_km_nan_for_inside():
     buffer = df[df["zone"] == "buffer"]
     assert inside["buffer_km"].isna().all()
     assert buffer["buffer_km"].notna().all()
+    assert set(inside["buffer_type"]) == {"inside"}
+    assert set(buffer["buffer_type"]) == {"raw"}

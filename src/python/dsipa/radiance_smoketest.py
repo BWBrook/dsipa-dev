@@ -19,11 +19,16 @@ from rasterio.mask import mask
 from dsipa.manifest import build_manifest, write_manifest
 from dsipa.nightlights import EXPECTED_MD5, download_year
 from dsipa.paths import find_repo_root
-from dsipa.schema import RADIANCE_BUFFERS_SMOKETEST_CSV, SCHEMA_VERSION
+from dsipa.schema import (
+    RADIANCE_BUFFERS_SMOKETEST_CSV,
+    SCHEMA_VERSION,
+    TRIAD_BUFFERS_GPKG,
+    TRIAD_GEOMS_GPKG,
+)
 SMOKETEST_YEARS = [2013, 2018, 2024]
 
-TRIAD_GEOMS = "data/processed/smoke_test_triad_geoms_v0_1_0.gpkg"
-TRIAD_BUFFERS = "data/processed/smoke_test_triad_buffers_v0_1_0.gpkg"
+TRIAD_GEOMS = TRIAD_GEOMS_GPKG
+TRIAD_BUFFERS = TRIAD_BUFFERS_GPKG
 
 OUTPUT_TABLE = RADIANCE_BUFFERS_SMOKETEST_CSV
 SANITY_REPORT = "analysis/reports/smoketest_buffers_sanity.md"
@@ -85,6 +90,8 @@ def _stats_for_geom(
             "min": np.nan,
             "max": np.nan,
             "std": np.nan,
+            "frac_gt0": np.nan,
+            "p95": np.nan,
         }
 
     return {
@@ -96,6 +103,8 @@ def _stats_for_geom(
         "min": float(np.min(valid)),
         "max": float(np.max(valid)),
         "std": float(np.std(valid)),
+        "frac_gt0": float(np.mean(valid > 0)),
+        "p95": float(np.quantile(valid, 0.95)),
     }
 
 
@@ -141,6 +150,7 @@ def summarise_year(
                     "year": year,
                     "zone": "inside",
                     "buffer_km": np.nan,
+                    "buffer_type": "inside",
                     "scale_metadata": meta.scale,
                     "offset_metadata": meta.offset,
                     **stats,
@@ -157,6 +167,7 @@ def summarise_year(
                     "year": year,
                     "zone": "buffer",
                     "buffer_km": float(row["buffer_km"]),
+                    "buffer_type": "raw",
                     "scale_metadata": meta.scale,
                     "offset_metadata": meta.offset,
                     **stats,
@@ -296,6 +307,7 @@ def write_artefact(
         wp="WP0.6",
         root=root,
         outputs=[report_path.name, plot_path.name, table_path.name],
+        inputs=[TRIAD_GEOMS, TRIAD_BUFFERS, "data/raw/nightlights_zenodo_v0_4"],
         notes="WP0.6 smoke-test radiance summaries",
     )
     write_manifest(artefact_dir / "MANIFEST.json", manifest)

@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2026-01-01 05:03 UTC",
-  "schema_version": "0.1.0",
+  "generated_utc": "2026-01-03 10:39 UTC",
+  "schema_version": "0.3.0",
   "capad": {
     "source": "https://gis.environment.gov.au/gispubmap/rest/services/ogc_services/CAPAD/MapServer",
     "layer": 0,
@@ -35,7 +35,7 @@
   ],
   "triad": [
     {
-      "schema_version": "0.1.0",
+      "schema_version": "0.3.0",
       "triad_role": "urban_edge",
       "pa_id": "TAS_50483",
       "pa_pid": "TAS_50483",
@@ -47,7 +47,7 @@
       "nearest_city": "Hobart"
     },
     {
-      "schema_version": "0.1.0",
+      "schema_version": "0.3.0",
       "triad_role": "peri_urban",
       "pa_id": "NSW_N0856",
       "pa_pid": "NSW_N0856",
@@ -59,7 +59,7 @@
       "nearest_city": "Canberra"
     },
     {
-      "schema_version": "0.1.0",
+      "schema_version": "0.3.0",
       "triad_role": "remote",
       "pa_id": "QLD_0117LZI001",
       "pa_pid": "QLD_0117LZI001",
@@ -72,10 +72,10 @@
     }
   ],
   "outputs": {
-    "triad_index": "/home/bwbrook/git/dsipa-dev/data/processed/smoke_test_triad_index_v0_1_0.csv",
-    "triad_geoms": "/home/bwbrook/git/dsipa-dev/data/processed/smoke_test_triad_geoms_v0_1_0.gpkg",
-    "triad_rings_csv": "/home/bwbrook/git/dsipa-dev/data/processed/smoke_test_triad_rings_v0_1_0.csv",
-    "triad_buffers_gpkg": "/home/bwbrook/git/dsipa-dev/data/processed/smoke_test_triad_buffers_v0_1_0.gpkg",
+    "triad_index": "/home/bwbrook/git/dsipa-dev/data/processed/smoke_test_triad_index_v0_3_0.csv",
+    "triad_geoms": "/home/bwbrook/git/dsipa-dev/data/processed/smoke_test_triad_geoms_v0_3_0.gpkg",
+    "triad_rings_csv": "/home/bwbrook/git/dsipa-dev/data/processed/smoke_test_triad_rings_v0_3_0.csv",
+    "triad_buffers_gpkg": "/home/bwbrook/git/dsipa-dev/data/processed/smoke_test_triad_buffers_v0_3_0.gpkg",
     "triad_maps_dir": "/home/bwbrook/git/dsipa-dev/analysis/reports/triad_qa_maps"
   }
 }

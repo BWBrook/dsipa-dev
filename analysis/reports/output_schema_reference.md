@@ -1,14 +1,14 @@
 # Output schema reference
 
-Generated: 2026-01-02 02:15 UTC
+Generated: 2026-01-03 10:45 UTC
 
-Schema version: 0.2.0
+Schema version: 0.3.0
 
 Migration policy: Any change to required columns or their meaning requires a schema_version bump and a full rerun. No automatic migration is provided.
 
 ## smoke_test_triad_index
 
-File: `data/processed/smoke_test_triad_index_v0_2_0.csv`
+File: `data/processed/smoke_test_triad_index_v0_3_0.csv`
 Format: csv
 
 Triad selection table (three protected areas).
@@ -28,7 +28,7 @@ Triad selection table (three protected areas).
 
 ## smoke_test_triad_geoms
 
-File: `data/processed/smoke_test_triad_geoms_v0_2_0.gpkg`
+File: `data/processed/smoke_test_triad_geoms_v0_3_0.gpkg`
 Format: gpkg
 
 Triad geometries with attributes (EPSG:3577).
@@ -48,7 +48,7 @@ Triad geometries with attributes (EPSG:3577).
 
 ## smoke_test_triad_rings
 
-File: `data/processed/smoke_test_triad_rings_v0_2_0.csv`
+File: `data/processed/smoke_test_triad_rings_v0_3_0.csv`
 Format: csv
 
 Triad inside-ring summary table (area per ring).
@@ -64,7 +64,7 @@ Triad inside-ring summary table (area per ring).
 
 ## smoke_test_triad_buffers
 
-File: `data/processed/smoke_test_triad_buffers_v0_2_0.gpkg`
+File: `data/processed/smoke_test_triad_buffers_v0_3_0.gpkg`
 Format: gpkg
 
 Triad outside buffers (difference between buffer and PA).
@@ -78,7 +78,7 @@ Triad outside buffers (difference between buffer and PA).
 
 ## pa_geometries
 
-File: `data/processed/pa_geometries_v0_2_0.csv`
+File: `data/processed/pa_geometries_v0_3_0.csv`
 Format: csv
 
 Processed CAPAD geometries (dissolved by PA_ID).
@@ -110,7 +110,7 @@ Notes:
 
 ## pa_radiance_buffers_smoketest
 
-File: `data/processed/pa_radiance_buffers_smoketest_v0_2_0.csv`
+File: `data/processed/pa_radiance_buffers_smoketest_v0_3_0.csv`
 Format: csv
 
 Smoke-test radiance summaries inside PAs and outside buffers.
@@ -123,6 +123,7 @@ Smoke-test radiance summaries inside PAs and outside buffers.
 | year | int | year | Observation year. |
 | zone | string | - | Zone label: inside or buffer. |
 | buffer_km | float | km | Buffer distance for zone=buffer; NA for inside. |
+| buffer_type | string | - | Buffer variant: raw, land, land_unprotected (inside for zone=inside). |
 | scale_metadata | float | - | Raster scale metadata (GeoTIFF). |
 | offset_metadata | float | - | Raster offset metadata (GeoTIFF). |
 | pixel_count | int | pixels | Total pixels sampled (incl. invalid). |
@@ -133,13 +134,15 @@ Smoke-test radiance summaries inside PAs and outside buffers.
 | min | float | scaled | Minimum valid pixel value (scale/offset applied). |
 | max | float | scaled | Maximum valid pixel value (scale/offset applied). |
 | std | float | scaled | Standard deviation of valid pixel values (scale/offset applied). |
+| frac_gt0 | float | - | Fraction of valid pixels greater than 0. |
+| p95 | float | scaled | 95th percentile of valid pixel values. |
 
 Notes:
 - Statistics are computed on scaled raster values; scale/offset metadata applied.
 
 ## pa_edge_profiles_smoketest
 
-File: `data/processed/pa_edge_profiles_smoketest_v0_2_0.csv`
+File: `data/processed/pa_edge_profiles_smoketest_v0_3_0.csv`
 Format: csv
 
 Smoke-test inside ring (distance-to-edge) radiance profiles.
@@ -163,13 +166,15 @@ Smoke-test inside ring (distance-to-edge) radiance profiles.
 | min | float | scaled | Minimum valid pixel value (scale/offset applied). |
 | max | float | scaled | Maximum valid pixel value (scale/offset applied). |
 | std | float | scaled | Standard deviation of valid pixel values (scale/offset applied). |
+| frac_gt0 | float | - | Fraction of valid pixels greater than 0. |
+| p95 | float | scaled | 95th percentile of valid pixel values. |
 
 Notes:
 - Statistics are computed on scaled raster values; scale/offset metadata applied.
 
 ## pa_radiance_buffers_national
 
-File: `data/processed/pa_radiance_buffers_national_v0_2_0.csv`
+File: `data/processed/pa_radiance_buffers_national_v0_3_0.csv`
 Format: csv
 
 National radiance summaries inside PAs and outside buffers.
@@ -181,6 +186,7 @@ National radiance summaries inside PAs and outside buffers.
 | year | int | year | Observation year. |
 | zone | string | - | Zone label: inside or buffer. |
 | buffer_km | float | km | Buffer distance for zone=buffer; NA for inside. |
+| buffer_type | string | - | Buffer variant: raw, land, land_unprotected (inside for zone=inside). |
 | scale_metadata | float | - | Raster scale metadata (GeoTIFF). |
 | offset_metadata | float | - | Raster offset metadata (GeoTIFF). |
 | pixel_count | int | pixels | Total pixels sampled (incl. invalid). |
@@ -191,13 +197,34 @@ National radiance summaries inside PAs and outside buffers.
 | min | float | scaled | Minimum valid pixel value (scale/offset applied). |
 | max | float | scaled | Maximum valid pixel value (scale/offset applied). |
 | std | float | scaled | Standard deviation of valid pixel values (scale/offset applied). |
+| frac_gt0 | float | - | Fraction of valid pixels greater than 0. |
+| p95 | float | scaled | 95th percentile of valid pixel values. |
 
 Notes:
 - Statistics are computed on scaled raster values; scale/offset metadata applied.
 
+## pa_buffer_validity
+
+File: `data/processed/pa_buffer_validity_v0_3_0.csv`
+Format: csv
+
+Buffer validity descriptors (land fraction + protected overlap).
+
+| Column | Type | Units | Description |
+| --- | --- | --- | --- |
+| schema_version | string | - | Schema version for buffer validity outputs. |
+| pa_id | string | - | CAPAD PA_ID. |
+| buffer_km | float | km | Buffer distance. |
+| buffer_area_km2 | float | km2 | Raw buffer area (outside PA). |
+| land_area_km2 | float | km2 | Land area within buffer. |
+| protected_overlap_km2 | float | km2 | Overlap area with protected areas (land-masked). |
+| effective_land_area_km2 | float | km2 | Land area excluding protected-overlap area. |
+| land_fraction | float | - | Land area fraction of raw buffer. |
+| protected_overlap_fraction | float | - | Protected overlap fraction of raw buffer (land-masked). |
+
 ## pa_edge_profiles_national
 
-File: `data/processed/pa_edge_profiles_national_v0_2_0.csv`
+File: `data/processed/pa_edge_profiles_national_v0_3_0.csv`
 Format: csv
 
 National inside ring (distance-to-edge) radiance profiles.
@@ -220,13 +247,15 @@ National inside ring (distance-to-edge) radiance profiles.
 | min | float | scaled | Minimum valid pixel value (scale/offset applied). |
 | max | float | scaled | Maximum valid pixel value (scale/offset applied). |
 | std | float | scaled | Standard deviation of valid pixel values (scale/offset applied). |
+| frac_gt0 | float | - | Fraction of valid pixels greater than 0. |
+| p95 | float | scaled | 95th percentile of valid pixel values. |
 
 Notes:
 - Statistics are computed on scaled raster values; scale/offset metadata applied.
 
 ## pa_trends
 
-File: `data/processed/pa_trends_v0_2_0.csv`
+File: `data/processed/pa_trends_v0_3_0.csv`
 Format: csv
 
 Protected-area trend estimates and retention indices.
@@ -235,6 +264,8 @@ Protected-area trend estimates and retention indices.
 | --- | --- | --- | --- |
 | schema_version | string | - | Schema version for trend outputs. |
 | pa_id | string | - | CAPAD PA_ID. |
+| buffer_type | string | - | Buffer variant used for outside trends (raw, land, land_unprotected). |
+| metric | string | - | Metric used for trends. |
 | n_years_inside | int | years | Valid years used for inside trend. |
 | slope_inside | float | scaled/year | Theil-Sen slope for inside metric. |
 | intercept_inside | float | scaled | Theil-Sen intercept for inside metric. |
@@ -245,16 +276,15 @@ Protected-area trend estimates and retention indices.
 | slope_buffer_5km | float | scaled/year | Theil-Sen slope for 5 km buffer metric. |
 | intercept_buffer_5km | float | scaled | Theil-Sen intercept for 5 km buffer metric. |
 | method | string | - | Trend estimator name. |
-| metric | string | - | Metric used for trends (mean or median). |
 | retention_index_1km | float | scaled/year | Inside slope minus 1 km buffer slope. |
 | retention_index_5km | float | scaled/year | Inside slope minus 5 km buffer slope. |
 
 ## pa_risk_rankings
 
-File: `data/processed/pa_risk_rankings_v0_2_0.csv`
+File: `data/processed/pa_risk_rankings_v0_3_0.csv`
 Format: csv
 
-Ranked protected areas by brightening/retention metrics (mean trends).
+Ranked protected areas by brightening/retention categories.
 
 | Column | Type | Units | Description |
 | --- | --- | --- | --- |
@@ -264,13 +294,18 @@ Ranked protected areas by brightening/retention metrics (mean trends).
 | state | string | - | State or territory code. |
 | area_km2 | float | km2 | Protected area size. |
 | distance_km | float | km | Distance to nearest major city. |
+| buffer_type | string | - | Buffer variant used for outside trends (raw, land, land_unprotected). |
+| metric | string | - | Metric used for trends. |
 | slope_inside | float | scaled/year | Inside mean trend slope. |
 | slope_buffer_1km | float | scaled/year | 1 km buffer mean trend slope. |
 | slope_buffer_5km | float | scaled/year | 5 km buffer mean trend slope. |
 | retention_index_1km | float | scaled/year | Inside minus 1 km buffer slope. |
 | retention_index_5km | float | scaled/year | Inside minus 5 km buffer slope. |
-| risk_score | float | - | Mean z-score of inside slope and retention indices. |
-| rank_slope_inside | int | - | Rank by slope_inside (1=largest brightening). |
-| rank_retention_1km | int | - | Rank by retention_index_1km (1=largest inside-outside contrast). |
-| rank_retention_5km | int | - | Rank by retention_index_5km (1=largest inside-outside contrast). |
-| rank_risk_score | int | - | Rank by combined risk score (1=highest risk). |
+| inside_brightening | bool | - | Inside slope > 0. |
+| buffer_brightening_1km | bool | - | Buffer 1 km slope > 0. |
+| internalisation_1km | bool | - | Inside slope > 0 and inside slope > buffer 1 km slope. |
+| external_pressure_1km | bool | - | Buffer 1 km slope > 0 while inside slope <= 0. |
+| rank_inside_brightening | int | - | Rank by inside brightening (1=largest). |
+| rank_buffer_brightening_1km | int | - | Rank by buffer 1 km brightening. |
+| rank_internalisation_1km | int | - | Rank by internalisation contrast. |
+| rank_external_pressure_1km | int | - | Rank by external pressure. |

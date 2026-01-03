@@ -6,6 +6,7 @@ __pycache__/
 dist/
 build/
 *.zip
+analysis/state_runs/
 
 # Large binary data artefacts (kept locally; reproducible via scripts)
 data/raw/*.tif
@@ -30,6 +31,11 @@ data/raw/**/*.img
 data/raw/**/*.ppt
 data/raw/**/*.pptx
 data/raw/**/*.pdf
+data/raw/**/*.shp
+data/raw/**/*.dbf
+data/raw/**/*.shx
+data/raw/**/*.prj
+data/raw/**/*.cpg
 data/processed/*.tif
 data/processed/*.tiff
 data/processed/*.gpkg
@@ -46,6 +52,7 @@ data/processed/**/*.h5
 data/processed/**/*.hdf
 data/processed/**/*.grd
 data/processed/**/*.img
+data/processed/cache/
 artefacts/**/*.tif
 artefacts/**/*.tiff
 artefacts/**/*.gpkg
