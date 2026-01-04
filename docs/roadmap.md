@@ -97,7 +97,7 @@ _(Required before any Layer B acquisition.)_
 ### Milestone 0.6.x — Layer B (optional): nocturnal biodiversity signal module
 (Only proceed if Layer A is stable and Milestone 0.5.2 is complete.)
 - [x] **WP0.14 — Layer B go/no-go: focal taxa + negative controls + bias strategy (decision)**
-- [ ] **WP0.15 — Layer B data acquisition + provenance + quality filters**
+- [x] **WP0.15 — Layer B data acquisition + provenance + quality filters**
 - [ ] **WP0.16 — Layer B modelling + falsification checks + interpretation**
 
 ### Milestone 0.7.x — Manuscript pack + reproducibility release

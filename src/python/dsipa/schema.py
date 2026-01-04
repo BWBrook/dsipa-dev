@@ -32,6 +32,9 @@ EDGE_PROFILES_NATIONAL_CSV = (
 )
 PA_TRENDS_CSV = f"data/processed/pa_trends_v{SCHEMA_SLUG}.csv"
 PA_RISK_RANKINGS_CSV = f"data/processed/pa_risk_rankings_v{SCHEMA_SLUG}.csv"
+LAYERB_OCCURRENCE_SUMMARY_CSV = (
+    f"data/processed/layerB_occurrence_summary_v{SCHEMA_SLUG}.csv"
+)
 
 
 @dataclass(frozen=True)
@@ -418,6 +421,22 @@ PA_RISK_RANKINGS_SCHEMA = OutputSchema(
     ),
 )
 
+LAYERB_OCCURRENCE_SUMMARY_SCHEMA = OutputSchema(
+    key="layerB_occurrence_summary",
+    filename=LAYERB_OCCURRENCE_SUMMARY_CSV,
+    file_type="csv",
+    description="Layer B occurrence summary counts by taxon group and filter stage.",
+    columns=(
+        ColumnSpec("schema_version", "string", "-", "Schema version for Layer B summary."),
+        ColumnSpec("group", "string", "-", "Taxon group key (microbats, diurnal_birds, diurnal_reptiles)."),
+        ColumnSpec("label", "string", "-", "Human-readable taxon group label."),
+        ColumnSpec("raw_records", "int", "count", "Raw records downloaded from ALA."),
+        ColumnSpec("filtered_records", "int", "count", "Records after quality filters."),
+        ColumnSpec("dedup_records", "int", "count", "Records after spatial/day deduplication."),
+        ColumnSpec("unique_species", "int", "count", "Unique species retained after filters."),
+    ),
+)
+
 OUTPUT_SCHEMAS = (
     TRIAD_INDEX_SCHEMA,
     TRIAD_GEOMS_SCHEMA,
@@ -431,6 +450,7 @@ OUTPUT_SCHEMAS = (
     EDGE_PROFILES_NATIONAL_SCHEMA,
     PA_TRENDS_SCHEMA,
     PA_RISK_RANKINGS_SCHEMA,
+    LAYERB_OCCURRENCE_SUMMARY_SCHEMA,
 )
 
 OUTPUT_SCHEMAS_BY_KEY = {schema.key: schema for schema in OUTPUT_SCHEMAS}
@@ -447,3 +467,4 @@ PA_BUFFER_VALIDITY_COLUMNS = PA_BUFFER_VALIDITY_SCHEMA.column_names
 EDGE_PROFILES_NATIONAL_COLUMNS = EDGE_PROFILES_NATIONAL_SCHEMA.column_names
 PA_TRENDS_COLUMNS = PA_TRENDS_SCHEMA.column_names
 PA_RISK_RANKINGS_COLUMNS = PA_RISK_RANKINGS_SCHEMA.column_names
+LAYERB_OCCURRENCE_SUMMARY_COLUMNS = LAYERB_OCCURRENCE_SUMMARY_SCHEMA.column_names

@@ -61,6 +61,10 @@ data/processed/pa_edge_profiles_national_v*.csv
 data/processed/pa_buffer_validity_v*.csv
 data/processed/pa_trends_v*.csv
 data/processed/pa_risk_rankings_v*.csv
+
+# Layer B occurrence downloads and large processed tables
+data/raw/ala_occurrences/
+data/processed/layerB/
 artefacts/**/*.tif
 artefacts/**/*.tiff
 artefacts/**/*.gpkg

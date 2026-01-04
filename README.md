@@ -30,6 +30,8 @@ This is an “AI for Science” autonomy experiment:
 - `docs/interpretation_notes.md` — what key outputs mean; surprises; follow-ups.
 - `docs/log/` — chronological log of work phases.
 - `data/` — raw and processed datasets (with provenance recorded in `data/README.md`).
+- `data/raw/ala_occurrences/` — Layer B ALA downloads (ignored by git).
+- `data/processed/layerB/` — Layer B processed occurrence tables (ignored by git).
 - `src/` — reusable code.
 - `analysis/` — reports and pipeline orchestration.
 - `analysis/state_runs/` — per-state Layer A outputs for performance-friendly runs (merged later; ignored by git).
@@ -72,6 +74,14 @@ Run tests:
 ```bash
 pytest
 ```
+
+Layer B data acquisition (ALA occurrences):
+```bash
+ALA_DOWNLOAD_EMAIL=you@example.org ALA_DOWNLOAD_REASON="research" \\
+  uv run python -m dsipa.layerB_data --download-retries 5
+```
+
+Layer B outputs are large and ignored by git; see `analysis/reports/layerB_data_qc.md` for QC summaries.
 
 ---
 

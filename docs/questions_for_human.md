@@ -14,11 +14,17 @@ When an answer is provided, mark it inline as “Answered: …” and (if resolv
 
 ## Open questions (most recent at top)
 
-_(none)_
+None.
 
 ---
 
 ## Answered questions
+
+1. **Q-003 — ALA download service returning 500s for diurnal reptiles**
+   - Answered: proceed without diurnal reptiles for now.
+
+1. **Q-002 — ALA download credentials for WP0.15**
+   - Answered: use `barry.brook@utas.edu.au` with reason “research”.
 
 1. **Q-001 — Night-lights data access for WP0.6**
    - Answered: Switch to Zenodo DOI 10.5281/zenodo.17294744 (annual VIIRS COGs, no auth).

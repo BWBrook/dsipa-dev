@@ -162,8 +162,7 @@ Bats and lighting (Layer B candidates):
 
 ## 10) Current status (agent must keep updated)
 
-- Current phase: Milestone 0.5.3 complete — PA universe harmonised across geometry/radiance outputs.
+- Current phase: Milestone 0.6.x in progress — WP0.15 complete (ALA microbats + passerines downloaded/processed; diurnal reptiles deferred due to ALA service errors).
 - Recently completed: Milestone 0.5.3 (WP0.14b; JBT/EXT included, denominators reconciled, figures/reports refreshed).
 - Immediate next steps (should match the first unchecked WP in `docs/roadmap.md`):
-  1) Package PI gate bundle for Milestone 0.5.3 (updated reports/figures and checksum entries).
-  2) Proceed to WP0.15 (Layer B acquisition) only after PI sign-off.
+  1) Begin WP0.16: fit Layer B models with bias controls + falsification checks.

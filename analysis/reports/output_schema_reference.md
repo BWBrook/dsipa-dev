@@ -1,6 +1,6 @@
 # Output schema reference
 
-Generated: 2026-01-03 10:45 UTC
+Generated: 2026-01-04 01:32 UTC
 
 Schema version: 0.3.0
 
@@ -309,3 +309,20 @@ Ranked protected areas by brightening/retention categories.
 | rank_buffer_brightening_1km | int | - | Rank by buffer 1 km brightening. |
 | rank_internalisation_1km | int | - | Rank by internalisation contrast. |
 | rank_external_pressure_1km | int | - | Rank by external pressure. |
+
+## layerB_occurrence_summary
+
+File: `data/processed/layerB_occurrence_summary_v0_3_0.csv`
+Format: csv
+
+Layer B occurrence summary counts by taxon group and filter stage.
+
+| Column | Type | Units | Description |
+| --- | --- | --- | --- |
+| schema_version | string | - | Schema version for Layer B summary. |
+| group | string | - | Taxon group key (microbats, diurnal_birds, diurnal_reptiles). |
+| label | string | - | Human-readable taxon group label. |
+| raw_records | int | count | Raw records downloaded from ALA. |
+| filtered_records | int | count | Records after quality filters. |
+| dedup_records | int | count | Records after spatial/day deduplication. |
+| unique_species | int | count | Unique species retained after filters. |

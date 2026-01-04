@@ -1,0 +1,3 @@
+schema_version,group,label,raw_records,filtered_records,dedup_records,unique_species
+0.3.0,microbats,Microbats (Chiroptera excluding Pteropodidae),108695,107907,63716,59
+0.3.0,diurnal_birds,Diurnal birds proxy (Passeriformes),2845757,2834940,2378378,348

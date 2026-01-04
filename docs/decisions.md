@@ -30,6 +30,8 @@ Mark superseded items in **Status** (active / superseded / reverted) rather than
 | 2026-01-03 | DEC-022     | Do not track `artefacts/` in git; artefacts live locally and are archived to Zenodo for paper release | Artefacts are large and reproducible from pipeline; keeping them out of git avoids snapshot/size warnings while preserving reproducibility | active | docs/log/097_gate_0_5_2.md |
 | 2026-01-03 | DEC-023     | Do not track national-scale `data/processed` outputs in git; keep smoke-test fixtures only | National outputs are large and reproducible; store them in Zenodo and skip tests when absent to keep the repo lightweight | active | docs/log/098_repo_hygiene.md |
 | 2026-01-04 | DEC-024     | Include JBT and EXT in Layer A statewise runs so “national” matches all CAPAD terrestrial PAs | Avoid denominator mismatch (11133 vs 11112) and remove external-territory omissions in figures/reports | active | docs/log/099_pa_universe_harmonisation.md |
+| 2026-01-04 | DEC-025     | Layer B downloads stored under `data/raw/ala_occurrences` and processed outputs under `data/processed/layerB` (ignored); negative-control proxies use Passeriformes (birds) and Squamata (reptiles) as diurnal groups | Keeps large occurrence data out of git; operationalises DEC-009 with tractable taxon filters | active | docs/log/100_layerB_data_acquisition.md |
+| 2026-01-04 | DEC-026     | Proceed with Layer B using microbats + passerines only; defer diurnal reptiles control due to ALA download failures | ALA `occurrences/download` returns 500 for Squamata queries; proceed with primary control rather than block WP0.15; revisit if service recovers | active | docs/log/100_layerB_data_acquisition.md |
 
 ---
 
