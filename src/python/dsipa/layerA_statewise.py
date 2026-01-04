@@ -28,7 +28,7 @@ from dsipa.schema import (
 )
 from dsipa import layerA_national
 
-DEFAULT_STATES = ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]
+DEFAULT_STATES = ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA", "JBT", "EXT"]
 
 
 def _run_state(state: str, args: argparse.Namespace) -> None:

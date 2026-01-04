@@ -1,10 +1,10 @@
 # Risk rankings and retention quadrants
 
-Generated: 2026-01-03 10:41 UTC
+Generated: 2026-01-04 01:15 UTC
 
-Metric: mean radiance trends (Theil-Sen); buffer=land_unprotected; n=3857; min years=8
+Metric: mean radiance trends (Theil-Sen); buffer=land_unprotected; n=3858; min years=8
 Inside brightening threshold: slope > 0.0
-Quadrant counts (buffer vs inside slopes): Q1(+,+)=304, Q2(-,+)=55, Q3(-,-)=3308, Q4(+,-)=190
+Quadrant counts (buffer vs inside slopes): Q1(+,+)=305, Q2(-,+)=55, Q3(-,-)=3308, Q4(+,-)=190
 
 ## Top 20 by inside brightening (slope_inside > 0)
 

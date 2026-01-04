@@ -1,6 +1,6 @@
 # Layer A sanity dashboard
 
-Generated: 2026-01-03 10:39 UTC
+Generated: 2026-01-04 01:14 UTC
 
 Minimum valid pixels: 10
 Alternative threshold: 50
@@ -27,7 +27,7 @@ Fraction inside with >= 50 valid pixels: 0.197
 
 ## Floor/selection summary (inside)
 
-Inside rows with >= 10 valid pixels: n=53064
+Inside rows with >= 10 valid pixels: n=53112
 Fraction mean==0: 0.895
 Fraction median==0: 0.973
 Fraction frac_gt0==0: 0.895
@@ -37,20 +37,20 @@ Fraction with non-zero exposure by distance band + area quartile:
 
     distance_band area_quartile  n_pa  mean_gt0  median_gt0  frac_gt0_gt0  p95_gt0
     mid_100_300km            Q3   951     0.035       0.012         0.035    0.034
-    mid_100_300km            Q4  1306     0.090       0.003         0.090    0.027
+    mid_100_300km            Q4  1307     0.090       0.003         0.090    0.027
     peri_20_100km            Q3   297     0.169       0.107         0.169    0.168
     peri_20_100km            Q4   288     0.315       0.076         0.315    0.204
-remote_300km_plus            Q3   365     0.045       0.008         0.045    0.038
-remote_300km_plus            Q4  1152     0.088       0.003         0.088    0.022
+remote_300km_plus            Q3   367     0.044       0.008         0.044    0.038
+remote_300km_plus            Q4  1153     0.089       0.003         0.089    0.023
      urban_0_20km            Q3    35     0.824       0.686         0.824    0.819
      urban_0_20km            Q4    28     0.946       0.714         0.946    0.905
 
 ## Ring missingness
 
 ring_index
-0     80292
-1    116244
-2    128748
+0     80496
+1    116472
+2    129000
 
 Fraction of PA-years with complete ring coverage: 0.087
 

@@ -90,6 +90,10 @@ _(Required before any Layer B acquisition.)_
 - [x] **WP0.12c — Risk/retention semantics fix (category-safe rankings + robust quadrant plot)**
 - [x] **WP0.13c — Figure set revision under censoring/selection**
 
+### Milestone 0.5.3 — PA universe harmonisation (PI gate)
+_(Required before any Layer B acquisition.)_
+- [x] **WP0.14b — Harmonise PA universe across geometry/radiance outputs (JBT/EXT decision + rerun/merge + regenerate Layer A figures/reports)**
+
 ### Milestone 0.6.x — Layer B (optional): nocturnal biodiversity signal module
 (Only proceed if Layer A is stable and Milestone 0.5.2 is complete.)
 - [x] **WP0.14 — Layer B go/no-go: focal taxa + negative controls + bias strategy (decision)**

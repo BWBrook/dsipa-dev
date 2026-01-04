@@ -54,6 +54,7 @@ Every key figure/table/model must have an entry here.
   - warn — eligibility is 4,422/11,112 PAs (39.8%) and zero‑mass among eligible is ~86.9%, so selection dominates interpretation.
 - Surprises / concerns:
   - Coverage fraction for inside zones remains ~0.40 at the 10‑pixel threshold; zero‑mass remains high even among eligible PAs.
+  - PA universe now includes JBT/EXT; totals align across geometry/radiance tables (11,133).
 - Follow-up tasks:
   - [ ] Decide whether the map should explicitly denote “floor mass” in caption text.
 

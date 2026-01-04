@@ -29,6 +29,7 @@ Mark superseded items in **Status** (active / superseded / reverted) rather than
 | 2026-01-02 | DEC-021     | Simplify PA geometries by 500 m tolerance + use buffer resolution=1 (quadrant segments) for buffer/ring construction | 500 m raster resolution permits pixel-scale simplification; reduces buffer/ring compute time substantially | active | docs/log/096_layerA_performance.md |
 | 2026-01-03 | DEC-022     | Do not track `artefacts/` in git; artefacts live locally and are archived to Zenodo for paper release | Artefacts are large and reproducible from pipeline; keeping them out of git avoids snapshot/size warnings while preserving reproducibility | active | docs/log/097_gate_0_5_2.md |
 | 2026-01-03 | DEC-023     | Do not track national-scale `data/processed` outputs in git; keep smoke-test fixtures only | National outputs are large and reproducible; store them in Zenodo and skip tests when absent to keep the repo lightweight | active | docs/log/098_repo_hygiene.md |
+| 2026-01-04 | DEC-024     | Include JBT and EXT in Layer A statewise runs so “national” matches all CAPAD terrestrial PAs | Avoid denominator mismatch (11133 vs 11112) and remove external-territory omissions in figures/reports | active | docs/log/099_pa_universe_harmonisation.md |
 
 ---
 
