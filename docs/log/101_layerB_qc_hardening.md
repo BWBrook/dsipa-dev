@@ -39,3 +39,6 @@ Date: 2026-01-04
 - Added `--allow-dirty` enforcement to Layer B artefact generation scripts to prevent accidental dirty manifests.
 - Added `--artefact-only` flags to WP0.15 and WP0.15b scripts to enable clean-manifest rebuilds without reprocessing.
 - Built sdist + wheel via `uv run python -m build`.
+- PI review (2026-01-05): WP0.15b accepted; GO for WP0.16 under provider‑matched primary (dr368) with multi‑provider sensitivity only.
+- Regenerated WP0.15 + WP0.15b artefacts on clean HEAD (`dirty=false`, commit matches).
+- Updated PI review ZIP (post‑GO edits): `analysis/pi_review_wp0_15b_20260105.zip`.

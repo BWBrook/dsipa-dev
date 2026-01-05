@@ -98,7 +98,7 @@ _(Required before any Layer B acquisition.)_
 (Only proceed if Layer A is stable and Milestone 0.5.2 is complete.)
 - [x] **WP0.14 — Layer B go/no-go: focal taxa + negative controls + bias strategy (decision)**
 - [x] **WP0.15 — Layer B data acquisition + provenance + quality filters**
-- [ ] **WP0.15b — Layer B legality + QC hardening + scope/exposure preflight**
+- [x] **WP0.15b — Layer B legality + QC hardening + scope/exposure preflight**
 - [ ] **WP0.16 — Layer B modelling + falsification checks + interpretation**
 
 ### Milestone 0.7.x — Manuscript pack + reproducibility release
@@ -596,27 +596,37 @@ Stop condition:
 
 ### WP0.16 — Layer B modelling + falsification checks + interpretation
 Outcome:
-Layer B models are fit and interpreted conservatively, with explicit negative-control and falsification checks.
+Layer B models are fit and interpreted conservatively under a provider‑matched primary design, with explicit negative-control and falsification checks.
 
 Scope:
 - In:
   - fit bias-aware models linking ALAN metrics to relative occurrence signals,
-  - run negative controls,
-  - run sensitivity analyses.
+  - primary analysis is provider‑matched (NSW BioNet dr368) for microbats and passerines,
+  - use a two‑part ALAN representation (any_light + intensity conditional on >0),
+  - spatial blocking (default 50 km) for evaluation,
+  - execute falsification (ALAN shuffle within spatial blocks or bioregions),
+  - run sensitivity analyses (full multi‑provider dataset clearly labelled).
 - Out:
   - no overclaiming; result can be “no defensible signal” and still be success.
 
 Acceptance criteria:
-- A modelling report exists that includes:
-  - focal taxa results,
-  - negative controls,
-  - sensitivity analyses,
-  - an explicit interpretation paragraph stating what can/cannot be concluded.
-- Figures/tables (if any) are added to `manuscript/figures/` and interpretation notes updated.
+- `analysis/reports/layerB_modelling_report.md` exists and includes:
+  - primary (dr368) results for microbats and provider‑matched passerines,
+  - explicit statement of modelling task (presence‑only case‑control / target‑group background) and rationale,
+  - spatial‑blocked evaluation details (block size, folds, metrics),
+  - effect summaries with uncertainty (not just p‑values),
+  - falsification results using the same pipeline,
+  - sensitivity run on the full multi‑provider dataset, clearly labelled,
+  - a blunt “what we can/can’t conclude” paragraph.
+- At least one paper‑grade figure in `manuscript/figures/` showing a falsifiable result
+  (e.g., effect size + uncertainty for microbats vs passerines under dr368, plus shuffled‑null comparison).
+- A small model‑input summary CSV exists in `data/processed/` documenting:
+  n, years, scope strata, providers included, and ALAN zero‑mass for the modelled subset.
 
 Artefact evidence:
-- `analysis/reports/layerB_modelling_report.*`
-- `manuscript/figures/` contains any Layer B figures (if used)
+- `analysis/reports/layerB_modelling_report.md`
+- `manuscript/figures/` contains the falsifiable Layer B figure(s)
+- `data/processed/layerB_model_input_summary_v*.csv`
 - Interpretation notes include Layer B entry(ies)
 
 Stop condition:

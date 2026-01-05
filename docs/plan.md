@@ -162,7 +162,7 @@ Bats and lighting (Layer B candidates):
 
 ## 10) Current status (agent must keep updated)
 
-- Current phase: Milestone 0.6.x in progress — WP0.15b underway (licensing ledger + extended QC + scope/exposure preflight).
-- Recently completed: WP0.15 (ALA microbats + passerines downloaded/processed; diurnal reptiles deferred due to ALA service errors).
+- Current phase: Milestone 0.6.x in progress — WP0.16 modelling ready under provider‑matched primary design (dr368).
+- Recently completed: WP0.15b (licensing ledger + extended QC + scope/exposure preflight; clean manifests).
 - Immediate next steps (should match the first unchecked WP in `docs/roadmap.md`):
-  1) Complete WP0.15b hardening reports + ledger; regenerate clean artefacts; prepare PI review ZIP.
+  1) Begin WP0.16 modelling with provider‑matched microbats vs passerines, two‑part ALAN covariates, spatial blocking, and falsification.

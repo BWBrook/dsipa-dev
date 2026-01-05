@@ -1,9 +1,9 @@
 # Layer B go/no-go decision (WP0.14)
 
-Generated: 2026-01-04 11:05 UTC
-Decision date: 2026-01-04
-Status: conditional-go (WP0.15b hardening required)
-Config version: 0.2.0
+Generated: 2026-01-05 00:10 UTC
+Decision date: 2026-01-05
+Status: GO for WP0.16 (provider-matched primary; multi-provider sensitivity only)
+Config version: 0.3.0
 
 ## Scope
 - Spatial: Australia; occurrences inside terrestrial protected areas and within 10 km buffers (assigned to nearest PA).
@@ -66,3 +66,4 @@ Config version: 0.2.0
 - Proceed to WP0.15 only if criteria are met; otherwise stop at descriptive summaries without causal language.
 - Layer B is optional and contingent on negative-control results.
 - If provider dominance is extreme, treat analysis as provider-/region-bounded case study.
+- Primary inference uses provider-matched dr368 subset; full multi-provider run is sensitivity only.
