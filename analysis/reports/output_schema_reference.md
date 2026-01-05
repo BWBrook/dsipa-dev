@@ -1,6 +1,6 @@
 # Output schema reference
 
-Generated: 2026-01-04 10:51 UTC
+Generated: 2026-01-05 06:03 UTC
 
 Schema version: 0.3.0
 
@@ -348,3 +348,26 @@ Layer B ALA license/provenance ledger joined to processed record counts.
 | download_records | int | count | Records in original ALA download. |
 | processed_records | int | count | Records retained after filters/dedup. |
 | processed_share | float | fraction | Share of processed records for group. |
+
+## layerB_model_input_summary
+
+File: `data/processed/layerB_model_input_summary_v0_3_0.csv`
+Format: csv
+
+Layer B model input summary for provider-matched and sensitivity runs.
+
+| Column | Type | Units | Description |
+| --- | --- | --- | --- |
+| schema_version | string | - | Schema version for Layer B model input summary. |
+| run | string | - | Run label (primary_dr368 or sensitivity_all). |
+| group | string | - | Taxon group label (microbats or diurnal_birds). |
+| n_records | int | count | Number of records in the model subset. |
+| providers | string | - | Provider UID(s) included in the subset. |
+| years_min | int | year | Earliest year in the subset. |
+| years_max | int | year | Latest year in the subset. |
+| inside_fraction | float | fraction | Share of records inside protected areas. |
+| within_fraction | float | fraction | Share of records within buffer but outside. |
+| zero_fraction | float | fraction | Share of records with ALAN = 0. |
+| block_km | float | km | Spatial block size (km). |
+| buffer_km | float | km | Buffer distance used for scope (km). |
+| sample_rate | float | fraction | Random subsample rate applied to sensitivity runs. |

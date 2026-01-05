@@ -99,7 +99,7 @@ _(Required before any Layer B acquisition.)_
 - [x] **WP0.14 — Layer B go/no-go: focal taxa + negative controls + bias strategy (decision)**
 - [x] **WP0.15 — Layer B data acquisition + provenance + quality filters**
 - [x] **WP0.15b — Layer B legality + QC hardening + scope/exposure preflight**
-- [ ] **WP0.16 — Layer B modelling + falsification checks + interpretation**
+- [x] **WP0.16 — Layer B modelling + falsification checks + interpretation**
 
 ### Milestone 0.7.x — Manuscript pack + reproducibility release
 - [ ] **WP0.17 — Manuscript draft skeleton (Intro/Methods/Results/Limitations) with linked artefacts**

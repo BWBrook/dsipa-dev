@@ -35,6 +35,7 @@ Mark superseded items in **Status** (active / superseded / reverted) rather than
 | 2026-01-04 | DEC-027     | Treat ALA occurrence downloads as mixed-provider licences; maintain a licence/provenance ledger and avoid blanket “CC-BY” claims | `citation.csv` includes CC BY‑NC and provider-specific conditions; publication requires explicit attribution | active | docs/log/101_layerB_qc_hardening.md |
 | 2026-01-04 | DEC-028     | Primary Layer B analysis will be provider‑matched (NSW BioNet dr368) for microbats vs passerines; full multi‑provider dataset reserved for sensitivity | Microbats are ~89% NSW BioNet; provider-matched control is needed for interpretable comparisons and supports a NSW‑bounded case study | active | docs/log/101_layerB_qc_hardening.md |
 | 2026-01-05 | DEC-029     | WP0.16 modelling constraints: two‑part ALAN covariates, spatial blocking (50 km default), and explicit falsification via ALAN shuffles | Zero‑inflated ALAN exposure and sampling bias require two‑part predictors and out‑of‑block evaluation; falsification guards against spurious effects | active | docs/log/101_layerB_qc_hardening.md |
+| 2026-01-05 | DEC-030     | WP0.16 sensitivity run subsamples passerines at 10% (`--sensitivity-sample-rate 0.1`) for runtime feasibility; rerun full sensitivity when compute permits | Full multi‑provider scan exceeded practical runtime; subsampling keeps sensitivity descriptive while primary inference remains provider‑matched | active | docs/log/102_layerB_modelling.md |
 
 ---
 

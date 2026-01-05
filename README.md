@@ -88,6 +88,16 @@ Layer B QC hardening (licensing + scope/exposure checks):
 uv run python -m dsipa.layerB_qc --groups microbats,diurnal_birds
 ```
 
+Layer B modelling (WP0.16, provider-matched primary):
+```bash
+uv run python -m dsipa.layerB_model --provider dr368 --skip-artefact
+uv run python -m dsipa.layerB_model --artefact-only
+```
+If the multi-provider sensitivity run is too slow, you can subsample passerines:
+```bash
+uv run python -m dsipa.layerB_model --provider dr368 --sensitivity-sample-rate 0.1 --skip-artefact
+```
+
 ---
 
 ## Collaboration and review

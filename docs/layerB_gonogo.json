@@ -1,7 +1,7 @@
 {
   "version": "0.3.0",
   "decision_date_utc": "2026-01-05",
-  "status": "GO for WP0.16 (provider-matched primary; multi-provider sensitivity only)",
+  "status": "go",
   "scope": {
     "spatial": "Australia; occurrences inside terrestrial protected areas and within 10 km buffers (assigned to nearest PA).",
     "temporal_years": [

@@ -40,6 +40,7 @@ Note: Large derived outputs (national-scale tables and large GPKG files) are not
 | diurnal_birds_20260104T020701Z.zip | https://biocache.ala.org.au/ws/occurrences/download | ALA download 2026-01-04 | Mixed provider licenses (see ledger) | 0277111ae02416ccdd7b4975a22c05030da89ccca634a1345e86828ea3de7c10 | Raw ALA download for diurnal birds proxy (Passeriformes), 2013–2024, coordinate uncertainty ≤1 km. Stored under `data/raw/ala_occurrences/`. |
 | layerB_occurrence_summary_v0_3_0.csv | src/python/dsipa/layerB_data.py | Generated 2026-01-04; schema v0.3.0 | Derived (ALA occurrences) | ec7746a882675b4955b7d455cddae2f9851bde55d16900cf6b32979346f77474 | Summary counts for Layer B occurrence filters/deduplication. |
 | layerB_ala_license_ledger_v0_3_0.csv | src/python/dsipa/layerB_qc.py | Generated 2026-01-04; schema v0.3.0 | Mixed (ALA provider licenses) | 2257ef67bc0230143198825fe328e8e1791d63a127b9d4ad746198df24de8a33 | License/provenance ledger parsed from ALA `citation.csv`, joined to processed record counts. |
+| layerB_model_input_summary_v0_3_0.csv | src/python/dsipa/layerB_model.py | Generated 2026-01-05; schema v0.3.0 | Derived (ALA occurrences + nightlights) | ed7061ce32ec44a2896aa2c2db777fd0b2cb51c0ef3dac17bd175aa43afa19c2 | Model-input summary for WP0.16 provider-matched primary and multi-provider sensitivity subsets. |
 
 Notes:
 - Checksums default to sha256 unless otherwise stated. Nightlights GeoTIFF checksums are MD5 (32 hex characters), matching `src/python/dsipa/nightlights.py`.

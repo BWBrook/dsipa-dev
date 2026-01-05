@@ -85,6 +85,7 @@ def build_manifest(
             "shapely",
             "matplotlib",
             "pytest",
+            "scikit-learn",
         )
     }
     data_readme = root / "data" / "README.md"

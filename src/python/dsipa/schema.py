@@ -38,6 +38,9 @@ LAYERB_OCCURRENCE_SUMMARY_CSV = (
 LAYERB_ALA_LICENSE_LEDGER_CSV = (
     f"data/processed/layerB_ala_license_ledger_v{SCHEMA_SLUG}.csv"
 )
+LAYERB_MODEL_INPUT_SUMMARY_CSV = (
+    f"data/processed/layerB_model_input_summary_v{SCHEMA_SLUG}.csv"
+)
 
 
 @dataclass(frozen=True)
@@ -461,6 +464,28 @@ LAYERB_ALA_LICENSE_LEDGER_SCHEMA = OutputSchema(
     ),
 )
 
+LAYERB_MODEL_INPUT_SUMMARY_SCHEMA = OutputSchema(
+    key="layerB_model_input_summary",
+    filename=LAYERB_MODEL_INPUT_SUMMARY_CSV,
+    file_type="csv",
+    description="Layer B model input summary for provider-matched and sensitivity runs.",
+    columns=(
+        ColumnSpec("schema_version", "string", "-", "Schema version for Layer B model input summary."),
+        ColumnSpec("run", "string", "-", "Run label (primary_dr368 or sensitivity_all)."),
+        ColumnSpec("group", "string", "-", "Taxon group label (microbats or diurnal_birds)."),
+        ColumnSpec("n_records", "int", "count", "Number of records in the model subset."),
+        ColumnSpec("providers", "string", "-", "Provider UID(s) included in the subset."),
+        ColumnSpec("years_min", "int", "year", "Earliest year in the subset."),
+        ColumnSpec("years_max", "int", "year", "Latest year in the subset."),
+        ColumnSpec("inside_fraction", "float", "fraction", "Share of records inside protected areas."),
+        ColumnSpec("within_fraction", "float", "fraction", "Share of records within buffer but outside."),
+        ColumnSpec("zero_fraction", "float", "fraction", "Share of records with ALAN = 0."),
+        ColumnSpec("block_km", "float", "km", "Spatial block size (km)."),
+        ColumnSpec("buffer_km", "float", "km", "Buffer distance used for scope (km)."),
+        ColumnSpec("sample_rate", "float", "fraction", "Random subsample rate applied to sensitivity runs."),
+    ),
+)
+
 OUTPUT_SCHEMAS = (
     TRIAD_INDEX_SCHEMA,
     TRIAD_GEOMS_SCHEMA,
@@ -476,6 +501,7 @@ OUTPUT_SCHEMAS = (
     PA_RISK_RANKINGS_SCHEMA,
     LAYERB_OCCURRENCE_SUMMARY_SCHEMA,
     LAYERB_ALA_LICENSE_LEDGER_SCHEMA,
+    LAYERB_MODEL_INPUT_SUMMARY_SCHEMA,
 )
 
 OUTPUT_SCHEMAS_BY_KEY = {schema.key: schema for schema in OUTPUT_SCHEMAS}
@@ -493,3 +519,4 @@ EDGE_PROFILES_NATIONAL_COLUMNS = EDGE_PROFILES_NATIONAL_SCHEMA.column_names
 PA_TRENDS_COLUMNS = PA_TRENDS_SCHEMA.column_names
 PA_RISK_RANKINGS_COLUMNS = PA_RISK_RANKINGS_SCHEMA.column_names
 LAYERB_OCCURRENCE_SUMMARY_COLUMNS = LAYERB_OCCURRENCE_SUMMARY_SCHEMA.column_names
+LAYERB_MODEL_INPUT_SUMMARY_COLUMNS = LAYERB_MODEL_INPUT_SUMMARY_SCHEMA.column_names

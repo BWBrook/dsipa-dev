@@ -1,8 +1,8 @@
 # Layer B go/no-go decision (WP0.14)
 
-Generated: 2026-01-05 00:10 UTC
+Generated: 2026-01-05 06:06 UTC
 Decision date: 2026-01-05
-Status: GO for WP0.16 (provider-matched primary; multi-provider sensitivity only)
+Status: go
 Config version: 0.3.0
 
 ## Scope

@@ -116,6 +116,24 @@ Every key figure/table/model must have an entry here.
 - Follow-up tasks:
   - [ ] Add confidence intervals for risk scores in later iterations.
 
+### FIG5_BIO_nocturnal_vs_control_effect_contrast
+
+- Artefact: `manuscript/figures/fig_layerB_alan_effects.png` (report: `analysis/reports/layerB_modelling_report.md`)
+- What it shows (plain language):
+  - Provider-matched (dr368) log-odds coefficients for ALAN exposure (any_light + log1p_alan) in a microbats vs passerines case-control model.
+  - Falsification via within-block ALAN shuffle yields near-zero coefficients and ~0.5 AUC.
+  - Sensitivity (multi-provider) shows similar sign patterns but is treated as descriptive only.
+- Relation to hypotheses:
+  - Consistent with H3 in the sense of a detectable signal for microbats vs diurnal controls under provider-matched design, but effect sizes are modest and not causal.
+- Sanity verdict (pass/warn/fail) and why:
+  - warn — AUC is low (~0.54 primary), effects are sensitive to sampling, and passerines are subsampled for sensitivity.
+- Surprises / concerns:
+  - log1p(ALAN) is negative while any_light is positive; could reflect confounding or floor effects rather than ecology.
+  - Sensitivity run uses a random subsample of passerines (runtime constraint), so “full multi-provider” remains to be rerun when resources permit.
+- Follow-up tasks:
+  - [ ] Re-run sensitivity with `--sensitivity-sample-rate 1.0` when compute permits.
+  - [ ] Check robustness to adding stratum or year as covariates.
+
 ### [RESULT-ID]
 
 - Artefact: `path/to/artefact`
@@ -154,7 +172,7 @@ Every key figure/table/model must have an entry here.
 
 When the results are coherent enough for manuscript drafting, write a short summary here:
 - Layer A story: National PA metrics show a large fraction of protected areas with very low (often zero) inside radiance, alongside a subset of PAs with consistently higher values near urban centres. Trend estimation (2013–2024) using mean radiance shows a non-zero tail of brightening PAs; median trends remain mostly zero. Inside mean radiance rises modestly over time without abrupt step changes.
-- Layer B: not attempted yet.
+- Layer B: provider-matched microbats vs passerines shows a weak ALAN signal (AUC ~0.54) with two-part covariates; shuffled ALAN collapses toward null. Sensitivity on multi-provider data is descriptive and currently uses subsampled passerines for runtime feasibility.
 - Limitations and mitigations:
   - Inside coverage is limited for small PAs; we use a minimum valid-pixel threshold and report missingness explicitly.
   - Ring profiles for outer bins are sparse; consider adaptive ring widths or minimum-area filters.
