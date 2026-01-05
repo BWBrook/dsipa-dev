@@ -1,9 +1,9 @@
 # Layer B go/no-go decision (WP0.14)
 
-Generated: 2026-01-02 00:56 UTC
-Decision date: 2026-01-02
-Status: conditional-go
-Config version: 0.1.0
+Generated: 2026-01-04 11:05 UTC
+Decision date: 2026-01-04
+Status: conditional-go (WP0.15b hardening required)
+Config version: 0.2.0
 
 ## Scope
 - Spatial: Australia; occurrences inside terrestrial protected areas and within 10 km buffers (assigned to nearest PA).
@@ -13,8 +13,9 @@ Config version: 0.1.0
 - >= 5,000 focal records after filtering within spatial scope
 - >= 15 focal species with >= 50 records each
 - >= 80% of focal records have valid ALAN covariates
-- >= 5,000 records for each negative control group after filtering
-- Bias controls (target-group background, spatial blocking) are feasible at national scale
+- >= 5,000 records for the primary negative control group after filtering
+- Provider-matched control subset is feasible (dominant providers overlap between focal/control)
+- Bias controls (target-group background, spatial blocking) are feasible at national or stated regional scale
 
 ## Focal taxa
 | Group | Rationale | Inclusions/exclusions | Expected response |
@@ -24,8 +25,8 @@ Config version: 0.1.0
 ## Negative controls
 | Group | Rationale | Expected response |
 | --- | --- | --- |
-| Diurnal birds (Aves; primarily Passeriformes) | High observer effort; expected to be neutral or positively associated with ALAN due to sampling bias. | Neutral/positive; if similar to focal taxa, interpret as bias. |
-| Diurnal reptiles (Squamata; diurnal subset) | Field-observation driven; provides non-nocturnal control. | Neutral/positive; strong negative would question ALAN-specific inference. |
+| Diurnal birds (Aves; Passeriformes; provider-matched to focal data where possible) | High observer effort; expected to be neutral or positively associated with ALAN due to sampling bias. Primary control will be provider-matched to dominant focal-data providers. | Neutral/positive; if similar to focal taxa after provider-matching, interpret as bias. |
+| Diurnal reptiles (Squamata; diurnal subset) | Field-observation driven; provides non-nocturnal control. Deferred due to ALA download failures (DEC-026). | Neutral/positive; strong negative would question ALAN-specific inference. |
 
 ## Bias-control strategy
 ### Filters
@@ -54,12 +55,14 @@ Config version: 0.1.0
 ### Falsification checks
 - Run identical models on negative controls
 - Shuffle ALAN values within bioregions
+- Provider-matched subset check (e.g., NSW BioNet-only)
 
 ## Planned data sources
-- Atlas of Living Australia (ALA) occurrence downloads (CC-BY)
+- Atlas of Living Australia (ALA) occurrence downloads (mixed provider licences; see ledger)
 - CAPAD 2024 protected areas (for spatial scope)
 - Zenodo VIIRS night-lights (Layer A rasters)
 
 ## Notes
 - Proceed to WP0.15 only if criteria are met; otherwise stop at descriptive summaries without causal language.
 - Layer B is optional and contingent on negative-control results.
+- If provider dominance is extreme, treat analysis as provider-/region-bounded case study.

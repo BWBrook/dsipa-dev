@@ -83,6 +83,11 @@ ALA_DOWNLOAD_EMAIL=you@example.org ALA_DOWNLOAD_REASON="research" \\
 
 Layer B outputs are large and ignored by git; see `analysis/reports/layerB_data_qc.md` for QC summaries.
 
+Layer B QC hardening (licensing + scope/exposure checks):
+```bash
+uv run python -m dsipa.layerB_qc --groups microbats,diurnal_birds
+```
+
 ---
 
 ## Collaboration and review

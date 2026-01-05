@@ -98,6 +98,7 @@ _(Required before any Layer B acquisition.)_
 (Only proceed if Layer A is stable and Milestone 0.5.2 is complete.)
 - [x] **WP0.14 — Layer B go/no-go: focal taxa + negative controls + bias strategy (decision)**
 - [x] **WP0.15 — Layer B data acquisition + provenance + quality filters**
+- [ ] **WP0.15b — Layer B legality + QC hardening + scope/exposure preflight**
 - [ ] **WP0.16 — Layer B modelling + falsification checks + interpretation**
 
 ### Milestone 0.7.x — Manuscript pack + reproducibility release
@@ -557,6 +558,39 @@ Artefact evidence:
 
 Stop condition:
 - Occurrence data are ready for bias-aware modelling.
+
+---
+
+### WP0.15b — Layer B legality + QC hardening + scope/exposure preflight
+Outcome:
+Layer B data are legally and diagnostically ready for modelling, with explicit licensing, bias, scope, and exposure QC.
+
+Scope:
+- In:
+  - Parse ALA `citation.csv` to build a license/provenance ledger tied to processed record counts.
+  - Expand QC beyond year/state: coordinate sanity, uncertainty distribution, provider concentration, spatial clustering, dedup loss.
+  - Quantify spatial scope membership (inside PA / within 10 km / outside).
+  - Attach ALAN exposure at occurrence locations and report missingness/zero-mass/quantiles by scope and taxon group.
+  - Regenerate artefacts with clean manifests (dirty=false, commit matches HEAD).
+- Out:
+  - no modelling yet.
+
+Acceptance criteria:
+- `analysis/reports/layerB_qc_extended.md` exists with coordinate, uncertainty, provider, clustering, and dedup diagnostics per group.
+- `analysis/reports/layerB_scope_coverage.md` exists with inside/buffer/outside counts + retained scope totals.
+- `analysis/reports/layerB_exposure_qc.md` exists with ALAN missingness + quantiles stratified by inside/buffer/outside.
+- License ledger exists:
+  - `data/processed/layerB_ala_license_ledger_v0_3_0.csv`
+  - `analysis/reports/layerB_ala_license_ledger.md`
+- `docs/layerB_gonogo.json` and `analysis/reports/layerB_gonogo.md` updated for mixed licences + revised control strategy.
+- WP0.15 artefacts regenerated with clean manifests (commit matches HEAD).
+
+Artefact evidence:
+- `artefacts/wp0_15b_layerB_qc/`
+- New QC reports + license ledger CSV.
+
+Stop condition:
+- Layer B data are defensibly documented (licenses + biases + exposure) and ready for modelling.
 
 ---
 

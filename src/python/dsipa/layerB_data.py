@@ -8,6 +8,7 @@ import json
 import os
 import re
 import shutil
+import subprocess
 import time
 import zipfile
 from dataclasses import dataclass
@@ -60,6 +61,10 @@ DEFAULT_FIELDS = [
     "dataResourceUid",
 ]
 
+CANDIDATE_DATA_FILES = ("data.csv",)
+MIN_DATA_BYTES = 1024
+MIN_DATA_ROWS = 2
+
 COLUMN_ALIASES = {
     "event date": "eventDate",
     "year": "year",
@@ -108,6 +113,26 @@ class DownloadResult:
 
 def _now_utc() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+
+
+def _git_dirty(root: Path) -> bool:
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(root), "status", "--porcelain"],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+    except FileNotFoundError:  # pragma: no cover
+        return False
+    return bool(result.stdout.strip())
+
+
+def _ensure_clean_tree(root: Path, allow_dirty: bool) -> None:
+    if allow_dirty:
+        return
+    if _git_dirty(root):
+        raise SystemExit("Working tree is dirty; commit or use --allow-dirty to proceed.")
 
 
 def _sha256(path: Path) -> str:
@@ -286,6 +311,7 @@ def download_occurrences(
             for chunk in response.iter_content(chunk_size=1024 * 1024):
                 if chunk:
                     handle.write(chunk)
+        _validate_download_zip(out_path)
         return DownloadResult(
             query=query,
             path=out_path,
@@ -300,6 +326,7 @@ def download_occurrences(
         download_url = payload.get("downloadUrl") or payload.get("url")
         if download_url:
             status, dl_type = _download_from_url(download_url, out_path)
+            _validate_download_zip(out_path)
             return DownloadResult(
                 query=query,
                 path=out_path,
@@ -314,6 +341,7 @@ def download_occurrences(
     match = re.search(r"https?://[^\s]+", text)
     if match:
         status, dl_type = _download_from_url(match.group(0), out_path)
+        _validate_download_zip(out_path)
         return DownloadResult(
             query=query,
             path=out_path,
@@ -331,12 +359,47 @@ def download_occurrences(
     )
 
 
+def _select_data_csv(zf: zipfile.ZipFile) -> str:
+    csv_infos = [info for info in zf.infolist() if info.filename.lower().endswith(".csv")]
+    if not csv_infos:
+        raise RuntimeError("No CSV files found in ALA download.")
+
+    for info in csv_infos:
+        if info.filename.lower() in CANDIDATE_DATA_FILES:
+            selected = info
+            break
+    else:
+        selected = max(csv_infos, key=lambda info: info.file_size)
+
+    if selected.file_size < MIN_DATA_BYTES:
+        raise RuntimeError(
+            f"ALA download appears to be a sentinel/empty file "
+            f"({selected.filename} size={selected.file_size} bytes)."
+        )
+
+    with zf.open(selected.filename) as handle:
+        rows = 0
+        for _ in handle:
+            rows += 1
+            if rows >= MIN_DATA_ROWS:
+                break
+        if rows < MIN_DATA_ROWS:
+            raise RuntimeError(
+                f"ALA download data file has too few rows ({rows}); "
+                "treating as failed download."
+            )
+
+    return selected.filename
+
+
+def _validate_download_zip(path: Path) -> None:
+    with zipfile.ZipFile(path) as zf:
+        _select_data_csv(zf)
+
+
 def iter_csv_chunks_from_zip(path: Path, chunksize: int = 100_000) -> Iterable[pd.DataFrame]:
     with zipfile.ZipFile(path) as zf:
-        candidates = [name for name in zf.namelist() if name.lower().endswith(".csv")]
-        if not candidates:
-            raise RuntimeError(f"No CSV found inside {path}")
-        name = candidates[0]
+        name = _select_data_csv(zf)
         with zf.open(name) as handle:
             reader = pd.read_csv(handle, dtype=str, chunksize=chunksize)
             for chunk in reader:
@@ -345,10 +408,11 @@ def iter_csv_chunks_from_zip(path: Path, chunksize: int = 100_000) -> Iterable[p
 
 def _is_valid_zip(path: Path) -> bool:
     try:
-        with zipfile.ZipFile(path) as zf:
-            zf.namelist()
+        _validate_download_zip(path)
         return True
     except zipfile.BadZipFile:
+        return False
+    except RuntimeError:
         return False
 
 
@@ -671,6 +735,16 @@ def build_parser() -> argparse.ArgumentParser:
         help="Skip writing the canonical artefact folder.",
     )
     parser.add_argument(
+        "--artefact-only",
+        action="store_true",
+        help="Only (re)write artefact/manifest from existing outputs.",
+    )
+    parser.add_argument(
+        "--allow-dirty",
+        action="store_true",
+        help="Allow artefact generation with a dirty git tree.",
+    )
+    parser.add_argument(
         "--download-retries",
         type=int,
         default=3,
@@ -687,6 +761,17 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     root = find_repo_root()
+    summary_path = root / LAYERB_OCCURRENCE_SUMMARY_CSV
+    report_path = root / "analysis" / "reports" / "layerB_data_qc.md"
+
+    if args.artefact_only:
+        if not summary_path.exists() or not report_path.exists():
+            raise SystemExit("Missing Layer B summary/QC report; run without --artefact-only.")
+        if not args.skip_artefact:
+            _ensure_clean_tree(root, args.allow_dirty)
+            write_artefact(summary_path=summary_path, report_path=report_path, root=root)
+        return 0
+
     raw_dir = root / args.raw_dir
     processed_dir = root / args.processed_dir
 
@@ -757,13 +842,12 @@ def main(argv: list[str] | None = None) -> int:
         )
         summary_rows.append(summary)
 
-    summary_path = root / LAYERB_OCCURRENCE_SUMMARY_CSV
     write_summary(summary_rows, summary_path)
 
-    report_path = root / "analysis" / "reports" / "layerB_data_qc.md"
     write_qc_report(summary_rows, report_path, queries, args.uncertainty_m)
 
     if not args.skip_artefact:
+        _ensure_clean_tree(root, args.allow_dirty)
         write_artefact(summary_path=summary_path, report_path=report_path, root=root)
 
     return 0

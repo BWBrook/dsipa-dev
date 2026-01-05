@@ -1,6 +1,6 @@
 # Output schema reference
 
-Generated: 2026-01-04 01:32 UTC
+Generated: 2026-01-04 10:51 UTC
 
 Schema version: 0.3.0
 
@@ -326,3 +326,25 @@ Layer B occurrence summary counts by taxon group and filter stage.
 | filtered_records | int | count | Records after quality filters. |
 | dedup_records | int | count | Records after spatial/day deduplication. |
 | unique_species | int | count | Unique species retained after filters. |
+
+## layerB_ala_license_ledger
+
+File: `data/processed/layerB_ala_license_ledger_v0_3_0.csv`
+Format: csv
+
+Layer B ALA license/provenance ledger joined to processed record counts.
+
+| Column | Type | Units | Description |
+| --- | --- | --- | --- |
+| schema_version | string | - | Schema version for Layer B license ledger. |
+| group | string | - | Taxon group key (microbats, diurnal_birds). |
+| label | string | - | Human-readable taxon group label. |
+| data_resource_uid | string | - | ALA data resource UID. |
+| provider_name | string | - | Provider/resource name. |
+| doi | string | - | DOI or citation identifier (if present). |
+| citation | string | - | Citation text from ALA. |
+| rights | string | - | Rights/license string from ALA. |
+| more_information | string | - | More information URL. |
+| download_records | int | count | Records in original ALA download. |
+| processed_records | int | count | Records retained after filters/dedup. |
+| processed_share | float | fraction | Share of processed records for group. |

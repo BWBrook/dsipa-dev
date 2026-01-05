@@ -35,6 +35,9 @@ PA_RISK_RANKINGS_CSV = f"data/processed/pa_risk_rankings_v{SCHEMA_SLUG}.csv"
 LAYERB_OCCURRENCE_SUMMARY_CSV = (
     f"data/processed/layerB_occurrence_summary_v{SCHEMA_SLUG}.csv"
 )
+LAYERB_ALA_LICENSE_LEDGER_CSV = (
+    f"data/processed/layerB_ala_license_ledger_v{SCHEMA_SLUG}.csv"
+)
 
 
 @dataclass(frozen=True)
@@ -437,6 +440,27 @@ LAYERB_OCCURRENCE_SUMMARY_SCHEMA = OutputSchema(
     ),
 )
 
+LAYERB_ALA_LICENSE_LEDGER_SCHEMA = OutputSchema(
+    key="layerB_ala_license_ledger",
+    filename=LAYERB_ALA_LICENSE_LEDGER_CSV,
+    file_type="csv",
+    description="Layer B ALA license/provenance ledger joined to processed record counts.",
+    columns=(
+        ColumnSpec("schema_version", "string", "-", "Schema version for Layer B license ledger."),
+        ColumnSpec("group", "string", "-", "Taxon group key (microbats, diurnal_birds)."),
+        ColumnSpec("label", "string", "-", "Human-readable taxon group label."),
+        ColumnSpec("data_resource_uid", "string", "-", "ALA data resource UID."),
+        ColumnSpec("provider_name", "string", "-", "Provider/resource name."),
+        ColumnSpec("doi", "string", "-", "DOI or citation identifier (if present)."),
+        ColumnSpec("citation", "string", "-", "Citation text from ALA."),
+        ColumnSpec("rights", "string", "-", "Rights/license string from ALA."),
+        ColumnSpec("more_information", "string", "-", "More information URL."),
+        ColumnSpec("download_records", "int", "count", "Records in original ALA download."),
+        ColumnSpec("processed_records", "int", "count", "Records retained after filters/dedup."),
+        ColumnSpec("processed_share", "float", "fraction", "Share of processed records for group."),
+    ),
+)
+
 OUTPUT_SCHEMAS = (
     TRIAD_INDEX_SCHEMA,
     TRIAD_GEOMS_SCHEMA,
@@ -451,6 +475,7 @@ OUTPUT_SCHEMAS = (
     PA_TRENDS_SCHEMA,
     PA_RISK_RANKINGS_SCHEMA,
     LAYERB_OCCURRENCE_SUMMARY_SCHEMA,
+    LAYERB_ALA_LICENSE_LEDGER_SCHEMA,
 )
 
 OUTPUT_SCHEMAS_BY_KEY = {schema.key: schema for schema in OUTPUT_SCHEMAS}

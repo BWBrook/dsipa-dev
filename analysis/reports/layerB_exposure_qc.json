@@ -1,0 +1,66 @@
+{
+  "microbats": {
+    "inside": {
+      "total": 15911,
+      "missing": 0,
+      "missing_fraction": 0.0,
+      "zero_fraction": 0.8900760480170951,
+      "p50": 0.0,
+      "p90": 10.0,
+      "p95": 20.0,
+      "p99": 60.0
+    },
+    "within_10km": {
+      "total": 40972,
+      "missing": 0,
+      "missing_fraction": 0.0,
+      "zero_fraction": 0.5851557160987991,
+      "p50": 0.0,
+      "p90": 80.0,
+      "p95": 150.0,
+      "p99": 370.0
+    },
+    "outside": {
+      "total": 6833,
+      "missing": 0,
+      "missing_fraction": 0.0,
+      "zero_fraction": 0.813990926386653,
+      "p50": 0.0,
+      "p90": 20.0,
+      "p95": 40.0,
+      "p99": 180.0
+    }
+  },
+  "diurnal_birds": {
+    "inside": {
+      "total": 437063,
+      "missing": 0,
+      "missing_fraction": 0.0,
+      "zero_fraction": 0.8386090792402926,
+      "p50": 0.0,
+      "p90": 10.0,
+      "p95": 20.0,
+      "p99": 100.0
+    },
+    "within_10km": {
+      "total": 1705739,
+      "missing": 0,
+      "missing_fraction": 0.0,
+      "zero_fraction": 0.4742724414462002,
+      "p50": 10.0,
+      "p90": 140.0,
+      "p95": 210.0,
+      "p99": 480.0
+    },
+    "outside": {
+      "total": 235576,
+      "missing": 0,
+      "missing_fraction": 0.0,
+      "zero_fraction": 0.7787210921316263,
+      "p50": 0.0,
+      "p90": 90.0,
+      "p95": 200.0,
+      "p99": 490.0
+    }
+  }
+}
