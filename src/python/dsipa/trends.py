@@ -289,13 +289,25 @@ def write_figure(trends: pd.DataFrame, fig_path: Path) -> None:
     ]["slope_inside"].dropna()
     nonzero = mean_slopes[mean_slopes != 0]
     zero_frac = (mean_slopes == 0).mean() if len(mean_slopes) else 0.0
+    clip_frac = 0.0
+    hist_range = None
+    if len(mean_slopes) > 10:
+        lo, hi = np.quantile(mean_slopes, [0.01, 0.99])
+        if lo < hi:
+            hist_range = (lo, hi)
+            clip_mask = (mean_slopes >= lo) & (mean_slopes <= hi)
+            clip_frac = 1.0 - clip_mask.mean()
 
     fig, axes = plt.subplots(1, 2, figsize=(10, 4))
-    axes[0].hist(mean_slopes, bins=50, color="#4C72B0", alpha=0.85)
+    axes[0].hist(mean_slopes, bins=50, range=hist_range, color="#4C72B0", alpha=0.85)
     axes[0].set_xlabel("Inside slope (mean)")
     axes[0].set_ylabel("PA count")
     axes[0].axvline(0, color="black", linewidth=0.8)
-    axes[0].set_title(f"Inside trends (mean; zero mass={zero_frac:.1%}, n={len(mean_slopes)})")
+    title = f"Inside trends (mean; zero mass={zero_frac:.1%}, n={len(mean_slopes)})"
+    if hist_range is not None:
+        title += f"\nclipped 1st–99th pct (clipped={clip_frac:.1%})"
+        axes[0].set_xlim(hist_range)
+    axes[0].set_title(title)
 
     axes[1].hist(nonzero, bins=50, color="#DD8452", alpha=0.85)
     axes[1].set_xlabel("Inside slope (mean, non-zero)")

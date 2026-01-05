@@ -1,6 +1,6 @@
 # Risk rankings and retention quadrants
 
-Generated: 2026-01-04 01:15 UTC
+Generated: 2026-01-05 08:39 UTC
 
 Metric: mean radiance trends (Theil-Sen); buffer=land_unprotected; n=3858; min years=8
 Inside brightening threshold: slope > 0.0

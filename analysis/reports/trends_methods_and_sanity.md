@@ -1,6 +1,6 @@
 # Trend methods and sanity report
 
-Generated: 2026-01-04 01:15 UTC
+Generated: 2026-01-05 07:56 UTC
 
 Method: Theil-Sen (median pairwise slopes); primary metric=mean; primary buffer=land_unprotected; min years=8
 Minimum valid pixels per year: 10

@@ -42,7 +42,8 @@ def plot_baseline_map(root: Path) -> Path:
     zero_mass = (merged.loc[eligible, "mean"] == 0).mean() if eligible.any() else 0.0
 
     vmax = merged.loc[eligible, "mean"].quantile(0.99) if eligible.any() else 1.0
-    fig, axes = plt.subplots(1, 2, figsize=(12, 6))
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    minx, miny, maxx, maxy = merged.total_bounds
 
     merged[~eligible].plot(ax=axes[0], color="#F0F0F0", linewidth=0)
     merged[eligible].plot(ax=axes[0], color="#2C7FB8", linewidth=0)
@@ -53,6 +54,9 @@ def plot_baseline_map(root: Path) -> Path:
         f"Eligibility (>= {MIN_VALID_PIXELS} px; eligible={n_eligible}, missing={n_missing})"
     )
     axes[0].set_axis_off()
+    axes[0].set_xlim(minx, maxx)
+    axes[0].set_ylim(miny, maxy)
+    axes[0].set_aspect("equal")
 
     merged[~eligible].plot(ax=axes[1], color="#D9D9D9", linewidth=0)
     merged[eligible].plot(
@@ -62,15 +66,18 @@ def plot_baseline_map(root: Path) -> Path:
         vmin=0,
         vmax=vmax,
         legend=True,
-        legend_kwds={"label": "Mean radiance (scaled)"},
+        legend_kwds={"label": "Mean radiance (scaled)", "shrink": 0.4, "aspect": 30, "pad": 0.01},
         linewidth=0,
     )
     axes[1].set_title(
         f"Inside mean radiance ({YEARS[-1]}; zero-mass={zero_mass:.1%}, n={n_eligible})"
     )
     axes[1].set_axis_off()
+    axes[1].set_xlim(minx, maxx)
+    axes[1].set_ylim(miny, maxy)
+    axes[1].set_aspect("equal")
 
-    fig.tight_layout()
+    fig.subplots_adjust(wspace=0.02, bottom=0.05, top=0.95)
 
     out_path = root / BASELINE_FIG
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -111,12 +118,15 @@ def plot_edge_profiles(root: Path) -> Path:
             ring_inner_km=("ring_inner_km", "first"),
             ring_outer_km=("ring_outer_km", "first"),
             median=("frac_gt0", "median"),
+            mean=("frac_gt0", "mean"),
             p25=("frac_gt0", lambda x: np.quantile(x, 0.25)),
             p75=("frac_gt0", lambda x: np.quantile(x, 0.75)),
+            nonzero_share=("frac_gt0", lambda x: (x > 0).mean()),
         )
         .reset_index()
     )
     mid = (agg["ring_inner_km"] + agg["ring_outer_km"]) / 2 if not agg.empty else []
+    median_zero = bool((agg["median"] == 0).all()) if not agg.empty else False
 
     fig, axes = plt.subplots(1, 2, figsize=(11, 4))
     axes[0].bar(ring_labels, ring_frac.values, color="#4C72B0", alpha=0.8)
@@ -126,13 +136,15 @@ def plot_edge_profiles(root: Path) -> Path:
     axes[0].set_title(f"Ring feasibility (n={n_total}; complete={n_complete})")
 
     if not agg.empty:
-        axes[1].plot(mid, agg["median"], marker="o", color="#DD8452")
-        axes[1].fill_between(mid, agg["p25"], agg["p75"], color="#DD8452", alpha=0.2)
+        axes[1].plot(mid, agg["nonzero_share"], marker="o", color="#DD8452", label="Share > 0")
         axes[1].set_xlabel("Distance from boundary (km)")
-        axes[1].set_ylabel("frac_gt0")
+        axes[1].set_ylabel("Share of PAs with any light")
+        axes[1].set_ylim(0, 1)
+        median_note = "median frac_gt0=0" if median_zero else "median frac_gt0>0"
         axes[1].set_title(
-            f"Edge profile (frac_gt0; n={n_complete}; nonzero rows={frac_nonzero:.1%})"
+            f"Edge profile (share > 0; n={n_complete}; {median_note})"
         )
+        axes[1].legend(frameon=False, fontsize=8)
     else:
         axes[1].text(0.5, 0.5, "No complete rings", ha="center", va="center")
         axes[1].set_axis_off()

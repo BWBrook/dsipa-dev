@@ -21,3 +21,7 @@ Date: 2026-01-05
 - Updated schema reference, figure inventory, and Layer B go/no-go report.
 - Tests pass (`uv run pytest`); built sdist + wheel (`uv run python -m build`).
 - Roadmap updated to mark WP0.16 complete; canonical artefact will be rebuilt on clean HEAD.
+
+## Update (2026-01-05, later)
+- Re-ran sensitivity at full scale (`--sensitivity-sample-rate 1.0`), updating the modelling report, figure, and model input summary.
+- Updated interpretation notes and data checksum to reflect the full sensitivity run.

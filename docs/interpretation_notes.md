@@ -126,13 +126,56 @@ Every key figure/table/model must have an entry here.
 - Relation to hypotheses:
   - Consistent with H3 in the sense of a detectable signal for microbats vs diurnal controls under provider-matched design, but effect sizes are modest and not causal.
 - Sanity verdict (pass/warn/fail) and why:
-  - warn — AUC is low (~0.54 primary), effects are sensitive to sampling, and passerines are subsampled for sensitivity.
+  - warn — AUC is low (~0.54 primary); sensitivity AUC is modest (~0.56) and effects remain small.
 - Surprises / concerns:
   - log1p(ALAN) is negative while any_light is positive; could reflect confounding or floor effects rather than ecology.
-  - Sensitivity run uses a random subsample of passerines (runtime constraint), so “full multi-provider” remains to be rerun when resources permit.
 - Follow-up tasks:
-  - [ ] Re-run sensitivity with `--sensitivity-sample-rate 1.0` when compute permits.
   - [ ] Check robustness to adding stratum or year as covariates.
+
+### FIG6_BIO_exposure_summary
+
+- Artefact: `manuscript/figures/fig_layerB_exposure_summary.png`
+- What it shows (plain language):
+  - Zero‑mass and p95 ALAN exposure summaries at occurrence locations, stratified by inside/within/outside and by taxon group.
+  - Inside PAs are heavily zero‑inflated; within‑10 km buffers show higher p95 and lower zero‑mass.
+- Relation to hypotheses:
+  - Supports the two‑part ALAN representation (any_light + intensity) by showing a large zero mass and a non‑zero tail.
+- Sanity verdict (pass/warn/fail) and why:
+  - pass — patterns align with expectations from Layer A censoring and Layer B exposure QC.
+- Surprises / concerns:
+  - Outside‑buffer p95 values remain high for birds; likely reflects observation bias near settlement edges.
+- Follow-up tasks:
+  - [ ] Consider adding within‑scope only panel in manuscript if space allows.
+
+### FIG7_BIO_occurrence_counts_by_year_state
+
+- Artefact: `manuscript/figures/fig_layerB_occurrence_counts.png`
+- What it shows (plain language):
+  - Heatmaps of filtered + deduplicated occurrence counts by year and state for microbats and diurnal birds.
+  - Strong state concentration (NSW dominates both groups), with consistent year coverage 2013–2024.
+- Relation to hypotheses:
+  - Supports the provider‑matched design choice by making spatial/administrative concentration visible.
+- Sanity verdict (pass/warn/fail) and why:
+  - warn — extreme concentration in a few states implies that “national” inference is not defensible without bias modelling.
+- Surprises / concerns:
+  - Microbats have low counts outside NSW/QLD; provider composition likely drives patterns.
+- Follow-up tasks:
+  - [ ] Consider a provider/state‑matched sensitivity panel if space allows.
+
+### FIG8_BIO_occurrence_density_map
+
+- Artefact: `manuscript/figures/fig_layerB_occurrence_density.png`
+- What it shows (plain language):
+  - Spatial density of occurrence records (sampled for plotting) for microbats and diurnal birds.
+  - Clusters along the eastern seaboard and around urban regions dominate both groups.
+- Relation to hypotheses:
+  - Reinforces that occurrence data are spatially biased; supports conservative framing and spatial blocking.
+- Sanity verdict (pass/warn/fail) and why:
+  - pass — patterns align with known observer effort gradients.
+- Surprises / concerns:
+  - Northern/remote coverage remains sparse, limiting exposure variation.
+- Follow-up tasks:
+  - [ ] None (descriptive context figure).
 
 ### [RESULT-ID]
 
@@ -172,7 +215,7 @@ Every key figure/table/model must have an entry here.
 
 When the results are coherent enough for manuscript drafting, write a short summary here:
 - Layer A story: National PA metrics show a large fraction of protected areas with very low (often zero) inside radiance, alongside a subset of PAs with consistently higher values near urban centres. Trend estimation (2013–2024) using mean radiance shows a non-zero tail of brightening PAs; median trends remain mostly zero. Inside mean radiance rises modestly over time without abrupt step changes.
-- Layer B: provider-matched microbats vs passerines shows a weak ALAN signal (AUC ~0.54) with two-part covariates; shuffled ALAN collapses toward null. Sensitivity on multi-provider data is descriptive and currently uses subsampled passerines for runtime feasibility.
+- Layer B: provider-matched microbats vs passerines shows a weak ALAN signal (AUC ~0.54) with two-part covariates; shuffled ALAN collapses toward null. Sensitivity on multi-provider data is descriptive (AUC ~0.56) and does not change the primary inference.
 - Limitations and mitigations:
   - Inside coverage is limited for small PAs; we use a minimum valid-pixel threshold and report missingness explicitly.
   - Ring profiles for outer bins are sparse; consider adaptive ring widths or minimum-area filters.
