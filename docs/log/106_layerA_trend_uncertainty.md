@@ -24,3 +24,11 @@ Next:
 
 Tests:
 - `uv run pytest tests/python/test_trend_uncertainty.py`
+
+Packaging:
+- PI review ZIP created: `analysis/pi_review_wp0_19_20260106.zip` (no files >10 MB).
+- Cover letter: `docs/cover_letter_pi_gate_0_7_wp0_19.md`.
+
+QA:
+- Full tests: `uv run pytest`.
+- Build: `uv run python -m build --sdist --wheel`.
