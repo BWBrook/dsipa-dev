@@ -37,6 +37,7 @@ Mark superseded items in **Status** (active / superseded / reverted) rather than
 | 2026-01-05 | DEC-029     | WP0.16 modelling constraints: two‑part ALAN covariates, spatial blocking (50 km default), and explicit falsification via ALAN shuffles | Zero‑inflated ALAN exposure and sampling bias require two‑part predictors and out‑of‑block evaluation; falsification guards against spurious effects | active | docs/log/101_layerB_qc_hardening.md |
 | 2026-01-05 | DEC-030     | WP0.16 sensitivity run subsamples passerines at 10% (`--sensitivity-sample-rate 0.1`) for runtime feasibility; rerun full sensitivity when compute permits | Full multi‑provider scan exceeded practical runtime; subsampling keeps sensitivity descriptive while primary inference remains provider‑matched | superseded | docs/log/102_layerB_modelling.md |
 | 2026-01-05 | DEC-031     | WP0.16 sensitivity run executed at full scale (`--sensitivity-sample-rate 1.0`) after compute became available | Provides a complete multi‑provider sensitivity check while keeping provider‑matched primary inference unchanged | active | docs/log/102_layerB_modelling.md |
+| 2026-01-06 | DEC-032     | Layer A trend uncertainty quantified via IBRA7 region cluster bootstrap with moving-block time resampling (block_len=3, n_boot=300) | IBRA regions are ecologically coherent spatial units; clustered resampling mitigates spatial autocorrelation while block resampling handles temporal dependence at low cost | active | docs/log/106_layerA_trend_uncertainty.md |
 
 ---
 

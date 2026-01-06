@@ -116,6 +116,36 @@ Every key figure/table/model must have an entry here.
 - Follow-up tasks:
   - [ ] Add confidence intervals for risk scores in later iterations.
 
+### FIG9_TRENDS_uncertainty_forest
+
+- Artefact: `manuscript/figures/fig_layerA_trend_uncertainty_forest.png` (report: `analysis/reports/pa_trend_uncertainty.md`)
+- What it shows (plain language):
+  - IBRA-clustered bootstrap CIs for inside mean-radiance slopes (top-ranked PAs by median slope).
+  - Several top-ranked PAs retain clearly positive slopes, but mid-rank CIs overlap and some cross zero.
+- Relation to hypotheses:
+  - Supports H1 by showing a non-zero brightening subset with uncertainty bounds; warns against over-precise ranking.
+- Sanity verdict (pass/warn/fail) and why:
+  - warn — IBRA coverage excludes ~35 PAs (external territories/offshore), and many CIs are wide/overlapping.
+- Surprises / concerns:
+  - High-slope PAs cluster around urban-adjacent reserves; some wide CIs suggest sensitivity to small sample sizes.
+- Follow-up tasks:
+  - [ ] Sensitivity: test block_len ±1 year and compare CI width stability.
+
+### FIG10_TRENDS_dominance_heatmap
+
+- Artefact: `manuscript/figures/fig_layerA_trend_dominance.png` (data: `analysis/reports/pa_trend_dominance_matrix.csv`)
+- What it shows (plain language):
+  - Pairwise probability that slope_i > slope_j among top-ranked PAs, derived from bootstrap draws.
+  - Clear dominance for a small subset; mid-rank separation is weak (probabilities near 0.5).
+- Relation to hypotheses:
+  - Reinforces H1 but tempers “risk ranking” claims by showing overlap in trend uncertainty.
+- Sanity verdict (pass/warn/fail) and why:
+  - pass — probabilities are bounded [0,1] and show expected diagonal dominance.
+- Surprises / concerns:
+  - Some PAs with high median slopes show only modest dominance, indicating ranking instability.
+- Follow-up tasks:
+  - [ ] Consider adding a simplified dominance summary table (e.g., P(slope>0) + P(>median)). 
+
 ### FIG5_BIO_nocturnal_vs_control_effect_contrast
 
 - Artefact: `manuscript/figures/fig_layerB_alan_effects.png` (report: `analysis/reports/layerB_modelling_report.md`)

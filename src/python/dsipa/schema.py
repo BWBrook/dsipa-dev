@@ -32,6 +32,10 @@ EDGE_PROFILES_NATIONAL_CSV = (
 )
 PA_TRENDS_CSV = f"data/processed/pa_trends_v{SCHEMA_SLUG}.csv"
 PA_RISK_RANKINGS_CSV = f"data/processed/pa_risk_rankings_v{SCHEMA_SLUG}.csv"
+PA_IBRA_ASSIGNMENT_CSV = f"data/processed/pa_ibra_assignment_v{SCHEMA_SLUG}.csv"
+PA_TREND_BOOTSTRAP_SUMMARY_CSV = (
+    f"data/processed/pa_trend_bootstrap_summary_v{SCHEMA_SLUG}.csv"
+)
 LAYERB_OCCURRENCE_SUMMARY_CSV = (
     f"data/processed/layerB_occurrence_summary_v{SCHEMA_SLUG}.csv"
 )
@@ -427,6 +431,50 @@ PA_RISK_RANKINGS_SCHEMA = OutputSchema(
     ),
 )
 
+PA_IBRA_ASSIGNMENT_SCHEMA = OutputSchema(
+    key="pa_ibra_assignment",
+    filename=PA_IBRA_ASSIGNMENT_CSV,
+    file_type="csv",
+    description="Dominant IBRA region assignment for each protected area.",
+    columns=(
+        ColumnSpec("schema_version", "string", "-", "Schema version for IBRA assignments."),
+        ColumnSpec("pa_id", "string", "-", "CAPAD PA_ID."),
+        ColumnSpec("ibra_code", "string", "-", "IBRA region code (REG_CODE_7)."),
+        ColumnSpec("ibra_name", "string", "-", "IBRA region name."),
+        ColumnSpec("ibra_area_km2", "float", "km2", "PA area within dominant IBRA region."),
+        ColumnSpec("pa_area_km2", "float", "km2", "Total PA area (EPSG:3577)."),
+        ColumnSpec("ibra_share", "float", "fraction", "Share of PA area in dominant IBRA region."),
+        ColumnSpec("ibra_n", "int", "count", "Number of IBRA regions intersecting PA."),
+    ),
+)
+
+PA_TREND_BOOTSTRAP_SUMMARY_SCHEMA = OutputSchema(
+    key="pa_trend_bootstrap_summary",
+    filename=PA_TREND_BOOTSTRAP_SUMMARY_CSV,
+    file_type="csv",
+    description="Bootstrap uncertainty summaries for inside mean radiance trends.",
+    columns=(
+        ColumnSpec("schema_version", "string", "-", "Schema version for trend bootstrap outputs."),
+        ColumnSpec("pa_id", "string", "-", "CAPAD PA_ID."),
+        ColumnSpec("ibra_code", "string", "-", "Dominant IBRA region code."),
+        ColumnSpec("ibra_name", "string", "-", "Dominant IBRA region name."),
+        ColumnSpec("ibra_share", "float", "fraction", "Share of PA area in dominant IBRA region."),
+        ColumnSpec("n_years", "int", "count", "Number of valid years in the PA time series."),
+        ColumnSpec("slope_full", "float", "scaled/yr", "Theil-Sen slope on full time series."),
+        ColumnSpec("slope_median", "float", "scaled/yr", "Bootstrap median slope."),
+        ColumnSpec("slope_ci_low", "float", "scaled/yr", "Bootstrap 2.5th percentile slope."),
+        ColumnSpec("slope_ci_high", "float", "scaled/yr", "Bootstrap 97.5th percentile slope."),
+        ColumnSpec("prob_slope_gt0", "float", "fraction", "Bootstrap P(slope > 0)."),
+        ColumnSpec("n_boot", "int", "count", "Number of bootstrap draws contributing to PA."),
+        ColumnSpec("method", "string", "-", "Trend estimator (theil_sen)."),
+        ColumnSpec("bootstrap", "string", "-", "Bootstrap design label."),
+        ColumnSpec("block_len", "int", "years", "Moving-block length (years)."),
+        ColumnSpec("n_boot_target", "int", "count", "Requested bootstrap draws."),
+        ColumnSpec("min_valid_pixels", "int", "pixels", "Minimum valid pixels per year."),
+        ColumnSpec("min_valid_years", "int", "count", "Minimum valid years per PA."),
+    ),
+)
+
 LAYERB_OCCURRENCE_SUMMARY_SCHEMA = OutputSchema(
     key="layerB_occurrence_summary",
     filename=LAYERB_OCCURRENCE_SUMMARY_CSV,
@@ -499,6 +547,8 @@ OUTPUT_SCHEMAS = (
     EDGE_PROFILES_NATIONAL_SCHEMA,
     PA_TRENDS_SCHEMA,
     PA_RISK_RANKINGS_SCHEMA,
+    PA_IBRA_ASSIGNMENT_SCHEMA,
+    PA_TREND_BOOTSTRAP_SUMMARY_SCHEMA,
     LAYERB_OCCURRENCE_SUMMARY_SCHEMA,
     LAYERB_ALA_LICENSE_LEDGER_SCHEMA,
     LAYERB_MODEL_INPUT_SUMMARY_SCHEMA,
@@ -518,5 +568,7 @@ PA_BUFFER_VALIDITY_COLUMNS = PA_BUFFER_VALIDITY_SCHEMA.column_names
 EDGE_PROFILES_NATIONAL_COLUMNS = EDGE_PROFILES_NATIONAL_SCHEMA.column_names
 PA_TRENDS_COLUMNS = PA_TRENDS_SCHEMA.column_names
 PA_RISK_RANKINGS_COLUMNS = PA_RISK_RANKINGS_SCHEMA.column_names
+PA_IBRA_ASSIGNMENT_COLUMNS = PA_IBRA_ASSIGNMENT_SCHEMA.column_names
+PA_TREND_BOOTSTRAP_SUMMARY_COLUMNS = PA_TREND_BOOTSTRAP_SUMMARY_SCHEMA.column_names
 LAYERB_OCCURRENCE_SUMMARY_COLUMNS = LAYERB_OCCURRENCE_SUMMARY_SCHEMA.column_names
 LAYERB_MODEL_INPUT_SUMMARY_COLUMNS = LAYERB_MODEL_INPUT_SUMMARY_SCHEMA.column_names

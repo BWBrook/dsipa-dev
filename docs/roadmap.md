@@ -102,8 +102,11 @@ _(Required before any Layer B acquisition.)_
 - [x] **WP0.16 — Layer B modelling + falsification checks + interpretation**
 
 ### Milestone 0.7.x — Manuscript pack + reproducibility release
-- [ ] **WP0.17 — Manuscript draft skeleton (Intro/Methods/Results/Limitations) with linked artefacts**
-- [ ] **WP0.18 — Reproducibility audit + “one-command” full rerun + release artefacts**
+- [x] **WP0.17 — Manuscript draft skeleton (Intro/Methods/Results/Limitations) with linked artefacts**
+- [x] **WP0.18 — Reproducibility audit + “one-command” full rerun + release artefacts**
+
+### Milestone 0.7.1 — Layer A trend uncertainty (bootstrap)
+- [x] **WP0.19 — IBRA-clustered trend uncertainty for Layer A slopes (bootstrap CIs + dominance)**
 
 ---
 
@@ -690,6 +693,39 @@ Artefact evidence:
 
 Stop condition:
 - A fresh clone on the same platform can regenerate the key paper artefacts.
+
+---
+
+### WP0.19 — IBRA-clustered trend uncertainty for Layer A slopes (bootstrap CIs + dominance)
+Outcome:
+Quantify uncertainty in Layer A inside-PA slope estimates using an IBRA-clustered, moving-block bootstrap, and surface uncertainty as CIs and dominance probabilities.
+
+Scope:
+- In:
+  - assign each PA to a dominant IBRA region (by intersection area),
+  - compute bootstrap distributions of inside mean-radiance slopes using IBRA cluster resampling + moving-block time resampling,
+  - produce a summary table with CI bounds and exceedance probabilities,
+  - generate a forest plot and dominance heatmap for top slopes.
+- Out:
+  - no rerun of national radiance extraction,
+  - no change to trend estimator beyond uncertainty quantification.
+
+Acceptance criteria:
+- New outputs exist:
+  - `data/processed/pa_ibra_assignment_v*.csv`
+  - `data/processed/pa_trend_bootstrap_summary_v*.csv`
+  - `analysis/reports/pa_trend_uncertainty.md`
+  - `analysis/reports/pa_trend_dominance_matrix.csv`
+  - `manuscript/figures/fig_layerA_trend_uncertainty_forest.png`
+  - `manuscript/figures/fig_layerA_trend_dominance.png`
+- Interpretation notes updated for the new figures.
+- Decisions and logs updated to record IBRA clustering + block length choice.
+
+Artefact evidence:
+- `artefacts/wp0_19_layerA_trend_uncertainty/` with manifest and the outputs above.
+
+Stop condition:
+- CIs and dominance summaries are reproducible and consistent with the primary slope ranking story.
 
 ---
 

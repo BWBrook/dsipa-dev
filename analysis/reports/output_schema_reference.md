@@ -1,6 +1,6 @@
 # Output schema reference
 
-Generated: 2026-01-05 06:03 UTC
+Generated: 2026-01-06 03:26 UTC
 
 Schema version: 0.3.0
 
@@ -309,6 +309,52 @@ Ranked protected areas by brightening/retention categories.
 | rank_buffer_brightening_1km | int | - | Rank by buffer 1 km brightening. |
 | rank_internalisation_1km | int | - | Rank by internalisation contrast. |
 | rank_external_pressure_1km | int | - | Rank by external pressure. |
+
+## pa_ibra_assignment
+
+File: `data/processed/pa_ibra_assignment_v0_3_0.csv`
+Format: csv
+
+Dominant IBRA region assignment for each protected area.
+
+| Column | Type | Units | Description |
+| --- | --- | --- | --- |
+| schema_version | string | - | Schema version for IBRA assignments. |
+| pa_id | string | - | CAPAD PA_ID. |
+| ibra_code | string | - | IBRA region code (REG_CODE_7). |
+| ibra_name | string | - | IBRA region name. |
+| ibra_area_km2 | float | km2 | PA area within dominant IBRA region. |
+| pa_area_km2 | float | km2 | Total PA area (EPSG:3577). |
+| ibra_share | float | fraction | Share of PA area in dominant IBRA region. |
+| ibra_n | int | count | Number of IBRA regions intersecting PA. |
+
+## pa_trend_bootstrap_summary
+
+File: `data/processed/pa_trend_bootstrap_summary_v0_3_0.csv`
+Format: csv
+
+Bootstrap uncertainty summaries for inside mean radiance trends.
+
+| Column | Type | Units | Description |
+| --- | --- | --- | --- |
+| schema_version | string | - | Schema version for trend bootstrap outputs. |
+| pa_id | string | - | CAPAD PA_ID. |
+| ibra_code | string | - | Dominant IBRA region code. |
+| ibra_name | string | - | Dominant IBRA region name. |
+| ibra_share | float | fraction | Share of PA area in dominant IBRA region. |
+| n_years | int | count | Number of valid years in the PA time series. |
+| slope_full | float | scaled/yr | Theil-Sen slope on full time series. |
+| slope_median | float | scaled/yr | Bootstrap median slope. |
+| slope_ci_low | float | scaled/yr | Bootstrap 2.5th percentile slope. |
+| slope_ci_high | float | scaled/yr | Bootstrap 97.5th percentile slope. |
+| prob_slope_gt0 | float | fraction | Bootstrap P(slope > 0). |
+| n_boot | int | count | Number of bootstrap draws contributing to PA. |
+| method | string | - | Trend estimator (theil_sen). |
+| bootstrap | string | - | Bootstrap design label. |
+| block_len | int | years | Moving-block length (years). |
+| n_boot_target | int | count | Requested bootstrap draws. |
+| min_valid_pixels | int | pixels | Minimum valid pixels per year. |
+| min_valid_years | int | count | Minimum valid years per PA. |
 
 ## layerB_occurrence_summary
 
