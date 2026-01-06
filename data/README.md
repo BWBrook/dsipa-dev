@@ -46,6 +46,7 @@ Note: Large derived outputs (national-scale tables and large GPKG files) are not
 | layerB_occurrence_summary_v0_3_0.csv | src/python/dsipa/layerB_data.py | Generated 2026-01-04; schema v0.3.0 | Derived (ALA occurrences) | ec7746a882675b4955b7d455cddae2f9851bde55d16900cf6b32979346f77474 | Summary counts for Layer B occurrence filters/deduplication. |
 | layerB_ala_license_ledger_v0_3_0.csv | src/python/dsipa/layerB_qc.py | Generated 2026-01-04; schema v0.3.0 | Mixed (ALA provider licenses) | 2257ef67bc0230143198825fe328e8e1791d63a127b9d4ad746198df24de8a33 | License/provenance ledger parsed from ALA `citation.csv`, joined to processed record counts. |
 | layerB_model_input_summary_v0_3_0.csv | src/python/dsipa/layerB_model.py | Generated 2026-01-05; schema v0.3.0 | Derived (ALA occurrences + nightlights) | f42e9fea29dea812f54e4e9a02fafa3c7d6382e499d20e31b267b84be9346575 | Model-input summary for WP0.16 provider-matched primary and multi-provider sensitivity subsets. |
+| layerB_ibra_summary_v0_3_0.csv | src/python/dsipa/layerB_model.py | Generated 2026-01-06; schema v0.3.0 | Derived (ALA occurrences + IBRA + nightlights) | ed117aadd0c700c8dd0c7180714112fd212567f4b1ec56d0c8464f2e77d00a0d | IBRA-stratified counts and ALAN exposure summaries (inside/within_10 km). |
 
 Notes:
 - Checksums default to sha256 unless otherwise stated. Nightlights GeoTIFF checksums are MD5 (32 hex characters), matching `src/python/dsipa/nightlights.py`.

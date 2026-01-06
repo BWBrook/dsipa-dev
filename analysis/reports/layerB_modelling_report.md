@@ -1,6 +1,6 @@
 # Layer B modelling report (WP0.16)
 
-Generated: 2026-01-05 07:15 UTC
+Generated: 2026-01-06 09:29 UTC
 
 ## Primary design
 - Provider-matched: dr368
@@ -41,6 +41,17 @@ log1p_alan      -0.026923      0.021043    0.973436 -0.068168   0.014321
 run                         
 shuffled  0.505466  0.695243
 
+## Falsification (ALAN shuffled within IBRA × year)
+### Coefficients (log-odds)
+   feature  mean_log_odds  std_log_odds  odds_ratio  ci95_low  ci95_high
+ any_light       0.163136      0.062740    1.177197  0.040165   0.286107
+log1p_alan      -0.001463      0.008311    0.998538 -0.017754   0.014827
+
+### Cross-validated metrics
+                    auc  log_loss
+run                              
+ibra_shuffled  0.516707  0.694683
+
 ## Sensitivity (multi-provider)
 ### Coefficients (log-odds)
    feature  mean_log_odds  std_log_odds  odds_ratio  ci95_low  ci95_high
@@ -51,6 +62,23 @@ log1p_alan      -0.331665      0.093925    0.717728 -0.515758  -0.147571
                   auc  log_loss
 run                            
 sensitivity  0.556655  0.699828
+
+## IBRA heterogeneity (log1p(ALAN) coefficient)
+- Minimum records per class: 500
+- Regions included: 11
+
+ibra_code                 ibra_name  n_microbats  n_birds  mean_log_odds  ci95_low  ci95_high
+      BBS       Brigalow Belt South         4737     3220       0.055044  0.006521   0.103567
+      MDD Murray Darling Depression          660     1668      -0.483106 -1.034369   0.068157
+      NAN                  Nandewar         1988     1156      -0.129783 -0.278307   0.018742
+      NET    New England Tablelands         1111      888      -0.227740 -0.323783  -0.131696
+      NNC           NSW North Coast         6632     3742      -0.284475 -0.306625  -0.262325
+      NSS  NSW South Western Slopes          617     5105       0.127443 -0.202472   0.457359
+      RIV                  Riverina          786     2070       0.089905  0.001424   0.178386
+      SEC         South East Corner         3968     2042      -0.182668 -0.294066  -0.071270
+      SEH   South Eastern Highlands         1650     3570      -0.655957 -0.872295  -0.439620
+      SEQ  South Eastern Queensland         1988     2821      -0.206439 -0.341402  -0.071476
+      SYB              Sydney Basin        25232    21635      -0.405638 -0.472311  -0.338965
 
 ## Interpretation (what we can/can't conclude)
 - This is a provider-matched, spatially blocked presence-only case-control signal test (not a population trend).

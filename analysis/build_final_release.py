@@ -21,8 +21,11 @@ OUTPUTS = [
     "analysis/reports/layerB_scope_coverage.md",
     "analysis/reports/layerB_exposure_qc.md",
     "analysis/reports/layerB_gonogo.md",
+    "analysis/reports/layerB_ibra_summary.md",
+    "analysis/reports/layerB_ibra_effects.csv",
     "analysis/reports/output_schema_reference.md",
     "data/processed/layerB_model_input_summary_v0_3_0.csv",
+    "data/processed/layerB_ibra_summary_v0_3_0.csv",
     "data/processed/pa_ibra_assignment_v0_3_0.csv",
     "data/processed/pa_trend_bootstrap_summary_v0_3_0.csv",
     "manuscript/text/manuscript_draft.md",
@@ -36,6 +39,7 @@ OUTPUTS = [
     "manuscript/figures/fig_layerB_exposure_summary.png",
     "manuscript/figures/fig_layerB_occurrence_counts.png",
     "manuscript/figures/fig_layerB_occurrence_density.png",
+    "manuscript/figures/fig_layerB_ibra_intensity_forest.png",
 ]
 
 

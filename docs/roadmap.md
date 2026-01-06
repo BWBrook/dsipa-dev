@@ -108,6 +108,8 @@ _(Required before any Layer B acquisition.)_
 ### Milestone 0.7.1 — Layer A trend uncertainty (bootstrap)
 - [x] **WP0.19 — IBRA-clustered trend uncertainty for Layer A slopes (bootstrap CIs + dominance)**
 
+### Milestone 0.7.2 — Layer B IBRA robustness (PI lockdown)
+- [x] **WP0.20 — Layer B IBRA stratification + falsification + heterogeneity check**
 ---
 
 ## 4) Detailed WP specifications
@@ -726,6 +728,40 @@ Artefact evidence:
 
 Stop condition:
 - CIs and dominance summaries are reproducible and consistent with the primary slope ranking story.
+
+---
+
+### WP0.20 — Layer B IBRA stratification + falsification + heterogeneity check
+Outcome:
+Make Layer B robust to reviewer critique by adding IBRA‑stratified exposure summaries, IBRA‑based falsification, and a minimal heterogeneity check for the intensity term.
+
+Scope:
+- In:
+  - assign each Layer B occurrence record to an IBRA7 region,
+  - compute counts + ALAN exposure summaries by IBRA × group × stratum,
+  - add a falsification run with ALAN shuffled within IBRA × year,
+  - compute a descriptive IBRA‑level heterogeneity check for the log1p(ALAN) coefficient (regions with sufficient data only).
+- Out:
+  - no new taxon groups,
+  - no new model families beyond the existing two‑part logistic setup.
+
+Acceptance criteria:
+- New IBRA summary outputs exist:
+  - `data/processed/layerB_ibra_summary_v*.csv`
+  - `analysis/reports/layerB_ibra_summary.md`
+- Modelling report updated with:
+  - IBRA‑shuffle falsification metrics (AUC/log‑loss),
+  - a short heterogeneity section noting whether log1p(ALAN) sign is consistent across IBRA regions.
+- Effects figure updated to include “Shuffled within IBRA”.
+- New heterogeneity figure exists:
+  - `manuscript/figures/fig_layerB_ibra_intensity_forest.png`
+- Interpretation notes updated for new Layer B robustness outputs.
+
+Artefact evidence:
+- `artefacts/wp0_20_layerB_ibra_robustness/` containing the updated report, figures, and IBRA summary outputs with a manifest.
+
+Stop condition:
+- Layer B results are defensible as a conservative association test with IBRA‑level falsification and heterogeneity checks.
 
 ---
 

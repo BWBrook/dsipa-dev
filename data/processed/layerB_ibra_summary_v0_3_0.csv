@@ -1,0 +1,282 @@
+schema_version,ibra_code,ibra_name,group,stratum,n_records,zero_fraction,p50,p90,p95,p99
+0.3.0,ARC,Arnhem Coast,microbats,inside,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,ARC,Arnhem Coast,microbats,within_10km,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,AUA,Australian Alps,microbats,inside,339,1.0,0.0,0.0,0.0,0.0
+0.3.0,AUA,Australian Alps,microbats,within_10km,88,1.0,0.0,0.0,0.0,0.0
+0.3.0,AVW,Avon Wheatbelt,microbats,within_10km,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,BBN,Brigalow Belt North,microbats,inside,11,0.45454545454545453,10.0,10.0,10.0,10.0
+0.3.0,BBN,Brigalow Belt North,microbats,within_10km,21,0.47619047619047616,10.0,270.0,430.0,638.0000000000002
+0.3.0,BBS,Brigalow Belt South,microbats,inside,1410,1.0,0.0,0.0,0.0,0.0
+0.3.0,BBS,Brigalow Belt South,microbats,within_10km,3517,0.8612453795848735,0.0,10.0,20.0,98.40000000000146
+0.3.0,BEL,Ben Lomond,microbats,within_10km,2,1.0,0.0,0.0,0.0,0.0
+0.3.0,BHC,Broken Hill Complex,microbats,inside,15,1.0,0.0,0.0,0.0,0.0
+0.3.0,BRT,Burt Plain,microbats,inside,10,1.0,0.0,0.0,0.0,0.0
+0.3.0,BRT,Burt Plain,microbats,within_10km,4,1.0,0.0,0.0,0.0,0.0
+0.3.0,CEK,Central Kimberley,microbats,within_10km,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,CHC,Channel Country,microbats,inside,51,1.0,0.0,0.0,0.0,0.0
+0.3.0,CHC,Channel Country,microbats,within_10km,5,1.0,0.0,0.0,0.0,0.0
+0.3.0,CMC,Central Mackay Coast,microbats,inside,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,CMC,Central Mackay Coast,microbats,within_10km,10,0.8,0.0,20.999999999999996,25.49999999999999,29.1
+0.3.0,COO,Coolgardie,microbats,within_10km,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,COP,Cobar Peneplain,microbats,inside,50,1.0,0.0,0.0,0.0,0.0
+0.3.0,COP,Cobar Peneplain,microbats,within_10km,144,0.875,0.0,10.0,10.0,10.0
+0.3.0,CYP,Cape York Peninsula,microbats,inside,294,1.0,0.0,0.0,0.0,0.0
+0.3.0,CYP,Cape York Peninsula,microbats,within_10km,40,1.0,0.0,0.0,0.0,0.0
+0.3.0,DAB,Daly Basin,microbats,inside,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,DAB,Daly Basin,microbats,within_10km,3,1.0,0.0,0.0,0.0,0.0
+0.3.0,DAC,Darwin Coastal,microbats,inside,4,0.5,5.0,73.00000000000001,86.49999999999997,97.29999999999998
+0.3.0,DAC,Darwin Coastal,microbats,within_10km,3,0.6666666666666666,0.0,48.0,53.99999999999999,58.8
+0.3.0,DAL,Dampierland,microbats,inside,6,1.0,0.0,0.0,0.0,0.0
+0.3.0,DEU,Desert Uplands,microbats,inside,18,1.0,0.0,0.0,0.0,0.0
+0.3.0,DEU,Desert Uplands,microbats,within_10km,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,DRP,Darling Riverine Plains,microbats,inside,74,1.0,0.0,0.0,0.0,0.0
+0.3.0,DRP,Darling Riverine Plains,microbats,within_10km,13,1.0,0.0,0.0,0.0,0.0
+0.3.0,EIU,Einasleigh Uplands,microbats,inside,24,1.0,0.0,0.0,0.0,0.0
+0.3.0,EIU,Einasleigh Uplands,microbats,within_10km,11,1.0,0.0,0.0,0.0,0.0
+0.3.0,ESP,Esperance Plains,microbats,within_10km,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,EYB,Eyre Yorke Block,microbats,inside,22,0.6363636363636364,0.0,20.0,20.0,20.0
+0.3.0,EYB,Eyre Yorke Block,microbats,within_10km,202,0.22772277227722773,90.0,280.0,320.0,499.9000000000001
+0.3.0,FLB,Flinders Lofty Block,microbats,inside,63,0.7777777777777778,0.0,20.0,20.0,210.0
+0.3.0,FLB,Flinders Lofty Block,microbats,within_10km,639,0.458528951486698,10.0,210.0,282.00000000000045,860.0
+0.3.0,FUR,Furneaux,microbats,within_10km,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,GAW,Gawler,microbats,within_10km,9,0.8888888888888888,0.0,8.000000000000007,23.999999999999986,36.8
+0.3.0,GFU,Gulf Fall and Uplands,microbats,inside,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,GFU,Gulf Fall and Uplands,microbats,within_10km,7,1.0,0.0,0.0,0.0,0.0
+0.3.0,GUC,Gulf Coastal,microbats,inside,5,1.0,0.0,0.0,0.0,0.0
+0.3.0,GUP,Gulf Plains,microbats,inside,3,1.0,0.0,0.0,0.0,0.0
+0.3.0,GVD,Great Victoria Desert,microbats,inside,24,1.0,0.0,0.0,0.0,0.0
+0.3.0,GVD,Great Victoria Desert,microbats,within_10km,3,1.0,0.0,0.0,0.0,0.0
+0.3.0,JAF,Jarrah Forest,microbats,inside,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,JAF,Jarrah Forest,microbats,within_10km,7,0.8571428571428571,0.0,8.000000000000007,13.999999999999986,18.79999999999999
+0.3.0,KAN,Kanmantoo,microbats,inside,11,1.0,0.0,0.0,0.0,0.0
+0.3.0,KAN,Kanmantoo,microbats,within_10km,442,0.8552036199095022,0.0,10.0,30.0,60.0
+0.3.0,MAC,MacDonnell Ranges,microbats,inside,3,1.0,0.0,0.0,0.0,0.0
+0.3.0,MAC,MacDonnell Ranges,microbats,within_10km,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,MDD,Murray Darling Depression,microbats,inside,1057,0.9990539262062441,0.0,0.0,0.0,0.0
+0.3.0,MDD,Murray Darling Depression,microbats,within_10km,1442,0.8328710124826629,0.0,10.0,10.0,70.0
+0.3.0,MGD,Mitchell Grass Downs,microbats,inside,2,1.0,0.0,0.0,0.0,0.0
+0.3.0,MGD,Mitchell Grass Downs,microbats,within_10km,2,1.0,0.0,0.0,0.0,0.0
+0.3.0,MII,Mount Isa Inlier,microbats,inside,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,MUL,Mulga Lands,microbats,inside,131,1.0,0.0,0.0,0.0,0.0
+0.3.0,MUL,Mulga Lands,microbats,within_10km,42,1.0,0.0,0.0,0.0,0.0
+0.3.0,NAN,Nandewar,microbats,inside,74,1.0,0.0,0.0,0.0,0.0
+0.3.0,NAN,Nandewar,microbats,within_10km,1914,0.9984326018808778,0.0,0.0,0.0,0.0
+0.3.0,NCP,Naracoorte Coastal Plain,microbats,inside,22,1.0,0.0,0.0,0.0,0.0
+0.3.0,NCP,Naracoorte Coastal Plain,microbats,within_10km,60,0.9833333333333333,0.0,0.0,0.0,4.099999999999966
+0.3.0,NET,New England Tablelands,microbats,inside,474,1.0,0.0,0.0,0.0,0.0
+0.3.0,NET,New England Tablelands,microbats,within_10km,642,0.9548286604361371,0.0,0.0,0.0,50.0
+0.3.0,NNC,NSW North Coast,microbats,inside,1141,0.964943032427695,0.0,0.0,0.0,50.0
+0.3.0,NNC,NSW North Coast,microbats,within_10km,5541,0.8126691932864104,0.0,10.0,40.0,140.0
+0.3.0,NOK,Northern Kimberley,microbats,inside,52,1.0,0.0,0.0,0.0,0.0
+0.3.0,NOK,Northern Kimberley,microbats,within_10km,11,1.0,0.0,0.0,0.0,0.0
+0.3.0,NSS,NSW South Western Slopes,microbats,inside,79,1.0,0.0,0.0,0.0,0.0
+0.3.0,NSS,NSW South Western Slopes,microbats,within_10km,553,0.7848101265822784,0.0,48.000000000000114,140.0,264.8000000000002
+0.3.0,NUL,Nullarbor,microbats,within_10km,5,1.0,0.0,0.0,0.0,0.0
+0.3.0,OVP,Ord Victoria Plain,microbats,inside,2,1.0,0.0,0.0,0.0,0.0
+0.3.0,PCK,Pine Creek,microbats,inside,2,1.0,0.0,0.0,0.0,0.0
+0.3.0,PCK,Pine Creek,microbats,within_10km,2,1.0,0.0,0.0,0.0,0.0
+0.3.0,PSI,Pacific Subtropical Islands,microbats,within_10km,12,1.0,0.0,0.0,0.0,0.0
+0.3.0,RIV,Riverina,microbats,inside,805,0.9826086956521739,0.0,0.0,0.0,10.0
+0.3.0,RIV,Riverina,microbats,within_10km,623,0.6966292134831461,0.0,50.0,80.0,160.0
+0.3.0,SCP,South East Coastal Plain,microbats,inside,54,0.9629629629629629,0.0,0.0,0.0,33.49999999999994
+0.3.0,SCP,South East Coastal Plain,microbats,within_10km,303,0.5577557755775577,0.0,100.0,450.0,459.8000000000002
+0.3.0,SEC,South East Corner,microbats,inside,2510,1.0,0.0,0.0,0.0,0.0
+0.3.0,SEC,South East Corner,microbats,within_10km,1510,0.8682119205298013,0.0,10.0,10.0,90.0
+0.3.0,SEH,South Eastern Highlands,microbats,inside,515,0.9572815533980582,0.0,0.0,0.0,10.0
+0.3.0,SEH,South Eastern Highlands,microbats,within_10km,1445,0.7522491349480969,0.0,30.0,50.0,125.59999999999945
+0.3.0,SEQ,South Eastern Queensland,microbats,inside,342,0.9327485380116959,0.0,0.0,10.0,10.0
+0.3.0,SEQ,South Eastern Queensland,microbats,within_10km,1855,0.6970350404312669,0.0,30.0,70.0,194.60000000000036
+0.3.0,SSD,Simpson Strzelecki Dunefields,microbats,inside,10,1.0,0.0,0.0,0.0,0.0
+0.3.0,STP,Stony Plains,microbats,inside,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,STU,Sturt Plateau,microbats,inside,22,1.0,0.0,0.0,0.0,0.0
+0.3.0,SVP,Southern Volcanic Plain,microbats,inside,104,0.8173076923076923,0.0,10.0,157.49999999999915,220.0
+0.3.0,SVP,Southern Volcanic Plain,microbats,within_10km,209,0.6842105263157895,0.0,140.0,260.0,320.0
+0.3.0,SWA,Swan Coastal Plain,microbats,within_10km,6,0.0,335.0,440.0,440.0,440.0
+0.3.0,SYB,Sydney Basin,microbats,inside,6041,0.7358053302433372,0.0,20.0,50.0,80.0
+0.3.0,SYB,Sydney Basin,microbats,within_10km,19242,0.33203409209021933,10.0,130.0,230.0,430.0
+0.3.0,TNM,Tasmanian Northern Midlands,microbats,within_10km,1,0.0,60.0,60.0,60.0,60.0
+0.3.0,TNS,Tasmanian Northern Slopes,microbats,within_10km,10,0.9,0.0,0.9999999999999964,5.499999999999989,9.100000000000001
+0.3.0,TSE,Tasmanian South East,microbats,inside,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,TSE,Tasmanian South East,microbats,within_10km,8,0.25,20.0,150.0,150.0,150.0
+0.3.0,TSR,Tasmanian Southern Ranges,microbats,within_10km,4,1.0,0.0,0.0,0.0,0.0
+0.3.0,UNASSIGNED,Unassigned,microbats,inside,3,0.3333333333333333,10.0,10.0,10.0,10.0
+0.3.0,UNASSIGNED,Unassigned,microbats,within_10km,55,0.14545454545454545,20.0,162.0000000000001,270.9999999999998,510.4000000000002
+0.3.0,VIB,Victoria Bonaparte,microbats,inside,1,1.0,0.0,0.0,0.0,0.0
+0.3.0,VIB,Victoria Bonaparte,microbats,within_10km,2,0.5,5.0,9.0,9.5,9.9
+0.3.0,VIM,Victorian Midlands,microbats,inside,4,1.0,0.0,0.0,0.0,0.0
+0.3.0,VIM,Victorian Midlands,microbats,within_10km,221,0.7918552036199095,0.0,30.0,30.0,40.0
+0.3.0,WAR,Warren,microbats,within_10km,2,0.5,5.0,9.0,9.5,9.9
+0.3.0,WET,Wet Tropics,microbats,inside,19,1.0,0.0,0.0,0.0,0.0
+0.3.0,WET,Wet Tropics,microbats,within_10km,72,0.8888888888888888,0.0,8.999999999999986,50.0,102.90000000000006
+0.3.0,ARC,Arnhem Coast,diurnal_birds,inside,201,0.7810945273631841,0.0,20.0,30.0,40.0
+0.3.0,ARC,Arnhem Coast,diurnal_birds,within_10km,183,0.7595628415300546,0.0,80.0,80.0,123.60000000000014
+0.3.0,ARP,Arnhem Plateau,diurnal_birds,inside,1469,1.0,0.0,0.0,0.0,0.0
+0.3.0,ARP,Arnhem Plateau,diurnal_birds,within_10km,57,1.0,0.0,0.0,0.0,0.0
+0.3.0,AUA,Australian Alps,diurnal_birds,inside,6562,0.9916184090216398,0.0,0.0,0.0,0.0
+0.3.0,AUA,Australian Alps,diurnal_birds,within_10km,4983,0.9604655829821392,0.0,0.0,0.0,40.0
+0.3.0,AVW,Avon Wheatbelt,diurnal_birds,inside,665,1.0,0.0,0.0,0.0,0.0
+0.3.0,AVW,Avon Wheatbelt,diurnal_birds,within_10km,5773,0.9026502684912524,0.0,0.0,10.0,60.0
+0.3.0,BBN,Brigalow Belt North,diurnal_birds,inside,1547,0.9179056237879767,0.0,0.0,10.0,10.0
+0.3.0,BBN,Brigalow Belt North,diurnal_birds,within_10km,5519,0.4834209095850698,10.0,200.0,330.99999999999454,690.0
+0.3.0,BBS,Brigalow Belt South,diurnal_birds,inside,16379,0.9978631174064351,0.0,0.0,0.0,0.0
+0.3.0,BBS,Brigalow Belt South,diurnal_birds,within_10km,33144,0.7873219888969346,0.0,30.0,70.0,130.0
+0.3.0,BEL,Ben Lomond,diurnal_birds,inside,48,1.0,0.0,0.0,0.0,0.0
+0.3.0,BEL,Ben Lomond,diurnal_birds,within_10km,492,0.9207317073170732,0.0,0.0,10.0,10.0
+0.3.0,BHC,Broken Hill Complex,diurnal_birds,inside,216,1.0,0.0,0.0,0.0,0.0
+0.3.0,BHC,Broken Hill Complex,diurnal_birds,within_10km,99,1.0,0.0,0.0,0.0,0.0
+0.3.0,BRT,Burt Plain,diurnal_birds,inside,19,0.0,30.0,30.0,32.999999999999936,54.60000000000001
+0.3.0,BRT,Burt Plain,diurnal_birds,within_10km,130,1.0,0.0,0.0,0.0,0.0
+0.3.0,CAR,Carnarvon,diurnal_birds,inside,347,0.8069164265129684,0.0,10.0,20.0,30.0
+0.3.0,CAR,Carnarvon,diurnal_birds,within_10km,682,0.4281524926686217,10.0,80.0,110.0,150.0
+0.3.0,CEK,Central Kimberley,diurnal_birds,inside,113,1.0,0.0,0.0,0.0,0.0
+0.3.0,CER,Central Ranges,diurnal_birds,inside,21,0.5238095238095238,0.0,50.0,50.0,50.0
+0.3.0,CHC,Channel Country,diurnal_birds,inside,1383,1.0,0.0,0.0,0.0,0.0
+0.3.0,CHC,Channel Country,diurnal_birds,within_10km,508,0.9173228346456693,0.0,0.0,10.0,10.0
+0.3.0,CMC,Central Mackay Coast,diurnal_birds,inside,387,0.9612403100775194,0.0,0.0,0.0,10.0
+0.3.0,CMC,Central Mackay Coast,diurnal_birds,within_10km,2546,0.525923016496465,0.0,80.0,180.0,270.0
+0.3.0,COO,Coolgardie,diurnal_birds,inside,2626,0.9512566641279513,0.0,0.0,0.0,30.0
+0.3.0,COO,Coolgardie,diurnal_birds,within_10km,6338,0.8213947617544967,0.0,20.0,70.0,270.0
+0.3.0,COP,Cobar Peneplain,diurnal_birds,inside,1035,1.0,0.0,0.0,0.0,0.0
+0.3.0,COP,Cobar Peneplain,diurnal_birds,within_10km,1448,0.9212707182320442,0.0,0.0,20.0,20.0
+0.3.0,CYP,Cape York Peninsula,diurnal_birds,inside,1455,0.9979381443298969,0.0,0.0,0.0,0.0
+0.3.0,CYP,Cape York Peninsula,diurnal_birds,within_10km,3567,0.9044014578076816,0.0,0.0,20.0,60.0
+0.3.0,DAB,Daly Basin,diurnal_birds,inside,30,1.0,0.0,0.0,0.0,0.0
+0.3.0,DAB,Daly Basin,diurnal_birds,within_10km,39,0.6410256410256411,0.0,30.0,30.0,42.39999999999995
+0.3.0,DAC,Darwin Coastal,diurnal_birds,inside,1814,0.7105843439911798,0.0,30.0,30.0,60.0
+0.3.0,DAC,Darwin Coastal,diurnal_birds,within_10km,3137,0.07013069811922219,40.0,200.0,240.0,460.0
+0.3.0,DAL,Dampierland,diurnal_birds,inside,462,0.9935064935064936,0.0,0.0,0.0,0.0
+0.3.0,DAL,Dampierland,diurnal_birds,within_10km,603,0.3781094527363184,30.0,308.0000000000007,370.0,400.0
+0.3.0,DMR,Davenport Murchison Ranges,diurnal_birds,inside,43,1.0,0.0,0.0,0.0,0.0
+0.3.0,DMR,Davenport Murchison Ranges,diurnal_birds,within_10km,13,1.0,0.0,0.0,0.0,0.0
+0.3.0,DRP,Darling Riverine Plains,diurnal_birds,inside,4910,1.0,0.0,0.0,0.0,0.0
+0.3.0,DRP,Darling Riverine Plains,diurnal_birds,within_10km,11034,0.9912996193583469,0.0,0.0,0.0,0.0
+0.3.0,EIU,Einasleigh Uplands,diurnal_birds,inside,1582,0.9879898862199747,0.0,0.0,0.0,10.0
+0.3.0,EIU,Einasleigh Uplands,diurnal_birds,within_10km,1560,0.8416666666666667,0.0,10.0,60.0,144.10000000000082
+0.3.0,ESP,Esperance Plains,diurnal_birds,inside,491,0.9898167006109979,0.0,0.0,0.0,1.0000000000002274
+0.3.0,ESP,Esperance Plains,diurnal_birds,within_10km,1503,0.7924151696606786,0.0,10.0,10.0,69.80000000000018
+0.3.0,EYB,Eyre Yorke Block,diurnal_birds,inside,4497,0.9775405826106293,0.0,0.0,0.0,20.0
+0.3.0,EYB,Eyre Yorke Block,diurnal_birds,within_10km,16004,0.48325418645338664,10.0,140.0,200.0,350.0
+0.3.0,FIN,Finke,diurnal_birds,inside,90,1.0,0.0,0.0,0.0,0.0
+0.3.0,FIN,Finke,diurnal_birds,within_10km,1024,0.955078125,0.0,0.0,0.0,50.0
+0.3.0,FLB,Flinders Lofty Block,diurnal_birds,inside,12039,0.6778802226098514,0.0,20.0,30.0,60.0
+0.3.0,FLB,Flinders Lofty Block,diurnal_birds,within_10km,40300,0.6031761786600496,0.0,130.0,150.0,450.0
+0.3.0,FUR,Furneaux,diurnal_birds,inside,1483,0.9150370869858395,0.0,0.0,10.0,10.0
+0.3.0,FUR,Furneaux,diurnal_birds,within_10km,12099,0.9644598727167535,0.0,0.0,0.0,20.0
+0.3.0,GAS,Gascoyne,diurnal_birds,inside,168,1.0,0.0,0.0,0.0,0.0
+0.3.0,GAS,Gascoyne,diurnal_birds,within_10km,45,0.9555555555555556,0.0,0.0,0.0,10.0
+0.3.0,GAW,Gawler,diurnal_birds,inside,1308,1.0,0.0,0.0,0.0,0.0
+0.3.0,GAW,Gawler,diurnal_birds,within_10km,2213,0.7916854948034342,0.0,20.0,50.0,100.0
+0.3.0,GES,Geraldton Sandplains,diurnal_birds,inside,152,0.993421052631579,0.0,0.0,0.0,0.0
+0.3.0,GES,Geraldton Sandplains,diurnal_birds,within_10km,571,0.7495621716287215,0.0,40.0,55.0,402.99999999999955
+0.3.0,GFU,Gulf Fall and Uplands,diurnal_birds,inside,449,0.9933184855233853,0.0,0.0,0.0,0.0
+0.3.0,GFU,Gulf Fall and Uplands,diurnal_birds,within_10km,184,0.8695652173913043,0.0,10.0,10.0,10.0
+0.3.0,GID,Gibson Desert,diurnal_birds,inside,127,1.0,0.0,0.0,0.0,0.0
+0.3.0,GID,Gibson Desert,diurnal_birds,within_10km,25,1.0,0.0,0.0,0.0,0.0
+0.3.0,GSD,Great Sandy Desert,diurnal_birds,inside,1545,0.9948220064724919,0.0,0.0,0.0,0.0
+0.3.0,GSD,Great Sandy Desert,diurnal_birds,within_10km,115,0.2608695652173913,30.0,90.0,110.0,110.0
+0.3.0,GUC,Gulf Coastal,diurnal_birds,inside,70,1.0,0.0,0.0,0.0,0.0
+0.3.0,GUC,Gulf Coastal,diurnal_birds,within_10km,67,1.0,0.0,0.0,0.0,0.0
+0.3.0,GVD,Great Victoria Desert,diurnal_birds,inside,1054,0.8785578747628083,0.0,10.0,10.0,10.0
+0.3.0,GVD,Great Victoria Desert,diurnal_birds,within_10km,115,1.0,0.0,0.0,0.0,0.0
+0.3.0,HAM,Hampton,diurnal_birds,inside,1096,0.9954379562043796,0.0,0.0,0.0,0.0
+0.3.0,HAM,Hampton,diurnal_birds,within_10km,363,0.8953168044077136,0.0,10.0,10.0,20.0
+0.3.0,JAF,Jarrah Forest,diurnal_birds,inside,1539,0.543859649122807,0.0,20.0,20.0,30.0
+0.3.0,JAF,Jarrah Forest,diurnal_birds,within_10km,6881,0.7344862665310274,0.0,30.0,50.0,110.0
+0.3.0,KAN,Kanmantoo,diurnal_birds,inside,7312,0.9852297592997812,0.0,0.0,0.0,10.0
+0.3.0,KAN,Kanmantoo,diurnal_birds,within_10km,24502,0.8453187494898375,0.0,10.0,30.0,40.0
+0.3.0,KIN,King,diurnal_birds,inside,6236,0.9982360487491982,0.0,0.0,0.0,0.0
+0.3.0,KIN,King,diurnal_birds,within_10km,2637,0.9654910883579826,0.0,0.0,0.0,20.0
+0.3.0,LSD,Little Sandy Desert,diurnal_birds,inside,392,1.0,0.0,0.0,0.0,0.0
+0.3.0,LSD,Little Sandy Desert,diurnal_birds,within_10km,4,1.0,0.0,0.0,0.0,0.0
+0.3.0,MAC,MacDonnell Ranges,diurnal_birds,inside,1255,0.7362549800796813,0.0,10.0,10.0,20.0
+0.3.0,MAC,MacDonnell Ranges,diurnal_birds,within_10km,1036,0.4372586872586873,10.0,250.0,330.0,746.5000000000009
+0.3.0,MAL,Mallee,diurnal_birds,inside,958,1.0,0.0,0.0,0.0,0.0
+0.3.0,MAL,Mallee,diurnal_birds,within_10km,563,0.9484902309058615,0.0,0.0,8.999999999999773,10.0
+0.3.0,MDD,Murray Darling Depression,diurnal_birds,inside,47592,0.9962178517397882,0.0,0.0,0.0,0.0
+0.3.0,MDD,Murray Darling Depression,diurnal_birds,within_10km,37081,0.8692861573312478,0.0,10.0,20.0,110.0
+0.3.0,MGD,Mitchell Grass Downs,diurnal_birds,inside,503,1.0,0.0,0.0,0.0,0.0
+0.3.0,MGD,Mitchell Grass Downs,diurnal_birds,within_10km,328,0.8963414634146342,0.0,10.0,30.0,77.30000000000018
+0.3.0,MII,Mount Isa Inlier,diurnal_birds,within_10km,233,0.9785407725321889,0.0,0.0,0.0,10.0
+0.3.0,MUL,Mulga Lands,diurnal_birds,inside,2061,1.0,0.0,0.0,0.0,0.0
+0.3.0,MUL,Mulga Lands,diurnal_birds,within_10km,765,0.9267973856209151,0.0,0.0,20.0,20.0
+0.3.0,MUR,Murchison,diurnal_birds,inside,52,1.0,0.0,0.0,0.0,0.0
+0.3.0,MUR,Murchison,diurnal_birds,within_10km,172,0.9941860465116279,0.0,0.0,0.0,0.0
+0.3.0,NAN,Nandewar,diurnal_birds,inside,1783,1.0,0.0,0.0,0.0,0.0
+0.3.0,NAN,Nandewar,diurnal_birds,within_10km,13210,0.9870552611657835,0.0,0.0,0.0,10.0
+0.3.0,NCP,Naracoorte Coastal Plain,diurnal_birds,inside,8728,0.9830430797433547,0.0,0.0,0.0,10.0
+0.3.0,NCP,Naracoorte Coastal Plain,diurnal_birds,within_10km,10877,0.8476602004229107,0.0,10.0,20.0,40.0
+0.3.0,NET,New England Tablelands,diurnal_birds,inside,3914,1.0,0.0,0.0,0.0,0.0
+0.3.0,NET,New England Tablelands,diurnal_birds,within_10km,11390,0.9,0.0,1.000000000003638,40.0,130.0
+0.3.0,NNC,NSW North Coast,diurnal_birds,inside,13998,0.8091870267181026,0.0,10.0,20.0,40.0
+0.3.0,NNC,NSW North Coast,diurnal_birds,within_10km,58739,0.6280665316059177,0.0,40.0,90.0,210.0
+0.3.0,NOK,Northern Kimberley,diurnal_birds,inside,233,1.0,0.0,0.0,0.0,0.0
+0.3.0,NOK,Northern Kimberley,diurnal_birds,within_10km,69,0.9565217391304348,0.0,0.0,0.0,13.199999999999932
+0.3.0,NSS,NSW South Western Slopes,diurnal_birds,inside,11861,0.9994941404603321,0.0,0.0,0.0,0.0
+0.3.0,NSS,NSW South Western Slopes,diurnal_birds,within_10km,68554,0.9278816699244391,0.0,0.0,10.0,100.0
+0.3.0,NUL,Nullarbor,diurnal_birds,inside,266,1.0,0.0,0.0,0.0,0.0
+0.3.0,NUL,Nullarbor,diurnal_birds,within_10km,127,0.9606299212598425,0.0,0.0,0.0,10.0
+0.3.0,OVP,Ord Victoria Plain,diurnal_birds,inside,437,1.0,0.0,0.0,0.0,0.0
+0.3.0,OVP,Ord Victoria Plain,diurnal_birds,within_10km,116,1.0,0.0,0.0,0.0,0.0
+0.3.0,PCK,Pine Creek,diurnal_birds,inside,2219,0.9364578639026588,0.0,0.0,10.0,70.0
+0.3.0,PCK,Pine Creek,diurnal_birds,within_10km,549,0.8342440801457195,0.0,10.0,40.0,50.0
+0.3.0,PIL,Pilbara,diurnal_birds,inside,156,0.9871794871794872,0.0,0.0,0.0,4.499999999999886
+0.3.0,PIL,Pilbara,diurnal_birds,within_10km,142,0.4014084507042254,10.0,129.00000000000006,170.0,267.7000000000001
+0.3.0,PSI,Pacific Subtropical Islands,diurnal_birds,inside,120,1.0,0.0,0.0,0.0,0.0
+0.3.0,PSI,Pacific Subtropical Islands,diurnal_birds,within_10km,327,0.9938837920489296,0.0,0.0,0.0,0.0
+0.3.0,RIV,Riverina,diurnal_birds,inside,45287,0.5565614856360545,0.0,10.0,20.0,20.0
+0.3.0,RIV,Riverina,diurnal_birds,within_10km,40287,0.791843522724452,0.0,20.0,60.0,190.0
+0.3.0,SCP,South East Coastal Plain,diurnal_birds,inside,25790,0.8210546723536254,0.0,20.0,40.0,60.0
+0.3.0,SCP,South East Coastal Plain,diurnal_birds,within_10km,230851,0.2701006276775929,30.0,100.0,160.0,590.0
+0.3.0,SEC,South East Corner,diurnal_birds,inside,13448,0.9158239143367043,0.0,0.0,10.0,10.0
+0.3.0,SEC,South East Corner,diurnal_birds,within_10km,50557,0.875744209506102,0.0,10.0,20.0,60.0
+0.3.0,SEH,South Eastern Highlands,diurnal_birds,inside,36300,0.6114600550964188,0.0,70.0,100.0,130.0
+0.3.0,SEH,South Eastern Highlands,diurnal_birds,within_10km,350559,0.2769063124894811,60.0,160.0,200.0,380.0
+0.3.0,SEQ,South Eastern Queensland,diurnal_birds,inside,20164,0.8842987502479667,0.0,10.0,30.0,70.0
+0.3.0,SEQ,South Eastern Queensland,diurnal_birds,within_10km,99391,0.42598424404624163,10.0,140.0,230.0,500.0
+0.3.0,SSD,Simpson Strzelecki Dunefields,diurnal_birds,inside,5375,1.0,0.0,0.0,0.0,0.0
+0.3.0,SSD,Simpson Strzelecki Dunefields,diurnal_birds,within_10km,697,1.0,0.0,0.0,0.0,0.0
+0.3.0,STP,Stony Plains,diurnal_birds,inside,170,1.0,0.0,0.0,0.0,0.0
+0.3.0,STP,Stony Plains,diurnal_birds,within_10km,177,0.8926553672316384,0.0,10.0,83.99999999999977,114.80000000000018
+0.3.0,STU,Sturt Plateau,diurnal_birds,inside,104,1.0,0.0,0.0,0.0,0.0
+0.3.0,STU,Sturt Plateau,diurnal_birds,within_10km,148,0.7837837837837838,0.0,30.0,40.0,40.0
+0.3.0,SVP,Southern Volcanic Plain,diurnal_birds,inside,4463,0.7864665023526776,0.0,10.0,20.0,220.0
+0.3.0,SVP,Southern Volcanic Plain,diurnal_birds,within_10km,101367,0.32800615584953685,20.0,170.0,250.0,410.0
+0.3.0,SWA,Swan Coastal Plain,diurnal_birds,inside,4153,0.39272814832651093,20.0,230.0,270.0,330.0
+0.3.0,SWA,Swan Coastal Plain,diurnal_birds,within_10km,26870,0.047748418310383324,120.0,310.0,330.0,640.0
+0.3.0,SYB,Sydney Basin,diurnal_birds,inside,69347,0.8000778692661543,0.0,20.0,30.0,110.0
+0.3.0,SYB,Sydney Basin,diurnal_birds,within_10km,250925,0.2561283251967719,30.0,280.0,420.0,770.0
+0.3.0,TCH,Tasmanian Central Highlands,diurnal_birds,inside,533,0.9549718574108818,0.0,0.0,0.0,10.0
+0.3.0,TCH,Tasmanian Central Highlands,diurnal_birds,within_10km,316,0.7974683544303798,0.0,10.0,10.0,20.0
+0.3.0,TIW,Tiwi Cobourg,diurnal_birds,inside,349,0.9598853868194842,0.0,0.0,0.0,10.0
+0.3.0,TIW,Tiwi Cobourg,diurnal_birds,within_10km,8,1.0,0.0,0.0,0.0,0.0
+0.3.0,TNM,Tasmanian Northern Midlands,diurnal_birds,inside,155,0.3935483870967742,10.0,105.99999999999994,411.9999999999993,450.0
+0.3.0,TNM,Tasmanian Northern Midlands,diurnal_birds,within_10km,4912,0.46579804560260585,10.0,40.0,50.0,120.0
+0.3.0,TNS,Tasmanian Northern Slopes,diurnal_birds,inside,363,0.8650137741046832,0.0,10.0,10.0,10.0
+0.3.0,TNS,Tasmanian Northern Slopes,diurnal_birds,within_10km,9083,0.6574920180557084,0.0,20.0,20.0,40.0
+0.3.0,TSE,Tasmanian South East,diurnal_birds,inside,1496,0.8014705882352942,0.0,10.0,20.0,70.0
+0.3.0,TSE,Tasmanian South East,diurnal_birds,within_10km,3535,0.48741159830268743,10.0,100.0,200.0,740.0
+0.3.0,TSR,Tasmanian Southern Ranges,diurnal_birds,inside,768,0.984375,0.0,0.0,0.0,10.0
+0.3.0,TSR,Tasmanian Southern Ranges,diurnal_birds,within_10km,1647,0.9581056466302368,0.0,0.0,0.0,10.0
+0.3.0,TWE,Tasmanian West,diurnal_birds,inside,346,1.0,0.0,0.0,0.0,0.0
+0.3.0,TWE,Tasmanian West,diurnal_birds,within_10km,192,0.46875,10.0,20.0,40.0,40.900000000000034
+0.3.0,UNASSIGNED,Unassigned,diurnal_birds,inside,2834,0.9442484121383204,0.0,0.0,10.0,40.0
+0.3.0,UNASSIGNED,Unassigned,diurnal_birds,within_10km,14226,0.44896668072543233,10.0,220.0,450.0,987.5
+0.3.0,VIB,Victoria Bonaparte,diurnal_birds,inside,371,0.9433962264150944,0.0,0.0,10.0,30.0
+0.3.0,VIB,Victoria Bonaparte,diurnal_birds,within_10km,558,0.517921146953405,0.0,90.0,101.49999999999977,174.2999999999995
+0.3.0,VIM,Victorian Midlands,diurnal_birds,inside,19971,0.9746131891242301,0.0,0.0,0.0,40.0
+0.3.0,VIM,Victorian Midlands,diurnal_birds,within_10km,105935,0.8668051163449285,0.0,10.0,30.0,120.0
+0.3.0,WAR,Warren,diurnal_birds,inside,248,0.9798387096774194,0.0,0.0,0.0,40.0
+0.3.0,WAR,Warren,diurnal_birds,within_10km,1809,0.7965726920950802,0.0,10.0,20.0,50.0
+0.3.0,WET,Wet Tropics,diurnal_birds,inside,5075,0.9718226600985221,0.0,0.0,0.0,10.0
+0.3.0,WET,Wet Tropics,diurnal_birds,within_10km,16689,0.5440110252261969,0.0,100.0,200.0,592.3999999999796
+0.3.0,YAL,Yalgoo,diurnal_birds,inside,131,1.0,0.0,0.0,0.0,0.0
+0.3.0,YAL,Yalgoo,diurnal_birds,within_10km,67,0.9701492537313433,0.0,0.0,0.0,23.600000000000136
+0.3.0,CEK,Central Kimberley,diurnal_birds,within_10km,44,0.9772727272727273,0.0,0.0,0.0,5.700000000000003
+0.3.0,DEU,Desert Uplands,diurnal_birds,inside,85,1.0,0.0,0.0,0.0,0.0
+0.3.0,ITI,Indian Tropical Islands,diurnal_birds,inside,10,0.7,0.0,10.0,10.0,10.0
+0.3.0,GUP,Gulf Plains,diurnal_birds,inside,182,0.9945054945054945,0.0,0.0,0.0,0.0
+0.3.0,GUP,Gulf Plains,diurnal_birds,within_10km,48,0.875,0.0,53.00000000000004,60.0,80.0
+0.3.0,TAN,Tanami,diurnal_birds,inside,7,1.0,0.0,0.0,0.0,0.0
+0.3.0,MII,Mount Isa Inlier,diurnal_birds,inside,40,1.0,0.0,0.0,0.0,0.0
+0.3.0,DEU,Desert Uplands,diurnal_birds,within_10km,29,1.0,0.0,0.0,0.0,0.0
+0.3.0,ITI,Indian Tropical Islands,diurnal_birds,within_10km,27,0.14814814814814814,20.0,50.0,50.0,64.79999999999997

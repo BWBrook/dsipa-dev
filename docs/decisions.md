@@ -38,6 +38,7 @@ Mark superseded items in **Status** (active / superseded / reverted) rather than
 | 2026-01-05 | DEC-030     | WP0.16 sensitivity run subsamples passerines at 10% (`--sensitivity-sample-rate 0.1`) for runtime feasibility; rerun full sensitivity when compute permits | Full multi‑provider scan exceeded practical runtime; subsampling keeps sensitivity descriptive while primary inference remains provider‑matched | superseded | docs/log/102_layerB_modelling.md |
 | 2026-01-05 | DEC-031     | WP0.16 sensitivity run executed at full scale (`--sensitivity-sample-rate 1.0`) after compute became available | Provides a complete multi‑provider sensitivity check while keeping provider‑matched primary inference unchanged | active | docs/log/102_layerB_modelling.md |
 | 2026-01-06 | DEC-032     | Layer A trend uncertainty quantified via IBRA7 region cluster bootstrap with moving-block time resampling (block_len=3, n_boot=300) | IBRA regions are ecologically coherent spatial units; clustered resampling mitigates spatial autocorrelation while block resampling handles temporal dependence at low cost | active | docs/log/106_layerA_trend_uncertainty.md |
+| 2026-01-06 | DEC-033     | Layer B robustness: IBRA‑stratified occurrence summaries; falsification by shuffling ALAN within IBRA×year; heterogeneity check on log1p(ALAN) for regions with ≥500 records per class | Adds ecologically meaningful stratification and a reviewer‑friendly falsification; minimum counts avoid unstable IBRA‑specific fits | active | docs/log/107_layerB_ibra_robustness.md |
 
 ---
 

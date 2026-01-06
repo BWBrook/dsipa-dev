@@ -151,16 +151,32 @@ Every key figure/table/model must have an entry here.
 - Artefact: `manuscript/figures/fig_layerB_alan_effects.png` (report: `analysis/reports/layerB_modelling_report.md`)
 - What it shows (plain language):
   - Provider-matched (dr368) log-odds coefficients for ALAN exposure (any_light + log1p_alan) in a microbats vs passerines case-control model.
-  - Falsification via within-block ALAN shuffle yields near-zero coefficients and ~0.5 AUC.
+  - Falsification via within-block and within‑IBRA×year ALAN shuffles yields near-zero coefficients and ~0.51 AUC.
   - Sensitivity (multi-provider) shows similar sign patterns but is treated as descriptive only.
 - Relation to hypotheses:
   - Consistent with H3 in the sense of a detectable signal for microbats vs diurnal controls under provider-matched design, but effect sizes are modest and not causal.
 - Sanity verdict (pass/warn/fail) and why:
-  - warn — AUC is low (~0.54 primary); sensitivity AUC is modest (~0.56) and effects remain small.
+  - warn — AUC is low (~0.545 primary); falsification AUCs remain slightly >0.5 (block ≈0.505, IBRA ≈0.517), suggesting residual structure.
 - Surprises / concerns:
   - log1p(ALAN) is negative while any_light is positive; could reflect confounding or floor effects rather than ecology.
+  - any_light does not collapse fully under shuffling, indicating remaining bias structure.
 - Follow-up tasks:
   - [ ] Check robustness to adding stratum or year as covariates.
+
+### FIG9_BIO_ibra_intensity_forest
+
+- Artefact: `manuscript/figures/fig_layerB_ibra_intensity_forest.png` (data: `analysis/reports/layerB_ibra_effects.csv`)
+- What it shows (plain language):
+  - IBRA‑level heterogeneity in the log1p(ALAN) coefficient for regions with ≥500 records per class.
+  - Most regions retain a negative intensity term, but a few show weakly positive or near‑zero estimates.
+- Relation to hypotheses:
+  - Supports a cautious “non‑linear association” framing; any signal is modest and region‑dependent.
+- Sanity verdict (pass/warn/fail) and why:
+  - warn — only 11 IBRA regions meet the minimum record threshold; heterogeneity is descriptive only.
+- Surprises / concerns:
+  - Some regions flip sign, underscoring sensitivity to sampling structure.
+- Follow-up tasks:
+  - [ ] Consider a coarser bioregion merge if more stability is needed.
 
 ### FIG6_BIO_exposure_summary
 

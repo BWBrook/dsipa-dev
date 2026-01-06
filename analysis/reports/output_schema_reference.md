@@ -1,6 +1,6 @@
 # Output schema reference
 
-Generated: 2026-01-06 03:26 UTC
+Generated: 2026-01-06 09:31 UTC
 
 Schema version: 0.3.0
 
@@ -372,6 +372,27 @@ Layer B occurrence summary counts by taxon group and filter stage.
 | filtered_records | int | count | Records after quality filters. |
 | dedup_records | int | count | Records after spatial/day deduplication. |
 | unique_species | int | count | Unique species retained after filters. |
+
+## layerB_ibra_summary
+
+File: `data/processed/layerB_ibra_summary_v0_3_0.csv`
+Format: csv
+
+Layer B IBRA-stratified occurrence counts and ALAN exposure summaries.
+
+| Column | Type | Units | Description |
+| --- | --- | --- | --- |
+| schema_version | string | - | Schema version for Layer B IBRA summary. |
+| ibra_code | string | - | IBRA region code (REG_CODE_7). |
+| ibra_name | string | - | IBRA region name. |
+| group | string | - | Taxon group key. |
+| stratum | string | - | Spatial stratum (inside, within_10km). |
+| n_records | int | count | Number of occurrence records in stratum. |
+| zero_fraction | float | fraction | Share of records with ALAN = 0. |
+| p50 | float | scaled | 50th percentile ALAN. |
+| p90 | float | scaled | 90th percentile ALAN. |
+| p95 | float | scaled | 95th percentile ALAN. |
+| p99 | float | scaled | 99th percentile ALAN. |
 
 ## layerB_ala_license_ledger
 

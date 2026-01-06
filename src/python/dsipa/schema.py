@@ -39,6 +39,7 @@ PA_TREND_BOOTSTRAP_SUMMARY_CSV = (
 LAYERB_OCCURRENCE_SUMMARY_CSV = (
     f"data/processed/layerB_occurrence_summary_v{SCHEMA_SLUG}.csv"
 )
+LAYERB_IBRA_SUMMARY_CSV = f"data/processed/layerB_ibra_summary_v{SCHEMA_SLUG}.csv"
 LAYERB_ALA_LICENSE_LEDGER_CSV = (
     f"data/processed/layerB_ala_license_ledger_v{SCHEMA_SLUG}.csv"
 )
@@ -491,6 +492,26 @@ LAYERB_OCCURRENCE_SUMMARY_SCHEMA = OutputSchema(
     ),
 )
 
+LAYERB_IBRA_SUMMARY_SCHEMA = OutputSchema(
+    key="layerB_ibra_summary",
+    filename=LAYERB_IBRA_SUMMARY_CSV,
+    file_type="csv",
+    description="Layer B IBRA-stratified occurrence counts and ALAN exposure summaries.",
+    columns=(
+        ColumnSpec("schema_version", "string", "-", "Schema version for Layer B IBRA summary."),
+        ColumnSpec("ibra_code", "string", "-", "IBRA region code (REG_CODE_7)."),
+        ColumnSpec("ibra_name", "string", "-", "IBRA region name."),
+        ColumnSpec("group", "string", "-", "Taxon group key."),
+        ColumnSpec("stratum", "string", "-", "Spatial stratum (inside, within_10km)."),
+        ColumnSpec("n_records", "int", "count", "Number of occurrence records in stratum."),
+        ColumnSpec("zero_fraction", "float", "fraction", "Share of records with ALAN = 0."),
+        ColumnSpec("p50", "float", "scaled", "50th percentile ALAN."),
+        ColumnSpec("p90", "float", "scaled", "90th percentile ALAN."),
+        ColumnSpec("p95", "float", "scaled", "95th percentile ALAN."),
+        ColumnSpec("p99", "float", "scaled", "99th percentile ALAN."),
+    ),
+)
+
 LAYERB_ALA_LICENSE_LEDGER_SCHEMA = OutputSchema(
     key="layerB_ala_license_ledger",
     filename=LAYERB_ALA_LICENSE_LEDGER_CSV,
@@ -550,6 +571,7 @@ OUTPUT_SCHEMAS = (
     PA_IBRA_ASSIGNMENT_SCHEMA,
     PA_TREND_BOOTSTRAP_SUMMARY_SCHEMA,
     LAYERB_OCCURRENCE_SUMMARY_SCHEMA,
+    LAYERB_IBRA_SUMMARY_SCHEMA,
     LAYERB_ALA_LICENSE_LEDGER_SCHEMA,
     LAYERB_MODEL_INPUT_SUMMARY_SCHEMA,
 )
@@ -571,4 +593,5 @@ PA_RISK_RANKINGS_COLUMNS = PA_RISK_RANKINGS_SCHEMA.column_names
 PA_IBRA_ASSIGNMENT_COLUMNS = PA_IBRA_ASSIGNMENT_SCHEMA.column_names
 PA_TREND_BOOTSTRAP_SUMMARY_COLUMNS = PA_TREND_BOOTSTRAP_SUMMARY_SCHEMA.column_names
 LAYERB_OCCURRENCE_SUMMARY_COLUMNS = LAYERB_OCCURRENCE_SUMMARY_SCHEMA.column_names
+LAYERB_IBRA_SUMMARY_COLUMNS = LAYERB_IBRA_SUMMARY_SCHEMA.column_names
 LAYERB_MODEL_INPUT_SUMMARY_COLUMNS = LAYERB_MODEL_INPUT_SUMMARY_SCHEMA.column_names

@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
 
+import geopandas as gpd
 import numpy as np
 import pandas as pd
 import rasterio
@@ -21,14 +22,18 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import log_loss, roc_auc_score
 from sklearn.model_selection import GroupKFold
 
+from dsipa.ibra import IBRA_GPKG, process_ibra, write_outputs as write_ibra_outputs
 from dsipa.layerB_data import normalize_columns
 from dsipa.manifest import build_manifest, write_manifest
 from dsipa.nightlights import CORE_YEARS, download_year
 from dsipa.paths import find_repo_root
-from dsipa.schema import LAYERB_MODEL_INPUT_SUMMARY_CSV, SCHEMA_VERSION
+from dsipa.schema import LAYERB_IBRA_SUMMARY_CSV, LAYERB_MODEL_INPUT_SUMMARY_CSV, SCHEMA_VERSION
 
 
 PA_UNION_CACHE = f"data/processed/cache/pa_union_v{SCHEMA_VERSION.replace('.', '_')}.wkb"
+IBRA_SUMMARY_REPORT = "analysis/reports/layerB_ibra_summary.md"
+IBRA_EFFECTS_CSV = "analysis/reports/layerB_ibra_effects.csv"
+IBRA_FOREST_FIG = "manuscript/figures/fig_layerB_ibra_intensity_forest.png"
 
 
 @dataclass
@@ -43,6 +48,13 @@ class ModelResult:
     name: str
     metrics: pd.DataFrame
     coefficients: pd.DataFrame
+
+
+@dataclass
+class IbraIndex:
+    tree: object
+    codes: np.ndarray
+    names: np.ndarray
 
 
 def _now_utc() -> str:
@@ -73,6 +85,51 @@ def _load_union(path: Path):
     if not path.exists():
         raise FileNotFoundError(f"Missing cached union geometry: {path}")
     return wkb.loads(path.read_bytes())
+
+
+def _ensure_ibra_gpkg(root: Path) -> Path:
+    path = root / IBRA_GPKG
+    if path.exists():
+        return path
+    gdf = process_ibra(root)
+    return write_ibra_outputs(gdf, root)
+
+
+def _build_ibra_index(ibra_gdf: gpd.GeoDataFrame) -> IbraIndex:
+    from shapely.strtree import STRtree
+
+    geoms = ibra_gdf.geometry.to_list()
+    codes = ibra_gdf["REG_CODE_7"].astype(str).to_numpy()
+    names = ibra_gdf["REG_NAME_7"].astype(str).to_numpy()
+    tree = STRtree(geoms)
+    return IbraIndex(tree=tree, codes=codes, names=names)
+
+
+def _assign_ibra_codes(index: IbraIndex, xs: np.ndarray, ys: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    try:
+        import shapely
+
+        points = shapely.points(xs, ys)
+    except Exception:
+        points = [Point(x, y) for x, y in zip(xs, ys)]
+    codes = np.full(len(xs), "UNASSIGNED", dtype=object)
+    names = np.full(len(xs), "Unassigned", dtype=object)
+    pairs = index.tree.query(points, predicate="within")
+    if getattr(pairs, "size", 0):
+        point_idx, geom_idx = pairs
+        for p_i, g_i in zip(point_idx, geom_idx):
+            if codes[p_i] == "UNASSIGNED":
+                codes[p_i] = index.codes[g_i]
+                names[p_i] = index.names[g_i]
+    return codes, names
+
+
+def _attach_ibra(df: pd.DataFrame, index: IbraIndex) -> pd.DataFrame:
+    codes, names = _assign_ibra_codes(index, df["x"].to_numpy(), df["y"].to_numpy())
+    df = df.copy()
+    df["ibra_code"] = codes
+    df["ibra_name"] = names
+    return df
 
 
 def _vectorized_contains(geom, xs: np.ndarray, ys: np.ndarray, points=None) -> np.ndarray:
@@ -138,6 +195,131 @@ def _sample_raster(dataset, lons: np.ndarray, lats: np.ndarray) -> np.ndarray:
     return values
 
 
+def _collect_ibra_summary(
+    *,
+    path: Path,
+    group: str,
+    pa_union,
+    buffer_km: float,
+    nightlights_dir: Path,
+    simplify_m: float,
+    ibra_index: IbraIndex,
+) -> pd.DataFrame:
+    transformer = Transformer.from_crs("EPSG:4326", "EPSG:3577", always_xy=True)
+    pa_union_s = pa_union.simplify(simplify_m, preserve_topology=True) if simplify_m > 0 else pa_union
+    pa_buffer = pa_union_s.buffer(buffer_km * 1000.0)
+
+    counts: dict[tuple[str, str, str, str], int] = {}
+    zeros: dict[tuple[str, str, str, str], int] = {}
+    values: dict[tuple[str, str, str, str], list[np.ndarray]] = {}
+
+    raster_cache: dict[int, rasterio.DatasetReader] = {}
+
+    for chunk in _iter_occurrence_chunks(path):
+        chunk["decimalLatitude"] = pd.to_numeric(chunk["decimalLatitude"], errors="coerce")
+        chunk["decimalLongitude"] = pd.to_numeric(chunk["decimalLongitude"], errors="coerce")
+        chunk = chunk.dropna(subset=["decimalLatitude", "decimalLongitude", "year"])
+        if chunk.empty:
+            continue
+
+        years_arr = pd.to_numeric(chunk["year"], errors="coerce").astype("Int64")
+        valid_years = years_arr.notna() & years_arr.isin(list(CORE_YEARS))
+        chunk = chunk.loc[valid_years].copy()
+        years_arr = years_arr.loc[valid_years].astype(int).to_numpy()
+        if chunk.empty:
+            continue
+
+        lons = chunk["decimalLongitude"].to_numpy()
+        lats = chunk["decimalLatitude"].to_numpy()
+        x, y = transformer.transform(lons, lats)
+        try:
+            import shapely
+
+            points = shapely.points(x, y)
+        except Exception:
+            points = None
+        inside_mask = _vectorized_contains(pa_union_s, x, y, points=points)
+        within_mask = _vectorized_contains(pa_buffer, x, y, points=points) & ~inside_mask
+        scope_mask = inside_mask | within_mask
+        if not scope_mask.any():
+            continue
+
+        chunk = chunk.loc[scope_mask].copy()
+        lons = lons[scope_mask]
+        lats = lats[scope_mask]
+        x = x[scope_mask]
+        y = y[scope_mask]
+        years_arr = years_arr[scope_mask]
+        inside_mask = inside_mask[scope_mask]
+
+        alan_vals = np.full(len(chunk), np.nan, dtype=float)
+        for year in np.unique(years_arr):
+            idx = years_arr == year
+            if not idx.any():
+                continue
+            if year not in raster_cache:
+                raster = download_year(int(year), nightlights_dir)
+                raster_cache[year] = rasterio.open(raster.path)
+            values_year = _sample_raster(
+                raster_cache[year], lons[idx], lats[idx]
+            )
+            alan_vals[idx] = values_year
+
+        valid_mask = np.isfinite(alan_vals)
+        if not valid_mask.any():
+            continue
+        alan_vals = alan_vals[valid_mask]
+        inside_mask = inside_mask[valid_mask]
+        x = x[valid_mask]
+        y = y[valid_mask]
+
+        ibra_codes, ibra_names = _assign_ibra_codes(ibra_index, x, y)
+        strata = np.where(inside_mask, "inside", "within_10km")
+
+        for ibra_code in np.unique(ibra_codes):
+            idx_ibra = ibra_codes == ibra_code
+            if not idx_ibra.any():
+                continue
+            ibra_name = ibra_names[idx_ibra][0] if idx_ibra.any() else "Unassigned"
+            for stratum in ["inside", "within_10km"]:
+                idx = idx_ibra & (strata == stratum)
+                if not idx.any():
+                    continue
+                vals = alan_vals[idx]
+                key = (ibra_code, ibra_name, group, stratum)
+                counts[key] = counts.get(key, 0) + len(vals)
+                zeros[key] = zeros.get(key, 0) + int((vals == 0).sum())
+                values.setdefault(key, []).append(vals)
+
+    for dataset in raster_cache.values():
+        dataset.close()
+
+    rows = []
+    for key, n in counts.items():
+        ibra_code, ibra_name, group_key, stratum = key
+        vals = np.concatenate(values.get(key, [])) if n > 0 else np.array([])
+        if vals.size:
+            p50, p90, p95, p99 = np.quantile(vals, [0.5, 0.9, 0.95, 0.99])
+        else:
+            p50 = p90 = p95 = p99 = np.nan
+        rows.append(
+            {
+                "schema_version": SCHEMA_VERSION,
+                "ibra_code": ibra_code,
+                "ibra_name": ibra_name,
+                "group": group_key,
+                "stratum": stratum,
+                "n_records": n,
+                "zero_fraction": zeros.get(key, 0) / n if n else np.nan,
+                "p50": p50,
+                "p90": p90,
+                "p95": p95,
+                "p99": p99,
+            }
+        )
+    return pd.DataFrame(rows)
+
+
 def _collect_features(
     *,
     path: Path,
@@ -151,6 +333,7 @@ def _collect_features(
     sample_n: int | None,
     sample_rate: float,
     simplify_m: float,
+    include_xy: bool = False,
 ) -> DatasetResult:
     rng = np.random.default_rng(seed)
     sampler = ReservoirSampler(sample_n, rng)
@@ -257,18 +440,19 @@ def _collect_features(
     df = df[np.isfinite(df["alan"])].copy()
     df["any_light"] = (df["alan"] > 0).astype(int)
     df["log1p_alan"] = np.where(df["alan"] > 0, np.log1p(df["alan"]), 0.0)
-    df = df[
-        [
-            "group",
-            "year",
-            "alan",
-            "any_light",
-            "log1p_alan",
-            "stratum",
-            "block_id",
-            "provider",
-        ]
+    base_cols = [
+        "group",
+        "year",
+        "alan",
+        "any_light",
+        "log1p_alan",
+        "stratum",
+        "block_id",
+        "provider",
     ]
+    if include_xy:
+        base_cols.extend(["x", "y"])
+    df = df[base_cols]
 
     inside_fraction = (df["stratum"] == "inside").mean() if len(df) else np.nan
     within_fraction = (df["stratum"] == "within_10km").mean() if len(df) else np.nan
@@ -376,6 +560,57 @@ def _shuffle_within_blocks(df: pd.DataFrame, seed: int) -> pd.DataFrame:
     return pd.concat(shuffled, ignore_index=True)
 
 
+def _shuffle_within_ibra_year(df: pd.DataFrame, seed: int) -> pd.DataFrame:
+    rng = np.random.default_rng(seed)
+    df = df.copy()
+    shuffled = []
+    for _, sub_df in df.groupby(["ibra_code", "year"]):
+        alan_vals = sub_df["alan"].to_numpy()
+        rng.shuffle(alan_vals)
+        sub_df = sub_df.copy()
+        sub_df["alan"] = alan_vals
+        sub_df["any_light"] = (alan_vals > 0).astype(int)
+        sub_df["log1p_alan"] = np.where(alan_vals > 0, np.log1p(alan_vals), 0.0)
+        shuffled.append(sub_df)
+    return pd.concat(shuffled, ignore_index=True)
+
+
+def _ibra_effects(
+    df: pd.DataFrame,
+    *,
+    min_records_per_class: int,
+    block_km: float,
+    seed: int,
+) -> pd.DataFrame:
+    rows = []
+    for ibra_code, sub in df.groupby("ibra_code"):
+        counts = sub["group"].value_counts()
+        if counts.get("microbats", 0) < min_records_per_class:
+            continue
+        if counts.get("diurnal_birds", 0) < min_records_per_class:
+            continue
+        if sub["block_id"].nunique() < 3:
+            continue
+        try:
+            result = _run_model(sub, name=f"ibra_{ibra_code}", block_km=block_km, seed=seed)
+        except RuntimeError:
+            continue
+        summary = _summarize_coefficients(result.coefficients)
+        intensity = summary[summary["feature"] == "log1p_alan"].iloc[0]
+        rows.append(
+            {
+                "ibra_code": ibra_code,
+                "ibra_name": sub["ibra_name"].iloc[0] if "ibra_name" in sub.columns else "Unknown",
+                "n_microbats": int(counts.get("microbats", 0)),
+                "n_birds": int(counts.get("diurnal_birds", 0)),
+                "mean_log_odds": float(intensity["mean_log_odds"]),
+                "ci95_low": float(intensity["ci95_low"]),
+                "ci95_high": float(intensity["ci95_high"]),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
 def write_model_report(
     *,
     path: Path,
@@ -385,10 +620,15 @@ def write_model_report(
     shuffle: ModelResult,
     shuffle_summary: pd.DataFrame,
     shuffle_metrics: pd.DataFrame,
+    ibra_shuffle: ModelResult,
+    ibra_shuffle_summary: pd.DataFrame,
+    ibra_shuffle_metrics: pd.DataFrame,
     sensitivity: ModelResult,
     sensitivity_summary: pd.DataFrame,
     sensitivity_metrics: pd.DataFrame,
     input_summary: pd.DataFrame,
+    ibra_effects: pd.DataFrame,
+    ibra_min_records: int,
     block_km: float,
     provider: str,
     sensitivity_sample_rate: float,
@@ -426,12 +666,25 @@ def write_model_report(
         "### Cross-validated metrics",
         shuffle_metrics.groupby("run")[["auc", "log_loss"]].mean().to_string(),
         "",
+        "## Falsification (ALAN shuffled within IBRA × year)",
+        "### Coefficients (log-odds)",
+        ibra_shuffle_summary.to_string(index=False),
+        "",
+        "### Cross-validated metrics",
+        ibra_shuffle_metrics.groupby("run")[["auc", "log_loss"]].mean().to_string(),
+        "",
         "## Sensitivity (multi-provider)",
         "### Coefficients (log-odds)",
         sensitivity_summary.to_string(index=False),
         "",
         "### Cross-validated metrics",
         sensitivity_metrics.groupby("run")[["auc", "log_loss"]].mean().to_string(),
+        "",
+        "## IBRA heterogeneity (log1p(ALAN) coefficient)",
+        f"- Minimum records per class: {ibra_min_records}",
+        f"- Regions included: {ibra_effects['ibra_code'].nunique() if not ibra_effects.empty else 0}",
+        "",
+        ibra_effects.to_string(index=False) if not ibra_effects.empty else "No IBRA regions met the minimum sample size.",
         "",
         "## Interpretation (what we can/can't conclude)",
         "- This is a provider-matched, spatially blocked presence-only case-control signal test (not a population trend).",
@@ -462,24 +715,102 @@ def write_input_summary(path: Path, rows: list[dict[str, object]]) -> pd.DataFra
     return df
 
 
+def write_ibra_summary(df: pd.DataFrame, path: Path) -> pd.DataFrame:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(path, index=False)
+    return df
+
+
+def write_ibra_summary_report(df: pd.DataFrame, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    total_records = df["n_records"].sum() if not df.empty else 0
+    unassigned = df[df["ibra_code"] == "UNASSIGNED"]["n_records"].sum() if not df.empty else 0
+    top = (
+        df.groupby(["ibra_code", "ibra_name"])["n_records"]
+        .sum()
+        .reset_index()
+        .sort_values("n_records", ascending=False)
+        .head(10)
+    )
+    lines = [
+        "# Layer B IBRA summary",
+        "",
+        f"Generated: {_now_utc()}",
+        "",
+        f"Total records (all groups/strata): {int(total_records)}",
+        f"Unassigned IBRA records: {int(unassigned)} ({(unassigned / total_records) if total_records else 0:.2%})",
+        "",
+        "## Top 10 IBRA regions by record count",
+        "",
+        top.to_string(index=False),
+        "",
+        "## Summary table (IBRA × group × stratum)",
+        "",
+        df.to_string(index=False),
+        "",
+    ]
+    path.write_text("\n".join(lines), encoding="utf-8")
+
+
+def write_ibra_effects(df: pd.DataFrame, path: Path) -> pd.DataFrame:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(path, index=False)
+    return df
+
+
+def plot_ibra_effects(df: pd.DataFrame, path: Path) -> None:
+    import matplotlib.pyplot as plt
+
+    if df.empty:
+        fig, ax = plt.subplots(figsize=(6, 3))
+        ax.text(0.5, 0.5, "No IBRA regions met the minimum sample threshold", ha="center", va="center")
+        ax.set_axis_off()
+        path.parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(path, dpi=300)
+        plt.close(fig)
+        return
+
+    df = df.sort_values("mean_log_odds", ascending=False).reset_index(drop=True)
+    y = np.arange(len(df))
+    fig, ax = plt.subplots(figsize=(8, 0.35 * len(df) + 1.5))
+    ax.hlines(y, df["ci95_low"], df["ci95_high"], color="#4C72B0", lw=2)
+    ax.scatter(df["mean_log_odds"], y, color="#1F4E79", zorder=3)
+    ax.axvline(0, color="black", lw=0.8, ls="--")
+    ax.set_yticks(y)
+    ax.set_yticklabels([f"{row.ibra_code}" for row in df.itertuples(index=False)], fontsize=7)
+    ax.set_xlabel("Log-odds coefficient (log1p(ALAN))")
+    ax.set_title("IBRA heterogeneity (log1p(ALAN); descriptive)")
+    ax.invert_yaxis()
+    fig.tight_layout()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(path, dpi=300)
+    plt.close(fig)
+
 def write_figure(
     path: Path,
     primary: pd.DataFrame,
     shuffle: pd.DataFrame,
+    ibra_shuffle: pd.DataFrame,
     sensitivity: pd.DataFrame,
 ) -> None:
     import matplotlib.pyplot as plt
 
     fig, ax = plt.subplots(figsize=(8, 4))
     x_positions = {"any_light": 0, "log1p_alan": 1}
-    offsets = {"primary": -0.2, "shuffled": 0.0, "sensitivity": 0.2}
+    offsets = {"primary": -0.25, "shuffled": -0.05, "ibra_shuffled": 0.15, "sensitivity": 0.35}
     styles = {
         "primary": {"color": "#1b9e77", "label": "Primary (dr368)"},
         "shuffled": {"color": "#d95f02", "label": "Shuffled ALAN"},
+        "ibra_shuffled": {"color": "#e7298a", "label": "Shuffled within IBRA"},
         "sensitivity": {"color": "#7570b3", "label": "Sensitivity (all providers)"},
     }
 
-    for name, df in [("primary", primary), ("shuffled", shuffle), ("sensitivity", sensitivity)]:
+    for name, df in [
+        ("primary", primary),
+        ("shuffled", shuffle),
+        ("ibra_shuffled", ibra_shuffle),
+        ("sensitivity", sensitivity),
+    ]:
         for _, row in df.iterrows():
             x = x_positions[row["feature"]] + offsets[name]
             ax.errorbar(
@@ -519,10 +850,21 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--simplify-m", type=float, default=1000.0)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument(
+        "--ibra-min-records",
+        type=int,
+        default=500,
+        help="Minimum records per class within an IBRA region for heterogeneity check.",
+    )
+    parser.add_argument(
         "--sensitivity-sample-rate",
         type=float,
         default=1.0,
         help="Random subsample rate for sensitivity runs (0-1].",
+    )
+    parser.add_argument(
+        "--skip-ibra-summary",
+        action="store_true",
+        help="Skip recomputing IBRA summary if already available.",
     )
     parser.add_argument(
         "--nightlights-dir",
@@ -554,6 +896,10 @@ def main(argv: list[str] | None = None) -> int:
     report_path = root / "analysis" / "reports" / "layerB_modelling_report.md"
     figure_path = root / "manuscript" / "figures" / "fig_layerB_alan_effects.png"
     summary_path = root / LAYERB_MODEL_INPUT_SUMMARY_CSV
+    ibra_summary_path = root / LAYERB_IBRA_SUMMARY_CSV
+    ibra_summary_report_path = root / IBRA_SUMMARY_REPORT
+    ibra_effects_csv_path = root / IBRA_EFFECTS_CSV
+    ibra_effects_fig_path = root / IBRA_FOREST_FIG
 
     if args.artefact_only:
         if not args.skip_artefact:
@@ -576,12 +922,78 @@ def main(argv: list[str] | None = None) -> int:
             (artefact_dir / "README.txt").write_text(
                 "WP0.16 Layer B modelling artefact.\n", encoding="utf-8"
             )
+
+            artefact_dir = root / "artefacts" / "wp0_20_layerB_ibra_robustness"
+            artefact_dir.mkdir(parents=True, exist_ok=True)
+            for path in (
+                report_path,
+                figure_path,
+                ibra_summary_path,
+                ibra_summary_report_path,
+                ibra_effects_csv_path,
+                ibra_effects_fig_path,
+            ):
+                if path.exists():
+                    shutil.copyfile(path, artefact_dir / path.name)
+            manifest = build_manifest(
+                run_id="wp0_20_layerB_ibra_robustness",
+                wp="WP0.20",
+                root=root,
+                outputs=[
+                    report_path.name,
+                    figure_path.name,
+                    ibra_summary_path.name,
+                    ibra_summary_report_path.name,
+                    ibra_effects_csv_path.name,
+                    ibra_effects_fig_path.name,
+                ],
+                inputs=["Atlas of Living Australia", "CAPAD 2024", "IBRA7 regions", "Zenodo nightlights v0.4"],
+                require_clean=True,
+                notes="WP0.20 Layer B IBRA robustness artefact",
+            )
+            write_manifest(artefact_dir / "MANIFEST.json", manifest)
+            (artefact_dir / "README.txt").write_text(
+                "WP0.20 Layer B IBRA robustness artefact.\n", encoding="utf-8"
+            )
         return 0
 
     pa_union = _load_union(root / PA_UNION_CACHE)
     microbats_path = root / args.microbats_path
     birds_path = root / args.birds_path
     nightlights_dir = root / args.nightlights_dir
+
+    ibra_path = _ensure_ibra_gpkg(root)
+    ibra_gdf = gpd.read_file(ibra_path).to_crs("EPSG:3577")
+    ibra_index = _build_ibra_index(ibra_gdf)
+
+    if args.skip_ibra_summary and ibra_summary_path.exists():
+        ibra_summary = pd.read_csv(ibra_summary_path)
+    else:
+        ibra_summary = pd.concat(
+            [
+                _collect_ibra_summary(
+                    path=microbats_path,
+                    group="microbats",
+                    pa_union=pa_union,
+                    buffer_km=args.buffer_km,
+                    nightlights_dir=nightlights_dir,
+                    simplify_m=args.simplify_m,
+                    ibra_index=ibra_index,
+                ),
+                _collect_ibra_summary(
+                    path=birds_path,
+                    group="diurnal_birds",
+                    pa_union=pa_union,
+                    buffer_km=args.buffer_km,
+                    nightlights_dir=nightlights_dir,
+                    simplify_m=args.simplify_m,
+                    ibra_index=ibra_index,
+                ),
+            ],
+            ignore_index=True,
+        )
+        write_ibra_summary(ibra_summary, ibra_summary_path)
+    write_ibra_summary_report(ibra_summary, ibra_summary_report_path)
 
     micro_primary = _collect_features(
         path=microbats_path,
@@ -595,6 +1007,7 @@ def main(argv: list[str] | None = None) -> int:
         sample_n=None,
         sample_rate=1.0,
         simplify_m=args.simplify_m,
+        include_xy=True,
     )
     birds_primary = _collect_features(
         path=birds_path,
@@ -608,11 +1021,13 @@ def main(argv: list[str] | None = None) -> int:
         sample_n=len(micro_primary.df),
         sample_rate=1.0,
         simplify_m=args.simplify_m,
+        include_xy=True,
     )
     micro_primary.df, birds_primary.df = _balanced_sample(
         micro_primary.df, birds_primary.df, args.seed
     )
     primary_df = pd.concat([micro_primary.df, birds_primary.df], ignore_index=True)
+    primary_df = _attach_ibra(primary_df, ibra_index)
 
     micro_sens = _collect_features(
         path=microbats_path,
@@ -646,11 +1061,24 @@ def main(argv: list[str] | None = None) -> int:
     primary = _run_model(primary_df, name="primary", block_km=args.block_km, seed=args.seed)
     shuffled_df = _shuffle_within_blocks(primary_df, args.seed + 9)
     shuffle = _run_model(shuffled_df, name="shuffled", block_km=args.block_km, seed=args.seed)
+    ibra_shuffled_df = _shuffle_within_ibra_year(primary_df, args.seed + 11)
+    ibra_shuffle = _run_model(ibra_shuffled_df, name="ibra_shuffled", block_km=args.block_km, seed=args.seed)
     sensitivity = _run_model(sens_df, name="sensitivity", block_km=args.block_km, seed=args.seed)
 
     primary_summary = _summarize_coefficients(primary.coefficients)
     shuffle_summary = _summarize_coefficients(shuffle.coefficients)
+    ibra_shuffle_summary = _summarize_coefficients(ibra_shuffle.coefficients)
     sensitivity_summary = _summarize_coefficients(sensitivity.coefficients)
+
+    ibra_effects = _ibra_effects(
+        primary_df,
+        min_records_per_class=args.ibra_min_records,
+        block_km=args.block_km,
+        seed=args.seed + 4,
+    )
+    write_ibra_effects(ibra_effects, ibra_effects_csv_path)
+    if not ibra_effects.empty:
+        plot_ibra_effects(ibra_effects, ibra_effects_fig_path)
 
     input_rows = []
     for run_name, dataset, sample_rate in [
@@ -686,16 +1114,23 @@ def main(argv: list[str] | None = None) -> int:
         shuffle=shuffle,
         shuffle_summary=shuffle_summary,
         shuffle_metrics=shuffle.metrics,
+        ibra_shuffle=ibra_shuffle,
+        ibra_shuffle_summary=ibra_shuffle_summary,
+        ibra_shuffle_metrics=ibra_shuffle.metrics,
         sensitivity=sensitivity,
         sensitivity_summary=sensitivity_summary,
         sensitivity_metrics=sensitivity.metrics,
         input_summary=input_summary,
+        ibra_effects=ibra_effects,
+        ibra_min_records=args.ibra_min_records,
         block_km=args.block_km,
         provider=args.provider,
         sensitivity_sample_rate=args.sensitivity_sample_rate,
     )
 
-    write_figure(figure_path, primary_summary, shuffle_summary, sensitivity_summary)
+    write_figure(
+        figure_path, primary_summary, shuffle_summary, ibra_shuffle_summary, sensitivity_summary
+    )
 
     if not args.skip_artefact:
         _ensure_clean_tree(root, args.allow_dirty)
@@ -716,6 +1151,39 @@ def main(argv: list[str] | None = None) -> int:
         write_manifest(artefact_dir / "MANIFEST.json", manifest)
         (artefact_dir / "README.txt").write_text(
             "WP0.16 Layer B modelling artefact.\n", encoding="utf-8"
+        )
+
+        artefact_dir = root / "artefacts" / "wp0_20_layerB_ibra_robustness"
+        artefact_dir.mkdir(parents=True, exist_ok=True)
+        for path in (
+            report_path,
+            figure_path,
+            ibra_summary_path,
+            ibra_summary_report_path,
+            ibra_effects_csv_path,
+            ibra_effects_fig_path,
+        ):
+            if path.exists():
+                shutil.copyfile(path, artefact_dir / path.name)
+        manifest = build_manifest(
+            run_id="wp0_20_layerB_ibra_robustness",
+            wp="WP0.20",
+            root=root,
+            outputs=[
+                report_path.name,
+                figure_path.name,
+                ibra_summary_path.name,
+                ibra_summary_report_path.name,
+                ibra_effects_csv_path.name,
+                ibra_effects_fig_path.name,
+            ],
+            inputs=["Atlas of Living Australia", "CAPAD 2024", "IBRA7 regions", "Zenodo nightlights v0.4"],
+            require_clean=True,
+            notes="WP0.20 Layer B IBRA robustness artefact",
+        )
+        write_manifest(artefact_dir / "MANIFEST.json", manifest)
+        (artefact_dir / "README.txt").write_text(
+            "WP0.20 Layer B IBRA robustness artefact.\n", encoding="utf-8"
         )
 
     return 0

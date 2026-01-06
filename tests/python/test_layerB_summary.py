@@ -20,3 +20,12 @@ def test_layerB_model_input_summary_schema_if_present():
     df = pd.read_csv(dschema.LAYERB_MODEL_INPUT_SUMMARY_CSV)
     assert set(df.columns) == set(dschema.LAYERB_MODEL_INPUT_SUMMARY_COLUMNS)
     assert set(df["schema_version"]) == {dschema.SCHEMA_VERSION}
+
+
+def test_layerB_ibra_summary_schema_if_present():
+    if not Path(dschema.LAYERB_IBRA_SUMMARY_CSV).exists():
+        pytest.skip("Layer B IBRA summary not present; run layerB_model pipeline.")
+    df = pd.read_csv(dschema.LAYERB_IBRA_SUMMARY_CSV)
+    assert set(df.columns) == set(dschema.LAYERB_IBRA_SUMMARY_COLUMNS)
+    assert set(df["schema_version"]) == {dschema.SCHEMA_VERSION}
+    assert df["zero_fraction"].dropna().between(0, 1).all()
