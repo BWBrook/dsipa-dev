@@ -32,3 +32,7 @@ Packaging:
 QA:
 - Full tests: `uv run pytest`.
 - Build: `uv run python -m build --sdist --wheel`.
+
+Updated packaging (per request):
+- Full PI review ZIP (WP0.15b–WP0.19): `analysis/pi_review_wp0_15b_to_wp0_19_20260106.zip`.
+- Cover letter expanded: `docs/cover_letter_pi_gate_0_7_wp0_19.md`.
