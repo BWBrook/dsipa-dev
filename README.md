@@ -46,6 +46,23 @@ analysis/zenodo_release_checklist.sh
 ```
 This writes a checklist + SHA256 manifest to `analysis/reports/zenodo_release_checklist_YYYY-MM-DD.md`.
 
+Deep-server evidence reconciliation:
+```bash
+analysis/deep_server_tmux_run.sh --mode evidence
+```
+This starts a detached `tmux` run on `deep-server`, inventories the large
+ignored evidence files in the remote checkout, and refreshes
+`analysis/reports/evidence_reconciliation.*` plus
+`analysis/reports/reproducibility_audit.md`.
+
+For longer production reruns on `deep-server`, keep work under tmux and tune the
+worker count explicitly:
+```bash
+analysis/deep_server_tmux_run.sh --mode full --workers 12
+```
+Remote logs are written under `/data/codex/scratch/dsipa/<RUN_ID>/`, with
+copied evidence artefacts under `/data/codex/artifacts/dsipa/<RUN_ID>/`.
+
 ---
 
 ## Quickstart (bootstrap)
