@@ -51,7 +51,7 @@ Every key figure/table/model must have an entry here.
 - Relation to hypotheses:
   - Supports H1 that many PAs are dark while some are exposed to higher ALAN.
 - Sanity verdict (pass/warn/fail) and why:
-  - warn — eligibility is 4,422/11,112 PAs (39.8%) and zero‑mass among eligible is ~86.9%, so selection dominates interpretation.
+  - warn — eligibility is 4,426/11,133 PAs (39.8%) and zero‑mass among eligible is ~86.9%, so selection dominates interpretation.
 - Surprises / concerns:
   - Coverage fraction for inside zones remains ~0.40 at the 10‑pixel threshold; zero‑mass remains high even among eligible PAs.
   - PA universe now includes JBT/EXT; totals align across geometry/radiance tables (11,133).
@@ -78,15 +78,15 @@ Every key figure/table/model must have an entry here.
 - Artefact: `manuscript/figures/fig_layerA_edge_profiles_aggregate.png`
 - What it shows (plain language):
   - Two-panel figure: ring feasibility (fraction of PAs with valid rings) and conditional edge profile (frac_gt0) for complete‑ring PAs in 2024.
-  - Complete rings are rare (383/11,112 ≈ 3.4%); profile is conditional on this subset.
+  - Complete rings are rare (383 PAs; 3.4% of the PA universe); profile is conditional on this subset.
 - Relation to hypotheses:
-  - Supports H2: edge gradients appear in developed contexts.
+  - Conservatively supports H2 only as a feasibility and conditional non-zero diagnostic; it is not a definitive penetration-gradient test.
 - Sanity verdict (pass/warn/fail) and why:
-  - warn — feasibility is low (ring 0 ≈ 39.8%, ring 1 ≈ 12.8%, ring 2 ≈ 3.4%); conditional profile should be framed as limited evidence.
+  - warn — feasibility is low (ring 0 ≈ 39.7%, ring 1 ≈ 12.8%, ring 2 ≈ 3.4%), complete-ring median `frac_gt0` is zero in all rings, and conditional profile evidence must remain limited.
 - Surprises / concerns:
-  - Non‑zero frac_gt0 rows among complete rings are ~10%, so profile may still be floor‑dominated.
+  - Conditional non-zero share declines from 18.0% in the 0-1 km ring to 3.7% in the 5-10 km ring, but the complete-ring subset is too small for a primary edge-effect claim.
 - Follow-up tasks:
-  - [ ] Consider adaptive rings or minimum-area filters for penetration metrics.
+  - [x] Consider adaptive rings or minimum-area filters for penetration metrics. Stage 2 decision: defer adaptive/min-area rings and retain fixed rings as a diagnostic only.
 
 ### FIG4_RETENTION_quadrant
 
@@ -96,7 +96,7 @@ Every key figure/table/model must have an entry here.
 - Relation to hypotheses:
   - Directly aligns with H1/H2 by contrasting inside vs outside trend directions.
 - Sanity verdict (pass/warn/fail) and why:
-  - pass — quadrant counts are reported (Q1=304, Q2=55, Q3=3308, Q4=190; n=3857) and clipping reduces outlier dominance.
+  - pass — quadrant counts are reported (Q1=305, Q2=55, Q3=3,308, Q4=190; n=3,858) and clipping reduces outlier dominance.
 - Surprises / concerns:
   - Quadrant patterns are sparse in some regions due to missingness.
 - Follow-up tasks:
@@ -107,14 +107,15 @@ Every key figure/table/model must have an entry here.
 - Artefact: `analysis/reports/risk_rankings_and_quadrants.md`
 - What it shows (plain language):
   - Category-safe ranked lists: inside brightening, buffer brightening, internalisation, and external pressure (mean-based trends).
+  - Stage 2 adds `analysis/reports/layerA_watchlists_uncertainty.md` and Table S1, joining inside-slope bootstrap intervals/probabilities to management-facing watchlists.
 - Relation to hypotheses:
   - Supports H1/H2 by identifying PAs where inside brightening exceeds outside trends.
 - Sanity verdict (pass/warn/fail) and why:
-  - pass — rankings align with urban-adjacent PAs; report is transparent.
+  - pass — rankings align with urban-adjacent PAs; report is transparent; all Table S1 rows have inside-slope bootstrap uncertainty.
 - Surprises / concerns:
-  - External-pressure list contains many zero‑inside slopes; ensure the narrative stays descriptive.
+  - External-pressure list contains many zero-inside slopes; ensure the narrative stays descriptive and does not imply that buffer pressure has already penetrated the PA interior.
 - Follow-up tasks:
-  - [ ] Add confidence intervals for risk scores in later iterations.
+  - [x] Add confidence intervals/probabilities for inside-slope uncertainty in Table S1.
 
 ### FIG9_TRENDS_uncertainty_forest
 
@@ -144,7 +145,28 @@ Every key figure/table/model must have an entry here.
 - Surprises / concerns:
   - Some PAs with high median slopes show only modest dominance, indicating ranking instability.
 - Follow-up tasks:
-  - [ ] Consider adding a simplified dominance summary table (e.g., P(slope>0) + P(>median)). 
+  - [x] Consider adding a simplified dominance summary table (e.g., P(slope>0) + P(>median)).
+
+### STAGE2_LAYERA_watchlists_and_dominance
+
+- Artefacts:
+  - `analysis/reports/layerA_watchlists_uncertainty.md`
+  - `analysis/reports/layerA_dominance_summary.md`
+  - `manuscript/text/supplementary_tables.md`
+- What it shows (plain language):
+  - Table S1 now provides 60 category-safe watchlist rows: top 20 inside brightening, top 20 external pressure, and top 20 internalisation.
+  - Each watchlist row includes PA identifier/name/state, dominant IBRA, area, inside slope, 1 km buffer slope, 1 km retention index, inside-slope bootstrap 95% interval, and P(inside slope > 0).
+  - The simplified dominance summary shows strong pairwise separation for only the leading top brighteners; mid-rank sites have much weaker dominance, supporting uncertainty-aware triage rather than precise rank claims.
+- Relation to hypotheses:
+  - Supports H1/H2 operationally by turning the hardened trend/quadrant results into transparent, category-safe priority lists.
+  - Reinforces the uncertainty framing: the evidence supports a brightening tail and external-pressure subset, not exact ordinal rankings.
+- Sanity verdict (pass/warn/fail) and why:
+  - pass — category filters match the risk definitions, all rows have inside-slope bootstrap uncertainty, and dominance probabilities are bounded in [0,1].
+- Surprises / concerns:
+  - Some internalisation rows have wide inside-slope intervals despite positive point estimates, so practitioner use should focus on category membership plus uncertainty rather than rank number alone.
+  - External-pressure uncertainty is currently inside-slope uncertainty only; buffer and retention uncertainty are still point-estimate fields.
+- Follow-up tasks:
+  - [ ] During Stage 4, state explicitly that Table S1 is for triage/hypothesis generation and not precise rank ordering.
 
 ### FIG5_BIO_nocturnal_vs_control_effect_contrast
 
@@ -223,6 +245,46 @@ Every key figure/table/model must have an entry here.
 - Follow-up tasks:
   - [ ] None (descriptive context figure).
 
+### STAGE2_LAYERA_anchor_and_buffer_validity
+
+- Artefacts:
+  - `analysis/reports/layerA_sanity_dashboard.md`
+  - `analysis/reports/layerA_buffer_validity_sensitivity.md`
+- What it shows (plain language):
+  - Bright/dark anchors now use explicit evidence-defined contexts rather than nearest-city medians.
+  - Urban-adjacent eligible PAs have much higher upper-tail inside radiance than remote eligible PAs (2024 mean p95 112.769 vs 0.167).
+  - External-pressure quadrant fractions are stable under stricter 1 km buffer-validity filters.
+- Relation to hypotheses:
+  - Supports the Layer A sanity requirement: bright urban-edge contexts are distinguishable from remote dark contexts, and the retention/external-pressure framing is not obviously an artefact of poor buffer validity.
+- Sanity verdict (pass/warn/fail) and why:
+  - pass — anchor contrasts are directionally strong, and strict buffer filtering changes sample size more than headline quadrant fractions.
+- Surprises / concerns:
+  - The national median remains zero in many strata, so upper-tail and conditional checks are more informative than aggregate medians.
+- Follow-up tasks:
+  - [ ] Carry these caveats into final Results/Discussion wording during Stage 4.
+
+### STAGE2_LAYERA_threshold_and_edge_sensitivity
+
+- Artefacts:
+  - `analysis/reports/layerA_trend_threshold_sensitivity.md`
+  - `analysis/reports/layerA_edge_profile_decision.md`
+- What it shows (plain language):
+  - The primary trend rule (`>=10` valid pixels, `>=8` valid years) gives 4,426 inside trend-eligible PAs, 89.7% zero inside mean-slope fraction, 420 positive inside slopes, and a retention-quadrant denominator of 3,858.
+  - Trend-threshold results are stable across 6, 8, and 10 minimum valid years in the current complete annual evidence snapshot; stricter valid-pixel thresholds reduce sample size but leave the headline Q1/Q4 fractions similar.
+  - The edge-profile figure is feasible only for a small complete-ring subset (383 PAs; 3.4% of the PA universe), with median `frac_gt0` equal to zero in all rings and conditional non-zero share declining from 18.0% to 3.7% from the 0-1 km to 5-10 km rings.
+- Relation to hypotheses:
+  - Supports H1 by showing the non-zero brightening tail and quadrant framing are not artefacts of one arbitrary valid-year threshold.
+  - Keeps H2 conservative: the edge profile is retained as a feasibility and conditional non-zero diagnostic, not as a definitive penetration-gradient test.
+- Sanity verdict (pass/warn/fail) and why:
+  - pass for trend thresholds — denominator nesting and quadrant-count invariants hold, and stricter valid-pixel rules do not overturn the primary interpretation.
+  - warn for edge profiles — complete-ring coverage is very low and medians are floor-dominated, so absence-of-edge-effect claims would be unsupported.
+- Surprises / concerns:
+  - Valid-year thresholds do not change counts because the current eligible series are effectively complete across the annual window; this is useful but should not be overgeneralised to future products.
+  - Edge medians remain unusable as an effect-size summary; the figure must stay captioned as a diagnostic.
+- Follow-up tasks:
+  - [ ] Carry the threshold-sensitivity summary into Methods/Results during Stage 4.
+  - [ ] Keep edge-profile wording conditional in captions and Discussion.
+
 ### [RESULT-ID]
 
 - Artefact: `path/to/artefact`
@@ -264,6 +326,6 @@ When the results are coherent enough for manuscript drafting, write a short summ
 - Layer B: provider-matched microbats vs passerines shows a weak ALAN signal (AUC ~0.54) with two-part covariates; shuffled ALAN collapses toward null. Sensitivity on multi-provider data is descriptive (AUC ~0.56) and does not change the primary inference.
 - Limitations and mitigations:
   - Inside coverage is limited for small PAs; we use a minimum valid-pixel threshold and report missingness explicitly.
-  - Ring profiles for outer bins are sparse; consider adaptive ring widths or minimum-area filters.
+  - Ring profiles for outer bins are sparse; fixed rings are retained as a feasibility-limited diagnostic, with adaptive/min-area rings deferred rather than promoted in Stage 2.
   - Scaling metadata changes in 2022–2024; we apply scale/offset metadata and document it.
   - Risk/retention rankings are descriptive; do not imply causality and still sensitive to missingness.

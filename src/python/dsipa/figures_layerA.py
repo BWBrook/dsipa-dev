@@ -49,9 +49,10 @@ def plot_baseline_map(root: Path) -> Path:
     merged[eligible].plot(ax=axes[0], color="#2C7FB8", linewidth=0)
     n_total = len(merged)
     n_eligible = int(eligible.sum())
-    n_missing = n_total - n_eligible
+    n_ineligible = n_total - n_eligible
     axes[0].set_title(
-        f"Eligibility (>= {MIN_VALID_PIXELS} px; eligible={n_eligible}, missing={n_missing})"
+        f"Eligibility (>= {MIN_VALID_PIXELS} px; eligible={n_eligible}, "
+        f"ineligible={n_ineligible})"
     )
     axes[0].set_axis_off()
     axes[0].set_xlim(minx, maxx)

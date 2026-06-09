@@ -1,6 +1,6 @@
 # Layer A sanity dashboard
 
-Generated: 2026-01-04 01:14 UTC
+Generated: 2026-05-25 03:35 UTC
 
 Minimum valid pixels: 10
 Alternative threshold: 50
@@ -13,11 +13,31 @@ mean >= 0 (ignoring NaN): True
 frac_gt0 within [0,1] (ignoring NaN): True
 p95 >= median >= min (valid rows): True
 
-## Anchor checks (inside mean radiance, by distance bands)
+## Anchor checks (explicit bright/dark contexts)
 
-Year 2013: urban (<=20 km) median=15.185, remote (>=300 km) median=0.000
-Year 2018: urban (<=20 km) median=21.389, remote (>=300 km) median=0.000
-Year 2024: urban (<=20 km) median=22.903, remote (>=300 km) median=0.000
+Anchors are defined from PA/radiance evidence, not from nearest-city medians. This avoids the earlier failure mode where many remote PAs were still assigned to a major city label.
+
+- Urban-adjacent inside PAs (<=20 km): n=63, mean median=22.903, mean p95=112.769, fraction mean>0=0.889, median distance=12.9 km
+- Remote inside PAs (>=300 km): n=1520, mean median=0.000, mean p95=0.167, fraction mean>0=0.098, median distance=478.9 km
+- Top non-zero inside PAs by 2024 mean (top 50): n=50, mean median=41.630, mean p95=132.143, fraction mean>0=1.000, median distance=18.4 km
+- Top non-zero 1 km buffer contexts by 2024 mean (top 50): n=50, mean median=230.196, mean p95=619.566, fraction mean>0=1.000, median distance=15.1 km
+
+Top inside bright-context rows (2024):
+
+    pa_id                         NAME STATE    mean   p95  frac_gt0  distance_km nearest_city
+ WA_27575                     Neerabup    WA 190.339 418.0       1.0       33.304        Perth
+  WA_1720                   Kings Park    WA 158.750 392.0       1.0        3.021        Perth
+ VIC_4007 Craigieburn Grassland N.C.R.   VIC 145.714 320.0       1.0       21.694    Melbourne
+ WA_48327                Canning River    WA 115.556 211.0       1.0        8.869        Perth
+ WA_48325                   Swan River    WA 113.434 382.5       1.0        4.210        Perth
+NSW_N0083                    Lane Cove   NSW 113.333 352.0       1.0       13.997       Sydney
+   ACT_09       Jerrabomberra Wetlands   ACT 107.692 166.0       1.0        4.185     Canberra
+ WA_21708               Lake Joondalup    WA  95.200 214.0       1.0       24.606        Perth
+
+Anchor sanity verdicts:
+
+- urban p95 > remote p95: True (112.769 vs 0.167)
+- bright-context median > remote p95: True (41.630 vs 0.167)
 
 ## Sensitivity checks
 

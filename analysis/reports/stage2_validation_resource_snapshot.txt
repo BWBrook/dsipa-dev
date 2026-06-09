@@ -1,0 +1,58 @@
+[2026-05-25T15:11:07+10:00] DSIPA deep-server run starting
+mode=custom
+repo=/home/bwbrook/papers/dsipa-dev
+run_dir=/data/codex/scratch/dsipa/20260525T050953Z-stage2-validation
+artifact_dir=/data/codex/artifacts/dsipa/20260525T050953Z-stage2-validation
+workers=12
+states=ACT,NSW,NT,QLD,SA,TAS,VIC,WA,JBT,EXT
+host=deep-server
+date_utc=2026-05-25T05:11:07Z
+python=Python 3.12.3
+uv=/home/bwbrook/.local/bin/uv
+
+## git
+## main
+ M analysis/reports/layerA_sanity_dashboard.md
+ M analysis/reports/reproducibility_audit.md
+ M manuscript/figures/fig_layerA_baseline_map.png
+ M src/python/dsipa/figures_layerA.py
+ M src/python/dsipa/layerA_sanity.py
+?? analysis/deep_server_tmux_run.sh
+?? analysis/reports/evidence_reconciliation.json
+?? analysis/reports/evidence_reconciliation.md
+?? analysis/reports/layerA_buffer_validity_sensitivity.csv
+?? analysis/reports/layerA_buffer_validity_sensitivity.md
+?? analysis/reports/layerA_denominators_and_censoring.csv
+?? analysis/reports/layerA_denominators_and_censoring.md
+?? analysis/reports/layerA_dominance_summary.csv
+?? analysis/reports/layerA_dominance_summary.md
+?? analysis/reports/layerA_edge_profile_decision.csv
+?? analysis/reports/layerA_edge_profile_decision.md
+?? analysis/reports/layerA_table1_candidate.md
+?? analysis/reports/layerA_trend_threshold_sensitivity.csv
+?? analysis/reports/layerA_trend_threshold_sensitivity.md
+?? analysis/reports/layerA_watchlists_uncertainty.csv
+?? analysis/reports/layerA_watchlists_uncertainty.md
+?? manuscript/text/supplementary_tables.md
+?? src/python/dsipa/evidence_reconciliation.py
+?? src/python/dsipa/layerA_buffer_sensitivity.py
+?? src/python/dsipa/layerA_edge_decision.py
+?? src/python/dsipa/layerA_tables.py
+?? src/python/dsipa/layerA_threshold_sensitivity.py
+?? src/python/dsipa/layerA_watchlists.py
+?? tests/python/test_evidence_reconciliation.py
+?? tests/python/test_layerA_buffer_sensitivity.py
+?? tests/python/test_layerA_edge_decision.py
+?? tests/python/test_layerA_tables.py
+?? tests/python/test_layerA_threshold_sensitivity.py
+?? tests/python/test_layerA_watchlists.py
+f73156272104ed16b0506617fc423e5c6478f50e
+
+## resources
+64
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       2.1Gi       119Gi        10Mi       4.9Gi       123Gi
+Swap:          8.0Gi          0B       8.0Gi
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/sda2      ext4  937G   83G  807G  10% /
+/dev/sdb       ext4   13T  8.1T  4.5T  65% /data

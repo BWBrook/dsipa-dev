@@ -1,18 +1,71 @@
 ## Supplementary Tables
 
-**Table S1. Protected-area watchlists, category-safe.**
+**Table S1. Protected-area watchlists, category-safe and uncertainty-aware.**
 
-Placeholder supplementary table to be completed after the final table/results pass. Its purpose is to provide a management-facing deliverable while keeping the ranked lists category-safe and uncertainty-aware.
+Watchlists are ranked within category, not as a single combined risk score. Slopes are Theil-Sen trends in scaled VIIRS radiance units per year for 2013-2024. The 95% interval and probability columns are from the IBRA-cluster moving-block bootstrap for inside-protected-area mean-radiance slopes; buffer and retention columns are point estimates. These lists are intended for triage and hypothesis generation, not precise rank ordering.
 
-The table should contain three short ranked lists, with the top 20 protected areas in each category:
-
-- inside brightening, defined as inside slope > 0, reporting slope, confidence interval, and P(slope > 0);
-- external pressure, defined as buffer slope > 0 while inside slope <= 0; and
-- internalisation/retention, defined using inside slope - buffer slope, with the sign interpreted explicitly.
-
-Suggested columns are PA name, PA_ID, state/territory, dominant IBRA, area (km2), inside slope, buffer slope, retention index, bootstrap confidence interval, and bootstrap probability.
-
-This table should stay out of the main narrative, but it is likely to be valuable for practitioners.
+| category | rank | PA name | PA_ID | state | IBRA | area_km2 | inside_slope | buffer_1km_slope | retention_1km | inside_slope_95ci | P_inside_slope_gt0 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Inside brightening | 1 | Neerabup | WA_27575 | WA | SWA | 9.735 | 8.150 | 3.522 | 4.628 | 0.254 to 12.364 | 0.975 |
+| Inside brightening | 2 | Craigieburn Grassland N.C.R. | VIC_4007 | VIC | SVP | 3.440 | 7.397 | 8.213 | -0.816 | 5.735 to 9.365 | 1.000 |
+| Inside brightening | 3 | Torrens Island | SA_0038 | SA | EYB | 6.387 | 3.727 | 3.276 | 0.451 | 2.451 to 5.139 | 1.000 |
+| Inside brightening | 4 | Wianamatta | NSW_N1123 | NSW | SYB | 7.371 | 3.333 | 3.474 | -0.140 | 2.332 to 4.390 | 0.993 |
+| Inside brightening | 5 | Lane Cove | NSW_N0083 | NSW | SYB | 7.186 | 2.872 | 1.592 | 1.280 | 0.513 to 4.359 | 0.986 |
+| Inside brightening | 6 | Lake Joondalup | WA_21708 | WA | SWA | 4.481 | 2.750 | 2.019 | 0.731 | 0.740 to 6.000 | 0.989 |
+| Inside brightening | 7 | Unnamed WA53313 | WA_53313 | WA | SWA | 6.099 | 2.168 | 2.627 | -0.459 | 0.859 to 3.047 | 0.996 |
+| Inside brightening | 8 | Windsor Downs | NSW_N0598 | NSW | SYB | 3.643 | 2.143 | 1.994 | 0.149 | 1.280 to 2.857 | 1.000 |
+| Inside brightening | 9 | Goorooyarroo | ACT_33 | ACT | SEH | 8.290 | 2.004 | 0.787 | 1.217 | 1.224 to 3.197 | 1.000 |
+| Inside brightening | 10 | Prospect | NSW_N0938 | NSW | SYB | 3.256 | 1.905 | 4.886 | -2.981 | 0.238 to 2.693 | 0.976 |
+| Inside brightening | 11 | Worrigee | NSW_N0877 | NSW | SYB | 2.293 | 1.763 | 3.136 | -1.374 | 1.154 to 2.877 | 1.000 |
+| Inside brightening | 12 | Henderson | WA_39584 | WA | SWA | 2.981 | 1.731 | -0.062 | 1.793 | -3.462 to 4.360 | 0.730 |
+| Inside brightening | 13 | Charles Darwin | NT_PA115 | NT | DAC | 13.028 | 1.686 | 2.738 | -1.052 | 0.260 to 2.668 | 0.987 |
+| Inside brightening | 14 | Goegrup Lake | WA_26351 | WA | SWA | 3.197 | 1.654 | 1.707 | -0.053 | 0.588 to 3.515 | 1.000 |
+| Inside brightening | 15 | Molonglo River | ACT_53 | ACT | SEH | 12.073 | 1.614 | 2.790 | -1.176 | 1.162 to 1.972 | 1.000 |
+| Inside brightening | 16 | Yiraaldiya | NSW_N1210 | NSW | SYB | 5.388 | 1.452 | 4.803 | -3.351 | -0.645 to 2.212 | 0.958 |
+| Inside brightening | 17 | Cobbler Creek | SA_0244 | SA | FLB | 2.669 | 1.429 | 1.567 | -0.138 | 0.429 to 2.381 | 0.993 |
+| Inside brightening | 18 | Daisy Hill | QLD_0966DSY001 | QLD | SEQ | 7.835 | 1.424 | 1.671 | -0.247 | 1.066 to 1.977 | 0.990 |
+| Inside brightening | 19 | Black Hill | SA_0095 | SA | FLB | 7.597 | 1.369 | 1.285 | 0.084 | 1.132 to 1.905 | 1.000 |
+| Inside brightening | 20 | Mt Ainslie | ACT_13 | ACT | SEH | 6.368 | 1.340 | 1.783 | -0.442 | 0.513 to 2.393 | 0.983 |
+| External pressure | 1 | Poonthie Ruwe | SA_0569 | SA | MDD | 2.415 | 0.000 | 0.882 | -0.882 | 0.000 to 0.208 | 0.135 |
+| External pressure | 2 | Mount Coolum | QLD_0596MCL001 | QLD | SEQ | 3.634 | -0.096 | 0.802 | -0.897 | -0.980 to 1.691 | 0.374 |
+| External pressure | 3 | Bungonia | NSW_N1142 | NSW | SEH | 7.690 | 0.000 | 0.505 | -0.505 | 0.000 to 0.000 | 0.000 |
+| External pressure | 4 | Long Reach | TAS_50387 | TAS | BEL | 3.232 | -0.825 | 0.488 | -1.313 | -2.893 to 1.038 | 0.125 |
+| External pressure | 5 | Torndirrup | WA_05225 | WA | WAR | 40.216 | 0.000 | 0.417 | -0.417 | 0.000 to 0.000 | 0.000 |
+| External pressure | 6 | Bumbang I262 B.R | VIC_1328 | VIC | MDD | 5.624 | 0.000 | 0.353 | -0.353 | 0.000 to 0.000 | 0.003 |
+| External pressure | 7 | Casvarina | TAS_12645 | TAS | TNS | 1.853 | 0.000 | 0.341 | -0.341 | 0.000 to 0.000 | 0.000 |
+| External pressure | 8 | Lake Corringle W.R | VIC_459 | VIC | SEC | 9.220 | 0.000 | 0.340 | -0.340 | 0.000 to 0.000 | 0.000 |
+| External pressure | 9 | Loch Luna | SA_0220 | SA | RIV | 20.697 | 0.000 | 0.339 | -0.339 | 0.000 to 0.051 | 0.246 |
+| External pressure | 10 | Kuma | NSW_N0900 | NSW | SEH | 1.839 | 0.000 | 0.325 | -0.325 | 0.000 to 0.303 | 0.238 |
+| External pressure | 11 | Mapleton | QLD_1069MCP001 | QLD | SEQ | 3.595 | 0.000 | 0.301 | -0.301 | 0.000 to 0.000 | 0.000 |
+| External pressure | 12 | Twin Swamps | WA_27621 | WA | SWA | 1.553 | 0.000 | 0.286 | -0.286 | 0.000 to 0.000 | 0.000 |
+| External pressure | 13 | Tiraki | NSW_N0975 | NSW | SYB | 6.127 | 0.000 | 0.269 | -0.269 | 0.000 to 0.000 | 0.000 |
+| External pressure | 14 | Devilbend N.F.R. | VIC_4746 | VIC | SCP | 10.069 | 0.000 | 0.263 | -0.263 | 0.000 to 0.074 | 0.103 |
+| External pressure | 15 | Middle Arm | TAS_50735 | TAS | FUR | 1.944 | 0.000 | 0.256 | -0.256 | 0.000 to 0.000 | 0.000 |
+| External pressure | 16 | Goorooyarroo | NSW_N0433 | NSW | SEH | 3.118 | 0.000 | 0.253 | -0.253 | 0.000 to 0.096 | 0.056 |
+| External pressure | 17 | Kinleyside | ACT_48 | ACT | SEH | 2.272 | -0.509 | 0.248 | -0.758 | -1.111 to 0.222 | 0.033 |
+| External pressure | 18 | Keppel Bay Islands | QLD_0105KEP001 | QLD | CMC | 7.260 | 0.000 | 0.242 | -0.242 | 0.000 to 0.000 | 0.000 |
+| External pressure | 19 | Cotton Bush | TAS_21491 | TAS | TSR | 2.226 | 0.000 | 0.239 | -0.239 | 0.000 to 0.000 | 0.000 |
+| External pressure | 20 | Wild Cattle Island | QLD_0541WCA001 | QLD | SEQ | 5.914 | 0.000 | 0.236 | -0.236 | 0.000 to 0.093 | 0.448 |
+| Internalisation | 1 | Neerabup | WA_27575 | WA | SWA | 9.735 | 8.150 | 3.522 | 4.628 | 0.254 to 12.364 | 0.975 |
+| Internalisation | 2 | Jerrabomberra Wetlands | ACT_09 | ACT | SEH | 2.058 | 0.363 | -3.341 | 3.704 | -2.308 to 1.863 | 0.550 |
+| Internalisation | 3 | Red Hill | ACT_21 | ACT | SEH | 2.928 | 0.360 | -1.843 | 2.203 | -0.877 to 1.579 | 0.828 |
+| Internalisation | 4 | Henderson | WA_39584 | WA | SWA | 2.981 | 1.731 | -0.062 | 1.793 | -3.462 to 4.360 | 0.730 |
+| Internalisation | 5 | Mount Whitfield | QLD_0470MWT001 | QLD | WET | 3.285 | 0.544 | -0.918 | 1.463 | 0.000 to 1.333 | 0.970 |
+| Internalisation | 6 | Isaacs Ridge | ACT_08 | ACT | SEH | 3.668 | 0.500 | -0.928 | 1.428 | -0.500 to 1.375 | 0.646 |
+| Internalisation | 7 | Lane Cove | NSW_N0083 | NSW | SYB | 7.186 | 2.872 | 1.592 | 1.280 | 0.513 to 4.359 | 0.986 |
+| Internalisation | 8 | Goorooyarroo | ACT_33 | ACT | SEH | 8.290 | 2.004 | 0.787 | 1.217 | 1.224 to 3.197 | 1.000 |
+| Internalisation | 9 | Thomsons Lake | WA_15556 | WA | SWA | 5.509 | 0.418 | -0.600 | 1.018 | 0.230 to 0.690 | 0.993 |
+| Internalisation | 10 | Melrose | ACT_51 | ACT | SEH | 1.968 | 0.272 | -0.597 | 0.870 | -0.385 to 0.769 | 0.719 |
+| Internalisation | 11 | Kuyunba | NT_PA57 | NT | MAC | 6.289 | 0.500 | -0.240 | 0.740 | 0.000 to 0.667 | 0.925 |
+| Internalisation | 12 | Lake Joondalup | WA_21708 | WA | SWA | 4.481 | 2.750 | 2.019 | 0.731 | 0.740 to 6.000 | 0.989 |
+| Internalisation | 13 | Marshalls Creek | NSW_N0791 | NSW | SEQ | 1.536 | 0.281 | -0.423 | 0.704 | -0.455 to 0.909 | 0.754 |
+| Internalisation | 14 | Unnamed WA35283 | WA_35283 | WA | SWA | 2.707 | 0.577 | -0.109 | 0.687 | 0.000 to 1.111 | 0.902 |
+| Internalisation | 15 | Brian Burke Reserve | QLD_NR1921 | QLD | SEQ | 2.684 | 0.889 | 0.240 | 0.649 | 0.333 to 1.333 | 0.976 |
+| Internalisation | 16 | Stanwell Power Station | QLD_NR295 | QLD | BBS | 6.360 | 0.433 | -0.192 | 0.625 | 0.294 to 0.588 | 1.000 |
+| Internalisation | 17 | Sturt Gorge | SA_0239 | SA | FLB | 4.356 | 0.625 | 0.023 | 0.603 | 0.005 to 0.760 | 0.972 |
+| Internalisation | 18 | The Pines F.F.R. | VIC_3695 | VIC | SCP | 2.061 | 1.026 | 0.430 | 0.596 | 0.000 to 1.538 | 0.958 |
+| Internalisation | 19 | Renison Bell | TAS_50789 | TAS | TWE | 7.542 | 0.689 | 0.158 | 0.531 | 0.167 to 1.979 | 0.983 |
+| Internalisation | 20 | Leslie Harrison Dam | QLD_NR3313 | QLD | SEQ | 3.093 | 0.846 | 0.344 | 0.502 | 0.071 to 1.875 | 0.973 |
 
 **Table S2. Layer B model summary and falsification outcomes.**
 

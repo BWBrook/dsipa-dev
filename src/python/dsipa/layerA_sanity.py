@@ -74,7 +74,11 @@ def _attach_city_distance(gdf: gpd.GeoDataFrame) -> pd.DataFrame:
     gdf["distance_km"] = nearest_dist_km
     gdf["distance_band"] = gdf["distance_km"].apply(_assign_distance_band)
     gdf["area_quartile"] = _assign_area_quartiles(gdf["area_km2"])
-    return gdf[["pa_id", "nearest_city", "distance_km", "distance_band", "area_quartile", "area_km2"]]
+    cols = ["pa_id", "nearest_city", "distance_km", "distance_band", "area_quartile", "area_km2"]
+    for col in ["NAME", "STATE"]:
+        if col in gdf.columns:
+            cols.append(col)
+    return gdf[cols]
 
 
 def _invariant_checks(df: pd.DataFrame) -> list[str]:
@@ -92,17 +96,70 @@ def _invariant_checks(df: pd.DataFrame) -> list[str]:
     return lines
 
 
-def _anchor_checks(df_inside: pd.DataFrame, pa_meta: pd.DataFrame) -> list[str]:
-    lines = ["## Anchor checks (inside mean radiance, by distance bands)", ""]
-    merged = df_inside.merge(pa_meta, on="pa_id", how="left")
-    years = [2013, 2018, 2024]
-    for year in years:
-        subset = merged[merged["year"] == year]
-        urban = subset[subset["distance_km"] <= 20.0]
-        remote = subset[subset["distance_km"] >= 300.0]
-        lines.append(
-            f"Year {year}: urban (<=20 km) median={urban['mean'].median():.3f}, remote (>=300 km) median={remote['mean'].median():.3f}"
-        )
+def _summarise_anchor(label: str, subset: pd.DataFrame) -> str:
+    if subset.empty:
+        return f"- {label}: n=0"
+    return (
+        f"- {label}: n={len(subset)}, mean median={subset['mean'].median():.3f}, "
+        f"mean p95={subset['mean'].quantile(0.95):.3f}, "
+        f"fraction mean>0={(subset['mean'] > 0).mean():.3f}, "
+        f"median distance={subset['distance_km'].median():.1f} km"
+    )
+
+
+def _format_top_anchor_rows(subset: pd.DataFrame, *, n: int = 8) -> str:
+    cols = [col for col in ["pa_id", "NAME", "STATE", "mean", "p95", "frac_gt0", "distance_km", "nearest_city"] if col in subset.columns]
+    if subset.empty:
+        return "No rows."
+    return subset.sort_values("mean", ascending=False).head(n)[cols].round(3).to_string(index=False)
+
+
+def _anchor_checks(radiance_df: pd.DataFrame, pa_meta: pd.DataFrame) -> list[str]:
+    lines = ["## Anchor checks (explicit bright/dark contexts)", ""]
+    lines.append(
+        "Anchors are defined from PA/radiance evidence, not from nearest-city medians. "
+        "This avoids the earlier failure mode where many remote PAs were still assigned to a major city label."
+    )
+    lines.append("")
+
+    merged = radiance_df.merge(pa_meta, on="pa_id", how="left")
+    year_df = merged[(merged["year"] == 2024) & (merged["valid_pixel_count"] >= MIN_VALID_PIXELS)].copy()
+    inside = year_df[year_df["zone"] == "inside"].copy()
+    buffer1 = year_df[
+        (year_df["zone"] == "buffer")
+        & (year_df["buffer_km"] == 1.0)
+        & (year_df["buffer_type"] == PRIMARY_BUFFER_TYPE)
+    ].copy()
+
+    urban_inside = inside[inside["distance_km"] <= 20.0]
+    remote_inside = inside[inside["distance_km"] >= 300.0]
+    bright_inside = inside[inside["mean"] > 0].sort_values("mean", ascending=False).head(50)
+    bright_buffer = buffer1[buffer1["mean"] > 0].sort_values("mean", ascending=False).head(50)
+
+    lines.extend(
+        [
+            _summarise_anchor("Urban-adjacent inside PAs (<=20 km)", urban_inside),
+            _summarise_anchor("Remote inside PAs (>=300 km)", remote_inside),
+            _summarise_anchor("Top non-zero inside PAs by 2024 mean (top 50)", bright_inside),
+            _summarise_anchor("Top non-zero 1 km buffer contexts by 2024 mean (top 50)", bright_buffer),
+            "",
+            "Top inside bright-context rows (2024):",
+            "",
+            _format_top_anchor_rows(bright_inside),
+            "",
+        ]
+    )
+
+    urban_p95 = urban_inside["mean"].quantile(0.95) if not urban_inside.empty else np.nan
+    remote_p95 = remote_inside["mean"].quantile(0.95) if not remote_inside.empty else np.nan
+    bright_median = bright_inside["mean"].median() if not bright_inside.empty else np.nan
+    verdicts = []
+    if pd.notna(urban_p95) and pd.notna(remote_p95):
+        verdicts.append(f"urban p95 > remote p95: {urban_p95 > remote_p95} ({urban_p95:.3f} vs {remote_p95:.3f})")
+    if pd.notna(bright_median) and pd.notna(remote_p95):
+        verdicts.append(f"bright-context median > remote p95: {bright_median > remote_p95} ({bright_median:.3f} vs {remote_p95:.3f})")
+    lines.extend(["Anchor sanity verdicts:", ""])
+    lines.extend(f"- {verdict}" for verdict in verdicts)
     return lines
 
 
@@ -282,7 +339,7 @@ def write_report(
     ]
     lines.extend(_invariant_checks(radiance_df))
     lines.append("")
-    lines.extend(_anchor_checks(inside, pa_meta))
+    lines.extend(_anchor_checks(radiance_df, pa_meta))
     lines.append("")
     lines.extend(_sensitivity_checks(inside))
     lines.append("")

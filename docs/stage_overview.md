@@ -11,7 +11,7 @@ This document defines the staged workflow for moving from the current rough manu
 - Treat Layer A as the primary scientific contribution and harden it before expanding Layer B.
 - Treat Layer B as a conservative secondary signal test unless a later signed-off stage changes that framing.
 - Convert every critique into an explicit evidence, code, manuscript, and validation item before editing the science narrative.
-- Preserve the distinction between the WSL control-plane checkout, the `deep-server` evidence checkout, and the `nectar` compute-control repository.
+- Preserve the distinction between the Mac mini control-plane checkout, the `deep-server` evidence/HPC checkout, and the `nectar` compute-control repository.
 - Each stage must end with a short log entry, validation evidence, and a clear move/no-move recommendation.
 
 ## Stage ladder
@@ -19,8 +19,8 @@ This document defines the staged workflow for moving from the current rough manu
 | Stage | Name | Purpose | Detailed plan status | Exit gate |
 | --- | --- | --- | --- | --- |
 | 0 | Lock the baseline | Separate, validate, and commit the remote harness/evidence-reconciliation work; record the current manuscript draft as the narrative baseline. | Complete in `docs/stage0_lock_baseline_plan.md`. | Clean or deliberately parked working trees; validated evidence snapshot; Stage 0 closeout accepted. |
-| 1 | Critique-resolution matrix | Convert all agreed critiques into a traceable work queue with evidence needs, code changes, manuscript changes, and acceptance tests. | To be written after Stage 0 signoff. | Every critique has an owner, required artefact, and pass/fail test. |
-| 2 | Layer A science hardening | Strengthen the primary protected-area ALAN analysis: denominators, anchors, watchlists, uncertainty, and external-pressure interpretation. | To be written after Stage 1 signoff. | Layer A claims are backed by updated artefacts, sanity checks, and manuscript-ready tables/figures. |
+| 1 | Critique-resolution matrix | Convert all agreed critiques into a traceable work queue with evidence needs, code changes, manuscript changes, and acceptance tests. | Complete in `docs/stage1_critique_resolution_plan.md`; matrix accepted in `docs/stage1_critique_resolution_matrix.md`. | Every critique has an owner, required artefact, and pass/fail test. |
+| 2 | Layer A science hardening | Strengthen the primary protected-area ALAN analysis: denominators, anchors, watchlists, uncertainty, and external-pressure interpretation. | Closeout ready in `docs/stage2_layerA_hardening_plan.md`; awaiting user signoff. | Layer A claims are backed by updated artefacts, sanity checks, and manuscript-ready tables/figures. |
 | 3 | Layer B reconciliation | Tighten the conservative biodiversity signal test, falsification interpretation, and any justified sensitivity runs. | To be written after Stage 2 signoff. | Layer B is either defensibly retained as secondary evidence or explicitly demoted/removed. |
 | 4 | Evidence-led manuscript rewrite | Rewrite Results, Discussion, tables, captions, and availability statements from the hardened evidence package. | To be written after Stage 3 signoff. | Manuscript reads as decisive about what is robust, candid about what is not, and fully traceable to artefacts. |
 
