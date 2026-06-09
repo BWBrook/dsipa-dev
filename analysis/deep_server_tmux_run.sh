@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-HOST=${DSIPA_DEEP_HOST:-deep-server}
-REMOTE_REPO=${DSIPA_DEEP_REPO:-/home/bwbrook/papers/dsipa-dev}
+HOST=${DSIPA_DEEP_HOST:-deep-server-ts}
+REMOTE_REPO=${DSIPA_DEEP_REPO:-/data/codex/repos/dsipa-dev-mac-sync}
 RUN_BASE=${DSIPA_DEEP_RUN_BASE:-/data/codex/scratch/dsipa}
 ARTIFACT_BASE=${DSIPA_DEEP_ARTIFACT_BASE:-/data/codex/artifacts/dsipa}
 RUN_ID=${DSIPA_RUN_ID:-$(date -u +%Y%m%dT%H%M%SZ)-dsipa}
@@ -17,14 +17,15 @@ usage() {
   cat <<'USAGE'
 Usage: analysis/deep_server_tmux_run.sh [options]
 
-Starts a DSIPA run inside tmux on deep-server. Defaults to the existing
-evidence snapshot at /home/bwbrook/papers/dsipa-dev and writes run logs under
+Starts a DSIPA run inside tmux on deep-server via the Tailscale SSH alias.
+Defaults to the Mac-synced scratch checkout at
+/data/codex/repos/dsipa-dev-mac-sync and writes run logs under
 /data/codex/scratch/dsipa/<RUN_ID>.
 
 Options:
   --mode evidence|full|custom   Run evidence inventory, full pipeline, or command.
   --command CMD                 Command for --mode custom.
-  --host HOST                   SSH alias (default: deep-server).
+  --host HOST                   SSH alias (default: deep-server-ts).
   --remote-repo PATH            Remote DSIPA repo root.
   --run-id ID                   Run identifier.
   --session NAME                tmux session name.
@@ -121,7 +122,7 @@ if tmux has-session -t "$SESSION" 2>/dev/null; then
     tmux kill-session -t "$SESSION"
   else
     echo "tmux session already exists: $SESSION" >&2
-    echo "Attach with: ssh ${HOST:-deep-server} -t 'tmux attach -t $SESSION'" >&2
+    echo "Attach with: ssh ${HOST:-deep-server-ts} -t 'tmux attach -t $SESSION'" >&2
     exit 1
   fi
 fi
@@ -156,6 +157,7 @@ cd "$REMOTE_REPO"
 export DSIPA_REPO_ROOT="$REMOTE_REPO"
 export DSIPA_WORKERS="$WORKERS"
 export DSIPA_STATES="$STATES"
+export UV_LINK_MODE="${UV_LINK_MODE:-copy}"
 
 UV_BIN=
 if command -v uv >/dev/null 2>&1; then
@@ -241,7 +243,7 @@ cat <<EOF
 Started tmux session: $SESSION
 Run dir: $RUN_DIR
 Artifact dir: $ARTIFACT_DIR
-Attach: ssh ${HOST:-deep-server} -t 'tmux attach -t $SESSION'
-Log: ssh ${HOST:-deep-server} 'tail -f $RUN_DIR/run.log'
+Attach: ssh ${HOST:-deep-server-ts} -t 'tmux attach -t $SESSION'
+Log: ssh ${HOST:-deep-server-ts} 'tail -f $RUN_DIR/run.log'
 EOF
 REMOTE

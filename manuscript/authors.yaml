@@ -1,0 +1,10 @@
+title_note: Working manuscript; author metadata can be expanded before submission.
+
+affiliations:
+  utas: University of Tasmania, Hobart, Tasmania, Australia
+
+authors:
+  - name: Barry W. Brook
+    affiliations:
+      - utas
+    corresponding: true

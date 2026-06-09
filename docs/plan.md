@@ -156,13 +156,14 @@ Bats and lighting (Layer B candidates):
 - Stone et al. 2009, Curr Biol. DOI: 10.1016/j.cub.2009.05.058
 - Stone et al. 2015, Mammalian Biology. DOI: 10.1016/j.mambio.2015.02.004
 
-(Expand and curate in a project `references.bib` once implementation begins.)
+(Expand and curate `references/refs.yaml` during the final reference pass.)
 
 ---
 
 ## 10) Current status (agent must keep updated)
 
-- Current phase: Milestone 0.6.x in progress — WP0.16 modelling ready under provider‑matched primary design (dr368).
-- Recently completed: WP0.15b (licensing ledger + extended QC + scope/exposure preflight; clean manifests).
-- Immediate next steps (should match the first unchecked WP in `docs/roadmap.md`):
-  1) Begin WP0.16 modelling with provider‑matched microbats vs passerines, two‑part ALAN covariates, spatial blocking, and falsification.
+- Current phase: post-roadmap staged improvement workflow. Stage 2 Layer A hardening is closeout-ready and awaiting user signoff.
+- Recently completed: Mac mini readiness pass for Python 3.12/uv, local `makedoc` manuscript wiring, and deep-server scratch-sync support.
+- Immediate next steps:
+  1) After Stage 2 signoff, write the Stage 3 Layer B reconciliation plan before new Layer B work.
+  2) Use `make readiness`, `make test`, `make ms-check`, and the deep-server tmux harness as the local/remote readiness gates.

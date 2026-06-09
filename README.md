@@ -36,6 +36,8 @@ This is an “AI for Science” autonomy experiment:
 - `analysis/` — reports and pipeline orchestration.
 - `analysis/state_runs/` — per-state Layer A outputs for performance-friendly runs (merged later; ignored by git).
 - `manuscript/` — paper draft and figures.
+- `settings/build.yaml` — local `makedoc` manuscript build profiles.
+- `references/` and `csl/` — manuscript bibliography and citation style used by `makedoc`.
 - `tests/` — automated tests and domain sanity checks.
 
 Note: Large derived outputs (national tables, large GPKGs, and `artefacts/`) are not tracked in git. They are regenerated via the pipeline and archived to Zenodo for paper release. Smoke-test outputs remain in-repo to support fast regression tests.
@@ -50,46 +52,71 @@ Deep-server evidence reconciliation:
 ```bash
 analysis/deep_server_tmux_run.sh --mode evidence
 ```
-This starts a detached `tmux` run on `deep-server`, inventories the large
-ignored evidence files in the remote checkout, and refreshes
+This starts a detached `tmux` run on `deep-server-ts`, inventories the large
+ignored evidence files in the synced remote checkout, and refreshes
 `analysis/reports/evidence_reconciliation.*` plus
 `analysis/reports/reproducibility_audit.md`.
 
-For longer production reruns on `deep-server`, keep work under tmux and tune the
-worker count explicitly:
+For longer production reruns on `deep-server`, keep work under tmux and tune
+the worker count explicitly. The default remote checkout is the Mac-synced
+scratch tree at `/data/codex/repos/dsipa-dev-mac-sync`:
 ```bash
 analysis/deep_server_tmux_run.sh --mode full --workers 12
 ```
 Remote logs are written under `/data/codex/scratch/dsipa/<RUN_ID>/`, with
 copied evidence artefacts under `/data/codex/artifacts/dsipa/<RUN_ID>/`.
 
+If you need to run the current dirty Mac working tree on `deep-server`, sync it
+to a scratch remote checkout first:
+```bash
+analysis/sync_to_deep_server.sh
+analysis/deep_server_tmux_run.sh --mode custom --command 'uv run python -m pytest -rs'
+```
+
 ---
 
 ## Quickstart (bootstrap)
 
-This repo targets Python 3.12 and is managed with `uv`.
+This repo targets Python 3.12 and is managed with `uv`. On the Mac mini, use the
+checked-in bootstrap wrapper so migrated WSL virtual environments are rebuilt
+cleanly:
 
-Setup (recommended):
 ```bash
-uv venv
-uv pip install -e ".[dev]"
+make bootstrap
+make readiness
 ```
+
+`make readiness` probes the live `deep-server-ts` route by default; use
+`CHECK_SSH=0 make readiness` for local-only checks.
 
 Run the bootstrap entrypoint (writes a placeholder artefact + manifest):
 ```bash
-dsipa-run
+uv run dsipa-run
 ```
 
 If you prefer not to install the package yet:
 ```bash
-PYTHONPATH=src/python python -m dsipa.run
+uv run python -m dsipa.run
 ```
 
 Artefacts are written to `artefacts/wp0_1_bootstrap/`.
 
 Run tests:
 ```bash
-pytest
+make test
+```
+
+Build the Python package:
+```bash
+make build
+```
+
+Build/check the manuscript through the local `makedoc` checkout at
+`/Users/bwbrook/work/makedoc`:
+```bash
+make ms-validate
+make ms-check
+make ms-build
 ```
 
 Layer B data acquisition (ALA occurrences):

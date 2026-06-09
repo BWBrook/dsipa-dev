@@ -1,0 +1,368 @@
+---
+references:
+  - id: longcore2004
+    citation-key: longcore2004
+    type: article-journal
+    title: Ecological light pollution
+    author:
+      - family: Longcore
+        given: Travis
+      - family: Rich
+        given: Catherine
+    issued:
+      - year: 2004
+    container-title: Frontiers in Ecology and the Environment
+    DOI: 10.1890/1540-9295(2004)002[0191:ELP]2.0.CO;2
+
+  - id: holker2010
+    citation-key: holker2010
+    type: article-journal
+    title: "The dark side of light: a transdisciplinary research agenda for light pollution policy"
+    author:
+      - family: Holker
+        given: Franz
+    issued:
+      - year: 2010
+    container-title: Ecology and Society
+    DOI: 10.5751/ES-03685-150413
+
+  - id: gaston2013
+    citation-key: gaston2013
+    type: article-journal
+    title: "The ecological impacts of nighttime light pollution: a mechanistic appraisal"
+    author:
+      - family: Gaston
+        given: Kevin J.
+    issued:
+      - year: 2013
+    container-title: Biological Reviews
+    DOI: 10.1111/brv.12036
+
+  - id: sanders2021
+    citation-key: sanders2021
+    type: article-journal
+    title: A meta-analysis of biological impacts of artificial light at night
+    author:
+      - family: Sanders
+        given: Dirk
+    issued:
+      - year: 2021
+    container-title: Nature Ecology & Evolution
+    DOI: 10.1038/s41559-020-01322-x
+
+  - id: bara2023
+    citation-key: bara2023
+    type: article-journal
+    title: "Artificial light at night: a global disruptor of the night-time environment"
+    author:
+      - family: Bara
+        given: Salvador
+    issued:
+      - year: 2023
+    container-title: Philosophical Transactions of the Royal Society B
+    DOI: 10.1098/rstb.2022.0352
+
+  - id: hirt2023
+    citation-key: hirt2023
+    type: article-journal
+    title: Light pollution in complex ecological systems
+    author:
+      - family: Hirt
+        given: Myriam R.
+    issued:
+      - year: 2023
+    container-title: Philosophical Transactions of the Royal Society B
+    DOI: 10.1098/rstb.2022.0351
+
+  - id: falchi2016
+    citation-key: falchi2016
+    type: article-journal
+    title: The new world atlas of artificial night sky brightness
+    author:
+      - family: Falchi
+        given: Fabio
+    issued:
+      - year: 2016
+    container-title: Science Advances
+    DOI: 10.1126/sciadv.1600377
+
+  - id: kyba2017
+    citation-key: kyba2017
+    type: article-journal
+    title: Artificially lit surface of Earth at night increasing in radiance and extent
+    author:
+      - family: Kyba
+        given: Christopher C. M.
+    issued:
+      - year: 2017
+    container-title: Science Advances
+    DOI: 10.1126/sciadv.1701528
+
+  - id: kyba2023
+    citation-key: kyba2023
+    type: article-journal
+    title: Rapid increase in the global brightness of the night sky
+    author:
+      - family: Kyba
+        given: Christopher C. M.
+    issued:
+      - year: 2023
+    container-title: Science
+    DOI: 10.1126/science.abq7781
+
+  - id: sanchezdemiguel2021
+    citation-key: sanchezdemiguel2021
+    type: article-journal
+    title: First Estimation of Global Trends in Nocturnal Power Emissions Reveals Acceleration of Light Pollution
+    author:
+      - family: Sanchez de Miguel
+        given: Alejandro
+    issued:
+      - year: 2021
+    container-title: Remote Sensing
+    DOI: 10.3390/rs13163311
+
+  - id: levin2025
+    citation-key: levin2025
+    type: article-journal
+    title: A challenge for satellite remote sensing of light pollution
+    author:
+      - family: Levin
+        given: Noam
+    issued:
+      - year: 2025
+    container-title: Nature
+    DOI: 10.1038/s41586-024-08093-0
+
+  - id: bara2025
+    citation-key: bara2025
+    type: article-journal
+    title: Diverging evolution of light pollution indicators
+    author:
+      - family: Bara
+        given: Salvador
+    issued:
+      - year: 2025
+    container-title: Journal of Quantitative Spectroscopy and Radiative Transfer
+    DOI: 10.1016/j.jqsrt.2025.109378
+
+  - id: roman2018
+    citation-key: roman2018
+    type: article-journal
+    title: "NASA's Black Marble nighttime lights product suite"
+    author:
+      - family: Roman
+        given: Miguel O.
+    issued:
+      - year: 2018
+    container-title: Remote Sensing of Environment
+    DOI: 10.1016/j.rse.2018.03.017
+
+  - id: elvidge2017
+    citation-key: elvidge2017
+    type: article-journal
+    title: VIIRS night-time lights
+    author:
+      - family: Elvidge
+        given: Christopher D.
+    issued:
+      - year: 2017
+    container-title: International Journal of Remote Sensing
+    DOI: 10.1080/01431161.2017.1342050
+
+  - id: elvidge2021
+    citation-key: elvidge2021
+    type: article-journal
+    title: "Annual time series of global VIIRS night-time lights derived from monthly averages: 2012 to 2019"
+    author:
+      - family: Elvidge
+        given: Christopher D.
+    issued:
+      - year: 2021
+    container-title: Remote Sensing
+    DOI: 10.3390/rs13050922
+
+  - id: gaston2015
+    citation-key: gaston2015
+    type: article-journal
+    title: Quantifying the erosion of natural darkness in the global protected area system
+    author:
+      - family: Gaston
+        given: Kevin J.
+    issued:
+      - year: 2015
+    container-title: Conservation Biology
+    DOI: 10.1111/cobi.12462
+
+  - id: guette2018
+    citation-key: guette2018
+    type: article-journal
+    title: Worldwide increase in artificial light at night around protected areas and within biodiversity hotspots
+    author:
+      - family: Guette
+        given: Adrien
+    issued:
+      - year: 2018
+    container-title: Biological Conservation
+    DOI: 10.1016/j.biocon.2018.04.018
+
+  - id: garrett2020
+    citation-key: garrett2020
+    type: article-journal
+    title: "Skyglow extends into the world's Key Biodiversity Areas"
+    author:
+      - family: Garrett
+        given: James K.
+    issued:
+      - year: 2020
+    container-title: Animal Conservation
+    DOI: 10.1111/acv.12480
+
+  - id: mu2021
+    citation-key: mu2021
+    type: article-journal
+    title: Global patterns and trends of artificial light at night in the global protected areas from 1992 to 2018
+    author:
+      - family: Mu
+        given: Huan
+    issued:
+      - year: 2021
+    container-title: Remote Sensing
+    DOI: 10.3390/rs13091849
+
+  - id: sung2022
+    citation-key: sung2022
+    type: article-journal
+    title: "Light pollution as an ecological edge effect: Landscape ecological analysis of light pollution in protected areas in Korea"
+    author:
+      - family: Sung
+        given: Chan Yong
+      - family: Lee
+        given: Dong Kun
+    issued:
+      - year: 2022
+    container-title: Journal for Nature Conservation
+    DOI: 10.1016/j.jnc.2022.126148
+
+  - id: stone2009
+    citation-key: stone2009
+    type: article-journal
+    title: Street lighting disturbs commuting bats
+    author:
+      - family: Stone
+        given: Emma L.
+    issued:
+      - year: 2009
+    container-title: Current Biology
+    DOI: 10.1016/j.cub.2009.05.058
+
+  - id: stone2015
+    citation-key: stone2015
+    type: article-journal
+    title: "Impacts of artificial lighting on bats: a review of challenges and solutions"
+    author:
+      - family: Stone
+        given: Emma L.
+    issued:
+      - year: 2015
+    container-title: Mammalian Biology
+    DOI: 10.1016/j.mambio.2015.02.004
+
+  - id: lewanzik2017
+    citation-key: lewanzik2017
+    type: article-journal
+    title: Transition from conventional to light-emitting diode street lighting changes activity of urban bats
+    author:
+      - family: Lewanzik
+        given: Daniel
+      - family: Voigt
+        given: Christian C.
+    issued:
+      - year: 2017
+    container-title: Journal of Applied Ecology
+    DOI: 10.1111/1365-2664.12758
+
+  - id: threlfall2013
+    citation-key: threlfall2013
+    type: article-journal
+    title: "The urban matrix and artificial light restricts the nightly ranging behaviour of Gould's long-eared bat (Nyctophilus gouldi)"
+    author:
+      - family: Threlfall
+        given: Caragh G.
+    issued:
+      - year: 2013
+    container-title: Austral Ecology
+    DOI: 10.1111/aec.12034
+
+  - id: haddock2019
+    citation-key: haddock2019
+    type: article-journal
+    title: Light pollution at the urban forest edge negatively impacts insectivorous bats
+    author:
+      - family: Haddock
+        given: J. K.
+    issued:
+      - year: 2019
+    container-title: Biological Conservation
+    DOI: 10.1016/j.biocon.2019.05.016
+
+  - id: linley2016
+    citation-key: linley2016
+    type: article-journal
+    title: The impact of road lighting on bat activity in an open woodland habitat
+    author:
+      - family: Linley
+        given: G. D.
+    issued:
+      - year: 2016
+    container-title: Australian Mammalogy
+    DOI: 10.1071/AM15047
+
+  - id: phillips2009
+    citation-key: phillips2009
+    type: article-journal
+    title: "Sample selection bias and presence-only distribution models: implications for background and pseudo-absence data"
+    author:
+      - family: Phillips
+        given: Steven J.
+    issued:
+      - year: 2009
+    container-title: Ecological Applications
+    DOI: 10.1890/07-2153.1
+
+  - id: fithian2015
+    citation-key: fithian2015
+    type: article-journal
+    title: "Bias correction in species distribution models: pooling survey and collection data for multiple species"
+    author:
+      - family: Fithian
+        given: William
+    issued:
+      - year: 2015
+    container-title: Methods in Ecology and Evolution
+    DOI: 10.1111/2041-210X.12242
+
+  - id: roberts2017
+    citation-key: roberts2017
+    type: article-journal
+    title: Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure
+    author:
+      - family: Roberts
+        given: David R.
+    issued:
+      - year: 2017
+    container-title: Ecography
+    DOI: 10.1111/ecog.02881
+
+  - id: baker2024
+    citation-key: baker2024
+    type: article-journal
+    title: Effective strategies for correcting spatial sampling bias in species distribution models
+    author:
+      - family: Baker
+        given: Dominic J.
+    issued:
+      - year: 2024
+    container-title: Diversity and Distributions
+    DOI: 10.1111/ddi.13802
+...
