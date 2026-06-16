@@ -69,10 +69,13 @@ Watchlists are ranked within category, not as a single combined risk score. Slop
 
 **Table S2. Layer B model summary and falsification outcomes.**
 
-Placeholder supplementary table to be completed after the final table/results pass. Its purpose is to give numeric anchors for Fig. 5.
+Values are transcribed from `analysis/reports/layerB_modelling_report.md` (generated 2026-01-06). Coefficients are fold means +/- fold SD on the log-odds scale. Input fractions are model-input fractions after scope restriction and balancing, not raw acquisition fractions. Falsification rows use the same provider-matched balanced input as the primary model with ALAN shuffled under the stated null. The multi-provider row is descriptive only because provider/state confounding returns.
 
-Suggested rows are the primary provider-matched model, the block-shuffle falsification, the IBRA x year shuffle falsification, and the multi-provider sensitivity model.
+| Design | Provider and scope | n microbats | n passerines | Microbat inside fraction | Passerine inside fraction | Microbat zero-ALAN fraction | Passerine zero-ALAN fraction | `any_light` coefficient | `log1p_alan` coefficient | AUC | Log loss | Interpretation |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| Primary provider-matched model | NSW BioNet dr368; inside PA or within 10 km | 50,281 | 50,281 | 0.278 | 0.257 | 0.657 | 0.651 | 1.316 +/- 0.128 | -0.354 +/- 0.024 | 0.545 | 0.689 | Weak provider-matched occurrence association; not causal and not a population trend. |
+| Block-shuffle falsification | NSW BioNet dr368; same input, ALAN shuffled within spatial blocks | 50,281 | 50,281 | 0.278 | 0.257 | 0.657 | 0.651 | 0.202 +/- 0.086 | -0.027 +/- 0.021 | 0.505 | 0.695 | Near-null discrimination after spatial-block shuffle; supports caution. |
+| IBRA x year shuffle falsification | NSW BioNet dr368; same input, ALAN shuffled within IBRA x year strata | 50,281 | 50,281 | 0.278 | 0.257 | 0.657 | 0.651 | 0.163 +/- 0.063 | -0.001 +/- 0.008 | 0.517 | 0.695 | Near-null discrimination after bioregion-year shuffle; residual structure remains possible. |
+| Full multi-provider sensitivity | All retained providers; inside PA or within 10 km | 56,883 | 56,883 | 0.280 | 0.205 | 0.670 | 0.551 | 0.732 +/- 0.330 | -0.332 +/- 0.094 | 0.557 | 0.700 | Descriptive sensitivity only; provider/state heterogeneity limits inference. |
 
-Suggested columns are N per class, `any_light` coefficient (mean +/- fold SD), intensity coefficient (mean +/- fold SD), AUC, and log loss.
-
-This table should make the Layer B interpretation visible at a glance: weak signal plus falsification collapse.
+The table supports the same interpretation as Fig. 5: Layer B is a conservative, provider-bounded, presence-only occurrence association and falsification exercise. It does not estimate causal impact, population trend, population decline, or a national biodiversity response.

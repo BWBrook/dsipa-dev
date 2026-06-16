@@ -183,7 +183,7 @@ Every key figure/table/model must have an entry here.
   - log1p(ALAN) is negative while any_light is positive; could reflect confounding or floor effects rather than ecology.
   - any_light does not collapse fully under shuffling, indicating remaining bias structure.
 - Follow-up tasks:
-  - [ ] Check robustness to adding stratum or year as covariates.
+  - [x] Stage 3A no-run rationale: do not add stratum/year covariates by default. Provider matching, spatial blocking, block-level ALAN shuffling, IBRA x year shuffling, and the full multi-provider sensitivity are sufficient for the current weak secondary framing. Reopen only if a future goal asks Layer B to support stronger claims.
 
 ### FIG9_BIO_ibra_intensity_forest
 
@@ -198,7 +198,7 @@ Every key figure/table/model must have an entry here.
 - Surprises / concerns:
   - Some regions flip sign, underscoring sensitivity to sampling structure.
 - Follow-up tasks:
-  - [ ] Consider a coarser bioregion merge if more stability is needed.
+  - [x] Stage 3A no-run rationale: do not merge or smooth IBRA regions in this pass. The current heterogeneity result is intentionally descriptive; coarser regional modelling would imply a stronger regional-inference goal.
 
 ### FIG6_BIO_exposure_summary
 
@@ -228,7 +228,7 @@ Every key figure/table/model must have an entry here.
 - Surprises / concerns:
   - Microbats have low counts outside NSW/QLD; provider composition likely drives patterns.
 - Follow-up tasks:
-  - [ ] Consider a provider/state‑matched sensitivity panel if space allows.
+  - [x] Stage 3A no-run rationale: do not add a provider/state-matched sensitivity panel by default. Existing counts, density diagnostics, provider matching, and full multi-provider sensitivity are enough to keep Layer B provider-bounded and conservative.
 
 ### FIG8_BIO_occurrence_density_map
 
@@ -244,6 +244,31 @@ Every key figure/table/model must have an entry here.
   - Northern/remote coverage remains sparse, limiting exposure variation.
 - Follow-up tasks:
   - [ ] None (descriptive context figure).
+
+### STAGE3A_LAYERB_evidence_integration
+
+- Artefacts:
+  - `manuscript/text/supplementary_tables.md` Table S2
+  - `manuscript/text/manuscript_draft.md`
+  - `manuscript/text/figures.md`
+  - `manuscript/text/supplementary_figures.md`
+  - `docs/stage1_critique_resolution_matrix.md`
+- What it shows (plain language):
+  - Table S2 now anchors the Layer B signal test with the primary provider-matched model, block-shuffle falsification, IBRA x year shuffle falsification, and full multi-provider sensitivity.
+  - The primary dr368 model remains weak (AUC 0.545), while both shuffles sit near null (AUC 0.505 and 0.517).
+  - The full multi-provider sensitivity is retained as descriptive only because provider/state confounding returns.
+- Relation to hypotheses:
+  - Keeps H3 as a cautious secondary occurrence-association signal, not a causal or population-trend result.
+  - Supports retaining Layer B as a falsification-aware method demonstration and weak signal, not as national biodiversity-response evidence.
+- Sanity verdict (pass/warn/fail) and why:
+  - pass for integration: Table S2 values match `analysis/reports/layerB_modelling_report.md`.
+  - warn for inference strength: provider/state concentration and residual shuffled `any_light` structure require conservative wording.
+- Surprises / concerns:
+  - No new modelling was warranted for B04/B07/B09 under the accepted Stage 3 plan.
+  - B10 remains open for Stage 3B because the tiny/sentinel ALA zip guardrail is code/test work.
+- Follow-up tasks:
+  - [ ] Stage 3B: add the ALA tiny/sentinel zip guardrail test using synthetic local fixtures only.
+  - [ ] Stage 4: perform the final manuscript-wide claim, data availability, and release/archive pass.
 
 ### STAGE2_LAYERA_anchor_and_buffer_validity
 
