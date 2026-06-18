@@ -162,8 +162,7 @@ Bats and lighting (Layer B candidates):
 
 ## 10) Current status (agent must keep updated)
 
-- Current phase: post-roadmap staged improvement workflow. Stage 2 Layer A hardening is closeout-ready and awaiting user signoff.
-- Recently completed: Mac mini readiness pass for Python 3.12/uv, local `makedoc` manuscript wiring, and deep-server scratch-sync support.
-- Immediate next steps:
-  1) After Stage 2 signoff, write the Stage 3 Layer B reconciliation plan before new Layer B work.
-  2) Use `make readiness`, `make test`, `make ms-check`, and the deep-server tmux harness as the local/remote readiness gates.
+- Current phase: staged Stage 4 workflow governed by `docs/stage_overview.md`, the Stage 4 plan, and the active goal packets under `docs/goals/`.
+- Recently completed: Stage 2 Layer A signoff readiness, Stage 3 Layer B evidence integration and ALA ingest guardrail, the Stage 4 manuscript/release planning packet, and Stage 4A manuscript synthesis.
+- Immediate next step: complete Stage 4B release/data-availability/archive/DOI readiness before final validation or publication packaging.
+- Historical roadmap work packages in `docs/roadmap.md` are retained as execution history, not as the current next-action queue.

@@ -310,6 +310,29 @@ Every key figure/table/model must have an entry here.
   - [ ] Carry the threshold-sensitivity summary into Methods/Results during Stage 4.
   - [ ] Keep edge-profile wording conditional in captions and Discussion.
 
+### STAGE4A_MANUSCRIPT_SYNTHESIS_CLAIM_DISCIPLINE
+
+- Artefacts:
+  - `manuscript/text/manuscript_draft.md`
+  - `manuscript/text/figures.md`
+  - `manuscript/text/supplementary_figures.md`
+  - `manuscript/text/tables.md`
+  - `docs/stage1_critique_resolution_matrix.md`
+- What it shows (plain language):
+  - The manuscript now leads with accepted Stage 2/3 evidence rather than a generic narrative: Layer A is a denominator-backed dark-sky integrity audit, and Layer B is a weak provider-bounded occurrence-association/falsification exercise.
+  - The text separates the all-nonzero inside-slope diagnostic subset (n = 457) from the positive brightening subset (n = 420; 9.5% of eligible protected areas).
+  - Limitations now state satellite detectability, subset conditioning, buffer-proxy limits, occurrence bias, and absence of causal/population inference as central constraints.
+- Relation to hypotheses:
+  - Supports H1 as a censored but operational protected-area ALAN audit with a small positive brightening tail.
+  - Keeps H2 conditional: external pressure and fixed-ring diagnostics are useful management signals but not definitive national penetration-gradient evidence.
+  - Keeps H3 secondary and conservative: weak ALAN-associated occurrence discrimination is not causal, not a population trend, and not a national biodiversity response.
+- Sanity verdict (pass/warn/fail) and why:
+  - pass for manuscript integration: the revised claims use the accepted denominators, Table S2 metrics, and caption caveats.
+  - warn for release readiness: citation production, archive/DOI policy, final release manifests, and raw ALA redistribution decisions remain Stage 4B/4C release gates.
+- Follow-up tasks:
+  - [ ] Stage 4B: decide final data/archive/DOI and release-manifest policy without reopening Stage 4A claim discipline.
+  - [ ] Stage 4C: complete final bibliography/style/production pass after release policy is settled.
+
 ### [RESULT-ID]
 
 - Artefact: `path/to/artefact`
@@ -347,10 +370,11 @@ Every key figure/table/model must have an entry here.
 ## Summary (keep updated once results stabilise)
 
 When the results are coherent enough for manuscript drafting, write a short summary here:
-- Layer A story: National PA metrics show a large fraction of protected areas with very low (often zero) inside radiance, alongside a subset of PAs with consistently higher values near urban centres. Trend estimation (2013–2024) using mean radiance shows a non-zero tail of brightening PAs; median trends remain mostly zero. Inside mean radiance rises modestly over time without abrupt step changes.
-- Layer B: provider-matched microbats vs passerines shows a weak ALAN signal (AUC ~0.54) with two-part covariates; shuffled ALAN collapses toward null. Sensitivity on multi-provider data is descriptive (AUC ~0.56) and does not change the primary inference.
+- Layer A story: National PA metrics show a large fraction of protected areas with very low or zero detectable inside radiance: 4,426/11,133 PAs meet the inside eligibility rule, 3,844/4,426 are zero in 2024, and 3,969/4,426 have exactly zero inside mean-radiance slopes. The positive brightening subset is real but small (420/4,426), and retention/external-pressure claims use the separate 1 km unprotected-land denominator (n = 3,858).
+- Layer B: provider-matched microbats vs passerines shows a weak ALAN-associated occurrence signal (AUC ~0.545) with two-part covariates; shuffled ALAN collapses toward near-null discrimination. Sensitivity on multi-provider data is descriptive (AUC ~0.557) and does not change the primary inference.
 - Limitations and mitigations:
-  - Inside coverage is limited for small PAs; we use a minimum valid-pixel threshold and report missingness explicitly.
+  - Inside coverage is limited for small PAs; we use a minimum valid-pixel threshold and report eligibility explicitly.
   - Ring profiles for outer bins are sparse; fixed rings are retained as a feasibility-limited diagnostic, with adaptive/min-area rings deferred rather than promoted in Stage 2.
-  - Scaling metadata changes in 2022–2024; we apply scale/offset metadata and document it.
-  - Risk/retention rankings are descriptive; do not imply causality and still sensitive to missingness.
+  - Scaling metadata changes in 2022-2024; we apply scale/offset metadata and document it.
+  - Risk/retention rankings are descriptive, uncertainty-aware triage outputs; they do not imply causality or precise rank ordering.
+  - Layer B is presence-only, provider-bounded, and mixed-licence aware; it cannot support population decline, population-trend, causal-impact, or national biodiversity-response claims.

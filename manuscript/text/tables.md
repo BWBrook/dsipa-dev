@@ -10,7 +10,7 @@
 | Inside baseline zero mean (2024) | 3,844 | 4,426 | 86.9% | Eligible inside baseline rows with mean radiance == 0. | Primary baseline floor/censoring indicator. |
 | Inside trend eligible | 4,426 | 11,133 | 39.8% | Primary metric = mean; inside valid years >= 8. | Eligible for primary inside Theil-Sen trend estimates. |
 | Inside trend exactly zero slope | 3,969 | 4,426 | 89.7% | Primary inside trend slope == 0. | Primary trend floor/censoring indicator. |
-| Inside trend positive slope | 420 | 4,426 | 9.5% | Primary inside trend slope > 0. | Non-zero brightening subset for primary trends. |
+| Inside trend positive slope | 420 | 4,426 | 9.5% | Primary inside trend slope > 0. | Positive brightening subset for primary trends. |
 | Retention/quadrant eligible | 3,858 | 4,426 | 87.2% | Primary inside trend plus non-missing 1 km `land_unprotected` buffer trend and covariates. | Denominator for retention quadrant and category-safe risk rankings. |
 | Q1 concurrent inside and buffer brightening | 305 | 3,858 | 7.9% | Buffer slope > 0 and inside slope > 0. | Concurrent brightening subset. |
 | Q2 internal brightening with stable/non-detect buffer | 55 | 3,858 | 1.4% | Buffer slope <= 0 and inside slope > 0. | Internal brightening subset. |
@@ -21,4 +21,4 @@
 | Inside ring 2 valid (5-10 km) | 383 | 11,133 | 3.4% | Inside ring 2, 2024, valid pixels >= 10. | Ring feasibility denominator for edge/penetration analysis. |
 | Complete ring set (2024) | 383 | 11,133 | 3.4% | All three inside rings have >= 10 valid pixels in 2024. | Conditional denominator for complete-ring edge profile summaries. |
 
-Counts use the `v0.3.0` processed Layer A evidence. Percentages are relative to the stated denominator, so rows intentionally mix PA-universe, trend-eligible, retention-eligible, and ring-complete denominators.
+Counts use the `v0.3.0` processed Layer A evidence. Percentages are relative to the stated denominator, so rows intentionally mix PA-universe, trend-eligible, retention-eligible, and ring-complete denominators. The positive-slope row is the brightening subset; it is distinct from the Fig. 2 diagnostic non-zero-slope subset, which includes both positive and negative non-zero slopes.

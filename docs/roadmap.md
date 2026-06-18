@@ -3,6 +3,8 @@
 `docs/plan.md` is the brochure (narrative framing).
 This file is the GPS (execution). When told to “Follow the roadmap”, you follow this file.
 
+> Current-stage note (Stage 4B, 2026-06-18): this WP roadmap is retained as historical execution record through WP0.20. Current work is governed by `docs/stage_overview.md`, `docs/stage4_manuscript_release_plan.md`, and the active goal packets under `docs/goals/`.
+
 ---
 
 ## 1) Opening contract
