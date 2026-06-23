@@ -2,7 +2,7 @@
 
 Record every dataset placed under `data/raw/` and the derived products under `data/processed/`.
 
-Note: Large derived outputs (national-scale tables and large GPKG files) are not tracked in git. They are reproducible via the pipeline and are archived to Zenodo for paper release.
+Note: Large derived outputs (national-scale tables and large GPKG files) are not tracked in git. They are reproducible via the pipeline and classified for release readiness in `analysis/reports/final_release_manifest.md`. No external archive upload or DOI minting has been completed from this checkout.
 
 | Name | Source URL / DOI | Version / date fetched | License | Checksum (algorithm noted) | Notes |
 | --- | --- | --- | --- | --- | --- |
@@ -44,15 +44,17 @@ Note: Large derived outputs (national-scale tables and large GPKG files) are not
 | microbats_20260104T020628Z.zip | https://biocache.ala.org.au/ws/occurrences/download | ALA download 2026-01-04 | Mixed provider licenses (see ledger) | f0272a2ae9a53fbe53530367cdb9ac2458122889c86264f1e623f06d7074b86a | Raw ALA download for microbats (Chiroptera excluding Pteropodidae), 2013–2024, coordinate uncertainty ≤1 km. Stored under `data/raw/ala_occurrences/`. |
 | diurnal_birds_20260104T020701Z.zip | https://biocache.ala.org.au/ws/occurrences/download | ALA download 2026-01-04 | Mixed provider licenses (see ledger) | 0277111ae02416ccdd7b4975a22c05030da89ccca634a1345e86828ea3de7c10 | Raw ALA download for diurnal birds proxy (Passeriformes), 2013–2024, coordinate uncertainty ≤1 km. Stored under `data/raw/ala_occurrences/`. |
 | layerB_occurrence_summary_v0_3_0.csv | src/python/dsipa/layerB_data.py | Generated 2026-01-04; schema v0.3.0 | Derived (ALA occurrences) | ec7746a882675b4955b7d455cddae2f9851bde55d16900cf6b32979346f77474 | Summary counts for Layer B occurrence filters/deduplication. |
-| layerB_ala_license_ledger_v0_3_0.csv | src/python/dsipa/layerB_qc.py | Generated 2026-01-04; schema v0.3.0 | Mixed (ALA provider licenses) | 2257ef67bc0230143198825fe328e8e1791d63a127b9d4ad746198df24de8a33 | License/provenance ledger parsed from ALA `citation.csv`, joined to processed record counts. |
+| layerB_ala_license_ledger_v0_3_0.csv | src/python/dsipa/layerB_qc.py | Generated 2026-01-04; schema v0.3.0 | Mixed (ALA provider licenses) | sha256: a751d630e01520698f4f81f0afcbb5ad0bf72b6ec53bc510e746b0c644885ac0 | License/provenance ledger parsed from ALA `citation.csv`, joined to processed record counts. Current checkout byte hash matches the evidence reconciliation hash after CRLF-to-LF normalization. |
 | layerB_model_input_summary_v0_3_0.csv | src/python/dsipa/layerB_model.py | Generated 2026-01-05; schema v0.3.0 | Derived (ALA occurrences + nightlights) | f42e9fea29dea812f54e4e9a02fafa3c7d6382e499d20e31b267b84be9346575 | Model-input summary for WP0.16 provider-matched primary and multi-provider sensitivity subsets. |
 | layerB_ibra_summary_v0_3_0.csv | src/python/dsipa/layerB_model.py | Generated 2026-01-06; schema v0.3.0 | Derived (ALA occurrences + IBRA + nightlights) | ed117aadd0c700c8dd0c7180714112fd212567f4b1ec56d0c8464f2e77d00a0d | IBRA-stratified counts and ALAN exposure summaries (inside/within_10 km). |
 
 Notes:
 - Checksums default to sha256 unless otherwise stated. Nightlights GeoTIFF checksums are MD5 (32 hex characters), matching `src/python/dsipa/nightlights.py`.
+- Stage 4B release readiness is recorded in `analysis/reports/final_release_manifest.md`. Files labelled `archived-proposed` there still require a later explicit archive/DOI decision before publication wording can cite an external archive.
 - Layer A “national” outputs include all CAPAD terrestrial PAs, including JBT and EXT (external territories).
-- Layer B filtered occurrence tables are stored under `data/processed/layerB/` and are intentionally ignored in git; raw ALA downloads are under `data/raw/ala_occurrences/`.
+- Layer B filtered occurrence tables are stored under `data/processed/layerB/` and are intentionally ignored in git; raw ALA downloads are under `data/raw/ala_occurrences/`. Raw ALA downloads and row-level processed occurrence tables are restricted/excluded from the default release surface unless a later explicit release decision permits redistribution.
 - Layer B ALA downloads include mixed licenses/conditions by provider; consult `layerB_ala_license_ledger_v0_3_0.csv` and `analysis/reports/layerB_ala_license_ledger.md` before publication claims.
+- The Layer B licence ledger checksum above is the current checkout byte SHA-256. The evidence reconciliation audit also reports the same value after CRLF-to-LF normalization (`normalize_crlf: true`), so there is no separate current raw-file checksum to report.
 - Layer B diurnal reptiles (Squamata) download failed with ALA 500 errors on 2026-01-04 and is deferred; see DEC-026.
 
 Rules:

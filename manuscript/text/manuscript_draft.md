@@ -265,6 +265,6 @@ Our conservative occurrence-based signal test suggests that any association betw
 
 ## 6. Data and code availability
 
-- Large derived tables and raw occurrences are intentionally excluded from git; reproducible outputs are generated via the pipeline described in `docs/roadmap.md`.
+- Large derived tables and raw occurrences are intentionally excluded from git. The Stage 4B release manifest (`analysis/reports/final_release_manifest.md`) classifies paper-relevant outputs as tracked, archive-proposed, regenerated, restricted, or excluded; no external archive DOI has been minted from this checkout.
 - Public data sources and checksums are recorded in `data/README.md`.
-- Layer B ALA occurrence downloads have mixed provider licences; raw ALA occurrence tables are not redistributed by this manuscript package. Manuscript-facing Layer B artefacts are derived summaries, reports, and figures unless a later release review permits additional sharing.
+- Layer B ALA occurrence downloads have mixed provider licences; raw ALA occurrence tables and row-level processed occurrence tables are not redistributed by this manuscript package. Manuscript-facing Layer B artefacts are derived summaries, reports, and figures unless a later release review permits additional sharing.
