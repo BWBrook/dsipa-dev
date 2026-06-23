@@ -5,6 +5,10 @@ DOI, move large files, or package a release.
 
 Generated: 2026-06-23 by `nightlight` for Goal 007.
 Stage 4C validation update: 2026-06-23 by `nightlight` for Goal 008.
+Stage 4D decision-packet update: see
+`docs/release_blocker_decision_packet.md` for the recommended release-blocker
+decision path. This pointer does not authorize archive upload, DOI minting,
+release packaging, or publication submission.
 
 Current local checkout after accepted Goal 007:
 
@@ -166,6 +170,8 @@ external archive after an explicit archive/DOI decision.
 - Stage 4C follow-up: refresh the current figure checksum evidence for
   `manuscript/figures/fig_layerA_baseline_map.png` before archive, DOI, or
   publication packaging.
+- Stage 4D decision path: review `docs/release_blocker_decision_packet.md` and
+  record Barry/orchestrator decisions before any release-execution goal.
 
 ## Readiness assessment
 
@@ -173,4 +179,5 @@ Stage 4B remains ready for orchestrator review as a release/data-availability
 decision surface. Goal 008 adds a no-move recommendation for archive, DOI,
 release packaging, and publication submission until the current evidence
 snapshot is refreshed and the required large-output/archive decisions are
-recorded.
+recorded. Goal 009 adds a recommended decision path but does not authorize
+release movement.
