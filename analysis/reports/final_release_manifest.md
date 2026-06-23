@@ -4,13 +4,16 @@ Status: readiness manifest only. This file does not publish an archive, mint a
 DOI, move large files, or package a release.
 
 Generated: 2026-06-23 by `nightlight` for Goal 007.
+Stage 4C validation update: 2026-06-23 by `nightlight` for Goal 008.
 
-Current local checkout:
+Current local checkout after accepted Goal 007:
 
 - `pwd`: `/Users/bwbrook/papers/dsipa-dev`
 - Branch: `main`
-- HEAD: `530e843`
-- Starting status: `## main...origin/main` plus the untracked Goal 007 packet.
+- HEAD: `9082f4f`
+- Remote-tracking HEAD: `origin/main` at `9082f4f`
+- Goal 008 starting status: `## main...origin/main` plus the untracked Goal
+  008 packet.
 
 ## Purpose
 
@@ -39,6 +42,9 @@ figure, and occurrence evidence surfaces using the Goal 007 vocabulary:
 - `analysis/reports/evidence_reconciliation.md` and `.json`: 38/38 expected
   evidence files verified with zero checksum mismatches in the deep-server
   reconciliation snapshot generated 2026-05-14.
+- `analysis/reports/stage4C_final_validation_report.md` and
+  `analysis/reports/final_reproducibility_audit_supplement.md`: current local
+  Stage 4C validation at `9082f4f`, including the `/tmp` evidence check.
 - `analysis/reports/reproducibility_audit.md`: pre-final reproducibility audit
   and large-file caveat.
 - `analysis/reports/zenodo_release_checklist_2026-01-04.md`: pre-final large
@@ -50,6 +56,20 @@ figure, and occurrence evidence surfaces using the Goal 007 vocabulary:
 The evidence reconciliation snapshot was generated on `deep-server` at git
 commit `f73156272104ed16b0506617fc423e5c6478f50e` with `dirty=true`. It is a
 verified evidence snapshot, not a final clean release audit.
+
+The Stage 4C local evidence check at `9082f4f` did not overwrite the
+repository evidence snapshot. It wrote only to `/tmp` and found 28 of 38
+required files present, 27 checksum-verified files, 10 missing large ignored
+outputs, and one tracked figure checksum mismatch against the older snapshot.
+The mismatched file was `manuscript/figures/fig_layerA_baseline_map.png`:
+current tracked checkout SHA-256
+`ef9d5ac7e2dd37a41e7574ca89736fee682b060f10809db4779713925a0e458e`, older
+snapshot expected SHA-256
+`e30a5fc53d419b7c8a8220ae827b19f9b73466c04bfb40e131ebabb8d54786c3`.
+`git log` shows the tracked figure changed in accepted Stage 2 commit
+`896131a`, so this is evidence-snapshot staleness rather than a local dirty
+figure. Final archive or DOI work must refresh the evidence manifest against
+the current tracked figure set.
 
 ## Release posture
 
@@ -71,7 +91,7 @@ verified evidence snapshot, not a final clean release audit.
 | --- | --- | --- |
 | tracked | `README.md`, `data/README.md`, `docs/decisions.md`, `docs/stage1_critique_resolution_matrix.md`, `docs/stage_overview.md` | Source and governance documentation. |
 | tracked | `manuscript/text/manuscript_draft.md` | Manuscript source, including data/code availability wording. |
-| tracked | `manuscript/figures/*.png` | Paper figures verified in the evidence reconciliation snapshot. |
+| tracked | `manuscript/figures/*.png` | Paper figures are tracked. Stage 4C found the current tracked baseline-map checksum differs from the older evidence snapshot and must be refreshed before final release packaging. |
 | tracked | `analysis/reports/*.md`, `analysis/reports/*.json`, selected small CSV/PNG report artefacts | Review and evidence reports that are small enough for git. |
 | tracked | `data/processed/layerB_occurrence_summary_v0_3_0.csv` | Derived Layer B summary counts; no row-level occurrence records. |
 | tracked | `data/processed/layerB_ala_license_ledger_v0_3_0.csv` | Provider licence/provenance ledger; mixed ALA provider terms retained. |
@@ -92,8 +112,8 @@ external archive after an explicit archive/DOI decision.
 | archived-proposed | `data/processed/pa_buffer_validity_v0_3_0.csv` | `407283df182baff585dfe3b28b9450c5750c237d120d5d00aa3539a6227e3e25` | Buffer land/overlap validity descriptors used to interpret outside-buffer pressure. |
 | archived-proposed | `data/processed/pa_trends_v0_3_0.csv` | `d7d33e9cd49dea316355cba5a52afd85953f3b656ee8f2ab7e725c922800ff1f` | Trend estimates and retention/quadrant metrics. |
 | archived-proposed | `data/processed/pa_risk_rankings_v0_3_0.csv` | `554c02ea84d56119f47d13524ab7ec3add66851f61dae3c4f5ac9267da30367a` | Category-safe watchlists and rankings. |
-| archived-proposed | `data/processed/pa_geometries_v0_3_0.csv` | `781e80e2413b1368b823ac7cc826d33967a92a789d11fa609ec5d8be569d3721` | Protected-area descriptors supporting denominators and joins. |
-| archived-proposed | `data/processed/pa_geometries_v0_3_0.gpkg` | `0476ffb899d4e71628f638c672643ebf453c62cb7d5856a1bd9c54214da0addb` | Processed protected-area geometry layer; large binary context file. |
+| archived-proposed | `data/processed/pa_geometries_v0_3_0.csv` | `781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b` | Protected-area descriptors supporting denominators and joins. |
+| archived-proposed | `data/processed/pa_geometries_v0_3_0.gpkg` | `0476ffdc2cd5a609855a20a2af0f373aff25ca571ccc8138e4224e71deb00e11` | Processed protected-area geometry layer; large binary context file. |
 | archived-proposed | `data/processed/pa_ibra_assignment_v0_3_0.csv` | `3f0d8f7cc206302a8d266ac747a20e89bd0ad0a724f8c7a3d2a161f0634a82cf` | Dominant IBRA assignments used for uncertainty summaries. |
 | archived-proposed | `data/processed/pa_trend_bootstrap_summary_v0_3_0.csv` | `cd3c165ed5857d0fb2fcb3be360fe89dfda6757c296fb5cd1bd7aee509078920` | IBRA-clustered trend-uncertainty summaries. |
 
@@ -143,10 +163,14 @@ external archive after an explicit archive/DOI decision.
   restricted/excluded.
 - Stage 4C/final release work: refresh the evidence reconciliation/audit on the
   final clean release state and update availability wording with the real DOI.
+- Stage 4C follow-up: refresh the current figure checksum evidence for
+  `manuscript/figures/fig_layerA_baseline_map.png` before archive, DOI, or
+  publication packaging.
 
 ## Readiness assessment
 
-Stage 4B is ready for orchestrator review as a decision surface. It does not
-authorize release publication. The next implementation goal should be a Stage
-4C final release/archive preparation goal only after the orchestrator accepts
-this manifest and records the required archive/DOI decisions.
+Stage 4B remains ready for orchestrator review as a release/data-availability
+decision surface. Goal 008 adds a no-move recommendation for archive, DOI,
+release packaging, and publication submission until the current evidence
+snapshot is refreshed and the required large-output/archive decisions are
+recorded.
