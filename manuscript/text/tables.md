@@ -1,6 +1,6 @@
 ## Tables
 
-**Table 1. Feasibility, censoring, and denominators for the DSIPA Layer A audit.**
+**Table 1. Feasibility, non-detection, and denominators for the Layer A assessment.**
 
 | Quantity | n | Denominator | Percent | Selection rule | Notes |
 | --- | ---: | ---: | ---: | --- | --- |
@@ -11,14 +11,14 @@
 | Inside trend eligible | 4,426 | 11,133 | 39.8% | Primary metric = mean; inside valid years >= 8. | Eligible for primary inside Theil-Sen trend estimates. |
 | Inside trend exactly zero slope | 3,969 | 4,426 | 89.7% | Primary inside trend slope == 0. | Primary trend floor/censoring indicator. |
 | Inside trend positive slope | 420 | 4,426 | 9.5% | Primary inside trend slope > 0. | Positive brightening subset for primary trends. |
-| Retention/quadrant eligible | 3,858 | 4,426 | 87.2% | Primary inside trend plus non-missing 1 km `land_unprotected` buffer trend and covariates. | Denominator for retention quadrant and category-safe risk rankings. |
+| Inside/surrounding screening eligible | 3,858 | 4,426 | 87.2% | Primary inside trend plus non-missing 1 km `land_unprotected` buffer trend and covariates. | Denominator for categorical inside/surrounding screening. |
 | Q1 concurrent inside and buffer brightening | 305 | 3,858 | 7.9% | Buffer slope > 0 and inside slope > 0. | Concurrent brightening subset. |
-| Q2 internal brightening with stable/non-detect buffer | 55 | 3,858 | 1.4% | Buffer slope <= 0 and inside slope > 0. | Internal brightening subset. |
+| Q2 inside-only brightening | 55 | 3,858 | 1.4% | Buffer slope <= 0 and inside slope > 0. | Inside brightening with stable/non-detect surrounding land. |
 | Q3 stable/non-detect inside and buffer | 3,308 | 3,858 | 85.7% | Buffer slope <= 0 and inside slope <= 0. | Stable or non-detect subset under primary thresholds. |
-| Q4 external pressure without inside brightening | 190 | 3,858 | 4.9% | Buffer slope > 0 and inside slope <= 0. | External-pressure subset under primary thresholds. |
-| Inside ring 0 valid (0-1 km) | 4,425 | 11,133 | 39.7% | Inside ring 0, 2024, valid pixels >= 10. | Ring feasibility denominator for edge/penetration analysis. |
-| Inside ring 1 valid (1-5 km) | 1,427 | 11,133 | 12.8% | Inside ring 1, 2024, valid pixels >= 10. | Ring feasibility denominator for edge/penetration analysis. |
-| Inside ring 2 valid (5-10 km) | 383 | 11,133 | 3.4% | Inside ring 2, 2024, valid pixels >= 10. | Ring feasibility denominator for edge/penetration analysis. |
+| Q4 surrounding-only brightening | 190 | 3,858 | 4.9% | Buffer slope > 0 and inside slope <= 0. | Surrounding-land brightening without detectable inside brightening. |
+| Inside ring 0 valid (0-1 km) | 4,425 | 11,133 | 39.7% | Inside ring 0, 2024, valid pixels >= 10. | Ring feasibility denominator for the conditional interior-band diagnostic. |
+| Inside ring 1 valid (1-5 km) | 1,432 | 11,133 | 12.9% | Inside ring 1, 2024, valid pixels >= 10. | Ring feasibility denominator for the conditional interior-band diagnostic. |
+| Inside ring 2 valid (5-10 km) | 383 | 11,133 | 3.4% | Inside ring 2, 2024, valid pixels >= 10. | Ring feasibility denominator for the conditional interior-band diagnostic. |
 | Complete ring set (2024) | 383 | 11,133 | 3.4% | All three inside rings have >= 10 valid pixels in 2024. | Conditional denominator for complete-ring edge profile summaries. |
 
 Counts use the `v0.3.0` processed Layer A evidence. Percentages are relative to the stated denominator, so rows intentionally mix PA-universe, trend-eligible, retention-eligible, and ring-complete denominators. The positive-slope row is the brightening subset; it is distinct from the Fig. 2 diagnostic non-zero-slope subset, which includes both positive and negative non-zero slopes.
