@@ -1,0 +1,172 @@
+{
+  "schema_version": "goal011-preservation-manifest-v1",
+  "generated_utc": "2026-07-23",
+  "run_id": "20260723T062202Z-goal011-layerA-preservation",
+  "status": "terminal_concordant_non_exact_reproduction_accepted_archive_candidate",
+  "terminal": true,
+  "pipeline": {
+    "executed": true,
+    "status": "failed",
+    "exit_code": 1,
+    "reason": "QA expected two ignored triad GPKG fixtures absent from the clean source archive",
+    "scientific_source_integrity": "unchanged",
+    "command": "DSIPA_SKIP_LAYERB=1 DSIPA_WORKERS=12 DSIPA_STATES=ACT,NSW,NT,QLD,SA,TAS,VIC,WA,JBT,EXT analysis/run_full_pipeline.sh"
+  },
+  "source": {
+    "commit": "7f46a00f74c32881034f0129728b3d80eedd2442",
+    "tree": "c82ebdda83c987d2e1dcc79fb2dba2759f9d7739",
+    "archive_entries": 354,
+    "archive_sha256": "a0e9b77fb4f6e75d9dac9477a8fa6877b2956e8351e8b142531d7bdf6518b02e"
+  },
+  "remote": {
+    "host": "deep-server",
+    "repo_path": "/data/codex/repos/dsipa-dev-goal011-20260723T062202Z",
+    "artifact_path": "/data/codex/artifacts/dsipa/20260723T062202Z-goal011-layerA-preservation",
+    "scratch_path": "/data/codex/scratch/dsipa/20260723T062202Z-goal011-layerA-preservation"
+  },
+  "input_gate": {
+    "status": "passed_after_one_orchestration_repair",
+    "capad_feature_count": 14403,
+    "capad_semantic_hash_match": true,
+    "ibra_feature_count": 89,
+    "ibra_semantic_hash_match": true,
+    "nightlight_files": 12,
+    "nightlight_md5_all_match": true,
+    "natural_earth_size_bytes": 69700,
+    "natural_earth_sha256": "1926c621afd6ac67c3f36639bb1236134a48d82226dc675d3e3df53d02d2a3de",
+    "natural_earth_classification": "version-reacquirable-but-not-historically-byte-pinned"
+  },
+  "summary": {
+    "approved_outputs": 9,
+    "present_outputs": 9,
+    "exact_hash_matches": 6,
+    "bounded_secondary_scientific_drift": 1,
+    "historical_row_or_feature_equality_unproven": 2,
+    "all_primary_headlines_match": true,
+    "independent_scientific_review": "accepted",
+    "edge_effect_on_paper_conclusions": "immaterial"
+  },
+  "outputs": [
+    {
+      "path": "data/processed/pa_radiance_buffers_national_v0_3_0.csv",
+      "size_bytes": 96268937,
+      "sha256": "6564e2145f2cb94e5d2d1df2fbca8c0c663b5cd4b68d2bfe72fefadfa3cc5c61",
+      "historical_sha256": "493c425c0de2a88773f55d49d99839c98dc0f6082749ccb5c95994583ff05d2e",
+      "exact_hash_match": false,
+      "classification": "byte_different_no_detected_primary_drift_historical_rows_unproven"
+    },
+    {
+      "path": "data/processed/pa_edge_profiles_national_v0_3_0.csv",
+      "size_bytes": 25255793,
+      "sha256": "baf902714e4308a50e6c594db0e2f1d58872b39e03cb88605047f24bdeb06812",
+      "historical_sha256": "9d77d1153d5c93789d7f78ae8ff5f28f8cd9d3c4526e853400abeb91cd757888",
+      "exact_hash_match": false,
+      "classification": "bounded_secondary_threshold_sensitive_drift"
+    },
+    {
+      "path": "data/processed/pa_buffer_validity_v0_3_0.csv",
+      "size_bytes": 2561064,
+      "sha256": "407283df182baff585dfe3b28b9450c5750c237d120d5d00aa3539a6227e3e25",
+      "historical_sha256": "407283df182baff585dfe3b28b9450c5750c237d120d5d00aa3539a6227e3e25",
+      "exact_hash_match": true,
+      "classification": "exact"
+    },
+    {
+      "path": "data/processed/pa_trends_v0_3_0.csv",
+      "size_bytes": 5187168,
+      "sha256": "d7d33e9cd49dea316355cba5a52afd85953f3b656ee8f2ab7e725c922800ff1f",
+      "historical_sha256": "d7d33e9cd49dea316355cba5a52afd85953f3b656ee8f2ab7e725c922800ff1f",
+      "exact_hash_match": true,
+      "classification": "exact"
+    },
+    {
+      "path": "data/processed/pa_risk_rankings_v0_3_0.csv",
+      "size_bytes": 600663,
+      "sha256": "554c02ea84d56119f47d13524ab7ec3add66851f61dae3c4f5ac9267da30367a",
+      "historical_sha256": "554c02ea84d56119f47d13524ab7ec3add66851f61dae3c4f5ac9267da30367a",
+      "exact_hash_match": true,
+      "classification": "exact"
+    },
+    {
+      "path": "data/processed/pa_geometries_v0_3_0.csv",
+      "size_bytes": 1768417,
+      "sha256": "781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b",
+      "historical_sha256": "781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b",
+      "exact_hash_match": true,
+      "classification": "exact"
+    },
+    {
+      "path": "data/processed/pa_geometries_v0_3_0.gpkg",
+      "size_bytes": 132571136,
+      "sha256": "6ea584b1f90fdab82b31fd4861f9c81a7ca1bef03142204579e85e295f3033c9",
+      "historical_sha256": "0476ffdc2cd5a609855a20a2af0f373aff25ca571ccc8138e4224e71deb00e11",
+      "exact_hash_match": false,
+      "classification": "byte_different_within_run_semantics_exact_historical_features_unproven"
+    },
+    {
+      "path": "data/processed/pa_ibra_assignment_v0_3_0.csv",
+      "size_bytes": 987075,
+      "sha256": "3f0d8f7cc206302a8d266ac747a20e89bd0ad0a724f8c7a3d2a161f0634a82cf",
+      "historical_sha256": "3f0d8f7cc206302a8d266ac747a20e89bd0ad0a724f8c7a3d2a161f0634a82cf",
+      "exact_hash_match": true,
+      "classification": "exact"
+    },
+    {
+      "path": "data/processed/pa_trend_bootstrap_summary_v0_3_0.csv",
+      "size_bytes": 582886,
+      "sha256": "cd3c165ed5857d0fb2fcb3be360fe89dfda6757c296fb5cd1bd7aee509078920",
+      "historical_sha256": "cd3c165ed5857d0fb2fcb3be360fe89dfda6757c296fb5cd1bd7aee509078920",
+      "exact_hash_match": true,
+      "classification": "exact"
+    }
+  ],
+  "headlines": {
+    "pa_universe": 11133,
+    "eligible_subset": 4426,
+    "zero_inside_mean_2024": 3844,
+    "exact_zero_inside_slopes": 3969,
+    "positive_inside_slopes": 420,
+    "retention_denominator": 3858,
+    "quadrants": {
+      "Q1": 305,
+      "Q2": 55,
+      "Q3": 3308,
+      "Q4": 190
+    },
+    "complete_rings": 383,
+    "all_match_accepted": true
+  },
+  "edge_secondary": {
+    "accepted_ring1_valid_pa": 1427,
+    "regenerated_ring1_valid_pa": 1432,
+    "delta": 5,
+    "delta_relative_to_accepted_percent": 0.35,
+    "delta_percentage_points_of_pa_universe": 0.045,
+    "accepted_ring1_nonnull_pa_years": 116472,
+    "regenerated_ring1_nonnull_pa_years": 116412,
+    "nonnull_pa_year_delta": -60,
+    "nonnull_pa_year_delta_percent": -0.052,
+    "complete_rings_unchanged": 383,
+    "current_ring1_pa_exactly_at_10_pixels": 30,
+    "conditional_nonzero_shares_percent": {
+      "ring_0_0_to_1_km": 18.02,
+      "ring_1_1_to_5_km": 9.40,
+      "ring_2_5_to_10_km": 3.66
+    },
+    "conditional_nonzero_shares_unchanged": true
+  },
+  "validation": {
+    "full_pytest": "49 passed in 6.89s",
+    "package_build": "passed; wheel and sdist created",
+    "canonical_edge_decision": "passed",
+    "gpkg_pipeline_vs_input_gate_attributes_equal": true,
+    "gpkg_pipeline_vs_input_gate_geometry_wkb_equal": true
+  },
+  "archive_decision": "Independent scientific rereview accepted Goal 011 and the regenerated payload as the archive candidate.",
+  "next_requirements": [
+    "Canonical release surfaces must use 1,432 and 12.9% for 1-5 km ring feasibility, while reconciliation retains the historical 1,427 versus regenerated 1,432 comparison.",
+    "Clean-checkout QA must generate or include the triad fixtures before running the full test and build sequence.",
+    "Archive metadata must state that this is a concordant non-exact reproduction and retain the unresolved historical row-level radiance and feature-level GPKG limitations."
+  ],
+  "recommendation": "Keep DOI upload on hold only for release-surface consistency, clean-checkout QA hardening, and explicit archive metadata; no further scientific analysis is required for Goal 011."
+}
