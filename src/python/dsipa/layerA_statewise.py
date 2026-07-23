@@ -27,6 +27,7 @@ from dsipa.schema import (
     RADIANCE_BUFFERS_NATIONAL_CSV,
 )
 from dsipa import layerA_national
+from dsipa.layerA_reproducibility import stable_sort_frame
 
 DEFAULT_STATES = ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA", "JBT", "EXT"]
 
@@ -66,7 +67,7 @@ def _merge_tables(paths: list[Path], key_cols: list[str]) -> pd.DataFrame:
     if merged.duplicated(subset=key_cols).any():
         dupes = merged[merged.duplicated(subset=key_cols, keep=False)][key_cols].head(5)
         raise RuntimeError(f"Duplicate keys found when merging state outputs: {dupes}")
-    return merged
+    return stable_sort_frame(merged, key_cols)
 
 
 def merge_state_outputs(

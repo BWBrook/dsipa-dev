@@ -1,0 +1,60 @@
+{
+  "type": "FeatureCollection",
+  "name": "layerA_triad_offline_fixture",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "pa_id": "TAS_50483",
+        "pa_pid": "fixture-tas",
+        "name": "Offline urban edge",
+        "state": "TAS",
+        "iucn": "II",
+        "triad_role": "urban_edge",
+        "area_km2": 12.0,
+        "distance_km": 10.0,
+        "nearest_city": "Hobart"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[147.10, -42.90], [147.14, -42.90], [147.14, -42.86], [147.10, -42.86], [147.10, -42.90]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "pa_id": "NSW_N0856",
+        "pa_pid": "fixture-nsw",
+        "name": "Offline peri urban",
+        "state": "NSW",
+        "iucn": "II",
+        "triad_role": "peri_urban",
+        "area_km2": 18.0,
+        "distance_km": 100.0,
+        "nearest_city": "Sydney"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[150.00, -33.80], [150.05, -33.80], [150.05, -33.75], [150.00, -33.75], [150.00, -33.80]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "pa_id": "QLD_0117LZI001",
+        "pa_pid": "fixture-qld",
+        "name": "Offline remote",
+        "state": "QLD",
+        "iucn": "II",
+        "triad_role": "remote",
+        "area_km2": 25.0,
+        "distance_km": 500.0,
+        "nearest_city": "Brisbane"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[144.00, -22.00], [144.06, -22.00], [144.06, -21.94], [144.00, -21.94], [144.00, -22.00]]]
+      }
+    }
+  ]
+}

@@ -10,7 +10,7 @@ DEEP_HOST ?= deep-server-ts
 DEEP_REPO ?= /data/codex/repos/dsipa-dev-mac-sync
 READINESS_SSH_FLAGS := $(if $(filter 1 true yes,$(CHECK_SSH)),--check-ssh,)
 
-.PHONY: bootstrap readiness test build pipeline layerA hpc-evidence hpc-full hpc-sync-dry-run hpc-sync ms-validate ms-check ms-build ms-clean
+.PHONY: bootstrap readiness test build pipeline layerA hpc-evidence hpc-full hpc-layerA hpc-sync-dry-run hpc-sync ms-validate ms-check ms-build ms-clean
 
 bootstrap:
 	DSIPA_PYTHON_VERSION=$(PYTHON_VERSION) analysis/bootstrap_macos.sh
@@ -35,6 +35,9 @@ hpc-evidence:
 
 hpc-full:
 	analysis/deep_server_tmux_run.sh --mode full --workers $(DSIPA_WORKERS)
+
+hpc-layerA:
+	analysis/deep_server_tmux_run.sh --mode layerA --workers $(DSIPA_WORKERS) --states $(DSIPA_STATES)
 
 hpc-sync-dry-run:
 	analysis/sync_to_deep_server.sh --dry-run

@@ -68,6 +68,7 @@ def write_capad_snapshot(root: Path, query: CapadQuery, gdf: gpd.GeoDataFrame) -
         },
         "feature_count": int(len(gdf)),
         "pa_id_hash_sha256": _hash_geometries(gdf[["PA_ID", "geometry"]].copy()),
+        "semantic_sha256": _hash_geometries(gdf[["PA_ID", "geometry"]].copy()),
     }
     snapshot_path = snapshot_dir / f"capad_snapshot_{datetime.now(timezone.utc).strftime('%Y%m%d')}.json"
     snapshot_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
@@ -138,6 +139,7 @@ def write_outputs(gdf: gpd.GeoDataFrame, root: Path) -> dict[str, Path]:
     out_gpkg = root / PA_GEOMETRIES_GPKG
     out_csv = root / PA_GEOMETRIES_CSV
 
+    gdf = gdf.sort_values("pa_id", kind="mergesort").reset_index(drop=True)
     gdf.to_file(out_gpkg, driver="GPKG")
 
     table_cols = [

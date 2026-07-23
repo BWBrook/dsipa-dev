@@ -1,0 +1,7 @@
+{
+  "fixture_version": "layerA-triad-offline-v1",
+  "purpose": "Deterministic geometry and outside-buffer QA without CAPAD or network access.",
+  "source_ids": ["TAS_50483", "NSW_N0856", "QLD_0117LZI001"],
+  "geometry_note": "Synthetic rectangles near the accepted triad locations; not analytical inputs.",
+  "crs": "EPSG:4326"
+}

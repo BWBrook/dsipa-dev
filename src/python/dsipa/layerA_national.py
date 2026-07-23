@@ -24,6 +24,13 @@ except Exception:  # pragma: no cover
 from shapely import wkb
 
 from dsipa.landmask import download_landmask
+from dsipa.layerA_reproducibility import (
+    accepted_input_fingerprints,
+    cache_is_reusable,
+    load_reference_contract,
+    stable_sort_frame,
+    write_cache_fingerprint,
+)
 from dsipa.manifest import build_manifest, write_manifest
 from dsipa.nightlights import CORE_YEARS, download_year
 from dsipa.paths import find_repo_root
@@ -216,7 +223,15 @@ def _chunk_records(records: list[dict], chunk_size: int) -> Iterable[list[dict]]
 
 def _load_landmask_union(root: Path):
     cache_path = root / LAND_UNION_CACHE
-    if cache_path.exists():
+    contract = load_reference_contract(root / "settings/layerA_reference_contract_v0_3_0.json")
+    inputs = accepted_input_fingerprints(contract)
+    fingerprints = {"natural_earth_sha256": inputs["natural_earth_sha256"]}
+    algorithm = contract["cache_contract"]["algorithms"]["land_union"]
+    if cache_is_reusable(
+        cache_path,
+        algorithm=algorithm,
+        input_fingerprints=fingerprints,
+    ):
         return wkb.loads(cache_path.read_bytes())
     land_dir = root / LANDMASK_DIR
     land_path = download_landmask(land_dir)
@@ -233,12 +248,25 @@ def _load_landmask_union(root: Path):
     land_union = _safe_geom(union_geom)
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     cache_path.write_bytes(wkb.dumps(land_union))
+    write_cache_fingerprint(
+        cache_path,
+        algorithm=algorithm,
+        input_fingerprints=fingerprints,
+    )
     return land_union
 
 
 def _load_pa_union(root: Path, pa_gdf: gpd.GeoDataFrame):
     cache_path = root / PA_UNION_CACHE
-    if cache_path.exists():
+    contract = load_reference_contract(root / "settings/layerA_reference_contract_v0_3_0.json")
+    inputs = accepted_input_fingerprints(contract)
+    fingerprints = {"capad_semantic_sha256": inputs["capad_semantic_sha256"]}
+    algorithm = contract["cache_contract"]["algorithms"]["pa_union"]
+    if cache_is_reusable(
+        cache_path,
+        algorithm=algorithm,
+        input_fingerprints=fingerprints,
+    ):
         return wkb.loads(cache_path.read_bytes())
     try:
         union_geom = pa_gdf.geometry.union_all()
@@ -247,6 +275,11 @@ def _load_pa_union(root: Path, pa_gdf: gpd.GeoDataFrame):
     union_geom = _safe_geom(union_geom)
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     cache_path.write_bytes(wkb.dumps(union_geom))
+    write_cache_fingerprint(
+        cache_path,
+        algorithm=algorithm,
+        input_fingerprints=fingerprints,
+    )
     return union_geom
 
 
@@ -260,13 +293,29 @@ def _load_land_unprotected_union(
     if pa_union is None:
         return land_union
     cache_path = root / LAND_UNPROTECTED_CACHE
-    if cache_path.exists():
+    contract = load_reference_contract(root / "settings/layerA_reference_contract_v0_3_0.json")
+    inputs = accepted_input_fingerprints(contract)
+    fingerprints = {
+        "capad_semantic_sha256": inputs["capad_semantic_sha256"],
+        "natural_earth_sha256": inputs["natural_earth_sha256"],
+    }
+    algorithm = contract["cache_contract"]["algorithms"]["land_unprotected_union"]
+    if cache_is_reusable(
+        cache_path,
+        algorithm=algorithm,
+        input_fingerprints=fingerprints,
+    ):
         cached = wkb.loads(cache_path.read_bytes())
         return _safe_geom(cached)
     land_unprotected = _safe_difference(land_union, pa_union)
     land_unprotected = _safe_geom(land_unprotected)
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     cache_path.write_bytes(wkb.dumps(land_unprotected))
+    write_cache_fingerprint(
+        cache_path,
+        algorithm=algorithm,
+        input_fingerprints=fingerprints,
+    )
     return land_unprotected
 
 
@@ -889,6 +938,13 @@ def write_report(
 
 def write_outputs(df: pd.DataFrame, path: Path) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
+    if path.name == Path(RADIANCE_BUFFERS_NATIONAL_CSV).name:
+        df = stable_sort_frame(
+            df,
+            ["pa_id", "year", "zone", "buffer_km", "buffer_type"],
+        )
+    elif path.name == Path(EDGE_PROFILES_NATIONAL_CSV).name:
+        df = stable_sort_frame(df, ["pa_id", "year", "ring_index"])
     df.to_csv(path, index=False)
     return path
 
@@ -897,6 +953,7 @@ def write_buffer_validity(df: pd.DataFrame, path: Path) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     df_out = df.copy()
     df_out["schema_version"] = SCHEMA_VERSION
+    df_out = stable_sort_frame(df_out, ["pa_id", "buffer_km"])
     df_out.to_csv(path, index=False)
     return path
 

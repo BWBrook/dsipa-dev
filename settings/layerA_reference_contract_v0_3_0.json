@@ -1,0 +1,163 @@
+{
+  "contract_version": "layerA-reference-v1",
+  "analysis_schema_version": "0.3.0",
+  "period": {
+    "start_year": 2013,
+    "end_year": 2024,
+    "years": [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]
+  },
+  "states": ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA", "JBT", "EXT"],
+  "settings": {
+    "minimum_valid_pixels": 10,
+    "minimum_valid_years": 8,
+    "buffer_distances_km": [1.0, 5.0],
+    "buffer_types": ["raw", "land", "land_unprotected"],
+    "primary_buffer_type": "land_unprotected",
+    "ring_bins_km": [[0.0, 1.0], [1.0, 5.0], [5.0, 10.0]],
+    "trend_estimator": "theil_sen",
+    "bootstrap": {
+      "method": "ibra_cluster_moving_block",
+      "draws": 300,
+      "block_length_years": 3,
+      "seed": 42
+    }
+  },
+  "inputs": {
+    "capad": {
+      "feature_count": 14403,
+      "semantic_sha256": "148a813156bc1bb6b94bbf8a0455c517a951985ff03de6d8e18199dc627e53cf",
+      "snapshot_glob": "data/raw/capad_snapshot/capad_snapshot_*.json",
+      "snapshot_hash_field": "pa_id_hash_sha256"
+    },
+    "ibra": {
+      "feature_count": 89,
+      "semantic_sha256": "3ba6e8e10f775a9643da6154bb7cd050a54dbb24ed545277d7ad2e05fb8fe332",
+      "snapshot_glob": "data/raw/ibra_snapshot/ibra_snapshot_*.json",
+      "snapshot_hash_field": "ibra_hash_sha256"
+    },
+    "natural_earth": {
+      "archive_path": "data/raw/ne_110m_land/ne_110m_land.zip",
+      "size_bytes": 69700,
+      "sha256": "1926c621afd6ac67c3f36639bb1236134a48d82226dc675d3e3df53d02d2a3de"
+    },
+    "viirs": {
+      "record_id": "17294744",
+      "directory": "data/raw/nightlights_zenodo_v0_4",
+      "md5_by_year": {
+        "2013": "b60fb30a5039aff28e943179ec797f3f",
+        "2014": "c9505d985dbfef015e4f23f3d0172f32",
+        "2015": "2dbb7b5930a218778636bea0eeb9afb1",
+        "2016": "a75f58ecdffb7c62e6af2a0464139551",
+        "2017": "380fcdc877f0213f023ee41372ff7894",
+        "2018": "b1818a74dd2bc41e7253a5df76533a9c",
+        "2019": "88933a6aa669fa863a998b92f9d25c92",
+        "2020": "2e2756b276a293dc4c2932c9ccb1f7e4",
+        "2021": "f200a2292de85badfbadb557621cdd6b",
+        "2022": "d0952d107adfd943478f1635a2eb987e",
+        "2023": "7108c72e049e2e718213816e3dad3ed2",
+        "2024": "0b976892d40c2d0d99177c727289eaf2"
+      }
+    }
+  },
+  "stable_keys": {
+    "pa_radiance_buffers_national": ["pa_id", "year", "zone", "buffer_km", "buffer_type"],
+    "pa_edge_profiles_national": ["pa_id", "year", "ring_index"],
+    "pa_buffer_validity": ["pa_id", "buffer_km"]
+  },
+  "outputs": [
+    {
+      "schema_key": "pa_radiance_buffers_national",
+      "path": "data/processed/pa_radiance_buffers_national_v0_3_0.csv",
+      "rows": 900768,
+      "sha256": "6564e2145f2cb94e5d2d1df2fbca8c0c663b5cd4b68d2bfe72fefadfa3cc5c61",
+      "classification": "canonical_ordering_change_semantically_exact"
+    },
+    {
+      "schema_key": "pa_edge_profiles_national",
+      "path": "data/processed/pa_edge_profiles_national_v0_3_0.csv",
+      "rows": 400788,
+      "sha256": "baf902714e4308a50e6c594db0e2f1d58872b39e03cb88605047f24bdeb06812",
+      "classification": "canonical_ordering_change_semantically_exact"
+    },
+    {
+      "schema_key": "pa_buffer_validity",
+      "path": "data/processed/pa_buffer_validity_v0_3_0.csv",
+      "rows": 22266,
+      "sha256": "407283df182baff585dfe3b28b9450c5750c237d120d5d00aa3539a6227e3e25",
+      "classification": "canonical_ordering_change_semantically_exact"
+    },
+    {
+      "schema_key": "pa_trends",
+      "path": "data/processed/pa_trends_v0_3_0.csv",
+      "rows": 53112,
+      "sha256": "d7d33e9cd49dea316355cba5a52afd85953f3b656ee8f2ab7e725c922800ff1f",
+      "classification": "exact"
+    },
+    {
+      "schema_key": "pa_risk_rankings",
+      "path": "data/processed/pa_risk_rankings_v0_3_0.csv",
+      "rows": 3858,
+      "sha256": "554c02ea84d56119f47d13524ab7ec3add66851f61dae3c4f5ac9267da30367a",
+      "classification": "exact"
+    },
+    {
+      "schema_key": "pa_geometries",
+      "path": "data/processed/pa_geometries_v0_3_0.csv",
+      "rows": 11133,
+      "sha256": "781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b",
+      "classification": "exact"
+    },
+    {
+      "schema_key": "pa_geometries_gpkg",
+      "path": "data/processed/pa_geometries_v0_3_0.gpkg",
+      "rows": 11133,
+      "sha256": "6ea584b1f90fdab82b31fd4861f9c81a7ca1bef03142204579e85e295f3033c9",
+      "classification": "container_metadata_may_differ_semantics_exact"
+    },
+    {
+      "schema_key": "pa_ibra_assignment",
+      "path": "data/processed/pa_ibra_assignment_v0_3_0.csv",
+      "rows": 11098,
+      "sha256": "3f0d8f7cc206302a8d266ac747a20e89bd0ad0a724f8c7a3d2a161f0634a82cf",
+      "classification": "exact"
+    },
+    {
+      "schema_key": "pa_trend_bootstrap_summary",
+      "path": "data/processed/pa_trend_bootstrap_summary_v0_3_0.csv",
+      "rows": 4426,
+      "sha256": "cd3c165ed5857d0fb2fcb3be360fe89dfda6757c296fb5cd1bd7aee509078920",
+      "classification": "exact"
+    }
+  ],
+  "headlines": {
+    "pa_universe": 11133,
+    "inside_trend_eligible": 4426,
+    "inside_2024_zero_mean": 3844,
+    "inside_trend_zero_slope": 3969,
+    "inside_trend_positive_slope": 420,
+    "retention_quadrant_eligible": 3858,
+    "quadrant_q1_concurrent_brightening": 305,
+    "quadrant_q2_internal_brightening": 55,
+    "quadrant_q3_stable_or_non_detect": 3308,
+    "quadrant_q4_external_pressure": 190,
+    "complete_rings_2024": 383,
+    "ring1_2024_valid": 1432,
+    "ring1_2024_valid_fraction": 0.12862660558699363
+  },
+  "historical_reconciliation": {
+    "metric": "ring1_2024_valid",
+    "historical_value": 1427,
+    "accepted_current_value": 1432,
+    "historical_fraction": 0.1281774903440223,
+    "accepted_current_fraction_rounded_percent": 12.9,
+    "decision": "Goal 011 independent review accepted the five-PA difference as immaterial; current release surfaces use 1432 and 12.9 percent."
+  },
+  "cache_contract": {
+    "version": "layerA-union-cache-v1",
+    "algorithms": {
+      "pa_union": "safe-valid-union-all-epsg3577-v1",
+      "land_union": "natural-earth-union-all-epsg3577-v1",
+      "land_unprotected_union": "safe-difference-land-minus-pa-v1"
+    }
+  }
+}

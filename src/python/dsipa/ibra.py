@@ -119,6 +119,7 @@ def write_ibra_snapshot(root: Path, query: IbraQuery, gdf: gpd.GeoDataFrame) -> 
         },
         "feature_count": int(len(gdf)),
         "ibra_hash_sha256": _hash_geometries(gdf[["REG_CODE_7", "geometry"]].copy()),
+        "semantic_sha256": _hash_geometries(gdf[["REG_CODE_7", "geometry"]].copy()),
     }
     stamp = datetime.now(timezone.utc).strftime("%Y%m%d")
     snapshot_path = snapshot_dir / f"ibra_snapshot_{stamp}.json"

@@ -1,7 +1,9 @@
 import geopandas as gpd
 import pandas as pd
+import pytest
 
 from dsipa import schema as dschema
+from dsipa.triad import build_buffers
 
 TRIAD_INDEX = dschema.TRIAD_INDEX_CSV
 TRIAD_GEOMS = dschema.TRIAD_GEOMS_GPKG
@@ -12,6 +14,17 @@ EXPECTED_IDS = {"TAS_50483", "NSW_N0856", "QLD_0117LZI001"}
 EXPECTED_ROLES = {"urban_edge", "peri_urban", "remote"}
 EXPECTED_RING_BINS = [(0.0, 1.0), (1.0, 5.0), (5.0, 10.0)]
 EXPECTED_BUFFER_KM = {1.0, 5.0}
+OFFLINE_FIXTURE = "tests/fixtures/layerA_triad/triad_geometries.geojson"
+
+
+@pytest.fixture
+def offline_triad(monkeypatch):
+    def network_forbidden(*_args, **_kwargs):
+        raise AssertionError("Layer A triad QA attempted network access.")
+
+    monkeypatch.setattr("urllib.request.urlretrieve", network_forbidden)
+    monkeypatch.setattr("dsipa.capad.fetch_gdf", network_forbidden)
+    return gpd.read_file(OFFLINE_FIXTURE).to_crs("EPSG:3577")
 
 
 def test_triad_index_schema_and_ids():
@@ -23,8 +36,10 @@ def test_triad_index_schema_and_ids():
     assert set(df["schema_version"]) == {dschema.SCHEMA_VERSION}
 
 
-def test_triad_geometries_valid():
-    gdf = gpd.read_file(TRIAD_GEOMS)
+def test_triad_geometries_valid_offline(offline_triad, tmp_path):
+    fixture_path = tmp_path / "triad_geometries.gpkg"
+    offline_triad.to_file(fixture_path, driver="GPKG")
+    gdf = gpd.read_file(fixture_path)
     assert len(gdf) == 3
     assert set(gdf.columns) == set(dschema.TRIAD_GEOMS_COLUMNS)
     assert gdf.geometry.notna().all()
@@ -41,8 +56,11 @@ def test_triad_ring_bins_complete_and_ordered():
         assert list(zip(subset["ring_inner_km"], subset["ring_outer_km"])) == EXPECTED_RING_BINS
 
 
-def test_triad_buffers_complete():
-    gdf = gpd.read_file(TRIAD_BUFFERS)
+def test_triad_buffers_complete_offline(offline_triad, tmp_path):
+    buffers = build_buffers(offline_triad, sorted(EXPECTED_BUFFER_KM))
+    fixture_path = tmp_path / "triad_buffers.gpkg"
+    buffers.to_file(fixture_path, driver="GPKG")
+    gdf = gpd.read_file(fixture_path)
     assert len(gdf) == 6
     assert set(gdf.columns) == set(dschema.TRIAD_BUFFERS_COLUMNS)
     assert set(gdf["buffer_km"]) == EXPECTED_BUFFER_KM
