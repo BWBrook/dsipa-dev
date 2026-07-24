@@ -2,6 +2,9 @@
 
 Generated: 2026-05-25 03:06 UTC
 
+Release reconciliation: 2026-07-24 from the independently accepted Goal 011
+archive candidate and Goal 012 reference contract.
+
 Primary settings:
 
 - Baseline year: 2024
@@ -32,7 +35,7 @@ Primary settings:
 | quadrant_q3_stable_or_non_detect | Q3 stable/non-detect inside and buffer | 3,308 | 3,858 | 85.7% | Buffer slope <= 0 and inside slope <= 0. | Stable or non-detect subset under primary thresholds. |
 | quadrant_q4_external_pressure | Q4 external pressure without inside brightening | 190 | 3,858 | 4.9% | Buffer slope > 0 and inside slope <= 0. | External-pressure subset under primary thresholds. |
 | ring0_2024_valid | Inside ring 0 valid (0-1 km) | 4,425 | 11,133 | 39.7% | Inside ring 0, 2024, valid pixels >= 10. | Ring feasibility denominator for edge/penetration analysis. |
-| ring1_2024_valid | Inside ring 1 valid (1-5 km) | 1,427 | 11,133 | 12.8% | Inside ring 1, 2024, valid pixels >= 10. | Ring feasibility denominator for edge/penetration analysis. |
+| ring1_2024_valid | Inside ring 1 valid (1-5 km) | 1,432 | 11,133 | 12.9% | Inside ring 1, 2024, valid pixels >= 10. | Ring feasibility denominator for the conditional edge diagnostic. |
 | ring2_2024_valid | Inside ring 2 valid (5-10 km) | 383 | 11,133 | 3.4% | Inside ring 2, 2024, valid pixels >= 10. | Ring feasibility denominator for edge/penetration analysis. |
 | complete_rings_2024 | Complete ring set (2024) | 383 | 11,133 | 3.4% | All 3 inside rings have valid pixels >= 10 in 2024. | Conditional denominator for complete-ring edge profile summaries. |
 

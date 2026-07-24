@@ -1,0 +1,15 @@
+title_note: >-
+  Submission author metadata is intentionally unresolved.
+  [BARRY CONFIRM: author names and order, affiliations, corresponding author,
+  full address, and contact details]
+
+affiliations:
+  pending: "[BARRY CONFIRM: affiliations and full institutional addresses]"
+
+authors:
+  - name: "[BARRY CONFIRM: author names and order]"
+    affiliations:
+      - pending
+    corresponding: true
+    email: "[BARRY CONFIRM: corresponding author, full address, and contact details]"
+    orcid: "[BARRY CONFIRM: ORCIDs for each author]"

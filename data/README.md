@@ -2,7 +2,14 @@
 
 Record every dataset placed under `data/raw/` and the derived products under `data/processed/`.
 
-Note: Large derived outputs (national-scale tables and large GPKG files) are not tracked in git. They are reproducible via the pipeline and classified for release readiness in `analysis/reports/final_release_manifest.md`. No external archive upload or DOI minting has been completed from this checkout.
+Note: Large derived outputs (national-scale tables and large GPKG files) are
+not tracked in git. The accepted Goal 011 nine-file Layer A candidate is staged
+locally under the ignored
+`artefacts/optionB_layerA_archive_candidate_2026-07-24/` and classified for
+release readiness in `analysis/reports/final_release_manifest.md`. It contains
+exactly nine payload files totalling `265,783,139` bytes. No external archive
+draft/upload, DOI reservation/minting, or publication action has been
+completed from this checkout.
 
 | Name | Source URL / DOI | Version / date fetched | License | Checksum (algorithm noted) | Notes |
 | --- | --- | --- | --- | --- | --- |
@@ -34,11 +41,13 @@ Note: Large derived outputs (national-scale tables and large GPKG files) are not
 | pa_geometries_v0_2_0.csv | src/python/dsipa/pa_geometry.py | Generated 2026-01-02; schema v0.2.0 | Derived (CAPAD CC BY 4.0) | 0883a0c0009d079fbe90b4d61f21919f11dd69023bc35a910169a85b569e82ce | Tabular descriptors for processed PA geometries. |
 | pa_radiance_buffers_smoketest_v0_2_0.csv | src/python/dsipa/radiance_smoketest.py | Generated 2026-01-02; schema v0.2.0 | Derived (Zenodo nightlights CC BY 4.0) | a0e92162d5457b05974f22c09ba8c99718970d0ec57f12a85252947dc3c37897 | Smoke-test radiance summaries (inside + buffers) for triad years. |
 | pa_edge_profiles_smoketest_v0_2_0.csv | src/python/dsipa/ring_profiles_smoketest.py | Generated 2026-01-02; schema v0.2.0 | Derived (Zenodo nightlights CC BY 4.0) | f4f2b9e05879e404d60b6bd9fd2c814e1e95cebc9ba65fcc7b482e57fcf80e0e | Smoke-test edge profile summaries (inside rings). |
-| pa_radiance_buffers_national_v0_3_0.csv | src/python/dsipa/layerA_national.py | Generated 2026-01-04; schema v0.3.0 | Derived (Zenodo nightlights CC BY 4.0) | 493c425c0de2a88773f55d49d99839c98dc0f6082749ccb5c95994583ff05d2e | National radiance summaries (inside + buffers) for 2013–2024; not tracked in git. |
-| pa_edge_profiles_national_v0_3_0.csv | src/python/dsipa/layerA_national.py | Generated 2026-01-04; schema v0.3.0 | Derived (Zenodo nightlights CC BY 4.0) | 9d77d1153d5c93789d7f78ae8ff5f28f8cd9d3c4526e853400abeb91cd757888 | National edge profile summaries (inside rings) for 2013–2024; not tracked in git. |
+| pa_radiance_buffers_national_v0_3_0.csv | src/python/dsipa/layerA_national.py | Goal 011 candidate 2026-07-23; schema v0.3.0 | Derived (Zenodo nightlights CC BY 4.0) | 6564e2145f2cb94e5d2d1df2fbca8c0c663b5cd4b68d2bfe72fefadfa3cc5c61 | National radiance summaries (inside + buffers) for 2013–2024; accepted non-exact reproduction, with historical row-level equality unproven; not tracked in git. |
+| pa_edge_profiles_national_v0_3_0.csv | src/python/dsipa/layerA_national.py | Goal 011 candidate 2026-07-23; schema v0.3.0 | Derived (Zenodo nightlights CC BY 4.0) | baf902714e4308a50e6c594db0e2f1d58872b39e03cb88605047f24bdeb06812 | National edge profile summaries (inside rings) for 2013–2024; accepted bounded secondary threshold-sensitive difference; current ring-1 value is 1,432/12.9%; not tracked in git. |
 | pa_buffer_validity_v0_3_0.csv | src/python/dsipa/layerA_national.py | Generated 2026-01-04; schema v0.3.0 | Derived (CAPAD + Natural Earth) | 407283df182baff585dfe3b28b9450c5750c237d120d5d00aa3539a6227e3e25 | Buffer land/overlap validity descriptors; not tracked in git. |
 | pa_trends_v0_3_0.csv | src/python/dsipa/trends.py | Generated 2026-01-04; schema v0.3.0 | Derived (Zenodo nightlights CC BY 4.0) | d7d33e9cd49dea316355cba5a52afd85953f3b656ee8f2ab7e725c922800ff1f | Trend estimates and retention indices (mean primary + censoring-aware metrics); not tracked in git. |
-| pa_risk_rankings_v0_3_0.csv | src/python/dsipa/vulnerability_model.py | Generated 2026-01-04; schema v0.3.0 | Derived (Zenodo nightlights CC BY 4.0) | 554c02ea84d56119f47d13524ab7ec3add66851f61dae3c4f5ac9267da30367a | Category-safe rankings (inside brightening, buffer brightening, internalisation, external pressure); not tracked in git. |
+| pa_risk_rankings_v0_3_0.csv | src/python/dsipa/vulnerability_model.py | Goal 011 candidate 2026-07-23; schema v0.3.0 | Derived (Zenodo nightlights CC BY 4.0) | 554c02ea84d56119f47d13524ab7ec3add66851f61dae3c4f5ac9267da30367a | Categorical screening output retained under a legacy filename; not a priority ranking; not tracked in git. |
+| pa_geometries_v0_3_0.csv | src/python/dsipa/pa_geometry.py | Goal 011 candidate 2026-07-23; schema v0.3.0 | Derived (CAPAD CC BY 4.0) | 781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b | Protected-area descriptors supporting denominators and joins; exact historical hash; not tracked in git. |
+| pa_geometries_v0_3_0.gpkg | src/python/dsipa/pa_geometry.py | Goal 011 candidate 2026-07-23; schema v0.3.0 | Derived (CAPAD CC BY 4.0) | 6ea584b1f90fdab82b31fd4861f9c81a7ca1bef03142204579e85e295f3033c9 | Processed protected-area geometry layer; accepted non-exact container with within-run semantic identity and unproven historical feature equality; not tracked in git. |
 | pa_ibra_assignment_v0_3_0.csv | src/python/dsipa/trend_uncertainty.py | Generated 2026-01-06; schema v0.3.0 | Derived (CAPAD + IBRA CC BY 4.0) | 3f0d8f7cc206302a8d266ac747a20e89bd0ad0a724f8c7a3d2a161f0634a82cf | Dominant IBRA region assignments for PAs; not tracked in git. |
 | pa_trend_bootstrap_summary_v0_3_0.csv | src/python/dsipa/trend_uncertainty.py | Generated 2026-01-06; schema v0.3.0 | Derived (Zenodo nightlights + IBRA) | cd3c165ed5857d0fb2fcb3be360fe89dfda6757c296fb5cd1bd7aee509078920 | Bootstrap CI summaries for inside mean-radiance slopes; not tracked in git. |
 | microbats_20260104T020628Z.zip | https://biocache.ala.org.au/ws/occurrences/download | ALA download 2026-01-04 | Mixed provider licenses (see ledger) | f0272a2ae9a53fbe53530367cdb9ac2458122889c86264f1e623f06d7074b86a | Raw ALA download for microbats (Chiroptera excluding Pteropodidae), 2013–2024, coordinate uncertainty ≤1 km. Stored under `data/raw/ala_occurrences/`. |
@@ -50,6 +59,15 @@ Note: Large derived outputs (national-scale tables and large GPKG files) are not
 
 Notes:
 - Checksums default to sha256 unless otherwise stated. Nightlights GeoTIFF checksums are MD5 (32 hex characters), matching `src/python/dsipa/nightlights.py`.
+- The three accepted non-exact Goal 011 payloads are the radiance CSV, edge
+  CSV, and geometry GPKG. The GPKG candidate SHA-256 is
+  `6ea584b1f90fdab82b31fd4861f9c81a7ca1bef03142204579e85e295f3033c9`;
+  within-run attributes, CRS, and geometry WKB match, while historical
+  feature-level equality is unproven. The other six Goal 011 files match their
+  historical hashes exactly.
+- Historical hashes remain in Goal 010 and Goal 011 reconciliation records;
+  current archive-candidate hashes are authoritative for the local Option B
+  candidate.
 - Stage 4B release readiness is recorded in `analysis/reports/final_release_manifest.md`. Files labelled `archived-proposed` there still require a later explicit archive/DOI decision before publication wording can cite an external archive.
 - Layer A “national” outputs include all CAPAD terrestrial PAs, including JBT and EXT (external territories).
 - Layer B filtered occurrence tables are stored under `data/processed/layerB/` and are intentionally ignored in git; raw ALA downloads are under `data/raw/ala_occurrences/`. Raw ALA downloads and row-level processed occurrence tables are restricted/excluded from the default release surface unless a later explicit release decision permits redistribution.

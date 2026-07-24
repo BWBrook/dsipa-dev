@@ -5,7 +5,7 @@
 Rows are grouped by source-output screening category and retain source order for traceability, not management priority. Slopes are Theil-Sen trends in scaled VIIRS radiance units per year for 2013-2024. The 95% interval and `P_inside_slope_gt0` columns are bootstrap intervals and empirical replicate fractions from the IBRA-cluster moving-block resampling; they are not posterior probabilities. Buffer and retention columns are point estimates. The sets support site-level investigation, not competitive ranking.
 
 | category | source_order | PA name | PA_ID | state | IBRA | area_km2 | inside_slope | buffer_1km_slope | retention_1km | inside_slope_95ci | P_inside_slope_gt0 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| ---------- | ------ | ------------- | ------------- | ---- | ---- | ------- | ------- | -------- | -------- | ---------- | ---------- |
 | Inside brightening | 1 | Neerabup | WA_27575 | WA | SWA | 9.735 | 8.150 | 3.522 | 4.628 | 0.254 to 12.364 | 0.975 |
 | Inside brightening | 2 | Craigieburn Grassland N.C.R. | VIC_4007 | VIC | SVP | 3.440 | 7.397 | 8.213 | -0.816 | 5.735 to 9.365 | 1.000 |
 | Inside brightening | 3 | Torrens Island | SA_0038 | SA | EYB | 6.387 | 3.727 | 3.276 | 0.451 | 2.451 to 5.139 | 1.000 |
@@ -72,7 +72,7 @@ Rows are grouped by source-output screening category and retain source order for
 Values are transcribed from `analysis/reports/layerB_modelling_report.md` (generated 2026-01-06). Coefficients are fold means +/- fold SD on the log-odds scale. Input fractions follow scope restriction and balancing, not raw acquisition. Shuffle rows use the same provider-matched input after breaking the exposure-label pairing under the stated null. Attenuation is expected whenever that pairing contains information and does not identify whether the original association was biological or observational. The multi-provider row is descriptive because provider and geographic heterogeneity return.
 
 | Design | Provider and scope | n microbats | n passerines | Microbat inside fraction | Passerine inside fraction | Microbat zero-ALAN fraction | Passerine zero-ALAN fraction | `any_light` coefficient | `log1p_alan` coefficient | AUC | Log loss | Interpretation |
-| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| ------------ | ----------------- | ----: | ----: | -----: | -----: | -----: | -----: | ------: | ------: | ---: | ----: | -------------- |
 | Primary provider-matched model | NSW BioNet dr368; inside PA or within 10 km | 50,281 | 50,281 | 0.278 | 0.257 | 0.657 | 0.651 | 1.316 +/- 0.128 | -0.354 +/- 0.024 | 0.545 | 0.689 | Weak provider-matched occurrence association; not causal and not a population trend. |
 | Spatial-block shuffle benchmark | NSW BioNet dr368; same input, ALAN shuffled within spatial blocks | 50,281 | 50,281 | 0.278 | 0.257 | 0.657 | 0.651 | 0.202 +/- 0.086 | -0.027 +/- 0.021 | 0.505 | 0.695 | Near-null discrimination after breaking the exposure-label pairing within blocks; cause is not diagnosed. |
 | IBRA x year shuffle benchmark | NSW BioNet dr368; same input, ALAN shuffled within IBRA x year strata | 50,281 | 50,281 | 0.278 | 0.257 | 0.657 | 0.651 | 0.163 +/- 0.063 | -0.001 +/- 0.008 | 0.517 | 0.695 | Near-null discrimination after the stratified shuffle; cause is not diagnosed. |

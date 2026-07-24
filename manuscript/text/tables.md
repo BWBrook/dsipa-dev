@@ -3,7 +3,7 @@
 **Table 1. Feasibility, non-detection, and denominators for the Layer A assessment.**
 
 | Quantity | n | Denominator | Percent | Selection rule | Notes |
-| --- | ---: | ---: | ---: | --- | --- |
+| ---------------------- | ----------: | ----------------: | -----------: | ----------------------- | ------------------ |
 | Protected-area universe | 11,133 | 11,133 | 100.0% | Dissolved CAPAD PA_ID universe. | Base denominator for Layer A. |
 | Inside baseline eligible (2024) | 4,426 | 11,133 | 39.8% | Inside PA, 2024, valid pixels >= 10. | Eligible for stable baseline inside radiance mapping. |
 | Inside baseline ineligible (2024) | 6,707 | 11,133 | 60.2% | Inside PA, 2024, valid pixels < 10. | Ineligible under the minimum-pixel rule, not necessarily missing source data. |
