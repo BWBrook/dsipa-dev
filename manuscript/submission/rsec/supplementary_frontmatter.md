@@ -14,6 +14,8 @@ This Supporting Information contains Tables S1-S2 and Figures S1-S7 cited by
 the main manuscript. It is built separately from the main text and is intended
 to be published as supplied.
 
+Status: Goal 016 final-read asset only; not authorized for Wiley submission.
+
 Final version/date and main-article DOI: `[PENDING EXTERNAL ACTION AND BARRY
 CONFIRMATION]`
 

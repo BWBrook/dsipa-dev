@@ -1,7 +1,7 @@
 # RSEC Submission Metadata
 
-Status: draft fields for human confirmation; not submission metadata of
-record.
+Status: Goal 016 final-read metadata with visible human decision fields; not
+submission metadata of record.
 
 - Journal: *Remote Sensing in Ecology and Conservation*
 - Article type: **Original Research**
@@ -39,9 +39,11 @@ unconfirmed author, order, affiliation, ORCID, or corresponding author.
 
 ## Counts
 
-- Abstract: 235 words
-- Main IMRAD text: 4,609 words
-- IMRAD plus Data accessibility: 4,685 words
+- Abstract: 234 words
+- Main IMRAD text: 4,565 words
+- IMRAD plus Data accessibility: 4,649 words
+- Conservative abstract plus body, including all current declaration and
+  acknowledgement markers: 4,947 words
 - Keywords: 5
 - Main figures/tables: 4/1
 - Supporting figures/tables: 7/2
@@ -50,7 +52,7 @@ Counting methods are in `submission_counts.md`.
 
 ## Declarations And External Identifiers
 
-- Funding and grant numbers: `[BARRY CONFIRM]`
+- Funding: `No specific funding.`
 - Conflicts of interest: `[BARRY CONFIRM]`
 - AI use: `[BARRY CONFIRM]`
 - Ethics/consent: `[BARRY CONFIRM exact applicability and wording]`
@@ -62,6 +64,11 @@ Counting methods are in `submission_counts.md`.
   <https://doi.org/10.5281/zenodo.21524637>
 - Source provenance: private GitHub repository; no public source URL or public
   release commit is asserted
+- Public reproducibility boundary: the DOI above is a Dataset containing nine
+  processed Layer A outputs, not a software record; source code, the complete
+  runnable environment, and derived Layer B materials are not yet publicly
+  archived
+- Pre-submission code decision: see `code_release_decision.md`
 - Archive rights holder/licence: University of Tasmania; CC BY 4.0
 - Journal licence: `[BARRY CONFIRM; no agreement made]`
 - Fee/open-access authorization:

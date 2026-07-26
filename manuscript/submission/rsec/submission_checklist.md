@@ -1,14 +1,16 @@
 # RSEC Submission Checklist
 
-Status: local candidate; not authorized for submission.
+Status: Goal 016 final-read candidate; decision-ready for Barry, not authorized
+or ready for Wiley submission.
 
 | Requirement | Status | Evidence or owner |
 | --- | --- | --- |
 | Journal | pass | *Remote Sensing in Ecology and Conservation*. |
 | Article type | pass | Original Research. |
 | Exact title | pass | Accepted Goal 013 title. |
-| Main text <= 5,000 words | pass | `submission_counts.md`; 4,609-word IMRAD count and 4,685 including Data accessibility. |
-| Abstract <= 300 words | pass | 235 words. |
+| Main text <= 5,000 words | pass | `submission_counts.md`; 4,565-word IMRAD count and 4,649 including Data accessibility. |
+| Conservative abstract plus body <= 5,000 | pass | 4,947 words, including all current declaration and acknowledgement markers. |
+| Abstract <= 300 words | pass | 234 words. |
 | Keywords 4-6 | pass | 5 keywords. |
 | Conventional IMRAD structure | pass | Accepted manuscript source. |
 | Double-spaced main file | pass | Build manifest and DOCX Normal style record `line_spacing: 2`/OOXML line value `480`. |
@@ -20,13 +22,18 @@ Status: local candidate; not authorized for submission.
 | Main display counts | pass | 4 figures and 1 table. |
 | SI display counts | pass | 7 figures and 2 tables. |
 | Main/SI citations and numbering | pass | Final builds contain 4/1 main and 7/2 SI displays; reference audits report zero unknown keys. |
+| Table S1 selection disclosure | pass | Top 20 per category; all three point-estimate order metrics named; explicitly non-ranking. |
+| Figs S2-S3 selection disclosure | pass | Top 20 by bootstrap-median inside slope and top 15 for pairwise ordering, respectively. |
+| Layer B shuffle status | pass | Each benchmark is one deterministic seeded illustrative realisation, not a sampled null distribution or causal counterfactual. |
+| Internal/public reproducibility distinction | pass | Internal versioned/tested/manifest-backed pipeline is distinguished from the public Layer A Dataset and not-yet-public software/Layer B route. |
+| Goal 016 decision documents | pass | Final-read guide, code-release memo, and figure-production inventory prepared. |
 | Running title <= 45 characters | draft | `[BARRY CONFIRM] Dark-sky change in protected areas` (34 characters). |
 | Visible unresolved author metadata | pass | Submission PDF/DOCX use `submission_authors.yaml`; every identity/affiliation/correspondence field contains `[BARRY CONFIRM]`. |
 | Author names/order | blocked on Barry | `[BARRY CONFIRM]`. |
 | ORCIDs and affiliations | blocked on Barry | `[BARRY CONFIRM]`. |
 | CRediT contributions | blocked on Barry | `[BARRY CONFIRM]`. |
 | Corresponding-author full address/contact | blocked on Barry | `[BARRY CONFIRM]`. |
-| Funding bodies and grant numbers | blocked on Barry | `[BARRY CONFIRM]`. |
+| Funding statement | draft from Barry-provided fact | `No specific funding.` |
 | Conflict-of-interest statement | blocked on Barry | `[BARRY CONFIRM]`. |
 | AI-use declaration | blocked on Barry | `[BARRY CONFIRM: tool, version, use, accountability, and any prompt/output retention required]`. |
 | All-author approval/accountability | blocked on Barry | `[BARRY CONFIRM]`. |
@@ -41,5 +48,8 @@ Status: local candidate; not authorized for submission.
 | Open-access agreement/licence | blocked/not performed | Explicitly unauthorized. |
 | Final external authorization | blocked on Barry/orchestrator | Required after local candidate acceptance. |
 
-Official guidance checked 2026-07-24:
+Official guidance checked 2026-07-26:
 <https://zslpublications.onlinelibrary.wiley.com/hub/journal/20563485/author-guidelines>.
+
+The live Research Exchange form remains uninspected. Its conditional fields
+must be checked only in a later authorized pre-submission workflow.

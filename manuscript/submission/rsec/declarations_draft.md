@@ -11,8 +11,7 @@ and that nobody entitled to authorship was omitted]`
 
 ## Funding
 
-`[BARRY CONFIRM: funding bodies, grant numbers, recipients, and funder role; or
-provide the exact no-specific-funding statement if true]`
+No specific funding.
 
 ## Conflict Of Interest
 
@@ -28,7 +27,9 @@ software, writing, visualisation, or validation; state human accountability;
 and confirm whether prompts/outputs must be retained or supplied]`
 
 Do not infer this declaration from repository history. The RSEC guidance
-checked 2026-07-24 requires disclosure of AI use and human responsibility.
+checked 2026-07-26 requires disclosure of AI use and human responsibility.
+Any consequence for public analytical code remains conditional on Barry's
+factual disclosure and the live workflow or editor's interpretation.
 
 ## Data Accessibility
 
@@ -36,9 +37,11 @@ The manuscript's nine processed Layer A outputs are publicly archived as
 Zenodo Dataset version `0.3.0` under CC BY 4.0:
 <https://doi.org/10.5281/zenodo.21524637>. The canonical record is
 <https://zenodo.org/records/21524637>. The source GitHub repository remains
-private and is not a public access route. Derived Layer B summaries and
-figures remain private; raw and row-level ALA records are not redistributed,
-and exact Layer B reconstruction requires reacquisition under provider terms.
+private and is not a public access route. The Dataset is not a software
+record. Source code, the complete runnable environment, and derived Layer B
+summaries and figures are not yet publicly archived; raw and row-level ALA
+records are not redistributed, and exact Layer B reconstruction requires
+reacquisition under provider terms.
 
 ## Ethics, Consent, And Monitoring-Device Policy
 

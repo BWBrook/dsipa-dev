@@ -445,3 +445,35 @@ Stage 4 is ready to close only when:
   not only tests.
 - The final closeout recommends whether to proceed to release packaging,
   archive/DOI publication, or Barry-facing manuscript review.
+
+## Goal 016 Final-Read Readiness Tranche
+
+Date: 2026-07-26
+
+On 2026-07-26, the orchestrator independently reviewed and **ACCEPTED** Goal
+016 for Barry's final read and authorized exact-path Git closeout. This is
+local-readiness acceptance only: it does not authorize Wiley submission or
+public release, and the authorized commit and push have not yet occurred. The
+tranche preserves every scientific result and adds only:
+
+- exact Table S1 and Figs S2-S3 selection-rule disclosure;
+- exact single-seeded-realisation status for the two Layer B shuffle
+  benchmarks;
+- modest removal of repeated Layer B caveat text;
+- an honest internal-engineering versus public-reproducibility distinction;
+- the known `No specific funding.` draft and visible unresolved declarations;
+  and
+- Barry-facing final-read, code-release, and figure-production decision
+  documents.
+
+The ignored four-file bundle is under `build/final_read/goal016/`. Goal 016
+does not make the package submission-ready. Authorship, affiliations,
+correspondence, contributions, acknowledgements, conflicts, ethics, AI-use
+disclosure, all-author approval, sole submission, live portal fields, public
+code/Layer B release, fee/APC, journal licence, and final submission authority
+remain gated.
+
+The preferred later code route remains a curated clean-history public
+repository plus a separate Zenodo Software record. No Wiley, public-release,
+repository-visibility, fee, licence, tag, or release action is part of this
+tranche.

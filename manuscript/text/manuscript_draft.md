@@ -6,7 +6,7 @@ Artificial light at night (ALAN) can cross protected-area boundaries, but nation
 
 Of 11,133 protected areas, 4,426 (39.8%) met conservative pixel and temporal eligibility rules. Within this evaluable subset, 3,844 (86.9%) had zero inside mean radiance in 2024 and 3,969 (89.7%) had exactly zero Theil-Sen slopes; 420 (9.5%) had positive slopes. Among 3,858 areas with eligible inside and 1 km unprotected-land trends, categorical screening identified 305 with concurrent brightening and 190 with surrounding brightening but no detectable inside brightening. Dependence-aware bootstrap summaries showed that fine ordering within the brightening tail was uncertain, while interior-ring results were conditional on the small subset with sufficient spatial support.
 
-A secondary, provider-matched analysis tested whether ALAN covariates distinguished microbat from passerine occurrence records. Out-of-block discrimination was weak (AUC 0.545), and provider matching could not align the groups' different observation processes. ALAN-shuffle analyses supplied null benchmarks but did not identify the cause of the observed association. The primary contribution is therefore a reproducible, detectability-aware framework for categorical screening of protected-area radiance change. It reveals widespread non-detection alongside concentrated, management-relevant internal and surrounding change, while showing why opportunistic records alone cannot establish the associated biological response.
+A secondary, provider-matched analysis tested whether ALAN covariates distinguished microbat from passerine occurrence records. Out-of-block discrimination was weak (AUC 0.545), and provider matching could not align the groups' different observation processes. ALAN-shuffle analyses supplied illustrative benchmarks but did not identify the cause of the observed association. The primary contribution is therefore a detectability-aware framework for categorical screening of protected-area radiance change. It reveals widespread non-detection alongside concentrated, management-relevant internal and surrounding change, while showing why opportunistic records alone cannot establish the associated biological response.
 
 ## Keywords
 
@@ -105,15 +105,15 @@ Balancing fixed equal class sizes, making discrimination metrics comparable but 
 
 Provider matching reduced one source of heterogeneity but did not control observation protocol, acoustic-detector use, accessibility, habitat, geography, or taxon-specific detectability. Spatial blocking reduced leakage from nearby records but did not remove these differences.
 
-We compared the fitted association with two null benchmarks produced by shuffling ALAN values within spatial blocks and within IBRA-by-year strata. These permutations broke the observed exposure-label pairing while retaining aspects of spatial or bioregional structure. Attenuation after shuffling is expected whenever the original pairing contains information, whether biological or observational, and therefore does not diagnose its cause. Persistence after shuffling would indicate remaining structure under that null. Descriptive within-IBRA fits were restricted to regions with at least 500 records per class.
+We compared the fitted association with two shuffle benchmarks produced by rearranging ALAN values within spatial blocks and within IBRA-by-year strata. Each benchmark was one deterministic seeded realisation used illustratively, not a sampled null distribution. Each rearrangement broke the observed exposure-label pairing while retaining aspects of spatial or bioregional structure. Attenuation is expected whenever the original pairing contains information, whether biological or observational, and therefore does not diagnose its cause. Descriptive within-IBRA fits were restricted to regions with at least 500 records per class.
 
-The block shuffle asked whether coefficient and discrimination patterns persisted after rearranging ALAN among records sharing a broad spatial block. The IBRA-by-year shuffle used a different constraint, preserving bioregional and annual exposure context. Neither is a randomised ecological experiment, and neither supplies a causal counterfactual for bat response. Their role was to benchmark how much discrimination remained after the observed pairing was disrupted.
+The block shuffle rearranged ALAN among records sharing a broad spatial block, whereas the IBRA-by-year shuffle preserved bioregional and annual exposure context. Neither was a randomised ecological experiment or supplied a causal counterfactual for bat response. Their role was to show how much discrimination remained after the observed pairing was disrupted.
 
 ### 2.7 Reproducibility
 
-Layer A was implemented as a versioned Python pipeline with schema-controlled outputs, pinned source identities, deterministic serialization, tests, and run manifests. Public input provenance and checksums are recorded in the repository. Layer B code and derived summaries are retained, but exact row-level reproduction requires reacquisition of ALA records under their provider terms; raw and row-level occurrence records are not redistributed.
+Layer A was implemented and retained internally as a versioned, scripted, and tested Python pipeline with schema-controlled outputs, pinned source identities, deterministic serialization, and run manifests. Input provenance, checksums, software details, and validation records are preserved in the private repository.
 
-National Layer A computation was statewise and merged under stable keys. The accepted reference contract validates source identities, schemas, row and key constraints, and frozen headline values before report generation. Manuscript figures and tables were generated from these accepted outputs. Software and package information is recorded with the preserved run artefacts.
+National Layer A computation was statewise and merged under stable keys. The accepted reference contract validates source identities, schemas, row and key constraints, and frozen headline values before report generation. Manuscript figures and tables were generated from these accepted outputs. Public access is currently limited to the processed Layer A outputs in the Zenodo Dataset cited below; source code, the complete runnable environment, and derived Layer B materials are not yet available through a citable public software release. Exact Layer B reconstruction also requires reacquisition of ALA records under their provider terms; raw and row-level occurrence records are not redistributed.
 
 ---
 
@@ -155,7 +155,7 @@ The provider-matched Layer B model used 50,281 microbat and 50,281 passerine rec
 
 Before provider matching and balancing, filtering and deduplication retained 63,716 microbat and 2,378,378 passerine records. Microbat records were strongly concentrated in NSW BioNet (88.8%), motivating the restricted primary comparison. Within the protected-area-adjacent scope, both record groups showed substantial zero-valued exposure, and exposure distributions varied strongly between inside and within-10-km strata (Figs S4-S6). These patterns describe the observation records, not taxon prevalence.
 
-After ALAN was shuffled within spatial blocks, AUC was 0.505 and the conditional-intensity coefficient was -0.027. The IBRA-by-year shuffle yielded AUC 0.517 and a coefficient of -0.001. The primary AUC was only modestly higher than these near-null benchmarks, quantifying limited discrimination without identifying whether the original association was ecological or observational. The all-provider sensitivity had AUC 0.557 but restored substantial provider and geographic heterogeneity. Occurrence volumes, exposure distributions, spatial clustering, and descriptive IBRA variation are reported in Supporting Information (Figs S4-S7).
+The single seeded spatial-block shuffle yielded AUC 0.505 and a conditional-intensity coefficient of -0.027; the single seeded IBRA-by-year shuffle yielded AUC 0.517 and a coefficient of -0.001. These illustrative realisations are not a sampled null distribution. The primary AUC was only modestly higher, quantifying limited discrimination without identifying whether the original association was ecological or observational. The all-provider sensitivity had AUC 0.557 but restored substantial provider and geographic heterogeneity. Supporting Information reports occurrence volumes, exposure distributions, spatial clustering, and descriptive IBRA variation (Figs S4-S7).
 
 Provider-matched within-IBRA fits were feasible in 11 regions and varied in sign and magnitude (Fig. S7). Given the weak national discrimination and unresolved observation processes, this heterogeneity was descriptive. It did not support regional ecological-effect estimates.
 
@@ -189,15 +189,15 @@ Interior bands provide less general evidence. Only 383 protected areas supported
 
 ### 4.3 The exposure-to-biological-response bridge remains unresolved
 
-Layer B does not demonstrate a microbat response to ALAN. Its model predicts whether a record belongs to the microbat or passerine group from two ALAN covariates. Weak out-of-block discrimination means ALAN alone provided little information about record identity. The coefficients are compatible with several biological and observational explanations, but the design cannot separate them.
+Layer B does not demonstrate a microbat response to ALAN. Weak out-of-block discrimination means its two ALAN covariates provided little information about occurrence-record identity. Biological and observational explanations remain inseparable.
 
 Microbats were a biologically motivated surrogate: they are nocturnal, many depend on insect prey, and controlled or local studies show species- and context-dependent responses to lighting [@stone2009; @stone2015; @threlfall2013; @haddock2019]. They are also difficult to census opportunistically. Specialist acoustic detectors, targeted surveys, and expert identification generate a different detection process from typical passerine records. Restricting both groups to one provider reduces provider mixing but does not align protocol, effort, habitat coverage, access, geography, or detectability.
 
-The shuffle analyses should be read only as null benchmarks. Breaking the exposure-label pairing reduced coefficients and discrimination, as expected if the original pairing carried information. That attenuation neither validates a biological mechanism nor proves confounding. The remaining inferential limit comes from weak predictive performance and an observation process too poorly controlled to attribute the association.
+Each shuffle analysis was one illustrative seeded realisation rather than a sampled null distribution. Breaking the exposure-label pairing reduced coefficients and discrimination, but that attenuation neither validates a biological mechanism nor proves confounding. Weak predictive performance and the uncontrolled observation process prevent attribution.
 
 This negative inferential result is useful for remote-sensing ecology. Satellite exposure layers can be spatially comprehensive while biological records remain opportunistic and taxon specific. A stronger bridge would require repeated acoustic surveys or other standardised detection data, explicit effort and habitat covariates, and occupancy or activity models matched to the sampling design. Until then, Layer B is an assessment of data adequacy, not evidence for population change or absence of an ALAN effect.
 
-The choice of passerines also bounds interpretation. They are a high-volume diurnal comparison group, not an ecological counterfactual for where microbats would be recorded without ALAN. Differences in habitat association and reporting practice can create record-label discrimination even if light has no biological effect, while similar distributions can conceal opposing species-level bat responses. Pooling microbats further averages taxa that may avoid, tolerate, or exploit lit environments. These limitations are reasons to resist an ecological coefficient interpretation, not reasons to conclude that ALAN is unimportant to bats.
+Passerines are a high-volume diurnal comparison group, not an ecological counterfactual for where microbats would be recorded without ALAN. Habitat and reporting differences can create record-label discrimination without a biological light effect, while pooled microbats average taxa that may avoid, tolerate, or exploit lit environments. These limits preclude ecological interpretation of the coefficients; they do not imply that ALAN is unimportant to bats.
 
 ### 4.4 Limitations
 
@@ -213,12 +213,42 @@ Fourth, Layer B is presence-only, case-control, provider-bounded, and taxonomica
 
 Dark-sky integrity can be treated as a measurable protected-area condition only if the metric's detection limits remain visible. At annual VIIRS resolution, most evaluable Australian protected areas showed no detectable inside radiance change, while measurable change was concentrated in a minority and often involved surrounding unprotected land. This supports a practical monitoring sequence: screen protected areas categorically, retain uncertainty and eligibility information, and investigate flagged sites with local lighting and ground-based evidence.
 
-Because the pipeline uses a stable protected-area unit, annual products, explicit eligibility, and reproducible categories, agencies could repeat the assessment as later compatible inputs become available. Repeatability is valuable only if changes in CAPAD geometry and night-lights product identity are documented and not mistaken for environmental change. The current 2013-2024 result should therefore be treated as a baseline assessment, not silently extended with incompatible annual products.
+The assessment defines a stable protected-area unit, annual products, explicit eligibility, and repeatable categories that agencies could apply as later compatible inputs become available. Such repetition is valid only if changes in CAPAD geometry and night-lights product identity are documented and not mistaken for environmental change. The current 2013-2024 result should therefore be treated as a baseline assessment, not silently extended with incompatible annual products.
 
-The integrated contribution is not a claim that satellite radiance measures biodiversity response. It is a reproducible separation of two decisions: where detectable protected-area and surrounding-land change warrants attention, and whether available biological observations can test the ecological consequence. Layer A answers the first at national scale within explicit measurement limits. Layer B shows that opportunistic microbat and passerine records do not yet answer the second.
+The integrated contribution is not a claim that satellite radiance measures biodiversity response. It separates two decisions: where detectable protected-area and surrounding-land change warrants attention, and whether available biological observations can test the ecological consequence. Layer A answers the first at national scale within explicit measurement limits. Layer B shows that opportunistic microbat and passerine records do not yet answer the second.
 
 ---
 
 ## Data accessibility
 
-Layer A uses public inputs whose provenance and checksums are documented. Nine processed Layer A outputs are archived in Zenodo under CC BY 4.0 [@brook2026dsipa]. The DOI is https://doi.org/10.5281/zenodo.21524637. Source code and provenance records remain in a private GitHub repository. Derived Layer B summaries and figures remain private. Raw and row-level ALA occurrence records have mixed provider terms and are not redistributed; exact Layer B reconstruction requires reacquisition from ALA under those terms.
+Layer A uses public inputs whose provenance and checksums are documented internally. Nine processed Layer A outputs are archived as a Zenodo Dataset under CC BY 4.0 [@brook2026dsipa]. The DOI is https://doi.org/10.5281/zenodo.21524637. This Dataset is not a software release: source code, the complete runnable environment, provenance records, and derived Layer B summaries and figures remain private. Raw and row-level ALA occurrence records have mixed provider terms and are not redistributed; exact Layer B reconstruction requires reacquisition from ALA under those terms.
+
+## Declarations
+
+### Funding
+
+No specific funding.
+
+### Authors' contributions
+
+`[BARRY CONFIRM: author contributions]`
+
+### Acknowledgements
+
+`[BARRY CONFIRM: acknowledgements]`
+
+### Conflict of interest
+
+`[BARRY CONFIRM: conflicts of interest]`
+
+### Ethics and consent
+
+`[BARRY CONFIRM: ethics/consent applicability and exact statement]`
+
+### Use of AI
+
+`[BARRY CONFIRM: exact AI-use disclosure]`
+
+### Author approval and sole submission
+
+`[BARRY CONFIRM immediately before submission: all-author approval and sole submission]`

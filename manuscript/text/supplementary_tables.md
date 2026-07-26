@@ -2,7 +2,7 @@
 
 **Table S1. Protected-area screening sets with uncertainty information.**
 
-Rows are grouped by source-output screening category and retain source order for traceability, not management priority. Slopes are Theil-Sen trends in scaled VIIRS radiance units per year for 2013-2024. The 95% interval and `P_inside_slope_gt0` columns are bootstrap intervals and empirical replicate fractions from the IBRA-cluster moving-block resampling; they are not posterior probabilities. Buffer and retention columns are point estimates. The sets support site-level investigation, not competitive ranking.
+The table displays the top 20 rows within each of three source-output screening categories. `Inside brightening` is ordered by descending point-estimate `inside_slope`; `Surrounding-only brightening` by descending point-estimate `buffer_1km_slope`; and `Inside-minus-surrounding contrast` by descending point-estimate `retention_1km`, where `retention_1km = inside_slope - buffer_1km_slope`. This source order makes the screening display transparent; it is not management priority or a competitive ranking. Slopes are Theil-Sen trends in scaled VIIRS radiance units per year for 2013-2024. The 95% interval and `P_inside_slope_gt0` columns are bootstrap intervals and empirical replicate fractions from the IBRA-cluster moving-block resampling; they are not posterior probabilities. Buffer and retention columns are point estimates. The sets support site-level investigation.
 
 | category | source_order | PA name | PA_ID | state | IBRA | area_km2 | inside_slope | buffer_1km_slope | retention_1km | inside_slope_95ci | P_inside_slope_gt0 |
 | ---------- | ------ | ------------- | ------------- | ---- | ---- | ------- | ------- | -------- | -------- | ---------- | ---------- |
@@ -67,9 +67,9 @@ Rows are grouped by source-output screening category and retain source order for
 | Inside-minus-surrounding contrast | 19 | Renison Bell | TAS_50789 | TAS | TWE | 7.542 | 0.689 | 0.158 | 0.531 | 0.167 to 1.979 | 0.983 |
 | Inside-minus-surrounding contrast | 20 | Leslie Harrison Dam | QLD_NR3313 | QLD | SEQ | 3.093 | 0.846 | 0.344 | 0.502 | 0.071 to 1.875 | 0.973 |
 
-**Table S2. Layer B model summary and ALAN-shuffle null benchmarks.**
+**Table S2. Layer B model summary and ALAN-shuffle illustrative benchmarks.**
 
-Values are transcribed from `analysis/reports/layerB_modelling_report.md` (generated 2026-01-06). Coefficients are fold means +/- fold SD on the log-odds scale. Input fractions follow scope restriction and balancing, not raw acquisition. Shuffle rows use the same provider-matched input after breaking the exposure-label pairing under the stated null. Attenuation is expected whenever that pairing contains information and does not identify whether the original association was biological or observational. The multi-provider row is descriptive because provider and geographic heterogeneity return.
+Values are transcribed from `analysis/reports/layerB_modelling_report.md` (generated 2026-01-06). Coefficients are fold means +/- fold SD on the log-odds scale. Input fractions follow scope restriction and balancing, not raw acquisition. Each shuffle row reports one deterministic seeded realisation using the same provider-matched input after breaking the exposure-label pairing. These are illustrative benchmarks, not a sampled null distribution or causal counterfactual. Attenuation is expected whenever that pairing contains information and does not identify whether the original association was biological or observational. The multi-provider row is descriptive because provider and geographic heterogeneity return.
 
 | Design | Provider and scope | n microbats | n passerines | Microbat inside fraction | Passerine inside fraction | Microbat zero-ALAN fraction | Passerine zero-ALAN fraction | `any_light` coefficient | `log1p_alan` coefficient | AUC | Log loss | Interpretation |
 | ------------ | ----------------- | ----: | ----: | -----: | -----: | -----: | -----: | ------: | ------: | ---: | ----: | -------------- |

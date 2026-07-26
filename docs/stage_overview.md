@@ -38,3 +38,23 @@ These gates apply to every stage unless a later detailed plan explicitly superse
 ## Stage-plan rule
 
 Only the active stage receives a detailed plan. Future stages stay at overview level until the previous stage has passed its exit gate. This prevents us from locking in false precision before we know what the evidence and critique matrix actually require.
+
+## Current Stage 4 Status
+
+Updated 2026-07-26.
+
+The Stage 4 ladder row above records the history through Goal 015. Its
+statement that Goal 015 exact-path Git closeout remained is superseded: Goal
+015 is committed and pushed at
+`4f5e2228511b9d495c2523ddc34a0efea9d7046c`.
+
+On 2026-07-26, the orchestrator independently reviewed and **ACCEPTED** Goal
+016 for Barry's final read and authorized exact-path Git closeout. This is
+local-readiness acceptance only; the authorized commit and push have not yet
+occurred, and it does not authorize Wiley submission or public release. The
+bounded transparency, reproducibility, declaration, count, test, build,
+provenance, text, and visual gates pass locally. Wiley submission remains
+blocked on Barry-confirmed human fields, the pre-submission public-code/Layer B
+decision, live workflow checks, fees/licence, all-author approval, sole
+submission, and explicit final authority. No Wiley or public-release action
+occurred.

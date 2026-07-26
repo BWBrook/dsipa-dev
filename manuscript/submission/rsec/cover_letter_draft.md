@@ -14,12 +14,13 @@ article in *Remote Sensing in Ecology and Conservation*.
 The study presents a detectability-aware national VIIRS assessment of
 artificial light at night inside Australian protected areas and in corrected
 surrounding unprotected-land buffers during 2013-2024. Its primary contribution
-is a reproducible categorical screening framework that distinguishes widespread
-non-detection from a smaller, spatially uneven set of detectable internal and
-surrounding brightening signals while keeping eligibility and the annual
-product's floor explicit. A compact secondary analysis shows why opportunistic
-microbat and passerine occurrence records cannot securely establish the
-corresponding biological response.
+is a detectability-aware categorical screening framework that distinguishes
+widespread non-detection from a smaller, spatially uneven set of detectable
+internal and surrounding brightening signals while keeping eligibility and the
+annual product's floor explicit. The analysis was run through an internally
+versioned, scripted, tested, and manifest-backed pipeline. A compact secondary
+analysis shows why opportunistic microbat and passerine occurrence records
+cannot securely establish the corresponding biological response.
 
 The work fits the journal's interface between remote sensing, ecology, and
 conservation by combining a national remote-sensing assessment with explicit
@@ -39,14 +40,18 @@ solely to Remote Sensing in Ecology and Conservation and is not published, in
 press, or under consideration elsewhere, with any permitted preprint
 disclosed]`
 
-`[BARRY CONFIRM: conflicts of interest, funding, AI-use disclosure,
-ethics/consent applicability, suggested/excluded reviewers if requested, and
-cover-image availability/rights]`
+Funding: No specific funding.
+
+`[BARRY CONFIRM: conflicts of interest, AI-use disclosure, ethics/consent
+applicability, suggested/excluded reviewers if requested, and cover-image
+availability/rights]`
 
 The nine processed Layer A outputs are publicly available as a Zenodo Dataset:
 Brook, B. W. (2026), version 0.3.0,
 <https://doi.org/10.5281/zenodo.21524637>. The source GitHub repository remains
-private and is not presented as a public access route.
+private and is not presented as a public access route. The Dataset is not a
+software release; public release of source code and the complete Layer B
+reproduction route remains a pre-submission decision.
 
 Thank you for considering the manuscript.
 
