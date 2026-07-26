@@ -7,7 +7,7 @@ Status: local candidate; not authorized for submission.
 | Journal | pass | *Remote Sensing in Ecology and Conservation*. |
 | Article type | pass | Original Research. |
 | Exact title | pass | Accepted Goal 013 title. |
-| Main text <= 5,000 words | pass | `submission_counts.md`; 4,609-word IMRAD count and 4,683 including Data accessibility. |
+| Main text <= 5,000 words | pass | `submission_counts.md`; 4,609-word IMRAD count and 4,685 including Data accessibility. |
 | Abstract <= 300 words | pass | 235 words. |
 | Keywords 4-6 | pass | 5 keywords. |
 | Conventional IMRAD structure | pass | Accepted manuscript source. |
@@ -32,8 +32,8 @@ Status: local candidate; not authorized for submission.
 | All-author approval/accountability | blocked on Barry | `[BARRY CONFIRM]`. |
 | Sole submission/not published or under consideration | blocked on Barry | `[BARRY CONFIRM immediately before submission]`. |
 | Ethics/consent applicability | blocked on Barry | `[BARRY CONFIRM: exact statement or not applicable]`. |
-| Data-accessibility URL/DOI | pending external action | No archive DOI or public candidate URL exists. |
-| Archive rights and licence | blocked on Barry | No licence inferred or agreed. |
+| Data-accessibility URL/DOI | pass | Public Zenodo Dataset: <https://doi.org/10.5281/zenodo.21524637>; source repository remains private. |
+| Archive rights and licence | pass | University of Tasmania; CC BY 4.0. Journal licence remains separately human-gated. |
 | Cover image | blocked on Barry | `[BARRY CONFIRM: yes/no and rights]`. |
 | Cover letter | draft | Human confirmation block remains. |
 | Wiley login/submission | blocked/not performed | Explicitly unauthorized. |

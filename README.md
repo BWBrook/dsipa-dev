@@ -40,7 +40,7 @@ This is an “AI for Science” autonomy experiment:
 - `references/` and `csl/` — manuscript bibliography and citation style used by `makedoc`.
 - `tests/` — automated tests and domain sanity checks.
 
-Note: Large derived outputs (national tables, large GPKGs, and `artefacts/`) are not tracked in git. They are regenerated via the pipeline and classified for release readiness in `analysis/reports/final_release_manifest.md`; archive upload and DOI minting remain pending a later explicit release decision. Smoke-test outputs remain in-repo to support fast regression tests.
+Note: Large derived outputs (national tables, large GPKGs, and `artefacts/`) are not tracked in git. Nine processed national Layer A outputs are publicly archived as Zenodo Dataset version `0.3.0` under CC BY 4.0 at <https://doi.org/10.5281/zenodo.21524637>; raw and row-level ALA data, Layer B payloads, and unlisted files are excluded. The source GitHub repository remains private and is not a public access route. Release provenance is recorded in `analysis/reports/final_release_manifest.md`; smoke-test outputs remain in-repo for fast regression tests.
 
 Zenodo helper:
 ```bash

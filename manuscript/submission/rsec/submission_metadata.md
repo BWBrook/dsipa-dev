@@ -41,7 +41,7 @@ unconfirmed author, order, affiliation, ORCID, or corresponding author.
 
 - Abstract: 235 words
 - Main IMRAD text: 4,609 words
-- IMRAD plus Data accessibility: 4,683 words
+- IMRAD plus Data accessibility: 4,685 words
 - Keywords: 5
 - Main figures/tables: 4/1
 - Supporting figures/tables: 7/2
@@ -55,11 +55,15 @@ Counting methods are in `submission_counts.md`.
 - AI use: `[BARRY CONFIRM]`
 - Ethics/consent: `[BARRY CONFIRM exact applicability and wording]`
 - Sole submission: `[BARRY CONFIRM immediately before submission]`
-- Data/archive DOI: `[PENDING EXTERNAL ACTION; none reserved or minted]`
-- Public repository URL and accepted release commit:
-  `[PENDING EXTERNAL ACTION/ORCHESTRATOR ACCEPTANCE]`
-- Rights holder(s) and journal licence:
-  `[BARRY CONFIRM; no agreement made]`
+- Data/archive DOI: `10.5281/zenodo.21524637`
+- Public data record: <https://zenodo.org/records/21524637>
+- Canonical data citation: Brook, B. W. (2026). Australian protected-area
+  dark-sky integrity outputs, 2013-2024 (Version 0.3.0) [Dataset]. Zenodo.
+  <https://doi.org/10.5281/zenodo.21524637>
+- Source provenance: private GitHub repository; no public source URL or public
+  release commit is asserted
+- Archive rights holder/licence: University of Tasmania; CC BY 4.0
+- Journal licence: `[BARRY CONFIRM; no agreement made]`
 - Fee/open-access authorization:
   `[BARRY CONFIRM; no payment or agreement made]`
 - Final submission authorization: `[BARRY CONFIRM]`

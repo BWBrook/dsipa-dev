@@ -43,8 +43,10 @@ disclosed]`
 ethics/consent applicability, suggested/excluded reviewers if requested, and
 cover-image availability/rights]`
 
-`[PENDING EXTERNAL ACTION: insert the authorized data/archive DOI and public
-source-repository URL only after they exist]`
+The nine processed Layer A outputs are publicly available as a Zenodo Dataset:
+Brook, B. W. (2026), version 0.3.0,
+<https://doi.org/10.5281/zenodo.21524637>. The source GitHub repository remains
+private and is not presented as a public access route.
 
 Thank you for considering the manuscript.
 

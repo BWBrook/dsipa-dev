@@ -3,13 +3,15 @@
 Record every dataset placed under `data/raw/` and the derived products under `data/processed/`.
 
 Note: Large derived outputs (national-scale tables and large GPKG files) are
-not tracked in git. The accepted Goal 011 nine-file Layer A candidate is staged
-locally under the ignored
+not tracked in git. The accepted Goal 011 nine-file Layer A candidate remains
+frozen locally under the ignored
 `artefacts/optionB_layerA_archive_candidate_2026-07-24/` and classified for
-release readiness in `analysis/reports/final_release_manifest.md`. It contains
-exactly nine payload files totalling `265,783,139` bytes. No external archive
-draft/upload, DOI reservation/minting, or publication action has been
-completed from this checkout.
+release provenance in `analysis/reports/final_release_manifest.md`. Its nine
+payload files total `265,783,139` bytes and are publicly archived with three
+companions as Zenodo Dataset version `0.3.0` under CC BY 4.0:
+<https://doi.org/10.5281/zenodo.21524637>. The source repository remains
+private. Raw or row-level ALA data, Layer B payloads, and unlisted files are
+not in the public deposit.
 
 | Name | Source URL / DOI | Version / date fetched | License | Checksum (algorithm noted) | Notes |
 | --- | --- | --- | --- | --- | --- |
@@ -21,6 +23,7 @@ completed from this checkout.
 | VIIRS DNB annual VNL v2.2 readme (PPTX) | https://eogdata.mines.edu/products/vnl/VNL_v22_readme_20230707.pptx | VNL v2.2 readme; fetched 2026-01-01 | Public domain (NOAA/EOG) | 40855418eba6d7543ecd4c8cc3d373e18c9cc6af6224a9e34f9047aef13763b1 | Metadata file describing VNL v2.2 products (superseded by Zenodo v0.4 source for this project). |
 | VIIRS DNB annual VNL v2.2 GeoTIFFs | https://eogdata.mines.edu/products/vnl/ | VNL v2.2 annual series (2012–2024) | Public domain (NOAA/EOG) | N/A (not downloaded) | Superseded by Zenodo v0.4 (OpenGeoHub) due to auth gate. |
 | Zenodo nightlights v0.4 record | https://doi.org/10.5281/zenodo.17294744 | v0.4; accessed 2026-01-01 | CC BY 4.0 | N/A (record) | Annual VIIRS-based night-lights COGs; core years 2013–2024. |
+| Australian protected-area dark-sky integrity outputs, 2013-2024 | https://doi.org/10.5281/zenodo.21524637 | v0.3.0; published 2026-07-26 | CC BY 4.0 | See `analysis/reports/zenodo_optionB_publication_receipt.md` | Public output record: nine processed Layer A payloads plus three companions; 12 flat files/265,798,999 bytes. Full public re-acquisition passes 12/12 server MD5 and staging byte identity, 11/11 downloaded checksum entries, and 9/9 payload SHA-256/size/byte identity. |
 | nightlights.average_viirs.v21_m_500m_s_20130101_20131231_go_epsg4326_v20250904.tif | https://zenodo.org/records/17294744 | v0.4; accessed 2026-01-01 | CC BY 4.0 | b60fb30a5039aff28e943179ec797f3f | Core year 2013 (smoke-test year). |
 | nightlights.average_viirs.v21_m_500m_s_20140101_20141231_go_epsg4326_v20250904.tif | https://zenodo.org/records/17294744 | v0.4; accessed 2026-01-01 | CC BY 4.0 | c9505d985dbfef015e4f23f3d0172f32 | Core year 2014. |
 | nightlights.average_viirs.v21_m_500m_s_20150101_20151231_go_epsg4326_v20250904.tif | https://zenodo.org/records/17294744 | v0.4; accessed 2026-01-01 | CC BY 4.0 | 2dbb7b5930a218778636bea0eeb9afb1 | Core year 2015. |
@@ -68,7 +71,10 @@ Notes:
 - Historical hashes remain in Goal 010 and Goal 011 reconciliation records;
   current archive-candidate hashes are authoritative for the local Option B
   candidate.
-- Stage 4B release readiness is recorded in `analysis/reports/final_release_manifest.md`. Files labelled `archived-proposed` there still require a later explicit archive/DOI decision before publication wording can cite an external archive.
+- Stage 4B release readiness and Goal 015 publication provenance are recorded
+  in `analysis/reports/final_release_manifest.md`. The nine processed Layer A
+  outputs are public at <https://doi.org/10.5281/zenodo.21524637>; this does
+  not make the private source repository public.
 - Layer A “national” outputs include all CAPAD terrestrial PAs, including JBT and EXT (external territories).
 - Layer B filtered occurrence tables are stored under `data/processed/layerB/` and are intentionally ignored in git; raw ALA downloads are under `data/raw/ala_occurrences/`. Raw ALA downloads and row-level processed occurrence tables are restricted/excluded from the default release surface unless a later explicit release decision permits redistribution.
 - Layer B ALA downloads include mixed licenses/conditions by provider; consult `layerB_ala_license_ledger_v0_3_0.csv` and `analysis/reports/layerB_ala_license_ledger.md` before publication claims.

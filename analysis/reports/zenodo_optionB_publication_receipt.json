@@ -1,0 +1,199 @@
+{
+  "schema_version": "1.0",
+  "status": "pass",
+  "verified_on": "2026-07-26",
+  "record": {
+    "record_url": "https://zenodo.org/records/21524637",
+    "doi": "10.5281/zenodo.21524637",
+    "doi_url": "https://doi.org/10.5281/zenodo.21524637",
+    "doi_resolution": "pass",
+    "api_status": "published",
+    "publication_date": "2026-07-26",
+    "resource_type": "Dataset",
+    "version": "0.3.0",
+    "title": "Australian protected-area dark-sky integrity outputs, 2013-2024",
+    "access": "open",
+    "embargo": null
+  },
+  "creator": {
+    "name": "Brook, Barry W.",
+    "orcid": "0000-0002-2491-1517",
+    "affiliation": "School of Natural Sciences, University of Tasmania, Hobart, Tasmania, Australia",
+    "creator_count": 1
+  },
+  "rights": {
+    "licence": "Creative Commons Attribution 4.0 International",
+    "licence_id": "CC-BY-4.0",
+    "rights_holder": "University of Tasmania",
+    "copyright": "Copyright (C) 2026 University of Tasmania."
+  },
+  "keywords": [
+    "artificial light at night",
+    "protected areas",
+    "VIIRS",
+    "Australia",
+    "remote sensing",
+    "dark-sky integrity"
+  ],
+  "funding": [],
+  "contributors": [],
+  "community": [],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.17294744",
+      "relation": "isDerivedFrom",
+      "resource_type": "Dataset"
+    }
+  ],
+  "citation": {
+    "style": "APA",
+    "canonical": "Brook, B. W. (2026). Australian protected-area dark-sky integrity outputs, 2013-2024 (Version 0.3.0) [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.21524637"
+  },
+  "inventory": {
+    "presentation": "flat",
+    "displayed_total": "265.8 MB",
+    "file_count": 12,
+    "payload_file_count": 9,
+    "companion_file_count": 3,
+    "payload_bytes": 265783139,
+    "total_file_bytes": 265798999,
+    "files": [
+      {
+        "name": "README.md",
+        "role": "companion",
+        "bytes": 3130,
+        "server_md5": "f15f51b8a29dd3a72e173dd95641fc8e",
+        "server_md5_matches_local_staging": true
+      },
+      {
+        "name": "SHA256SUMS",
+        "role": "companion",
+        "bytes": 1025,
+        "server_md5": "0a04012a3d7ed43f4ff66ce26b6f4875",
+        "server_md5_matches_local_staging": true
+      },
+      {
+        "name": "manifest.json",
+        "role": "companion",
+        "bytes": 11705,
+        "server_md5": "fa9336e01fb4928160276b216a7b7649",
+        "server_md5_matches_local_staging": true
+      },
+      {
+        "name": "pa_buffer_validity_v0_3_0.csv",
+        "role": "payload",
+        "bytes": 2561064,
+        "server_md5": "d9d183ff2d6defd77384435558211480",
+        "server_md5_matches_local_staging": true,
+        "expected_payload_sha256": "407283df182baff585dfe3b28b9450c5750c237d120d5d00aa3539a6227e3e25"
+      },
+      {
+        "name": "pa_edge_profiles_national_v0_3_0.csv",
+        "role": "payload",
+        "bytes": 25255793,
+        "server_md5": "04537ef868cb5fe4ccb366a908722faf",
+        "server_md5_matches_local_staging": true,
+        "expected_payload_sha256": "baf902714e4308a50e6c594db0e2f1d58872b39e03cb88605047f24bdeb06812"
+      },
+      {
+        "name": "pa_geometries_v0_3_0.csv",
+        "role": "payload",
+        "bytes": 1768417,
+        "server_md5": "ab311e72a4e1e9a3008a7981f915be1d",
+        "server_md5_matches_local_staging": true,
+        "expected_payload_sha256": "781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b"
+      },
+      {
+        "name": "pa_geometries_v0_3_0.gpkg",
+        "role": "payload",
+        "bytes": 132571136,
+        "server_md5": "bc2fe3b60cd5c2316ff77e64f1135eda",
+        "server_md5_matches_local_staging": true,
+        "expected_payload_sha256": "6ea584b1f90fdab82b31fd4861f9c81a7ca1bef03142204579e85e295f3033c9"
+      },
+      {
+        "name": "pa_ibra_assignment_v0_3_0.csv",
+        "role": "payload",
+        "bytes": 987075,
+        "server_md5": "5d6e53bc0d1c937d89548782e1a6e6dd",
+        "server_md5_matches_local_staging": true,
+        "expected_payload_sha256": "3f0d8f7cc206302a8d266ac747a20e89bd0ad0a724f8c7a3d2a161f0634a82cf"
+      },
+      {
+        "name": "pa_radiance_buffers_national_v0_3_0.csv",
+        "role": "payload",
+        "bytes": 96268937,
+        "server_md5": "3919f413eb387d0e0e519315b66252da",
+        "server_md5_matches_local_staging": true,
+        "expected_payload_sha256": "6564e2145f2cb94e5d2d1df2fbca8c0c663b5cd4b68d2bfe72fefadfa3cc5c61"
+      },
+      {
+        "name": "pa_risk_rankings_v0_3_0.csv",
+        "role": "payload",
+        "bytes": 600663,
+        "server_md5": "a1c747592c5919f63df03762c94d5b95",
+        "server_md5_matches_local_staging": true,
+        "expected_payload_sha256": "554c02ea84d56119f47d13524ab7ec3add66851f61dae3c4f5ac9267da30367a"
+      },
+      {
+        "name": "pa_trend_bootstrap_summary_v0_3_0.csv",
+        "role": "payload",
+        "bytes": 582886,
+        "server_md5": "03970533cc5c0fdac3531e1f13a146a4",
+        "server_md5_matches_local_staging": true,
+        "expected_payload_sha256": "cd3c165ed5857d0fb2fcb3be360fe89dfda6757c296fb5cd1bd7aee509078920"
+      },
+      {
+        "name": "pa_trends_v0_3_0.csv",
+        "role": "payload",
+        "bytes": 5187168,
+        "server_md5": "d2de7a6be4603269b9dac61bb404184f",
+        "server_md5_matches_local_staging": true,
+        "expected_payload_sha256": "d7d33e9cd49dea316355cba5a52afd85953f3b656ee8f2ab7e725c922800ff1f"
+      }
+    ]
+  },
+  "deposit_boundary": {
+    "processed_layer_a_only": true,
+    "raw_or_row_level_ala_files": 0,
+    "layer_b_files": 0,
+    "unlisted_files": 0,
+    "source_repository_visibility": "private",
+    "source_repository_represented_as_public": false
+  },
+  "verification": {
+    "doi_and_public_record": "pass",
+    "public_api_and_metadata": "pass",
+    "server_file_inventory": "pass",
+    "server_md5_matches_local_staging": {
+      "status": "pass",
+      "matched": 12,
+      "expected": 12
+    },
+    "public_download": {
+      "status": "pass",
+      "evidence_path": "artefacts/goal015_zenodo_evidence/public_verification_2026-07-26.json",
+      "required": {
+        "downloaded_file_byte_identity": "12/12",
+        "downloaded_sha256sums_entries": "11/11",
+        "downloaded_payload_sha256": "9/9"
+      },
+      "observed": {
+        "downloaded_file_count": 12,
+        "downloaded_total_bytes": 265798999,
+        "api_size_matches": "12/12",
+        "server_md5_matches": "12/12",
+        "downloaded_file_byte_identity": "12/12",
+        "downloaded_sha256sums_entries": "11/11",
+        "downloaded_payload_sha256": "9/9",
+        "downloaded_payload_size": "9/9",
+        "downloaded_payload_byte_identity": "9/9",
+        "metadata_assertions": "24/24",
+        "raw_ala_files": 0,
+        "row_level_ala_files": 0,
+        "layer_b_files": 0,
+        "unlisted_files": 0
+      }
+    }
+  }
+}

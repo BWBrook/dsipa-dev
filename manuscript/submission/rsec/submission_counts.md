@@ -1,6 +1,6 @@
 # RSEC Submission Counts
 
-Generated from the accepted, unchanged manuscript source on 2026-07-24.
+Generated from the current accepted manuscript source on 2026-07-26.
 
 ## Results
 
@@ -8,7 +8,7 @@ Generated from the accepted, unchanged manuscript source on 2026-07-24.
 | --- | ---: | --- |
 | Abstract | 235 words | <= 300 |
 | IMRAD main text | 4,609 words | <= 5,000 |
-| IMRAD plus Data accessibility | 4,683 words | <= 5,000 under the more conservative inclusion |
+| IMRAD plus Data accessibility | 4,685 words | <= 5,000 under the more conservative inclusion |
 | Keywords | 5 | 4-6 |
 | Main figures | 4 | report count |
 | Main tables | 1 | report count |

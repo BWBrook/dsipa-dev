@@ -221,4 +221,4 @@ The integrated contribution is not a claim that satellite radiance measures biod
 
 ## Data accessibility
 
-Layer A uses public inputs whose provenance and checksums are recorded with the code. The accepted national Layer A outputs are designated for a later external archive, but no archive DOI has yet been minted. Derived Layer B summaries and figures are retained in the repository. Raw and row-level ALA occurrence records have mixed provider terms and are not redistributed; exact Layer B reconstruction requires reacquisition from ALA under those terms.
+Layer A uses public inputs whose provenance and checksums are documented. Nine processed Layer A outputs are archived in Zenodo under CC BY 4.0 [@brook2026dsipa]. The DOI is https://doi.org/10.5281/zenodo.21524637. Source code and provenance records remain in a private GitHub repository. Derived Layer B summaries and figures remain private. Raw and row-level ALA occurrence records have mixed provider terms and are not redistributed; exact Layer B reconstruction requires reacquisition from ALA under those terms.

@@ -32,17 +32,13 @@ checked 2026-07-24 requires disclosure of AI use and human responsibility.
 
 ## Data Accessibility
 
-The accepted manuscript describes public, provenance-recorded Layer A inputs,
-the intended processed Layer A archive, tracked derived Layer B summaries, and
-the exclusion of raw and row-level ALA records. Final wording requires:
-
-- archive DOI and public URL: `[PENDING EXTERNAL ACTION]`;
-- accepted public source-repository URL and release commit:
-  `[PENDING ORCHESTRATOR ACCEPTANCE]`; and
-- Barry confirmation that the statement matches the final uploaded files:
-  `[BARRY CONFIRM]`.
-
-No DOI is currently reserved or minted.
+The manuscript's nine processed Layer A outputs are publicly archived as
+Zenodo Dataset version `0.3.0` under CC BY 4.0:
+<https://doi.org/10.5281/zenodo.21524637>. The canonical record is
+<https://zenodo.org/records/21524637>. The source GitHub repository remains
+private and is not a public access route. Derived Layer B summaries and
+figures remain private; raw and row-level ALA records are not redistributed,
+and exact Layer B reconstruction requires reacquisition under provider terms.
 
 ## Ethics, Consent, And Monitoring-Device Policy
 
@@ -62,12 +58,13 @@ preprint disclosed]`
 
 ## Rights, Licence, Fees, And Open Access
 
-- Rights holder(s): `[BARRY CONFIRM]`
-- Archive licence: `[BARRY CONFIRM after provenance/rights review]`
+- Archive rights holder: University of Tasmania
+- Archive licence: Creative Commons Attribution 4.0 International
+  (`CC BY 4.0`)
 - Journal open-access licence choice: `[BARRY CONFIRM in the live authorized
   workflow]`
 - Publication-fee willingness and funding source: `[BARRY CONFIRM]`
 - Authority to agree on behalf of all authors: `[BARRY CONFIRM]`
 
-No licence choice, fee commitment, payment, or open-access agreement has been
-made.
+The archive licence is confirmed and published. No journal licence choice,
+fee commitment, payment, or open-access agreement has been made.

@@ -365,4 +365,20 @@ references:
       - year: 2024
     container-title: Diversity and Distributions
     DOI: 10.1111/ddi.13802
+
+  - id: brook2026dsipa
+    citation-key: brook2026dsipa
+    type: dataset
+    title: Australian protected-area dark-sky integrity outputs, 2013-2024
+    author:
+      - family: Brook
+        given: Barry W.
+    issued:
+      - year: 2026
+        month: 7
+        day: 26
+    version: "0.3.0"
+    publisher: Zenodo
+    DOI: 10.5281/zenodo.21524637
+    URL: https://doi.org/10.5281/zenodo.21524637
 ...
