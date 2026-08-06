@@ -42,11 +42,10 @@ This is an “AI for Science” autonomy experiment:
 
 Note: Large derived outputs (national tables, large GPKGs, and `artefacts/`) are not tracked in git. Nine processed national Layer A outputs are publicly archived as Zenodo Dataset version `0.3.0` under CC BY 4.0 at <https://doi.org/10.5281/zenodo.21524637>; raw and row-level ALA data, Layer B payloads, and unlisted files are excluded. The source GitHub repository remains private and is not a public access route. Release provenance is recorded in `analysis/reports/final_release_manifest.md`; smoke-test outputs remain in-repo for fast regression tests.
 
-Zenodo helper:
-```bash
-analysis/zenodo_release_checklist.sh
-```
-This writes a checklist + SHA256 manifest to `analysis/reports/zenodo_release_checklist_YYYY-MM-DD.md`.
+The nine processed national Layer A outputs are already cited through the
+Zenodo DOI above. Use `analysis/reports/final_release_manifest.md` and the
+Goal 014/015 receipts for release provenance; do not regenerate a new archive
+checklist unless a future release goal explicitly asks for one.
 
 Deep-server evidence reconciliation:
 ```bash
@@ -103,8 +102,15 @@ Artefacts are written to `artefacts/wp0_1_bootstrap/`.
 
 Run tests:
 ```bash
+make fast
 make test
 ```
+
+`make fast` is the proportional offline gate for routine engineering changes:
+imports plus targeted deterministic unit/domain/fixture tests. The broader
+release gate is decision-relevant only and uses existing commands such as
+`make test`, `make build`, output/reproducibility checks, manuscript checks,
+and authorized remote evidence runs when the goal packet calls for them.
 
 Build the Python package:
 ```bash

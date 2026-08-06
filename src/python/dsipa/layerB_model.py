@@ -5,7 +5,6 @@ from __future__ import annotations
 import argparse
 import math
 import shutil
-import subprocess
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -22,12 +21,19 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import log_loss, roc_auc_score
 from sklearn.model_selection import GroupKFold
 
+from dsipa.git_state import ensure_clean_before_mutation, ensure_only_expected_changes
 from dsipa.ibra import IBRA_GPKG, process_ibra, write_outputs as write_ibra_outputs
 from dsipa.layerB_data import normalize_columns
 from dsipa.manifest import build_manifest, write_manifest
 from dsipa.nightlights import CORE_YEARS, download_year
 from dsipa.paths import find_repo_root
-from dsipa.schema import LAYERB_IBRA_SUMMARY_CSV, LAYERB_MODEL_INPUT_SUMMARY_CSV, SCHEMA_VERSION
+from dsipa.schema import (
+    LAYERB_ALA_LICENSE_LEDGER_CSV,
+    LAYERB_IBRA_SUMMARY_CSV,
+    LAYERB_MODEL_INPUT_SUMMARY_CSV,
+    LAYERB_OCCURRENCE_SUMMARY_CSV,
+    SCHEMA_VERSION,
+)
 
 
 PA_UNION_CACHE = f"data/processed/cache/pa_union_v{SCHEMA_VERSION.replace('.', '_')}.wkb"
@@ -59,26 +65,6 @@ class IbraIndex:
 
 def _now_utc() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-
-
-def _git_dirty(root: Path) -> bool:
-    try:
-        result = subprocess.run(
-            ["git", "-C", str(root), "status", "--porcelain"],
-            check=False,
-            capture_output=True,
-            text=True,
-        )
-    except FileNotFoundError:  # pragma: no cover
-        return False
-    return bool(result.stdout.strip())
-
-
-def _ensure_clean_tree(root: Path, allow_dirty: bool) -> None:
-    if allow_dirty:
-        return
-    if _git_dirty(root):
-        raise SystemExit("Working tree is dirty; commit or use --allow-dirty to proceed.")
 
 
 def _load_union(path: Path):
@@ -900,10 +886,35 @@ def main(argv: list[str] | None = None) -> int:
     ibra_summary_report_path = root / IBRA_SUMMARY_REPORT
     ibra_effects_csv_path = root / IBRA_EFFECTS_CSV
     ibra_effects_fig_path = root / IBRA_FOREST_FIG
+    upstream_outputs = [
+        root / LAYERB_ALA_LICENSE_LEDGER_CSV,
+        root / LAYERB_OCCURRENCE_SUMMARY_CSV,
+        root / "analysis" / "reports" / "layerB_data_qc.md",
+        root / "analysis" / "reports" / "layerB_ala_license_ledger.md",
+        root / "analysis" / "reports" / "layerB_qc_extended.md",
+        root / "analysis" / "reports" / "layerB_scope_coverage.md",
+        root / "analysis" / "reports" / "layerB_exposure_qc.md",
+        root / "analysis" / "reports" / "layerB_exposure_qc.json",
+    ]
+    expected_outputs = [
+        report_path,
+        figure_path,
+        summary_path,
+        ibra_summary_path,
+        ibra_summary_report_path,
+        ibra_effects_csv_path,
+        ibra_effects_fig_path,
+    ]
+    expected_dirty_paths = upstream_outputs + expected_outputs
 
     if args.artefact_only:
         if not args.skip_artefact:
-            _ensure_clean_tree(root, args.allow_dirty)
+            ensure_only_expected_changes(
+                root,
+                expected_paths=expected_dirty_paths,
+                allow_dirty=args.allow_dirty,
+                context="Layer B modelling artefact-only",
+            )
             artefact_dir = root / "artefacts" / "wp0_16_layerB_modelling"
             artefact_dir.mkdir(parents=True, exist_ok=True)
             for path in (report_path, figure_path, summary_path):
@@ -916,6 +927,7 @@ def main(argv: list[str] | None = None) -> int:
                 outputs=[report_path.name, figure_path.name, summary_path.name],
                 inputs=["Atlas of Living Australia", "CAPAD 2024", "Zenodo nightlights v0.4"],
                 require_clean=True,
+                expected_dirty_paths=expected_dirty_paths,
                 notes="WP0.16 Layer B modelling artefact",
             )
             write_manifest(artefact_dir / "MANIFEST.json", manifest)
@@ -949,6 +961,7 @@ def main(argv: list[str] | None = None) -> int:
                 ],
                 inputs=["Atlas of Living Australia", "CAPAD 2024", "IBRA7 regions", "Zenodo nightlights v0.4"],
                 require_clean=True,
+                expected_dirty_paths=expected_dirty_paths,
                 notes="WP0.20 Layer B IBRA robustness artefact",
             )
             write_manifest(artefact_dir / "MANIFEST.json", manifest)
@@ -956,6 +969,12 @@ def main(argv: list[str] | None = None) -> int:
                 "WP0.20 Layer B IBRA robustness artefact.\n", encoding="utf-8"
             )
         return 0
+
+    ensure_clean_before_mutation(
+        root,
+        allow_dirty=args.allow_dirty,
+        context="Layer B modelling",
+    )
 
     pa_union = _load_union(root / PA_UNION_CACHE)
     microbats_path = root / args.microbats_path
@@ -1133,7 +1152,12 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     if not args.skip_artefact:
-        _ensure_clean_tree(root, args.allow_dirty)
+        ensure_only_expected_changes(
+            root,
+            expected_paths=expected_dirty_paths,
+            allow_dirty=args.allow_dirty,
+            context="Layer B modelling",
+        )
         artefact_dir = root / "artefacts" / "wp0_16_layerB_modelling"
         artefact_dir.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(report_path, artefact_dir / report_path.name)
@@ -1146,6 +1170,7 @@ def main(argv: list[str] | None = None) -> int:
             outputs=[report_path.name, figure_path.name, summary_path.name],
             inputs=["Atlas of Living Australia", "CAPAD 2024", "Zenodo nightlights v0.4"],
             require_clean=True,
+            expected_dirty_paths=expected_dirty_paths,
             notes="WP0.16 Layer B modelling artefact",
         )
         write_manifest(artefact_dir / "MANIFEST.json", manifest)
@@ -1179,6 +1204,7 @@ def main(argv: list[str] | None = None) -> int:
             ],
             inputs=["Atlas of Living Australia", "CAPAD 2024", "IBRA7 regions", "Zenodo nightlights v0.4"],
             require_clean=True,
+            expected_dirty_paths=expected_dirty_paths,
             notes="WP0.20 Layer B IBRA robustness artefact",
         )
         write_manifest(artefact_dir / "MANIFEST.json", manifest)

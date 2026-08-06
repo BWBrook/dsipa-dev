@@ -10,13 +10,17 @@ DEEP_HOST ?= deep-server-ts
 DEEP_REPO ?= /data/codex/repos/dsipa-dev-mac-sync
 READINESS_SSH_FLAGS := $(if $(filter 1 true yes,$(CHECK_SSH)),--check-ssh,)
 
-.PHONY: bootstrap readiness test build pipeline layerA hpc-evidence hpc-full hpc-layerA hpc-sync-dry-run hpc-sync ms-validate ms-check ms-build ms-clean
+.PHONY: bootstrap readiness fast test build pipeline layerA hpc-evidence hpc-full hpc-layerA hpc-sync-dry-run hpc-sync ms-validate ms-check ms-build ms-clean
 
 bootstrap:
 	DSIPA_PYTHON_VERSION=$(PYTHON_VERSION) analysis/bootstrap_macos.sh
 
 readiness:
 	uv run python analysis/check_macos_readiness.py --deep-host $(DEEP_HOST) --deep-repo $(DEEP_REPO) $(READINESS_SSH_FLAGS) --write-report
+
+fast:
+	uv run python -c 'import dsipa.git_state, dsipa.layerB_data, dsipa.layerB_qc, dsipa.layerB_model'
+	uv run python -m pytest tests/python/test_git_state.py tests/python/test_layerB_entrypoint_guardrails.py tests/python/test_layerB_download_guardrail.py tests/python/test_layerB_filters.py tests/python/test_layerB_summary.py tests/python/test_layerA_reproducibility.py tests/python/test_layerA_runner.py tests/python/test_manifest.py
 
 test:
 	uv run python -m pytest -rs

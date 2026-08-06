@@ -24,6 +24,7 @@ done
 uv sync --extra dev --frozen
 export UV_NO_SYNC=1
 uv run python -c 'import build, pytest'
+uv run python -m dsipa.git_state require-clean --context "run_full_pipeline clean-start gate"
 uv run python -m dsipa.layerA_reproducibility validate-contract
 
 printf "Running DSIPA-NBS full pipeline in %s\n" "$DSIPA_REPO_ROOT"
@@ -63,9 +64,9 @@ else
   fi
 
   printf "\n[Layer B] Downloads, QC, modelling, figures\n"
-  uv run python -m dsipa.layerB_data --download-retries 5
-  uv run python -m dsipa.layerB_qc --groups microbats,diurnal_birds
-  uv run python -m dsipa.layerB_model --provider dr368
+  uv run python -m dsipa.layerB_data --download-retries 5 --allow-dirty
+  uv run python -m dsipa.layerB_qc --groups microbats,diurnal_birds --allow-dirty
+  uv run python -m dsipa.layerB_model --provider dr368 --allow-dirty
   uv run python -m dsipa.figures_layerB
 fi
 

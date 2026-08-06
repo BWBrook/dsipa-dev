@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+import shutil
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -18,6 +18,7 @@ from pyproj import Transformer
 from shapely import wkb
 from shapely.geometry import Point
 
+from dsipa.git_state import ensure_clean_before_mutation, ensure_only_expected_changes
 from dsipa.layerB_data import (
     DEFAULT_UNCERTAINTY_M,
     DEFAULT_YEARS,
@@ -90,26 +91,6 @@ class ExposureAccumulator:
 
 def _now_utc() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-
-
-def _git_dirty(root: Path) -> bool:
-    try:
-        result = subprocess.run(
-            ["git", "-C", str(root), "status", "--porcelain"],
-            check=False,
-            capture_output=True,
-            text=True,
-        )
-    except FileNotFoundError:  # pragma: no cover
-        return False
-    return bool(result.stdout.strip())
-
-
-def _ensure_clean_tree(root: Path, allow_dirty: bool) -> None:
-    if allow_dirty:
-        return
-    if _git_dirty(root):
-        raise SystemExit("Working tree is dirty; commit or use --allow-dirty to proceed.")
 
 
 def _load_union(path: Path):
@@ -664,10 +645,29 @@ def main(argv: list[str] | None = None) -> int:
     qc_report_path = root / "analysis" / "reports" / "layerB_qc_extended.md"
     scope_report_path = root / "analysis" / "reports" / "layerB_scope_coverage.md"
     exposure_report_path = root / "analysis" / "reports" / "layerB_exposure_qc.md"
+    exposure_json_path = root / "analysis" / "reports" / "layerB_exposure_qc.json"
+    upstream_outputs = [
+        root / LAYERB_OCCURRENCE_SUMMARY_CSV,
+        root / "analysis" / "reports" / "layerB_data_qc.md",
+    ]
+    expected_outputs = [
+        ledger_path,
+        license_report_path,
+        qc_report_path,
+        scope_report_path,
+        exposure_report_path,
+        exposure_json_path,
+    ]
+    expected_dirty_paths = upstream_outputs + expected_outputs
 
     if args.artefact_only:
         if not args.skip_artefact:
-            _ensure_clean_tree(root, args.allow_dirty)
+            ensure_only_expected_changes(
+                root,
+                expected_paths=expected_dirty_paths,
+                allow_dirty=args.allow_dirty,
+                context="Layer B QC artefact-only",
+            )
             artefact_dir = root / "artefacts" / "wp0_15b_layerB_qc"
             artefact_dir.mkdir(parents=True, exist_ok=True)
             artefact_paths = []
@@ -677,10 +677,11 @@ def main(argv: list[str] | None = None) -> int:
                 qc_report_path,
                 scope_report_path,
                 exposure_report_path,
+                exposure_json_path,
             ):
                 if path.exists():
                     artefact_paths.append(path)
-                    (artefact_dir / path.name).write_text(path.read_text(encoding="utf-8"))
+                    shutil.copyfile(path, artefact_dir / path.name)
             manifest = build_manifest(
                 run_id="wp0_15b_layerB_qc",
                 wp="WP0.15b",
@@ -688,6 +689,7 @@ def main(argv: list[str] | None = None) -> int:
                 outputs=[path.name for path in artefact_paths],
                 inputs=["Atlas of Living Australia", "CAPAD 2024", "Zenodo nightlights v0.4"],
                 require_clean=True,
+                expected_dirty_paths=expected_dirty_paths,
                 notes="WP0.15b Layer B licensing ledger + extended QC + exposure/scope diagnostics",
             )
             write_manifest(artefact_dir / "MANIFEST.json", manifest)
@@ -695,6 +697,11 @@ def main(argv: list[str] | None = None) -> int:
                 "WP0.15b Layer B QC hardening artefact.\n", encoding="utf-8"
             )
         return 0
+    ensure_clean_before_mutation(
+        root,
+        allow_dirty=args.allow_dirty,
+        context="Layer B QC",
+    )
     raw_dir = root / args.raw_dir
     processed_dir = root / args.processed_dir
     nightlights_dir = root / args.nightlights_dir
@@ -734,9 +741,18 @@ def main(argv: list[str] | None = None) -> int:
     if not args.skip_exposure:
         exposure_summary = build_exposure_qc(groups, pa_union, args.buffer_km, nightlights_dir)
         write_exposure_report(exposure_summary, exposure_report_path, simplify_m=args.simplify_m)
+        exposure_json_path.write_text(
+            json.dumps(exposure_summary, indent=2),
+            encoding="utf-8",
+        )
 
     if not args.skip_artefact:
-        _ensure_clean_tree(root, args.allow_dirty)
+        ensure_only_expected_changes(
+            root,
+            expected_paths=expected_dirty_paths,
+            allow_dirty=args.allow_dirty,
+            context="Layer B QC",
+        )
         artefact_dir = root / "artefacts" / "wp0_15b_layerB_qc"
         artefact_dir.mkdir(parents=True, exist_ok=True)
         artefact_paths = []
@@ -751,29 +767,25 @@ def main(argv: list[str] | None = None) -> int:
         for path in artefact_paths:
             (artefact_dir / path.name).write_text(path.read_text(encoding="utf-8"))
         if exposure_report_path.exists():
-            (artefact_dir / exposure_report_path.name).write_text(
-                exposure_report_path.read_text(encoding="utf-8")
-            )
+            shutil.copyfile(exposure_report_path, artefact_dir / exposure_report_path.name)
+        if exposure_json_path.exists():
+            shutil.copyfile(exposure_json_path, artefact_dir / exposure_json_path.name)
 
         manifest = build_manifest(
             run_id="wp0_15b_layerB_qc",
             wp="WP0.15b",
             root=root,
             outputs=[path.name for path in artefact_paths]
-            + ([exposure_report_path.name] if exposure_report_path.exists() else []),
+            + ([exposure_report_path.name] if exposure_report_path.exists() else [])
+            + ([exposure_json_path.name] if exposure_json_path.exists() else []),
             inputs=["Atlas of Living Australia", "CAPAD 2024", "Zenodo nightlights v0.4"],
             require_clean=True,
+            expected_dirty_paths=expected_dirty_paths,
             notes="WP0.15b Layer B licensing ledger + extended QC + exposure/scope diagnostics",
         )
         write_manifest(artefact_dir / "MANIFEST.json", manifest)
         (artefact_dir / "README.txt").write_text(
             "WP0.15b Layer B QC hardening artefact.\n", encoding="utf-8"
-        )
-
-    if exposure_summary is not None:
-        (root / "analysis" / "reports" / "layerB_exposure_qc.json").write_text(
-            json.dumps(exposure_summary, indent=2),
-            encoding="utf-8",
         )
 
     return 0

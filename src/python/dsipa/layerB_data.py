@@ -8,7 +8,6 @@ import json
 import os
 import re
 import shutil
-import subprocess
 import time
 import zipfile
 from dataclasses import dataclass
@@ -21,6 +20,7 @@ import pandas as pd
 import requests
 from pyproj import Transformer
 
+from dsipa.git_state import ensure_clean_before_mutation, ensure_only_expected_changes
 from dsipa.manifest import build_manifest, write_manifest
 from dsipa.paths import find_repo_root
 from dsipa.schema import LAYERB_OCCURRENCE_SUMMARY_CSV, SCHEMA_VERSION
@@ -113,26 +113,6 @@ class DownloadResult:
 
 def _now_utc() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-
-
-def _git_dirty(root: Path) -> bool:
-    try:
-        result = subprocess.run(
-            ["git", "-C", str(root), "status", "--porcelain"],
-            check=False,
-            capture_output=True,
-            text=True,
-        )
-    except FileNotFoundError:  # pragma: no cover
-        return False
-    return bool(result.stdout.strip())
-
-
-def _ensure_clean_tree(root: Path, allow_dirty: bool) -> None:
-    if allow_dirty:
-        return
-    if _git_dirty(root):
-        raise SystemExit("Working tree is dirty; commit or use --allow-dirty to proceed.")
 
 
 def _sha256(path: Path) -> str:
@@ -669,6 +649,7 @@ def write_artefact(
     summary_path: Path,
     report_path: Path,
     root: Path,
+    expected_dirty_paths: list[Path] | None = None,
 ) -> Path:
     artefact_dir = root / "artefacts" / "wp0_15_layerB_data"
     artefact_dir.mkdir(parents=True, exist_ok=True)
@@ -682,6 +663,7 @@ def write_artefact(
         outputs=[summary_path.name, report_path.name],
         inputs=["Atlas of Living Australia"],
         require_clean=True,
+        expected_dirty_paths=expected_dirty_paths or [summary_path, report_path],
         notes="Layer B occurrence acquisition + QC outputs",
     )
     write_manifest(artefact_dir / "MANIFEST.json", manifest)
@@ -763,14 +745,31 @@ def main(argv: list[str] | None = None) -> int:
     root = find_repo_root()
     summary_path = root / LAYERB_OCCURRENCE_SUMMARY_CSV
     report_path = root / "analysis" / "reports" / "layerB_data_qc.md"
+    expected_outputs = [summary_path, report_path]
 
     if args.artefact_only:
         if not summary_path.exists() or not report_path.exists():
             raise SystemExit("Missing Layer B summary/QC report; run without --artefact-only.")
         if not args.skip_artefact:
-            _ensure_clean_tree(root, args.allow_dirty)
-            write_artefact(summary_path=summary_path, report_path=report_path, root=root)
+            ensure_only_expected_changes(
+                root,
+                expected_paths=expected_outputs,
+                allow_dirty=args.allow_dirty,
+                context="Layer B data artefact-only",
+            )
+            write_artefact(
+                summary_path=summary_path,
+                report_path=report_path,
+                root=root,
+                expected_dirty_paths=expected_outputs,
+            )
         return 0
+
+    ensure_clean_before_mutation(
+        root,
+        allow_dirty=args.allow_dirty,
+        context="Layer B data",
+    )
 
     raw_dir = root / args.raw_dir
     processed_dir = root / args.processed_dir
@@ -847,8 +846,18 @@ def main(argv: list[str] | None = None) -> int:
     write_qc_report(summary_rows, report_path, queries, args.uncertainty_m)
 
     if not args.skip_artefact:
-        _ensure_clean_tree(root, args.allow_dirty)
-        write_artefact(summary_path=summary_path, report_path=report_path, root=root)
+        ensure_only_expected_changes(
+            root,
+            expected_paths=expected_outputs,
+            allow_dirty=args.allow_dirty,
+            context="Layer B data",
+        )
+        write_artefact(
+            summary_path=summary_path,
+            report_path=report_path,
+            root=root,
+            expected_dirty_paths=expected_outputs,
+        )
 
     return 0
 

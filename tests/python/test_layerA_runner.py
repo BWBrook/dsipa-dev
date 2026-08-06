@@ -98,3 +98,44 @@ exit 99
         "sync --extra dev --frozen",
         "run python -c import build, pytest",
     ]
+
+
+def test_pipeline_runs_clean_start_gate_and_limits_dirty_handoff(tmp_path):
+    fake_bin = tmp_path / "bin"
+    fake_bin.mkdir()
+    fake_uv = fake_bin / "uv"
+    fake_uv.write_text(
+        """#!/usr/bin/env bash
+set -euo pipefail
+printf '%s\n' "$*" >> "$UV_FAKE_LOG"
+exit 0
+""",
+        encoding="utf-8",
+    )
+    fake_uv.chmod(0o755)
+    log = tmp_path / "uv.log"
+
+    result = subprocess.run(
+        ["bash", "analysis/run_full_pipeline.sh"],
+        cwd=find_repo_root(),
+        check=True,
+        capture_output=True,
+        text=True,
+        env={
+            **os.environ,
+            "PATH": f"{fake_bin}:{os.environ['PATH']}",
+            "UV_FAKE_LOG": str(log),
+            "ALA_DOWNLOAD_EMAIL": "offline@example.org",
+            "ALA_DOWNLOAD_REASON": "offline-test",
+        },
+    )
+    commands = log.read_text(encoding="utf-8").splitlines()
+
+    clean_gate = "run python -m dsipa.git_state require-clean --context run_full_pipeline clean-start gate"
+    validate_contract = "run python -m dsipa.layerA_reproducibility validate-contract"
+    assert commands.index(clean_gate) < commands.index(validate_contract)
+    assert [command for command in commands if "--allow-dirty" in command] == [
+        "run python -m dsipa.layerB_data --download-retries 5 --allow-dirty",
+        "run python -m dsipa.layerB_qc --groups microbats,diurnal_birds --allow-dirty",
+        "run python -m dsipa.layerB_model --provider dr368 --allow-dirty",
+    ]

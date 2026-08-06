@@ -12,6 +12,8 @@ from importlib import metadata
 from pathlib import Path
 from typing import Any
 
+from dsipa.git_state import git_is_dirty, repo_relative_path, unexpected_status_entries
+
 
 def _safe_version(dist_name: str) -> str | None:
     try:
@@ -30,20 +32,6 @@ def _git_commit(root: Path) -> str | None:
             text=True,
         )
         return result.stdout.strip()
-    except Exception:
-        return None
-
-
-def _git_dirty(root: Path) -> bool | None:
-    try:
-        result = subprocess.run(
-            ["git", "status", "--porcelain"],
-            cwd=str(root),
-            check=True,
-            capture_output=True,
-            text=True,
-        )
-        return bool(result.stdout.strip())
     except Exception:
         return None
 
@@ -67,12 +55,29 @@ def build_manifest(
     notes: str | None = None,
     inputs: list[str] | None = None,
     require_clean: bool = False,
+    expected_dirty_paths: list[str | Path] | None = None,
 ) -> dict[str, Any]:
     """Create a run manifest with reproducibility metadata."""
-    dirty = _git_dirty(root)
+    dirty = git_is_dirty(root)
+    expected_relative = [
+        repo_relative_path(path, root) for path in expected_dirty_paths or []
+    ]
     warnings: list[str] = []
-    if require_clean and dirty:
-        warnings.append("git working tree is dirty; manuscript artefact may be non-canonical")
+    if require_clean:
+        if dirty is None:
+            warnings.append("unable to inspect Git working tree")
+        elif dirty:
+            unexpected = unexpected_status_entries(root, expected_dirty_paths or [])
+            if unexpected is None:
+                warnings.append("unable to inspect Git working tree")
+            elif expected_dirty_paths and unexpected == []:
+                warnings.append(
+                    "git working tree contains only expected generated output changes"
+                )
+            else:
+                warnings.append(
+                    "git working tree is dirty; manuscript artefact may be non-canonical"
+                )
     packages = {
         name: _safe_version(name)
         for name in (
@@ -97,6 +102,7 @@ def build_manifest(
             "commit": _git_commit(root),
             "dirty": dirty,
             "clean_required": require_clean,
+            "expected_dirty_paths": expected_relative,
         },
         "python": {
             "version": platform.python_version(),
