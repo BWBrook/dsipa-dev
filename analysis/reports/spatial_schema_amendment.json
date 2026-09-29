@@ -1,0 +1,11 @@
+{
+  "file": "data/processed/pa_buffer_validity_v0_3_0.csv",
+  "source_extraction_sha256": "95903730ad709d501850002860e141cd2d5d3cfe6db2ae76ea573f32201f628b",
+  "candidate_sha256": "91353322f71bb99e2f6c7e22edb3f2a29584c70b790181af3a4d973ba6d899c3",
+  "rows": 22266,
+  "added_column": "schema_version",
+  "constant_value": "0.3.0",
+  "all_existing_fields_exact": true,
+  "original_remote_extraction_preserved": true,
+  "reason": "Restore the declared buffer-validity schema; no analytical values changed."
+}

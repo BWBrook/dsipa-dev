@@ -1,0 +1,22 @@
+{
+  "analysis_id": "spatial-correction-20260919",
+  "baseline_sha256": {
+    "pa_geometries_v0_3_0.gpkg": "da843f551bf1863dc5d1930ecb657491f73d69827b25007a0c55c9019721d0e6",
+    "pa_radiance_buffers_national_v0_3_0.csv": "63e95fb30b0bdebc6c74d23f08666ab9cfe0ef408d27744f12fbb029a8b92ec1",
+    "pa_edge_profiles_national_v0_3_0.csv": "ddb9c9f5678f9da10b70754d3c9319ea30bfe7203d3c80c8f8f298ed2cf5783b"
+  },
+  "coastline_sha256": {
+    "AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.cpg": "09fc313075748ce8ead962229ed89c919d5a9ff71974ee725a0b48bb87d975a2",
+    "AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.dbf": "d9c056b6926ef72768b896c151534813a83d3daa1842a543feea88965ecc59d7",
+    "AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.prj": "a02a27b1d1982c8516d83398e85a3c8b1aef1713c13ef4d84d7bde17430c07c4",
+    "AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.shp": "744cfeb492e3c0fb0aa66f2807b97406c4658c8470662f9b436fbb949d24e337",
+    "AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.shx": "bd44e99a439788aa29513e25259cee3dcf6f763a185a977171fee7639a84d864"
+  },
+  "engine_sha256": "a9368ac9e641c03cf8b3d66dd5af6d1e32926283167f03ada965560cffef04aa",
+  "runner_sha256": "6e35bacd372dedf6a468ab4b778d81861013bff111a8dc9706be67bb75df65a9",
+  "coverage_screen_sha256": "a612a3276305903803884eed00be58d7c072dfe383dfb49873113e506b4d18c2",
+  "quad_segs": 128,
+  "limit": null,
+  "pa_ids": null,
+  "chunk_size": 12
+}

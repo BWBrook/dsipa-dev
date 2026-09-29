@@ -1,0 +1,15 @@
+{
+  "status": "Descriptive arithmetic and sign tabulation from existing September 18 results; no new model or threshold validation.",
+  "upper_two_tercile_area_km2": 5485.671630676069,
+  "eligible_area_km2": 1710860.2417864343,
+  "percent_eligible": 0.32063820858611325,
+  "negative_whole_n": 7,
+  "negative_whole_outer_negative_n": 7,
+  "negative_whole_deeper_zero_n": 6,
+  "negative_whole_deeper_negative_n": 1,
+  "inputs": {
+    "edge_followup_positive_terciles.csv": "dc45b3886116aaa5d3c6ad697a44c70bc7937ec1b73e2dde639aaac073b80499",
+    "edge_followup_band_slopes.csv": "5bcf767148bd7503a1a428dae23b70a7c8ffcffb3288ea61112c0800e3ffd63f",
+    "edge_followup_summary.json": "e302403764496d9c56bfa42868f1e3c90225443a3d2ef9a6ee795304e1b037e8"
+  }
+}

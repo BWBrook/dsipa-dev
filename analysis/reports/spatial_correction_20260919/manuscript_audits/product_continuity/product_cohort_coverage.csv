@@ -1,0 +1,4 @@
+zone,total_ids,complete_series,complete_baseline_zero,incomplete
+buffer_1km,11055,10542,8840,513
+buffer_5km,11097,10929,7113,168
+inside,11133,4426,4023,6707

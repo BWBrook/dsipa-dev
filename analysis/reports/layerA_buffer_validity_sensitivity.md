@@ -1,6 +1,6 @@
 # Layer A buffer-validity sensitivity
 
-Generated: 2026-05-25 03:35 UTC
+Generated: 2026-09-19 05:50 UTC
 
 Primary retention/quadrant analyses use 1 km `land_unprotected` buffer trends. This sensitivity checks whether headline quadrant counts are stable when conditioning on stricter raw-buffer land fraction and protected-overlap criteria.
 
@@ -8,11 +8,11 @@ Primary retention/quadrant analyses use 1 km `land_unprotected` buffer trends. T
 
 | scenario | n | retained_fraction | q1_concurrent_brightening | q2_internal_brightening | q3_stable_non_detect | q4_external_pressure | q1_fraction | q4_fraction | median_inside_slope | median_buffer_slope | median_retention_index_1km |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| primary_retention_quadrant | 3,858 | 1.000 | 305 | 55 | 3,308 | 190 | 0.079 | 0.049 | 0.000 | 0.000 | 0.000 |
-| has_1km_buffer_validity | 3,858 | 1.000 | 305 | 55 | 3,308 | 190 | 0.079 | 0.049 | 0.000 | 0.000 | 0.000 |
-| land_fraction_ge_0.50 | 3,785 | 0.981 | 295 | 45 | 3,263 | 182 | 0.078 | 0.048 | 0.000 | 0.000 | 0.000 |
-| protected_overlap_le_0.25 | 2,919 | 0.757 | 252 | 36 | 2,477 | 154 | 0.086 | 0.053 | 0.000 | 0.000 | 0.000 |
-| land_ge_0.50_and_overlap_le_0.25 | 2,847 | 0.738 | 242 | 26 | 2,433 | 146 | 0.085 | 0.051 | 0.000 | 0.000 | 0.000 |
+| primary_retention_quadrant | 4,253 | 1.000 | 347 | 70 | 3,587 | 249 | 0.082 | 0.059 | 0.000 | 0.000 | 0.000 |
+| has_1km_buffer_validity | 4,253 | 1.000 | 347 | 70 | 3,587 | 249 | 0.082 | 0.059 | 0.000 | 0.000 | 0.000 |
+| land_fraction_ge_0.50 | 4,127 | 0.970 | 327 | 60 | 3,510 | 230 | 0.079 | 0.056 | 0.000 | 0.000 | 0.000 |
+| protected_overlap_le_0.25 | 3,336 | 0.784 | 309 | 55 | 2,759 | 213 | 0.093 | 0.064 | 0.000 | 0.000 | 0.000 |
+| land_ge_0.50_and_overlap_le_0.25 | 3,216 | 0.756 | 289 | 45 | 2,687 | 195 | 0.090 | 0.061 | 0.000 | 0.000 | 0.000 |
 
 ## Validation notes
 

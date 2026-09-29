@@ -1,0 +1,198 @@
+{
+  "candidate_tests_passed": 38,
+  "all_four_audits_and_pulse_passed": true,
+  "csv_comparisons": [
+    {
+      "file": "coauthor_evidence/coauthor_example_series.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "coauthor_evidence/zero_sen_series_diagnostic.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "product_continuity/product_annual_series.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "product_continuity/product_baseline_distances.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "product_continuity/product_cohort_coverage.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "product_continuity/product_distance_hazards.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "product_continuity/product_distance_hazards_stable_count.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "product_continuity/product_distance_state_context.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "product_continuity/product_first_positive_2022.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "product_continuity/product_hazards.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "product_continuity/product_inside_distance_series.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "product_continuity/product_inside_support.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "product_continuity/product_onset_persistence.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "interior_area/interior_area_matched_slopes.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "interior_area/interior_area_quadrant_transitions.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "interior_area/interior_area_summary.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "edge_followup/edge_followup_annual_status.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "edge_followup/edge_followup_band_slopes.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "edge_followup/edge_followup_geometry_check.csv",
+      "exists": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "edge_followup/edge_followup_positive_terciles.csv",
+      "exists": true,
+      "exact_bytes": true
+    }
+  ],
+  "all_csv_bytes_exact": true,
+  "five_layerA_figures_byte_identical": [
+    {
+      "file": "fig_layerA_baseline_map.png",
+      "exact_bytes": true
+    },
+    {
+      "file": "fig_layerA_example_trajectories.png",
+      "exact_bytes": true
+    },
+    {
+      "file": "fig_layerA_retention_quadrant.png",
+      "exact_bytes": true
+    },
+    {
+      "file": "fig_layerA_trend_distribution.png",
+      "exact_bytes": true
+    },
+    {
+      "file": "fig_layerA_trend_uncertainty_forest.png",
+      "exact_bytes": true
+    }
+  ],
+  "supplementary_table_source_byte_identical": true,
+  "edge_figure_bytes_exact": true,
+  "product_figure_bytes_exact": true,
+  "full_repository_tests_passed": 154,
+  "git_free_archive_manuscript_check_passed": true,
+  "edge_output_path_repair": "Use basename of imported EDGE_FIG; corrected369 display now replaces stale383 canonical asset.",
+  "final_supplementary_table_source_byte_identical": true,
+  "sdist_wheel_build_passed": true,
+  "archive_build_provenance": {
+    "mode": "curated_archive",
+    "files_verified": 247,
+    "tool_git": "b613e715a86f81623953403f84353314405057db",
+    "tool_dirty": true
+  },
+  "document_integrity": {
+    "main_pdf": {
+      "path": "build/submission/dsipa_rsec_main.pdf",
+      "sha256": "dec787ce7083406fe361af8d9061b2eddb011897674dbc7f38323dc1c7d3ce15",
+      "bytes": 879349
+    },
+    "si_pdf": {
+      "path": "build/supplementary/dsipa_rsec_supplementary.pdf",
+      "sha256": "ad88341bcb55ebaeba6c4605051a3479c52010d083d40c402371552262785583",
+      "bytes": 655962
+    },
+    "main_docx": {
+      "path": "build/submission/dsipa_rsec_main.docx",
+      "sha256": "8b13002c420ce5a954120aca20c916e3585009bd208acce8c436741eef13e1f1",
+      "bytes": 864921
+    },
+    "si_docx": {
+      "path": "build/supplementary/dsipa_rsec_supplementary.docx",
+      "sha256": "bc3af8ef74d6eec99795e18482a0608bf8d5dbed444f0a9c81e13b2576577e64",
+      "bytes": 594800
+    }
+  },
+  "qpdf_main_si_and_both_word_conversions_passed": true,
+  "final_document_pages": {
+    "main_pdf": 21,
+    "si_pdf": 14,
+    "main_word_conversion": 27,
+    "si_word_conversion": 17
+  },
+  "document_visual_qa_passed": true,
+  "final_curated_source_files": 253,
+  "final_git_free_profile_checks": {
+    "submission": {
+      "passed": true,
+      "pdf_layout_text_identical": true,
+      "provenance": {
+        "root": "/tmp/dsipa_final_private_check",
+        "mode": "curated_archive",
+        "file_manifest": "/tmp/dsipa_final_private_check/FILE_MANIFEST.json",
+        "file_manifest_sha256": "04878a67bbd45f5fec6c15d379a8628c30e0947cc63595573225670bc0a03a4b",
+        "files_verified": 253
+      }
+    },
+    "supplementary": {
+      "passed": true,
+      "pdf_layout_text_identical": true,
+      "provenance": {
+        "root": "/tmp/dsipa_final_private_check",
+        "mode": "curated_archive",
+        "file_manifest": "/tmp/dsipa_final_private_check/FILE_MANIFEST.json",
+        "file_manifest_sha256": "04878a67bbd45f5fec6c15d379a8628c30e0947cc63595573225670bc0a03a4b",
+        "files_verified": 253
+      }
+    }
+  }
+}

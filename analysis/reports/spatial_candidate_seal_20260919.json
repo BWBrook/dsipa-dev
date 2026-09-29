@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "payload_files_verified": 253,
+  "reading_files_verified": 10,
+  "all_hashes_pass": true,
+  "zip_crc_pass": true,
+  "archives": [
+    {
+      "path": "build/final_read/dsipa_spatial_reproducibility_20260919.zip",
+      "bytes": 114102732,
+      "sha256": "b474ea2c7e02e8fa8f9df1e1fc00ff12746042c1da538c5fae2ab827ca85dbff"
+    },
+    {
+      "path": "build/final_read/dsipa_rsec_spatial_20260919.zip",
+      "bytes": 2899975,
+      "sha256": "2cdccd44427cda4ccc04048e6c259d349350a0893679fba6f2b052ce22ba61c3"
+    }
+  ]
+}

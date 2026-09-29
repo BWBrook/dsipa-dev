@@ -1,0 +1,5 @@
+old_sign,negative,positive,unavailable,zero
+negative,2,0,0,0
+positive,0,30,2,0
+unavailable,0,0,2645,0
+zero,0,0,30,1137

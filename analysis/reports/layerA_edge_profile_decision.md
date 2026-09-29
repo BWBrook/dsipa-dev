@@ -1,6 +1,6 @@
 # Layer A edge/penetration decision report
 
-Generated: 2026-05-25 03:57 UTC
+Generated: 2026-09-19 05:50 UTC
 
 This report resolves the Stage 2 edge/penetration critique. The current edge figure should be retained as a feasibility-limited diagnostic using ring feasibility plus conditional non-zero share, not interpreted as a definitive penetration-gradient test.
 
@@ -8,9 +8,9 @@ This report resolves the Stage 2 edge/penetration critique. The current edge fig
 
 | ring_index | ring_inner_km | ring_outer_km | valid_pa_n | valid_pa_fraction | complete_pa_n | complete_pa_fraction | complete_frac_gt0_median | complete_frac_gt0_mean | complete_nonzero_share |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 0.000 | 0.000 | 1.000 | 4425.000 | 0.397 | 383.000 | 0.034 | 0.000 | 0.002 | 0.180 |
-| 1.000 | 1.000 | 5.000 | 1427.000 | 0.128 | 383.000 | 0.034 | 0.000 | 0.001 | 0.094 |
-| 2.000 | 5.000 | 10.000 | 383.000 | 0.034 | 383.000 | 0.034 | 0.000 | 0.003 | 0.037 |
+| 0.000 | 0.000 | 1.000 | 4426.000 | 0.398 | 369.000 | 0.033 | 0.000 | 0.002 | 0.176 |
+| 1.000 | 1.000 | 5.000 | 1398.000 | 0.126 | 369.000 | 0.033 | 0.000 | 0.001 | 0.089 |
+| 2.000 | 5.000 | 10.000 | 369.000 | 0.033 | 369.000 | 0.033 | 0.000 | 0.003 | 0.035 |
 
 ## Decision
 

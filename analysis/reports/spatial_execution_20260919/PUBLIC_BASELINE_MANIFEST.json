@@ -1,0 +1,190 @@
+{
+  "immutability": "source trees are read-only inputs; output is a new staging directory",
+  "natural_earth_source": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/ne_110m_land",
+  "next_command": "run corrected extraction with --baseline pointing at this directory and record the correction run manifest",
+  "public_payloads": {
+    "data/processed/cache/land_union_ne_110m.wkb": {
+      "bytes": 83525,
+      "sha256": "2eb7cea010a462e4d830ce779567d0d626b2355e4f444259616eae765be93b77",
+      "source": "reconstructed from pinned public Natural Earth archive"
+    },
+    "data/processed/pa_buffer_validity_v0_3_0.csv": {
+      "bytes": 2561064,
+      "expected_sha256": "407283df182baff585dfe3b28b9450c5750c237d120d5d00aa3539a6227e3e25",
+      "mode": "copy",
+      "sha256": "407283df182baff585dfe3b28b9450c5750c237d120d5d00aa3539a6227e3e25",
+      "source": "/data/codex/scratch/dsipa-release-reconciliation-20260919/pa_buffer_validity_v0_3_0.csv"
+    },
+    "data/processed/pa_edge_profiles_national_v0_3_0.csv": {
+      "bytes": 25255793,
+      "expected_sha256": "baf902714e4308a50e6c594db0e2f1d58872b39e03cb88605047f24bdeb06812",
+      "mode": "copy",
+      "sha256": "baf902714e4308a50e6c594db0e2f1d58872b39e03cb88605047f24bdeb06812",
+      "source": "/data/codex/scratch/dsipa-release-reconciliation-20260919/pa_edge_profiles_national_v0_3_0.csv"
+    },
+    "data/processed/pa_geometries_v0_3_0.csv": {
+      "bytes": 1768417,
+      "expected_sha256": "781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b",
+      "mode": "copy",
+      "sha256": "781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b",
+      "source": "/data/codex/scratch/dsipa-release-reconciliation-20260919/pa_geometries_v0_3_0.csv"
+    },
+    "data/processed/pa_geometries_v0_3_0.gpkg": {
+      "bytes": 132571136,
+      "expected_sha256": "6ea584b1f90fdab82b31fd4861f9c81a7ca1bef03142204579e85e295f3033c9",
+      "mode": "copy",
+      "sha256": "6ea584b1f90fdab82b31fd4861f9c81a7ca1bef03142204579e85e295f3033c9",
+      "source": "/data/codex/scratch/dsipa-release-reconciliation-20260919/pa_geometries_v0_3_0.gpkg"
+    },
+    "data/processed/pa_ibra_assignment_v0_3_0.csv": {
+      "bytes": 987075,
+      "expected_sha256": "3f0d8f7cc206302a8d266ac747a20e89bd0ad0a724f8c7a3d2a161f0634a82cf",
+      "mode": "copy",
+      "sha256": "3f0d8f7cc206302a8d266ac747a20e89bd0ad0a724f8c7a3d2a161f0634a82cf",
+      "source": "/data/codex/scratch/dsipa-release-reconciliation-20260919/pa_ibra_assignment_v0_3_0.csv"
+    },
+    "data/processed/pa_radiance_buffers_national_v0_3_0.csv": {
+      "bytes": 96268937,
+      "expected_sha256": "6564e2145f2cb94e5d2d1df2fbca8c0c663b5cd4b68d2bfe72fefadfa3cc5c61",
+      "mode": "copy",
+      "sha256": "6564e2145f2cb94e5d2d1df2fbca8c0c663b5cd4b68d2bfe72fefadfa3cc5c61",
+      "source": "/data/codex/scratch/dsipa-release-reconciliation-20260919/pa_radiance_buffers_national_v0_3_0.csv"
+    },
+    "data/processed/pa_risk_rankings_v0_3_0.csv": {
+      "bytes": 600663,
+      "expected_sha256": "554c02ea84d56119f47d13524ab7ec3add66851f61dae3c4f5ac9267da30367a",
+      "mode": "copy",
+      "sha256": "554c02ea84d56119f47d13524ab7ec3add66851f61dae3c4f5ac9267da30367a",
+      "source": "/data/codex/scratch/dsipa-release-reconciliation-20260919/pa_risk_rankings_v0_3_0.csv"
+    },
+    "data/processed/pa_trend_bootstrap_summary_v0_3_0.csv": {
+      "bytes": 582886,
+      "expected_sha256": "cd3c165ed5857d0fb2fcb3be360fe89dfda6757c296fb5cd1bd7aee509078920",
+      "mode": "copy",
+      "sha256": "cd3c165ed5857d0fb2fcb3be360fe89dfda6757c296fb5cd1bd7aee509078920",
+      "source": "/data/codex/scratch/dsipa-release-reconciliation-20260919/pa_trend_bootstrap_summary_v0_3_0.csv"
+    },
+    "data/processed/pa_trends_v0_3_0.csv": {
+      "bytes": 5187168,
+      "expected_sha256": "d7d33e9cd49dea316355cba5a52afd85953f3b656ee8f2ab7e725c922800ff1f",
+      "mode": "copy",
+      "sha256": "d7d33e9cd49dea316355cba5a52afd85953f3b656ee8f2ab7e725c922800ff1f",
+      "source": "/data/codex/scratch/dsipa-release-reconciliation-20260919/pa_trends_v0_3_0.csv"
+    },
+    "data/raw/ne_110m_land": {
+      "files": [
+        {
+          "bytes": 21649,
+          "relative": "ne_110m_land.README.html",
+          "sha256": "631fd1579d3da3e480c1082695508784ae295bf53b8e1248455b22bb6b6d24d2"
+        },
+        {
+          "bytes": 7,
+          "relative": "ne_110m_land.VERSION.txt",
+          "sha256": "0874a8fe36effb87780f431845b5a7d85be657f2bd998ce8eeace717860d3b78"
+        },
+        {
+          "bytes": 5,
+          "relative": "ne_110m_land.cpg",
+          "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824"
+        },
+        {
+          "bytes": 3431,
+          "relative": "ne_110m_land.dbf",
+          "sha256": "db7cf6d2de2811df09bd7fcc6f243ab78a715b83571a0cb7b36b4e2af3297caa"
+        },
+        {
+          "bytes": 147,
+          "relative": "ne_110m_land.prj",
+          "sha256": "3259f0e55290a82b1350646f604e8a7ee1e2136c0320a40fad838ab40819fff8"
+        },
+        {
+          "bytes": 89504,
+          "relative": "ne_110m_land.shp",
+          "sha256": "8689e6932b8e370e2ca4587cf3ba21e460b1235db37b6ed3c172c35b4a6088de"
+        },
+        {
+          "bytes": 1116,
+          "relative": "ne_110m_land.shx",
+          "sha256": "2719254764a70262a34333581d582d503b8af5d6626e6da4eb2b5f86e7316faa"
+        },
+        {
+          "bytes": 69700,
+          "relative": "ne_110m_land.zip",
+          "sha256": "1926c621afd6ac67c3f36639bb1236134a48d82226dc675d3e3df53d02d2a3de"
+        }
+      ],
+      "mode": "symlink",
+      "source": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/ne_110m_land"
+    },
+    "data/raw/nightlights_zenodo_v0_4": {
+      "files": [
+        {
+          "bytes": 69355797,
+          "relative": "nightlights.average_viirs.v21_m_500m_s_20130101_20131231_go_epsg4326_v20250904.tif",
+          "sha256": "9f9e1dc7d80e7b50cfcbfbdde6e45938e9070a8d234e27d331cd8e027f1d1289"
+        },
+        {
+          "bytes": 68076008,
+          "relative": "nightlights.average_viirs.v21_m_500m_s_20140101_20141231_go_epsg4326_v20250904.tif",
+          "sha256": "12e24b91f3fef11117ac6bfb66142b1088541884602921128d3ddd44e3e40cbd"
+        },
+        {
+          "bytes": 67422293,
+          "relative": "nightlights.average_viirs.v21_m_500m_s_20150101_20151231_go_epsg4326_v20250904.tif",
+          "sha256": "a673f35bd6240c6dc69e05550cdfcd46080a23364a12b91fe897312a308f712f"
+        },
+        {
+          "bytes": 67142087,
+          "relative": "nightlights.average_viirs.v21_m_500m_s_20160101_20161231_go_epsg4326_v20250904.tif",
+          "sha256": "319ef2d91a2ff4733c61a555a81f05b483c9b47463b1f91f00bbc5385556ca45"
+        },
+        {
+          "bytes": 75369463,
+          "relative": "nightlights.average_viirs.v21_m_500m_s_20170101_20171231_go_epsg4326_v20250904.tif",
+          "sha256": "6c767ca0d2c5b2c45c87fea60039bd232ed6a0114229ab31d9c2fa2238114c46"
+        },
+        {
+          "bytes": 76305045,
+          "relative": "nightlights.average_viirs.v21_m_500m_s_20180101_20181231_go_epsg4326_v20250904.tif",
+          "sha256": "62fd7052dc69cadaf446d61ea135e8489b321be24cb4b3b4e26f689b81a3405a"
+        },
+        {
+          "bytes": 76453018,
+          "relative": "nightlights.average_viirs.v21_m_500m_s_20190101_20191231_go_epsg4326_v20250904.tif",
+          "sha256": "9f84fedf65c5a1bdbda63295849d80f99c3b03a9a569e19b173026829c1760b3"
+        },
+        {
+          "bytes": 79245522,
+          "relative": "nightlights.average_viirs.v21_m_500m_s_20200101_20201231_go_epsg4326_v20250904.tif",
+          "sha256": "2f43ac1a2a5f12d6142182364dfc5f26e666aece2d83b8005e54468e3f53674c"
+        },
+        {
+          "bytes": 83892922,
+          "relative": "nightlights.average_viirs.v21_m_500m_s_20210101_20211231_go_epsg4326_v20250904.tif",
+          "sha256": "657f96793c82e052d89f6926e2ad2409ddb9023c99bf860856a22efbe84a54f8"
+        },
+        {
+          "bytes": 59051868,
+          "relative": "nightlights.average_viirs.v21_m_500m_s_20220101_20221231_go_epsg4326_v20250904.tif",
+          "sha256": "006a469c3e3e2ffac6d3cd5060c844b1bdf015650e049e9e4f61e041d538e25b"
+        },
+        {
+          "bytes": 62086259,
+          "relative": "nightlights.average_viirs.v21_m_500m_s_20230101_20231231_go_epsg4326_v20250904.tif",
+          "sha256": "97c9e6e2e66d6c229f865ca59ebf8ff0eafb9346a13a07ed3387c2a69c8b3f7b"
+        },
+        {
+          "bytes": 63713625,
+          "relative": "nightlights.average_viirs.v21_m_500m_s_20240101_20241231_go_epsg4326_v20250904.tif",
+          "sha256": "e6edde68952052f8c53050e2ce7082bab08ddd0e15a696f999215e2d57194c53"
+        }
+      ],
+      "mode": "symlink",
+      "source": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/nightlights_zenodo_v0_4"
+    }
+  },
+  "public_record": "Zenodo 21524637",
+  "raster_source": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/nightlights_zenodo_v0_4",
+  "schema_version": "public-spatial-baseline-1.0.0"
+}

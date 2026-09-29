@@ -1,0 +1,17 @@
+{
+  "submission": {
+    "pdf_pages": 21,
+    "docx_render_pages": 26,
+    "embedded_image_hashes_matched": 4,
+    "all_manifest_input_output_hashes_match": true
+  },
+  "supplementary": {
+    "pdf_pages": 18,
+    "docx_render_pages": 21,
+    "embedded_image_hashes_matched": 8,
+    "all_manifest_input_output_hashes_match": true
+  },
+  "science_provenance": "Executed source, frozen protocol and new figure hashes match; raster/table hashes retained in individual manifests.",
+  "tests": "117 passed; 7 tests skipped for absent local large inputs. Remote audit inputs were checked separately.",
+  "visual_review": "Both complete native PDFs and LibreOffice DOCX renders inspected; affected table, source-tag and figure pages rechecked after repairs. Microsoft Word not tested."
+}

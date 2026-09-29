@@ -1,0 +1,25 @@
+{
+  "archive_sha256": "c6046a756c8ac67f04ae99155265ee04b34d1dcbfa39fb1b0c479f6bb2b6a7cd",
+  "bounds_source_crs": [
+    96.8166259403266,
+    -43.743047289381195,
+    167.99793618325572,
+    -9.039797234329477
+  ],
+  "check_ids": [
+    "WA_39584",
+    "WA_05225",
+    "NSW_LHI",
+    "CWTH_05",
+    "CWTH_07",
+    "CWTH_08",
+    "CWTH_09",
+    "CWTH_10"
+  ],
+  "feature_count": 30061,
+  "geometry_type": "Polygon",
+  "protected_area_source": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/processed/pa_geometries_v0_3_0.gpkg",
+  "source_crs": "EPSG:4326",
+  "source_path": "/data/codex/scratch/dsipa-spatial-correction-20260919/coastline/Split/Split/AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.shp",
+  "source_url": "https://nextcloud.eatlas.org.au/s/DcGmpS3F5KZjgAG/download?path=%2FV1-1%2F&files=Split"
+}

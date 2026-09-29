@@ -1,0 +1,14 @@
+{
+  "analysis_status": "Exploratory follow-up after Fable messages 207-208; descriptive only.",
+  "late_positive_n": 78,
+  "first_2023_2024": 64,
+  "inputs": {
+    "product_annual_series.csv": "fa4734fc0e0604cb8b4ee1b980720d93fa89557467d823d589264d61fe8a48df"
+  },
+  "outputs": {
+    "product_onset_persistence.csv": "6178ef401c1c041f090000a54a327f9c3b26313750ff30792a91feadbaa8d2c1"
+  },
+  "script_sha256": "fba3fa8bbf95fa9fabd345557bb0fb2f5ca48573a632d7e25f876136c082365c",
+  "python": "3.12.3",
+  "pandas": "2.3.3"
+}

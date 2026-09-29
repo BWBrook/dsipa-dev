@@ -1,0 +1,13 @@
+{
+  "pa_invalid": 0,
+  "coastline_invalid_before_repair": 0,
+  "coastline_features": 30061,
+  "excluded_land_support_ids": [
+    "CWTH_IPA12",
+    "QLD_0289BDI001",
+    "QLD_0925HMA001",
+    "VIC_698",
+    "WA_36056",
+    "WA_44673"
+  ]
+}

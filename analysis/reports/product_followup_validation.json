@@ -1,0 +1,17 @@
+{
+  "submission": {
+    "pdf_pages": 21,
+    "docx_render_pages": 27,
+    "embedded_images_matched": 4,
+    "build_hashes_match": true
+  },
+  "supplementary": {
+    "pdf_pages": 20,
+    "docx_render_pages": 23,
+    "embedded_images_matched": 8,
+    "build_hashes_match": true
+  },
+  "tests": "121 passed, 7 skipped in 5.63s",
+  "science": "Read-only deep-server floor and matched-edge inputs, scripts and output hashes retained in their manifests. Persistence and figure inputs verified. Exploratory follow-up after review.",
+  "visual_review": "Native PDFs and LibreOffice DOCX renders inspected; Microsoft Word itself not tested."
+}

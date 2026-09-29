@@ -1,0 +1,40 @@
+{
+  "flag_definition": "Within 5 km of a documented source-exception reference point; proximity is not proof of a support error. Flagged surrounding results require local map validation.",
+  "screened_ids": 19,
+  "paired_provisional_n": 9,
+  "paired_provisional_ids": [
+    "NSW_N0005",
+    "NSW_N0006",
+    "NSW_N0083",
+    "NSW_N0086",
+    "NSW_N0935",
+    "QLD_0532BBI001",
+    "QLD_1073KUY001",
+    "QLD_4239AMU001",
+    "WA_48325"
+  ],
+  "all_paired": {
+    "n": 4253,
+    "categories": {
+      "Q1": 347,
+      "Q2": 70,
+      "Q3": 3587,
+      "Q4": 249
+    }
+  },
+  "excluding_provisional": {
+    "n": 4244,
+    "categories": {
+      "Q1": 341,
+      "Q2": 70,
+      "Q3": 3585,
+      "Q4": 248
+    }
+  },
+  "inputs": {
+    "pa_geometries_v0_3_0.csv": "781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b",
+    "pa_trends_v0_3_0.csv": "4c4ba16c7305d53f4fa358ef9a5104e64eee05901fabba5913a843f5cfa8d32d",
+    "spatial_known_coastline_exceptions.csv": "4ca55250219fb78d8602c1dc96199b7d08c9e5110d6377c3136ffb606aab7086"
+  },
+  "script_sha256": "9db2e9f752d9ed8085ca7429411ebba604517da48448e1691b9894e28a55f58d"
+}

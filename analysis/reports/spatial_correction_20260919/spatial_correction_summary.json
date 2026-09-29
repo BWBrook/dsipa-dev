@@ -1,0 +1,88 @@
+{
+  "baseline_to_geometry": {
+    "old_paired": 3858,
+    "new_paired": 4072,
+    "common": 3858,
+    "gained": 214,
+    "lost": 0,
+    "category_changed_common": 34,
+    "max_abs_slope_delta": 1.2796052631578942,
+    "median_abs_slope_delta": 0.0,
+    "categories": {
+      "Q3": 3430,
+      "ineligible": 354,
+      "Q1": 339,
+      "Q4": 238,
+      "Q2": 65
+    }
+  },
+  "geometry_to_corrected": {
+    "old_paired": 4072,
+    "new_paired": 4253,
+    "common": 4060,
+    "gained": 193,
+    "lost": 12,
+    "category_changed_common": 28,
+    "max_abs_slope_delta": 4.1750935309287724,
+    "median_abs_slope_delta": 0.0,
+    "categories": {
+      "Q3": 3587,
+      "Q1": 347,
+      "Q4": 249,
+      "ineligible": 173,
+      "Q2": 70
+    }
+  },
+  "baseline_to_corrected": {
+    "old_paired": 3858,
+    "new_paired": 4253,
+    "common": 3846,
+    "gained": 407,
+    "lost": 12,
+    "category_changed_common": 57,
+    "max_abs_slope_delta": 3.125000000000007,
+    "median_abs_slope_delta": 0.0,
+    "categories": {
+      "Q3": 3587,
+      "Q1": 347,
+      "Q4": 249,
+      "ineligible": 173,
+      "Q2": 70
+    }
+  },
+  "variants": {
+    "Baseline": {
+      "paired": 3858,
+      "quadrants": {
+        "Q1": 305,
+        "Q2": 55,
+        "Q3": 3308,
+        "Q4": 190
+      }
+    },
+    "Geometry-only": {
+      "paired": 4072,
+      "quadrants": {
+        "Q1": 339,
+        "Q2": 65,
+        "Q3": 3430,
+        "Q4": 238
+      }
+    },
+    "Corrected": {
+      "paired": 4253,
+      "quadrants": {
+        "Q1": 347,
+        "Q2": 70,
+        "Q3": 3587,
+        "Q4": 249
+      }
+    }
+  },
+  "unchanged_inside": {
+    "n": 4426,
+    "positive": 420,
+    "negative": 37,
+    "zero": 3969
+  }
+}

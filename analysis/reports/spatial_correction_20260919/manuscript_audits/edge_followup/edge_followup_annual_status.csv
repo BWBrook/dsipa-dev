@@ -1,0 +1,5 @@
+ring,status,n,median_n_years
+0--1 km,all_annual_zero,1100,12.0
+0--1 km,has_positive_year,241,12.0
+1--5 km,all_annual_zero,1270,12.0
+1--5 km,has_positive_year,71,12.0

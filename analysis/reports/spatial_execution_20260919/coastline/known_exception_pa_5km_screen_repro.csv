@@ -1,0 +1,22 @@
+exception,location_source,pa_id,pa_name,state,distance_m
+Bribie Island/Sandstone Point bridge,GA Gazetteer: Sandstone Point,QLD_0532BBI001,Bribie Island,QLD,3634.2851479452347
+Bribie Island/Sandstone Point bridge,GA Gazetteer: Sandstone Point,QLD_0619BKL001,Buckleys Hole,QLD,3188.2556157212093
+"Swan River, WA",GA Gazetteer: SWAN RIVER,WA_48325,Swan River,WA,2391.6520831958546
+"Collins Pool, WA",GA Gazetteer: COLLINS POOL,,,,42936.587678282034
+"Brisbane Water, NSW",GA Gazetteer: Brisbane Water,NSW_N0005,Bouddi,NSW,2933.720986108347
+"Brisbane Water, NSW",GA Gazetteer: Brisbane Water,NSW_N0006,Brisbane Water,NSW,1254.4886451743328
+"Brisbane Water, NSW",GA Gazetteer: Brisbane Water,NSW_N0584,Pelican Island,NSW,0.0
+"Brisbane Water, NSW",GA Gazetteer: Brisbane Water,NSW_N0585,Rileys Island,NSW,857.6626823133225
+"Brisbane Water, NSW",GA Gazetteer: Brisbane Water,NSW_N0704,Cockle Bay,NSW,3081.7294120856627
+"Brisbane Water, NSW",GA Gazetteer: Brisbane Water,NSW_N0920,Saratoga Island,NSW,937.9566018201581
+"Mooney Mooney Creek, NSW",GA Gazetteer: Mooney Mooney Creek,NSW_N0006,Brisbane Water,NSW,0.0
+"Mooney Mooney Creek, NSW",GA Gazetteer: Mooney Mooney Creek,NSW_N0086,Popran,NSW,2786.779985894994
+"Mooney Mooney Creek, NSW",GA Gazetteer: Mooney Mooney Creek,NSW_N0302,Howe,NSW,4824.028355056475
+"Mooney Mooney Creek, NSW",GA Gazetteer: Mooney Mooney Creek,NSW_N0935,Palm Grove,NSW,3901.8041386616437
+"Parramatta River, NSW",GA Gazetteer: Parramatta River,NSW_N0083,Lane Cove,NSW,3753.8385078391107
+"Parramatta River, NSW",GA Gazetteer: Parramatta River,NSW_N0599,Wallumatta,NSW,3720.026720641032
+"Parramatta River, NSW",GA Gazetteer: Parramatta River,NSW_N0645,Parramatta River,NSW,2684.458389966861
+"Parramatta River, NSW",GA Gazetteer: Parramatta River,NSW_N0879,Newington,NSW,2701.012528824158
+"Brisbane River, QLD",GA Gazetteer: Brisbane River,QLD_0576FLY001,Fort Lytton,QLD,4237.348525610117
+"Lloyd Island, QLD",AIMS errata/GA Gazetteer,QLD_1073KUY001,Kutini-Payamu (Iron Range),QLD,4235.231605356194
+"Olive River mouth, QLD",AIMS errata/GA Gazetteer,QLD_4239AMU001,Bromley (Ampulin),QLD,0.0

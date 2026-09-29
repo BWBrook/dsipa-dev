@@ -1,0 +1,66 @@
+{
+  "inputs": {
+    "baseline": {
+      "pa_edge_profiles_national_v0_3_0.csv": {
+        "sha256": "ddb9c9f5678f9da10b70754d3c9319ea30bfe7203d3c80c8f8f298ed2cf5783b",
+        "bytes": 25255793
+      },
+      "pa_trends_v0_3_0.csv": {
+        "sha256": "d7d33e9cd49dea316355cba5a52afd85953f3b656ee8f2ab7e725c922800ff1f",
+        "bytes": 5187168
+      }
+    },
+    "corrected": {
+      "pa_edge_profiles_national_v0_3_0.csv": {
+        "sha256": "408f39ce27027558b4da4eafab4c78bc3ca57cded5d27c8671620077d4dd1533",
+        "bytes": 25293966
+      },
+      "pa_trends_v0_3_0.csv": {
+        "sha256": "4c4ba16c7305d53f4fa358ef9a5104e64eee05901fabba5913a843f5cfa8d32d",
+        "bytes": 5324125
+      }
+    }
+  },
+  "all_reserves": {
+    "old_eligible": 1432,
+    "new_eligible": 1398,
+    "common": 1398,
+    "gained": 0,
+    "lost": 34,
+    "sign_changed_common": 1,
+    "max_abs_slope_change_common": 0.09615384615384609
+  },
+  "fixed_common_paired": {
+    "old_eligible": 1201,
+    "new_eligible": 1169,
+    "common": 1169,
+    "gained": 0,
+    "lost": 32,
+    "sign_changed_common": 0,
+    "max_abs_slope_change_common": 0.09615384615384609
+  },
+  "joint_paired_and_band": {
+    "old_eligible": 1205,
+    "new_eligible": 1341,
+    "common": 1169,
+    "gained": 172,
+    "lost": 36,
+    "sign_changed_common": 0,
+    "max_abs_slope_change_common": 0.09615384615384609
+  },
+  "grey_peaks": {
+    "baseline": {
+      "valid_pixel_counts": [
+        10
+      ],
+      "usable_years": 12
+    },
+    "corrected": {
+      "valid_pixel_counts": [
+        4
+      ],
+      "usable_years": 0
+    }
+  },
+  "script_sha256": "905eed5301926129b9133d959eab0e39ba6c90c8ef8777b4b8285d773d721eea"
+}

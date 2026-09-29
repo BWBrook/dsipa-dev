@@ -1,0 +1,109 @@
+{
+  "created_utc": "2026-09-19T05:37:26.889575+00:00",
+  "analysis_id": "spatial-correction-20260919",
+  "purpose": "Bounded visual audit of corrected spatial support; not a manuscript figure or radiance result.",
+  "parameters": {
+    "crs": "EPSG:3577",
+    "context_km": 5.0,
+    "raw_buffer_km": 1.0,
+    "quad_segs": 128,
+    "pa_ids": [
+      "WA_39584",
+      "WA_05225",
+      "NSW_LHI"
+    ]
+  },
+  "inputs": {
+    "accepted_pa_gpkg": {
+      "path_used": "/tmp/dsipa-spatial-visual-R17UJh/pa_geometries_v0_3_0.gpkg",
+      "source_label": "deep-server-ts:/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/processed/pa_geometries_v0_3_0.gpkg",
+      "bytes": 132571136,
+      "sha256": "da843f551bf1863dc5d1930ecb657491f73d69827b25007a0c55c9019721d0e6"
+    },
+    "old_natural_earth_land_wkb": {
+      "path_used": "/tmp/dsipa-spatial-visual-R17UJh/land_union_ne_110m.wkb",
+      "source_label": "deep-server-ts:/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/processed/cache/land_union_ne_110m.wkb",
+      "bytes": 83525,
+      "sha256": "2eb7cea010a462e4d830ce779567d0d626b2355e4f444259616eae765be93b77"
+    },
+    "aims_split_shapefile": {
+      "path_used": "/tmp/dsipa-spatial-visual-R17UJh/AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.shp",
+      "source_label": "deep-server-ts:/data/codex/scratch/dsipa-spatial-correction-20260919/coastline/Split/Split/AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.shp",
+      "bytes": 39878560,
+      "sha256": "744cfeb492e3c0fb0aa66f2807b97406c4658c8470662f9b436fbb949d24e337",
+      "components": {
+        "AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.cpg": {
+          "path_used": "/tmp/dsipa-spatial-visual-R17UJh/AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.cpg",
+          "source_label": "deep-server-ts:/data/codex/scratch/dsipa-spatial-correction-20260919/coastline/Split/Split/AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.shp [cpg]",
+          "bytes": 10,
+          "sha256": "09fc313075748ce8ead962229ed89c919d5a9ff71974ee725a0b48bb87d975a2"
+        },
+        "AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.dbf": {
+          "path_used": "/tmp/dsipa-spatial-visual-R17UJh/AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.dbf",
+          "source_label": "deep-server-ts:/data/codex/scratch/dsipa-spatial-correction-20260919/coastline/Split/Split/AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.shp [dbf]",
+          "bytes": 571225,
+          "sha256": "d9c056b6926ef72768b896c151534813a83d3daa1842a543feea88965ecc59d7"
+        },
+        "AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.prj": {
+          "path_used": "/tmp/dsipa-spatial-visual-R17UJh/AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.prj",
+          "source_label": "deep-server-ts:/data/codex/scratch/dsipa-spatial-correction-20260919/coastline/Split/Split/AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.shp [prj]",
+          "bytes": 145,
+          "sha256": "a02a27b1d1982c8516d83398e85a3c8b1aef1713c13ef4d84d7bde17430c07c4"
+        },
+        "AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.shp": {
+          "path_used": "/tmp/dsipa-spatial-visual-R17UJh/AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.shp",
+          "source_label": "deep-server-ts:/data/codex/scratch/dsipa-spatial-correction-20260919/coastline/Split/Split/AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.shp [shp]",
+          "bytes": 39878560,
+          "sha256": "744cfeb492e3c0fb0aa66f2807b97406c4658c8470662f9b436fbb949d24e337"
+        },
+        "AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.shx": {
+          "path_used": "/tmp/dsipa-spatial-visual-R17UJh/AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.shx",
+          "source_label": "deep-server-ts:/data/codex/scratch/dsipa-spatial-correction-20260919/coastline/Split/Split/AU_NESP-MaC-3-17_AIMS_Aus-Coastline-50k_2024_V1-1_split.shp [shx]",
+          "bytes": 240588,
+          "sha256": "bd44e99a439788aa29513e25259cee3dcf6f763a185a977171fee7639a84d864"
+        }
+      }
+    }
+  },
+  "script": {
+    "path": "/home/bwbrook/papers/dsipa-dev/analysis/plot_spatial_support_correction.py",
+    "sha256": "3f6b170795fd2f7f632d2257263e24c937489a10559016eeed39c626d201b9d4"
+  },
+  "output": {
+    "path": "/home/bwbrook/papers/dsipa-dev/analysis/reports/spatial_correction_coastline_comparison.png",
+    "sha256": "57975f6d9ac01ec6290e3af5d19b23da9af4dab78b9610ca1a9e33f174494aa4",
+    "bytes": 428929
+  },
+  "panels": [
+    {
+      "pa_id": "WA_39584",
+      "name": "Henderson",
+      "context_km": 5.0,
+      "pa_area_km2": 2.981179768797455,
+      "raw_1km_support_area_km2": 14.486454387677066,
+      "old_ne_land_area_in_context_km2": 54.33472339667988,
+      "aims_land_area_in_context_km2": 89.82794965615484,
+      "aims_features_intersecting_context": 8
+    },
+    {
+      "pa_id": "WA_05225",
+      "name": "Torndirrup",
+      "context_km": 5.0,
+      "pa_area_km2": 40.2164560795153,
+      "raw_1km_support_area_km2": 58.39296634319824,
+      "old_ne_land_area_in_context_km2": 71.57613726908694,
+      "aims_land_area_in_context_km2": 104.83183494589538,
+      "aims_features_intersecting_context": 42
+    },
+    {
+      "pa_id": "NSW_LHI",
+      "name": "Lord Howe Island",
+      "context_km": 5.0,
+      "pa_area_km2": 13.138582461220599,
+      "raw_1km_support_area_km2": 62.74054670304376,
+      "old_ne_land_area_in_context_km2": null,
+      "aims_land_area_in_context_km2": 16.513225630568304,
+      "aims_features_intersecting_context": 23
+    }
+  ]
+}

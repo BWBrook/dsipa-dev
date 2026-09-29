@@ -1,0 +1,66 @@
+{
+  "pa_ids": [
+    "WA_39584",
+    "WA_05225",
+    "NSW_LHI",
+    "ACT_03",
+    "QLD_0239GRP001",
+    "WA_27575",
+    "NSW_N1142",
+    "CWTH_IPA58"
+  ],
+  "checks": {
+    "pa_radiance_buffers_national_v0_3_0.csv": {
+      "rows": 576,
+      "columns": [
+        "pa_id",
+        "zone",
+        "buffer_km",
+        "buffer_type",
+        "year",
+        "schema_version",
+        "scale_metadata",
+        "offset_metadata",
+        "pixel_count",
+        "valid_pixel_count",
+        "valid_fraction",
+        "mean",
+        "median",
+        "min",
+        "max",
+        "std",
+        "frac_gt0",
+        "p95"
+      ],
+      "all_fields_exact": true
+    },
+    "pa_edge_profiles_national_v0_3_0.csv": {
+      "rows": 288,
+      "columns": [
+        "pa_id",
+        "ring_index",
+        "ring_inner_km",
+        "ring_outer_km",
+        "year",
+        "schema_version",
+        "scale_metadata",
+        "offset_metadata",
+        "pixel_count",
+        "valid_pixel_count",
+        "valid_fraction",
+        "mean",
+        "median",
+        "min",
+        "max",
+        "std",
+        "frac_gt0",
+        "p95"
+      ],
+      "all_fields_exact": true
+    }
+  },
+  "public_baseline": "/data/codex/scratch/dsipa-spatial-correction-20260919/public_baseline",
+  "national_run": "/data/codex/scratch/dsipa-spatial-correction-20260919/national_v2",
+  "pilot": "/data/codex/scratch/dsipa-spatial-correction-20260919/public_reproduction_pilot",
+  "scope": "Eight named corrected supports; public/accepted full baseline semantic equality independently verified."
+}

@@ -1,0 +1,209 @@
+{
+  "analysis": {
+    "models_refit": false,
+    "note": "Figures rendered from accepted processed outputs and tracked report values.",
+    "render_only": true,
+    "trends_refit": false
+  },
+  "created_utc": "2026-09-19T06:23:34.995922+00:00",
+  "input_contract": {
+    "analysis_id": "spatial-correction-20260919",
+    "files": {
+      "coauthor_example_series.csv": {
+        "bytes": 12136,
+        "path": "/home/bwbrook/papers/dsipa-dev/analysis/reports/coauthor_example_series.csv",
+        "sha256": "08e90876a9cc9e8006472e37353a831f25c76ff89402af1ce20cb72ad2403ec2"
+      },
+      "pa_edge_profiles_national_v0_3_0.csv": {
+        "bytes": 25293966,
+        "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_edge_profiles_national_v0_3_0.csv",
+        "sha256": "408f39ce27027558b4da4eafab4c78bc3ca57cded5d27c8671620077d4dd1533"
+      },
+      "pa_geometries_v0_3_0.csv": {
+        "bytes": 1768417,
+        "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_geometries_v0_3_0.csv",
+        "sha256": "781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b"
+      },
+      "pa_geometries_v0_3_0.gpkg": {
+        "bytes": 132571136,
+        "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_geometries_v0_3_0.gpkg",
+        "sha256": "da843f551bf1863dc5d1930ecb657491f73d69827b25007a0c55c9019721d0e6"
+      },
+      "pa_radiance_buffers_national_v0_3_0.csv": {
+        "bytes": 101658795,
+        "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_radiance_buffers_national_v0_3_0.csv",
+        "sha256": "3173bd9bd3b4a545b34eb740a043a5aaf85175956aa654f0ae52c530cce8344c"
+      },
+      "pa_risk_rankings_v0_3_0.csv": {
+        "bytes": 669286,
+        "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_risk_rankings_v0_3_0.csv",
+        "sha256": "3646da37eab2a4f48b3f348fc97ad24bcd0844d103420848cf9f3d70ea9c7b55"
+      },
+      "pa_trend_bootstrap_summary_v0_3_0.csv": {
+        "bytes": 582886,
+        "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_trend_bootstrap_summary_v0_3_0.csv",
+        "sha256": "cd3c165ed5857d0fb2fcb3be360fe89dfda6757c296fb5cd1bd7aee509078920"
+      },
+      "pa_trends_v0_3_0.csv": {
+        "bytes": 5324125,
+        "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_trends_v0_3_0.csv",
+        "sha256": "4c4ba16c7305d53f4fa358ef9a5104e64eee05901fabba5913a843f5cfa8d32d"
+      },
+      "spatial_correction_summary.json": {
+        "bytes": 1697,
+        "path": "/home/bwbrook/papers/dsipa-dev/analysis/reports/spatial_correction_summary.json",
+        "sha256": "8890b211ad4bc7685052926a4d2f246a46cef35b7ad633982bbc86a83569cdf6"
+      }
+    },
+    "manifest_path": "/home/bwbrook/papers/dsipa-dev/analysis/reports/spatial_correction_render_input_manifest.json",
+    "manifest_sha256": "860604d6f964e8f1a51bf85e377fbca5773b7977ed06f76b536cfbf30a640540",
+    "mode": "manifest"
+  },
+  "inputs": {
+    "bootstrap_summary": {
+      "bytes": 582886,
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_trend_bootstrap_summary_v0_3_0.csv",
+      "sha256": "cd3c165ed5857d0fb2fcb3be360fe89dfda6757c296fb5cd1bd7aee509078920"
+    },
+    "edge_profiles": {
+      "bytes": 25293966,
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_edge_profiles_national_v0_3_0.csv",
+      "sha256": "408f39ce27027558b4da4eafab4c78bc3ca57cded5d27c8671620077d4dd1533"
+    },
+    "geometry_csv": {
+      "bytes": 1768417,
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_geometries_v0_3_0.csv",
+      "sha256": "781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b"
+    },
+    "geometry_gpkg": {
+      "bytes": 132571136,
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_geometries_v0_3_0.gpkg",
+      "sha256": "da843f551bf1863dc5d1930ecb657491f73d69827b25007a0c55c9019721d0e6"
+    },
+    "radiance": {
+      "bytes": 101658795,
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_radiance_buffers_national_v0_3_0.csv",
+      "sha256": "3173bd9bd3b4a545b34eb740a043a5aaf85175956aa654f0ae52c530cce8344c"
+    },
+    "risk": {
+      "bytes": 669286,
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_risk_rankings_v0_3_0.csv",
+      "sha256": "3646da37eab2a4f48b3f348fc97ad24bcd0844d103420848cf9f3d70ea9c7b55"
+    },
+    "spatial_correction_summary": {
+      "bytes": 1697,
+      "path": "/home/bwbrook/papers/dsipa-dev/analysis/reports/spatial_correction_summary.json",
+      "sha256": "8890b211ad4bc7685052926a4d2f246a46cef35b7ad633982bbc86a83569cdf6"
+    },
+    "trajectory_example_series": {
+      "bytes": 12136,
+      "path": "/home/bwbrook/papers/dsipa-dev/analysis/reports/coauthor_example_series.csv",
+      "sha256": "08e90876a9cc9e8006472e37353a831f25c76ff89402af1ce20cb72ad2403ec2"
+    },
+    "trends": {
+      "bytes": 5324125,
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_trends_v0_3_0.csv",
+      "sha256": "4c4ba16c7305d53f4fa358ef9a5104e64eee05901fabba5913a843f5cfa8d32d"
+    }
+  },
+  "outputs": {
+    "baseline_map": {
+      "path": "/home/bwbrook/papers/dsipa-dev/manuscript/figures/fig_layerA_baseline_map.png",
+      "sha256": "19d103c9cf9b152b0db67d3769f370737bd2c03d4e291da8e2661d9830357da9"
+    },
+    "edge_profiles": {
+      "path": "/home/bwbrook/papers/dsipa-dev/manuscript/figures/fig_layerA_edge_profiles_aggregate.png",
+      "sha256": "099b0e680c851f30e35bef95997d0c3546051eb015a187eb65cdce1ced89a709"
+    },
+    "example_trajectories": {
+      "path": "/home/bwbrook/papers/dsipa-dev/manuscript/figures/fig_layerA_example_trajectories.png",
+      "sha256": "f0014e62157c2c166cb7497c8058710ca580df6e885a3f9eea2f17f284d7b64a"
+    },
+    "retention_quadrant": {
+      "path": "/home/bwbrook/papers/dsipa-dev/manuscript/figures/fig_layerA_retention_quadrant.png",
+      "sha256": "f80322c695979c42e82e9bda036ee3720b576563d38d99a49a3defa12f7d21fe"
+    },
+    "temporal_resampling_sensitivity": {
+      "path": "/home/bwbrook/papers/dsipa-dev/manuscript/figures/fig_layerA_trend_uncertainty_forest.png",
+      "sha256": "d04a6f055020c3c29b044c72e3bc51f1dc17a47c47a6972d8c599b2d4c84e6fa"
+    },
+    "trend_distribution": {
+      "path": "/home/bwbrook/papers/dsipa-dev/manuscript/figures/fig_layerA_trend_distribution.png",
+      "sha256": "421ccbe0d33ba83a0239587cee80168a68ed46d0672b2edc2531e702db9bcb9e"
+    }
+  },
+  "packages": {
+    "geopandas": "1.1.2",
+    "matplotlib": "3.10.8",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "rasterio": "1.4.4",
+    "scipy": "1.16.3",
+    "shapely": "2.1.2"
+  },
+  "python": {
+    "executable": "/home/bwbrook/papers/dsipa-dev/.venv/bin/python",
+    "implementation": "CPython",
+    "version": "3.12.3"
+  },
+  "render_receipt": {
+    "analysis_id": "spatial-correction-20260919",
+    "inside_positive": 420,
+    "inside_rows": 4426,
+    "inside_zero": 3969,
+    "omit_layer_b": true,
+    "paired_rows": 4253,
+    "quadrant_counts": {
+      "Q1": 347,
+      "Q2": 70,
+      "Q3": 3587,
+      "Q4": 249
+    },
+    "spatial_correction": true,
+    "trajectory_label_changes": [
+      {
+        "actual": "Q1: both slopes positive",
+        "changed": false,
+        "expected": "Q1: both slopes positive",
+        "pa_id": "WA_27575"
+      },
+      {
+        "actual": "Q1: both slopes positive",
+        "changed": true,
+        "expected": "Q2: inside only positive",
+        "pa_id": "WA_39584"
+      },
+      {
+        "actual": "Q3: neither slope positive",
+        "changed": false,
+        "expected": "Q3: neither slope positive",
+        "pa_id": "ACT_03"
+      },
+      {
+        "actual": "Q4: surrounding only positive",
+        "changed": false,
+        "expected": "Q4: surrounding only positive",
+        "pa_id": "NSW_N1142"
+      }
+    ],
+    "zero_slope_late_positive": 78
+  },
+  "source_files": {
+    "analysis/coauthor_evidence.py": {
+      "path": "/home/bwbrook/papers/dsipa-dev/analysis/coauthor_evidence.py",
+      "sha256": "36d6f3a626a2eef4746476967e70b714e12b9140604f5a80f4ecccd1d94b7dcb"
+    },
+    "analysis/render_coauthor_figures.py": {
+      "path": "/home/bwbrook/papers/dsipa-dev/analysis/render_coauthor_figures.py",
+      "sha256": "a75070439a089b08d1c0a257087b1793f28e136be293c3c0e6d4e1227774b6d9"
+    },
+    "src/python/dsipa/figures_layerA.py": {
+      "path": "/home/bwbrook/papers/dsipa-dev/src/python/dsipa/figures_layerA.py",
+      "sha256": "c9f3bf0fd569582502e2325b4954a994fbbcb4b3096119ec68f802ae29f9413c"
+    },
+    "src/python/dsipa/vulnerability_model.py": {
+      "path": "/home/bwbrook/papers/dsipa-dev/src/python/dsipa/vulnerability_model.py",
+      "sha256": "9f379ec63fb8d1ed20727495bee9cc232dd82df80e65416ad18dd625d16cde5c"
+    }
+  }
+}

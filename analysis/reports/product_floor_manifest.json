@@ -1,0 +1,68 @@
+{
+  "purpose": "Read-only 2014-2019 observed positive-pixel floor follow-up",
+  "host": "deep-server",
+  "started_utc": "2026-09-18T02:30:32.570502+00:00",
+  "finished_utc": "2026-09-18T02:30:45.430298+00:00",
+  "runtime_seconds": 12.859833232010715,
+  "python": "3.12.3",
+  "numpy": "2.3.5",
+  "pandas": "2.3.3",
+  "rasterio": "1.4.4",
+  "window": [
+    66196,
+    23228,
+    17554,
+    8507
+  ],
+  "window_pixels": 149331878,
+  "script_sha256": "b383bd6f8658b7af01fa54b2cd88d364284ce1e4a8f7a56fe19cb4ca957fe5e1",
+  "inputs": {
+    "2014": {
+      "file": "nightlights.average_viirs.v21_m_500m_s_20140101_20141231_go_epsg4326_v20250904.tif",
+      "bytes": 68076008,
+      "sha256": "12e24b91f3fef11117ac6bfb66142b1088541884602921128d3ddd44e3e40cbd",
+      "dtype": "int16",
+      "nodata": -32768.0
+    },
+    "2015": {
+      "file": "nightlights.average_viirs.v21_m_500m_s_20150101_20151231_go_epsg4326_v20250904.tif",
+      "bytes": 67422293,
+      "sha256": "a673f35bd6240c6dc69e05550cdfcd46080a23364a12b91fe897312a308f712f",
+      "dtype": "int16",
+      "nodata": -32768.0
+    },
+    "2016": {
+      "file": "nightlights.average_viirs.v21_m_500m_s_20160101_20161231_go_epsg4326_v20250904.tif",
+      "bytes": 67142087,
+      "sha256": "319ef2d91a2ff4733c61a555a81f05b483c9b47463b1f91f00bbc5385556ca45",
+      "dtype": "int16",
+      "nodata": -32768.0
+    },
+    "2017": {
+      "file": "nightlights.average_viirs.v21_m_500m_s_20170101_20171231_go_epsg4326_v20250904.tif",
+      "bytes": 75369463,
+      "sha256": "6c767ca0d2c5b2c45c87fea60039bd232ed6a0114229ab31d9c2fa2238114c46",
+      "dtype": "int16",
+      "nodata": -32768.0
+    },
+    "2018": {
+      "file": "nightlights.average_viirs.v21_m_500m_s_20180101_20181231_go_epsg4326_v20250904.tif",
+      "bytes": 76305045,
+      "sha256": "62fd7052dc69cadaf446d61ea135e8489b321be24cb4b3b4e26f689b81a3405a",
+      "dtype": "int16",
+      "nodata": -32768.0
+    },
+    "2019": {
+      "file": "nightlights.average_viirs.v21_m_500m_s_20190101_20191231_go_epsg4326_v20250904.tif",
+      "bytes": 76453018,
+      "sha256": "9f84fedf65c5a1bdbda63295849d80f99c3b03a9a569e19b173026829c1760b3",
+      "dtype": "int16",
+      "nodata": -32768.0
+    }
+  },
+  "outputs_sha256": {
+    "product_floor_summary.csv": "779e76466882d679c44e53797751cf915fd830fecd8fc5be200d2bc435b6298d",
+    "product_floor_exceptions.csv": "6a5b8bab91263fd07a34989f8867ab49fe7962e0ee3aeb9e783a550258dc21bd"
+  },
+  "interpretation_boundary": "Observed stored values only; not a sensor detection threshold, calibrated physical-unit statement, or claim about polygon means."
+}

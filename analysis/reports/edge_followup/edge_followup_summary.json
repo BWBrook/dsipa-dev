@@ -1,0 +1,114 @@
+{
+  "generated_utc": "2026-09-19T06:03:27.216347+00:00",
+  "exploratory": true,
+  "script": {
+    "path": "/home/bwbrook/papers/dsipa-dev/analysis/audit_edge_followup.py",
+    "sha256": "a2eb89cb49552f0148f27244f7b34c536139460d84ae79009deeec9f5e0b52ae"
+  },
+  "software": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pandas": "2.3.3",
+    "numpy": "2.3.5"
+  },
+  "parameters": {
+    "min_valid_pixels": 10,
+    "min_valid_years": 8,
+    "ring_0_1_km": [
+      0.0,
+      1.0
+    ],
+    "ring_1_5_km": [
+      1.0,
+      5.0
+    ],
+    "primary_buffer_type": "land_unprotected"
+  },
+  "inputs": {
+    "pa_trends_v0_3_0.csv": {
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_trends_v0_3_0.csv",
+      "sha256": "4c4ba16c7305d53f4fa358ef9a5104e64eee05901fabba5913a843f5cfa8d32d",
+      "bytes": 5324125
+    },
+    "pa_edge_profiles_national_v0_3_0.csv": {
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_edge_profiles_national_v0_3_0.csv",
+      "sha256": "408f39ce27027558b4da4eafab4c78bc3ca57cded5d27c8671620077d4dd1533",
+      "bytes": 25293966
+    },
+    "pa_geometries_v0_3_0.csv": {
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_geometries_v0_3_0.csv",
+      "sha256": "781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b",
+      "bytes": 1768417
+    }
+  },
+  "input_contract": {
+    "mode": "manifest",
+    "analysis_id": "spatial-correction-20260919",
+    "manifest_path": "/home/bwbrook/papers/dsipa-dev/analysis/reports/spatial_correction_render_input_manifest.json",
+    "manifest_sha256": "860604d6f964e8f1a51bf85e377fbca5773b7977ed06f76b536cfbf30a640540"
+  },
+  "cohort": {
+    "same_1_5_km_matched_n": 1341,
+    "ring_0_1_slope_available_n": 1341,
+    "positive_whole_matched_n": 150,
+    "positive_0_1_positive_1_5_zero_n": 100,
+    "positive_0_1_positive_1_5_zero_all_zero_n": 86,
+    "positive_0_1_positive_1_5_zero_nonzero_history_n": 14,
+    "q1_lost_n": 85,
+    "q1_kept_n": 27,
+    "q1_lost_ring_zero_slope_n": 85,
+    "q1_lost_all_zero_1_5_n": 73,
+    "q1_lost_area_km2": 66435.59154068855,
+    "q1_lost_share_all_positive_area": 0.10330432114326682,
+    "q1_lost_share_eligible_area": 0.03883168824550992,
+    "q1_lost_median_ring_slope": 0.0,
+    "q1_lost_median_whole_slope": 0.0104112441436751,
+    "q1_lost_median_area_km2": 132.75871490565476,
+    "q1_kept_median_ring_slope": 0.03105590062111801,
+    "q1_kept_median_whole_slope": 0.0562565720294426,
+    "q1_kept_median_area_km2": 203.89123203363428,
+    "q2_lost_n": 23,
+    "q2_lost_ring_zero_slope_n": 22,
+    "q2_lost_all_zero_1_5_n": 20
+  },
+  "geometry_check": {
+    "n_rows": 11133,
+    "n_unique_pa_id": 11133,
+    "duplicate_pa_id_n": 0,
+    "all_polygon_area_km2": 1713990.9232136435,
+    "eligible_polygon_area_km2": 1710860.2417864343,
+    "positive_polygon_area_km2": 643105.6397781546,
+    "largest_rows_output": "edge_followup_geometry_check.csv"
+  },
+  "terciles": {
+    "n_positive": 420,
+    "total_positive_area_km2": 643105.6397781546,
+    "q1_boundary": 0.04019983306328855,
+    "q2_boundary": 0.31010276985886753,
+    "ties_at_q1": 0,
+    "ties_at_q2": 0,
+    "tie_rule": "Values equal to a quantile boundary are assigned to the lower tercile."
+  },
+  "outputs": {
+    "edge_followup_band_slopes.csv": {
+      "sha256": "1b58ffad273a85ddf4d1a19dff036245abbd7d0e838575dd32ab3f361e6116e7",
+      "bytes": 139871
+    },
+    "edge_followup_annual_status.csv": {
+      "sha256": "683e631af1187cc77c3c9ee38809c3a7b6ff130e2a1a3c83c7cb41d81bceb662",
+      "bytes": 166
+    },
+    "edge_followup_positive_terciles.csv": {
+      "sha256": "dc45b3886116aaa5d3c6ad697a44c70bc7937ec1b73e2dde639aaac073b80499",
+      "bytes": 418
+    },
+    "edge_followup_geometry_check.csv": {
+      "sha256": "3399bdce438ac0a8076e9c6a4b367b61773f33062f6a7ba1961c668ad95e8893",
+      "bytes": 767
+    },
+    "edge_followup_report.md": {
+      "sha256": "2cd7a5e244ea92799406d99a712c934be68f9a181da005b8dd7ae8129ba5d878",
+      "bytes": 3439
+    }
+  }
+}

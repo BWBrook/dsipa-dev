@@ -1,0 +1,40 @@
+{
+  "purpose": "bounded visual diagnostic; not field validation",
+  "crs": "EPSG:3577",
+  "source_files": {
+    "pa_geometries_v0_3_0.gpkg": "da843f551bf1863dc5d1930ecb657491f73d69827b25007a0c55c9019721d0e6",
+    "coastline_shp": "744cfeb492e3c0fb0aa66f2807b97406c4658c8470662f9b436fbb949d24e337",
+    "coastline_dbf": "d9c056b6926ef72768b896c151534813a83d3daa1842a543feea88965ecc59d7",
+    "coastline_shx": "bd44e99a439788aa29513e25259cee3dcf6f763a185a977171fee7639a84d864"
+  },
+  "coastline_run_contract": "spatial-correction-20260919",
+  "output": {
+    "path": "analysis/reports/spatial_coast_exception_gains.png",
+    "sha256": "f4ff44418ac1c2b01f5a77d6f56380285f2d26e6d8bb7a056a17219a8a1e7266",
+    "bytes": 345128,
+    "panels": 2
+  },
+  "cases": [
+    {
+      "pa_id": "WA_48325",
+      "label": "Swan River, WA",
+      "reference_lon": 115.73527778,
+      "reference_lat": -32.05527778,
+      "pa_distance_km": 2.3916520831958548,
+      "support_distance_km": 1.3920362862129125,
+      "reference_point_intersects_unprotected_1km_support": false,
+      "support_area_km2": 118.99012763215588
+    },
+    {
+      "pa_id": "NSW_N0006",
+      "label": "Brisbane Water, NSW",
+      "reference_lon": 151.3344819,
+      "reference_lat": -33.48175443,
+      "pa_distance_km": 1.2544886451743327,
+      "support_distance_km": 0.41623098814870396,
+      "reference_point_intersects_unprotected_1km_support": false,
+      "support_area_km2": 89.66158157600206
+    }
+  ],
+  "interpretation": "The reference points are diagnostic locations from the documented AIMS/GA exception screen. Their relationship to the current support does not establish water status or field truth."
+}

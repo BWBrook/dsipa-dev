@@ -1,0 +1,161 @@
+{
+  "analysis_id": "spatial-correction-20260919",
+  "scope": {
+    "run_root": "/data/codex/scratch/dsipa-spatial-correction-20260919/national_v2",
+    "baseline_root": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z",
+    "read_only_remote_validation": true,
+    "full_rerun_performed": false,
+    "extraction_manifest_sha256": "30a5296981afcf279288d8f8090693c9602270a805f5c380455c99bc80e13c73",
+    "support_areas_sha256": "519807c01d63d7583227840ea46e7d1a42ada7b90d4ddc38176eb2480ba435d8",
+    "support_coverage_sha256": "136ba6ed7ef81ee10e0471784eed9fd45a224da6d3688ec997873eb7b430a785",
+    "baseline_to_corrected_sha256": "2f57865feed8f9fc8a8c3286f878bddaa36df23065b03659ad8cbc0da41f393f",
+    "summary_sha256": "8890b211ad4bc7685052926a4d2f246a46cef35b7ad633982bbc86a83569cdf6"
+  },
+  "geometry_normalization": {
+    "accepted_rows": 11133,
+    "crs": "EPSG:3577",
+    "geometry_types": {"MultiPolygon": 11133},
+    "source_invalid_before_runner_repair_rows": 4,
+    "run_geometry_diagnostics_pa_invalid_after_runner_repair": 0,
+    "runner_repair_checks": [
+      {"pa_id": "CWTH_IPA54", "before_type": "MultiPolygon", "after_type": "MultiPolygon", "before_valid": false, "after_valid": true, "area_delta_m2": 0.051918, "reason": "Self-intersection"},
+      {"pa_id": "NSW_FR194", "before_type": "MultiPolygon", "after_type": "GeometryCollection", "before_valid": false, "after_valid": true, "area_delta_m2": 0.0, "reason": "Too few points in geometry component"},
+      {"pa_id": "NTWA_0009", "before_type": "MultiPolygon", "after_type": "MultiPolygon", "before_valid": false, "after_valid": true, "area_delta_m2": -2.622373, "reason": "Self-intersection"},
+      {"pa_id": "SA_358", "before_type": "MultiPolygon", "after_type": "MultiPolygon", "before_valid": false, "after_valid": true, "area_delta_m2": -1.807085, "reason": "Self-intersection"}
+    ],
+    "wilinggin": {
+      "pa_id": "CWTH_IPA58",
+      "input_type": "MultiPolygon",
+      "normalized_type": "MultiPolygon",
+      "area_abs_difference_m2": 0.0,
+      "normalized_valid": true,
+      "corrected_radiance_rows": 84,
+      "corrected_years": "2013-2024",
+      "pre_normalization_supports": [
+        {"label": "buffer_1km_raw", "before_type": "MultiPolygon", "normalized_type": "MultiPolygon", "area_delta_m2": 0.0},
+        {"label": "buffer_1km_land", "before_type": "MultiPolygon", "normalized_type": "MultiPolygon", "area_delta_m2": 0.0},
+        {"label": "buffer_1km_land_unprotected", "before_type": "GeometryCollection", "normalized_type": "MultiPolygon", "area_delta_m2": 0.000051},
+        {"label": "buffer_5km_raw", "before_type": "MultiPolygon", "normalized_type": "MultiPolygon", "area_delta_m2": 0.0},
+        {"label": "buffer_5km_land", "before_type": "MultiPolygon", "normalized_type": "MultiPolygon", "area_delta_m2": 0.0},
+        {"label": "buffer_5km_land_unprotected", "before_type": "GeometryCollection", "normalized_type": "MultiPolygon", "area_delta_m2": 0.000027},
+        {"label": "ring_0_0_1km", "before_type": "MultiPolygon", "normalized_type": "MultiPolygon", "area_delta_m2": 0.0},
+        {"label": "ring_1_1_5km", "before_type": "MultiPolygon", "normalized_type": "MultiPolygon", "area_delta_m2": 0.0},
+        {"label": "ring_2_5_10km", "before_type": "MultiPolygon", "normalized_type": "MultiPolygon", "area_delta_m2": 0.0}
+      ],
+      "interpretation": "The pre-normalization land_unprotected overlays were GeometryCollections. Polygon-only normalization converted them to MultiPolygon while changing area only by floating-point scale, preserving the derived support areas used by extraction."
+    }
+  },
+  "support_checks": {
+    "corrected_raw_rows": 22266,
+    "corrected_land_rows": 22223,
+    "corrected_land_unprotected_rows": 22152,
+    "complete_support_pairs": 22152,
+    "raw_ge_land_ge_land_unprotected_on_complete_pairs": true,
+    "negative_corrected_area_rows": 0,
+    "geometry_diagnostics_excluded_ids": [
+      "CWTH_IPA12", "QLD_0289BDI001", "QLD_0925HMA001",
+      "VIC_698", "WA_36056", "WA_44673"
+    ]
+  },
+  "nsw_fr194_prebuffer_probe": {
+    "source_before_type": "MultiPolygon",
+    "source_before_valid": false,
+    "runner_safe_type": "GeometryCollection",
+    "polygon_first_type": "Polygon",
+    "nonareal_remnants": [{"type": "LineString", "area_m2": 0.0}],
+    "estate_window_symmetric_difference_m2": 0.0,
+    "land_window_symmetric_difference_m2": 0.0,
+    "neighbor_pas_within_5km_of_remnant": ["NSW_N0002", "NSW_N0266"],
+    "neighbor_estate_membership_same": true,
+    "support_keys_compared": [
+      "buffer_1km_raw", "buffer_1km_land", "buffer_1km_land_unprotected",
+      "buffer_5km_raw", "buffer_5km_land", "buffer_5km_land_unprotected",
+      "ring_0", "ring_1", "ring_2"
+    ],
+    "max_abs_support_area_delta_m2": 0.000000134,
+    "max_abs_v2_area_reconciliation_m2": 0.000000000000014,
+    "raster_years": [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+    "raster_grid_comparisons": 108,
+    "grid_comparisons_with_different_pixels": 0,
+    "max_annual_mean_abs_difference": 0.0,
+    "interpretation": "The current v2 NSW_FR194 outputs are unchanged by normalizing the PA before buffering, but the pre-buffer normalization remains the correct structural fix because the runner-safe geometry contains a zero-area line remnant."
+  },
+  "named_coastal_cases": [
+    {
+      "pa_id": "WA_39584",
+      "coverage_fraction": 1.0,
+      "excluded": false,
+      "corrected_support_area_km2": {
+        "1km": {"raw": 14.486454, "land": 12.285701, "land_unprotected": 12.116744},
+        "5km": {"raw": 129.419606, "land": 86.846770, "land_unprotected": 75.467582}
+      }
+    },
+    {
+      "pa_id": "WA_05225",
+      "coverage_fraction": 0.975237736,
+      "excluded": false,
+      "corrected_support_area_km2": {
+        "1km": {"raw": 58.392967, "land": 20.307703, "land_unprotected": 20.304103},
+        "5km": {"raw": 317.600783, "land": 65.611229, "land_unprotected": 64.877870}
+      }
+    },
+    {
+      "pa_id": "NSW_LHI",
+      "coverage_fraction": 0.989928490,
+      "excluded": false,
+      "corrected_support_area_km2": {
+        "1km": {"raw": 62.740547, "land": 3.506969, "land_unprotected": 3.506969},
+        "5km": {"raw": 405.533464, "land": 3.506969, "land_unprotected": 3.506969}
+      }
+    }
+  ],
+  "excluded_land_supports": [
+    {"pa_id": "CWTH_IPA12", "excluded": true, "inside_fraction": 0.0, "corrected_land_rows": 0, "corrected_raw_rows": 2},
+    {"pa_id": "QLD_0289BDI001", "excluded": true, "inside_fraction": 0.0, "corrected_land_rows": 0, "corrected_raw_rows": 2},
+    {"pa_id": "QLD_0925HMA001", "excluded": true, "inside_fraction": 0.0, "corrected_land_rows": 0, "corrected_raw_rows": 2},
+    {"pa_id": "VIC_698", "excluded": true, "inside_fraction": 0.0, "corrected_land_rows": 0, "corrected_raw_rows": 2},
+    {"pa_id": "WA_36056", "excluded": true, "inside_fraction": 0.0, "corrected_land_rows": 0, "corrected_raw_rows": 2},
+    {"pa_id": "WA_44673", "excluded": true, "inside_fraction": 0.0, "corrected_land_rows": 0, "corrected_raw_rows": 2}
+  ],
+  "errata_proximity": {
+    "screen_rows": 21,
+    "unique_pa_ids": 19,
+    "duplicate_pa_ids": ["NSW_N0006"],
+    "comparison_rows_present": 9,
+    "comparison_rows_absent": 10,
+    "present_ids_with_any_slope_or_eligibility_change": [
+      "QLD_0532BBI001", "WA_48325", "NSW_N0005", "NSW_N0006",
+      "NSW_N0086", "NSW_N0935", "NSW_N0083", "QLD_1073KUY001"
+    ],
+    "present_ids_unchanged": ["QLD_4239AMU001"],
+    "absent_from_baseline_to_corrected_comparison": [
+      "QLD_0619BKL001", "NSW_N0584", "NSW_N0585", "NSW_N0704",
+      "NSW_N0920", "NSW_N0302", "NSW_N0599", "NSW_N0645",
+      "NSW_N0879", "QLD_0576FLY001"
+    ],
+    "present_change_details": [
+      {"pa_id": "QLD_0532BBI001", "old_category": "Q1", "new_category": "Q1", "delta_buffer_1km": 0.045734988, "delta_buffer_5km": -0.018851381},
+      {"pa_id": "WA_48325", "old_category": "ineligible", "new_category": "Q1", "old_eligible": false, "new_eligible": true},
+      {"pa_id": "NSW_N0005", "old_category": "Q1", "new_category": "Q1", "delta_buffer_1km": 0.123229762, "delta_buffer_5km": 0.031280169},
+      {"pa_id": "NSW_N0006", "old_category": "ineligible", "new_category": "Q1", "old_eligible": false, "new_eligible": true},
+      {"pa_id": "NSW_N0086", "old_category": "Q1", "new_category": "Q1", "delta_buffer_1km": -0.013476059, "delta_buffer_5km": -0.013872825},
+      {"pa_id": "NSW_N0935", "old_category": "Q4", "new_category": "Q4", "delta_buffer_1km": 0.014480805, "delta_buffer_5km": 0.002333659},
+      {"pa_id": "NSW_N0083", "old_category": "Q1", "new_category": "Q1", "delta_buffer_1km": -0.183808320, "delta_buffer_5km": 0.033431645},
+      {"pa_id": "QLD_1073KUY001", "old_category": "Q3", "new_category": "Q3", "delta_buffer_1km": 0.0, "delta_buffer_5km": 0.021940088},
+      {"pa_id": "QLD_4239AMU001", "old_category": "Q3", "new_category": "Q3", "delta_buffer_1km": 0.0, "delta_buffer_5km": 0.0}
+    ],
+    "interpretation": "The exception screen is a diagnostic. Eight of nine represented IDs changed slope or eligibility/category; ten IDs have no row in the baseline-to-corrected comparison and require separate support-level review."
+  },
+  "corrected_summary": {
+    "baseline_paired": 3858,
+    "geometry_only_paired": 4072,
+    "corrected_paired": 4253,
+    "corrected_quadrants": {"Q1": 347, "Q2": 70, "Q3": 3587, "Q4": 249},
+    "unchanged_inside_rows": 4426,
+    "unchanged_inside_positive": 420,
+    "unchanged_inside_negative": 37,
+    "unchanged_inside_zero": 3969
+  },
+  "limitations_need_text": true,
+  "limitations_note": "Retain an explicit limitation that documented coastline exceptions can alter support eligibility and buffer slopes, and that ten screened IDs were absent from the paired comparison. The four source invalidities were repaired by the runner before its geometry diagnostic: all became valid, with maximum absolute area change 2.62 m2; NSW_FR194 became a valid GeometryCollection and is subsequently handled by polygon-only support normalization."
+}

@@ -1,0 +1,366 @@
+pa_id,name,support,n128,n256,pixel_symmetric_difference,mean128,mean256,valid128,valid256
+ACT_03,Black Mountain,ring0,26,26,0,42.30769230769231,42.30769230769231,26,26
+ACT_03,Black Mountain,ring1,0,0,0,,,0,0
+ACT_03,Black Mountain,ring2,0,0,0,,,0,0
+ACT_03,Black Mountain,buffer1_raw,68,68,0,77.5,77.5,68,68
+ACT_03,Black Mountain,buffer5_raw,698,698,0,135.54441260744986,135.54441260744986,698,698
+BHA_NTWA_1,Chereninup Creek,ring0,50,50,0,0.0,0.0,50,50
+BHA_NTWA_1,Chereninup Creek,ring1,2,2,0,,,2,2
+BHA_NTWA_1,Chereninup Creek,ring2,0,0,0,,,0,0
+BHA_NTWA_1,Chereninup Creek,buffer1_raw,87,87,0,0.0,0.0,87,87
+BHA_NTWA_1,Chereninup Creek,buffer5_raw,810,810,0,0.0,0.0,810,810
+CWTH_IPA50,Mandingalbay Yidinji,ring0,406,406,0,7.315270935960591,7.315270935960591,406,406
+CWTH_IPA50,Mandingalbay Yidinji,ring1,42,42,0,5.0,5.0,42,42
+CWTH_IPA50,Mandingalbay Yidinji,ring2,0,0,0,,,0,0
+CWTH_IPA50,Mandingalbay Yidinji,buffer1_raw,545,545,0,16.972477064220183,16.972477064220183,545,545
+CWTH_IPA50,Mandingalbay Yidinji,buffer5_raw,2752,2752,0,18.175872093023255,18.175872093023255,2752,2752
+NSW_LHI,Lord Howe Island,ring0,67,67,0,0.0,0.0,67,67
+NSW_LHI,Lord Howe Island,ring1,0,0,0,,,0,0
+NSW_LHI,Lord Howe Island,ring2,0,0,0,,,0,0
+NSW_LHI,Lord Howe Island,buffer1_raw,347,347,0,0.0,0.0,347,347
+NSW_LHI,Lord Howe Island,buffer5_raw,2225,2225,0,0.0,0.0,2225,2225
+NSW_N0134,Basket Swamp,ring0,137,137,0,0.0,0.0,137,137
+NSW_N0134,Basket Swamp,ring1,10,10,0,0.0,0.0,10,10
+NSW_N0134,Basket Swamp,ring2,0,0,0,,,0,0
+NSW_N0134,Basket Swamp,buffer1_raw,172,172,0,0.0,0.0,172,172
+NSW_N0134,Basket Swamp,buffer5_raw,1074,1074,0,0.0,0.0,1074,1074
+NSW_N0734,The Glen,ring0,141,141,0,0.0,0.0,141,141
+NSW_N0734,The Glen,ring1,9,9,0,,,9,9
+NSW_N0734,The Glen,ring2,0,0,0,,,0,0
+NSW_N0734,The Glen,buffer1_raw,179,179,0,0.0,0.0,179,179
+NSW_N0734,The Glen,buffer5_raw,1155,1155,0,0.3116883116883117,0.3116883116883117,1155,1155
+NSW_N0746,Killabakh,ring0,145,145,0,0.0,0.0,145,145
+NSW_N0746,Killabakh,ring1,8,8,0,,,8,8
+NSW_N0746,Killabakh,ring2,0,0,0,,,0,0
+NSW_N0746,Killabakh,buffer1_raw,243,243,0,0.0,0.0,243,243
+NSW_N0746,Killabakh,buffer5_raw,1334,1334,0,0.022488755622188907,0.022488755622188907,1334,1334
+NSW_N0762,Burnt-Down Scrub,ring0,21,21,0,0.0,0.0,21,21
+NSW_N0762,Burnt-Down Scrub,ring1,0,0,0,,,0,0
+NSW_N0762,Burnt-Down Scrub,ring2,0,0,0,,,0,0
+NSW_N0762,Burnt-Down Scrub,buffer1_raw,61,61,0,0.0,0.0,61,61
+NSW_N0762,Burnt-Down Scrub,buffer5_raw,641,641,0,0.0,0.0,641,641
+NSW_N0769,Warragai Creek,ring0,10,10,0,0.0,0.0,10,10
+NSW_N0769,Warragai Creek,ring1,0,0,0,,,0,0
+NSW_N0769,Warragai Creek,ring2,0,0,0,,,0,0
+NSW_N0769,Warragai Creek,buffer1_raw,58,58,0,0.0,0.0,58,58
+NSW_N0769,Warragai Creek,buffer5_raw,612,612,0,0.0,0.0,612,612
+NSW_N0867,Parma Creek,ring0,198,198,0,0.050505050505050504,0.050505050505050504,198,198
+NSW_N0867,Parma Creek,ring1,7,7,0,,,7,7
+NSW_N0867,Parma Creek,ring2,0,0,0,,,0,0
+NSW_N0867,Parma Creek,buffer1_raw,290,290,0,0.034482758620689655,0.034482758620689655,290,290
+NSW_N0867,Parma Creek,buffer5_raw,1452,1452,0,1.790633608815427,1.790633608815427,1452,1452
+NSW_N1088,Leard,ring0,53,53,0,0.0,0.0,53,53
+NSW_N1088,Leard,ring1,11,11,0,0.0,0.0,11,11
+NSW_N1088,Leard,ring2,0,0,0,,,0,0
+NSW_N1088,Leard,buffer1_raw,88,88,0,0.5681818181818182,0.5681818181818182,88,88
+NSW_N1088,Leard,buffer5_raw,783,783,0,7.2796934865900385,7.2796934865900385,783,783
+NSW_N1089,Merriwindi,ring0,84,84,0,0.0,0.0,84,84
+NSW_N1089,Merriwindi,ring1,10,10,0,0.0,0.0,10,10
+NSW_N1089,Merriwindi,ring2,0,0,0,,,0,0
+NSW_N1089,Merriwindi,buffer1_raw,104,104,0,0.0,0.0,104,104
+NSW_N1089,Merriwindi,buffer5_raw,875,875,0,0.0,0.0,875,875
+NSW_N1108,Tilligerry,ring0,253,253,0,8.695652173913043,8.695652173913043,253,253
+NSW_N1108,Tilligerry,ring1,20,20,0,4.0,4.0,20,20
+NSW_N1108,Tilligerry,ring2,0,0,0,,,0,0
+NSW_N1108,Tilligerry,buffer1_raw,386,386,0,23.54922279792746,23.54922279792746,386,386
+NSW_N1108,Tilligerry,buffer5_raw,1975,1975,0,18.308860759493673,18.308860759493673,1975,1975
+NSW_N1142,Bungonia,ring0,45,45,0,0.0,0.0,45,45
+NSW_N1142,Bungonia,ring1,0,0,0,,,0,0
+NSW_N1142,Bungonia,ring2,0,0,0,,,0,0
+NSW_N1142,Bungonia,buffer1_raw,94,94,0,1.5957446808510638,1.5957446808510638,94,94
+NSW_N1142,Bungonia,buffer5_raw,802,802,0,5.0,5.0,802,802
+NSW_N1149,Mares Forest,ring0,140,140,0,0.0,0.0,140,140
+NSW_N1149,Mares Forest,ring1,4,4,0,,,4,4
+NSW_N1149,Mares Forest,ring2,0,0,0,,,0,0
+NSW_N1149,Mares Forest,buffer1_raw,171,171,0,0.0,0.0,171,171
+NSW_N1149,Mares Forest,buffer5_raw,1121,1121,0,0.0,0.0,1121,1121
+NSW_N1159,Bedooba,ring0,81,81,0,0.0,0.0,81,81
+NSW_N1159,Bedooba,ring1,11,11,0,0.0,0.0,11,11
+NSW_N1159,Bedooba,ring2,0,0,0,,,0,0
+NSW_N1159,Bedooba,buffer1_raw,122,122,0,0.0,0.0,122,122
+NSW_N1159,Bedooba,buffer5_raw,950,950,0,0.0,0.0,950,950
+NTWA_0060,NTWA Bushland covenant (0060),ring0,13,13,0,0.0,0.0,13,13
+NTWA_0060,NTWA Bushland covenant (0060),ring1,0,0,0,,,0,0
+NTWA_0060,NTWA Bushland covenant (0060),ring2,0,0,0,,,0,0
+NTWA_0060,NTWA Bushland covenant (0060),buffer1_raw,77,77,0,0.0,0.0,77,77
+NTWA_0060,NTWA Bushland covenant (0060),buffer5_raw,671,671,0,0.0,0.0,671,671
+NT_PA115,Charles Darwin,ring0,53,53,0,33.0188679245283,33.0188679245283,53,53
+NT_PA115,Charles Darwin,ring1,8,8,0,,,8,8
+NT_PA115,Charles Darwin,ring2,0,0,0,,,0,0
+NT_PA115,Charles Darwin,buffer1_raw,89,89,0,112.80898876404494,112.80898876404494,89,89
+NT_PA115,Charles Darwin,buffer5_raw,726,726,0,97.98898071625344,97.98898071625344,726,726
+NT_PA136,Daly River (Mt Nancar),ring0,89,89,0,0.0,0.0,89,89
+NT_PA136,Daly River (Mt Nancar),ring1,10,10,0,0.0,0.0,10,10
+NT_PA136,Daly River (Mt Nancar),ring2,0,0,0,,,0,0
+NT_PA136,Daly River (Mt Nancar),buffer1_raw,128,128,0,0.0,0.0,128,128
+NT_PA136,Daly River (Mt Nancar),buffer5_raw,925,925,0,0.12972972972972974,0.12972972972972974,925,925
+QLD_0239GRP001,Grey Peaks,ring0,158,158,0,4.30379746835443,4.30379746835443,158,158
+QLD_0239GRP001,Grey Peaks,ring1,4,4,0,,,4,4
+QLD_0239GRP001,Grey Peaks,ring2,0,0,0,,,0,0
+QLD_0239GRP001,Grey Peaks,buffer1_raw,260,260,0,4.538461538461538,4.538461538461538,260,260
+QLD_0239GRP001,Grey Peaks,buffer5_raw,1573,1573,0,16.179275270184363,16.179275270184363,1573,1573
+QLD_0861BGC001,Bowling Green Bay,ring0,162,162,0,0.0,0.0,162,162
+QLD_0861BGC001,Bowling Green Bay,ring1,8,8,0,,,8,8
+QLD_0861BGC001,Bowling Green Bay,ring2,0,0,0,,,0,0
+QLD_0861BGC001,Bowling Green Bay,buffer1_raw,301,301,0,0.0,0.0,301,301
+QLD_0861BGC001,Bowling Green Bay,buffer5_raw,2158,2158,0,0.6765523632993512,0.6765523632993512,2158,2158
+SA_0219,Moorook,ring0,63,63,0,1.2698412698412698,1.2698412698412698,63,63
+SA_0219,Moorook,ring1,10,10,0,0.0,0.0,10,10
+SA_0219,Moorook,ring2,0,0,0,,,0,0
+SA_0219,Moorook,buffer1_raw,103,103,0,3.3009708737864076,3.3009708737864076,103,103
+SA_0219,Moorook,buffer5_raw,861,861,0,3.2636469221835074,3.2636469221835074,861,861
+SA_0226,Coffin Bay,ring0,800,800,0,0.0,0.0,800,800
+SA_0226,Coffin Bay,ring1,938,938,0,0.0,0.0,938,938
+SA_0226,Coffin Bay,ring2,0,0,0,,,0,0
+SA_0226,Coffin Bay,buffer1_raw,915,915,0,0.08743169398907104,0.08743169398907104,915,915
+SA_0226,Coffin Bay,buffer5_raw,4406,4407,1,0.08624602814344076,0.08622645790787384,4406,4407
+SA_0427,Tola,ring0,1,1,0,,,1,1
+SA_0427,Tola,ring1,0,0,0,,,0,0
+SA_0427,Tola,ring2,0,0,0,,,0,0
+SA_0427,Tola,buffer1_raw,30,30,0,0.0,0.0,30,30
+SA_0427,Tola,buffer5_raw,498,498,0,0.0,0.0,498,498
+SA_10220,Congeratinga,ring0,4,4,0,,,4,4
+SA_10220,Congeratinga,ring1,0,0,0,,,0,0
+SA_10220,Congeratinga,ring2,0,0,0,,,0,0
+SA_10220,Congeratinga,buffer1_raw,40,40,0,0.0,0.0,40,40
+SA_10220,Congeratinga,buffer5_raw,560,560,0,0.0,0.0,560,560
+SA_1069,Unnamed (No.HA1069),ring0,112,112,0,0.0,0.0,112,112
+SA_1069,Unnamed (No.HA1069),ring1,13,13,0,0.0,0.0,13,13
+SA_1069,Unnamed (No.HA1069),ring2,0,0,0,,,0,0
+SA_1069,Unnamed (No.HA1069),buffer1_raw,228,228,0,0.0,0.0,228,228
+SA_1069,Unnamed (No.HA1069),buffer5_raw,1495,1495,0,0.0,0.0,1495,1495
+SA_1079_1,Nullarbor,ring0,4350,4350,0,0.02528735632183908,0.02528735632183908,4350,4350
+SA_1079_1,Nullarbor,ring1,12579,12579,0,0.0,0.0,12579,12579
+SA_1079_1,Nullarbor,ring2,12531,12531,0,0.0,0.0,12531,12531
+SA_1079_1,Nullarbor,buffer1_raw,2833,2833,0,0.03176844334627603,0.03176844334627603,2833,2833
+SA_1079_1,Nullarbor,buffer5_raw,14364,14364,0,0.006265664160401002,0.006265664160401002,14364,14364
+SA_1130,Unnamed (No.HA1130),ring0,0,0,0,,,0,0
+SA_1130,Unnamed (No.HA1130),ring1,0,0,0,,,0,0
+SA_1130,Unnamed (No.HA1130),ring2,0,0,0,,,0,0
+SA_1130,Unnamed (No.HA1130),buffer1_raw,22,22,0,7.2727272727272725,7.2727272727272725,22,22
+SA_1130,Unnamed (No.HA1130),buffer5_raw,457,457,0,14.529540481400439,14.529540481400439,457,457
+SA_1353,Unnamed (No.HA1353),ring0,58,58,0,0.0,0.0,58,58
+SA_1353,Unnamed (No.HA1353),ring1,7,7,0,,,7,7
+SA_1353,Unnamed (No.HA1353),ring2,0,0,0,,,0,0
+SA_1353,Unnamed (No.HA1353),buffer1_raw,97,97,0,0.0,0.0,97,97
+SA_1353,Unnamed (No.HA1353),buffer5_raw,815,815,0,0.0,0.0,815,815
+SA_136,Unnamed (No.HA136),ring0,54,54,0,0.0,0.0,54,54
+SA_136,Unnamed (No.HA136),ring1,10,10,0,0.0,0.0,10,10
+SA_136,Unnamed (No.HA136),ring2,0,0,0,,,0,0
+SA_136,Unnamed (No.HA136),buffer1_raw,97,97,0,0.0,0.0,97,97
+SA_136,Unnamed (No.HA136),buffer5_raw,847,847,0,0.0,0.0,847,847
+SA_423,Unnamed (No.HA423),ring0,115,115,0,0.2608695652173913,0.2608695652173913,115,115
+SA_423,Unnamed (No.HA423),ring1,8,8,0,,,8,8
+SA_423,Unnamed (No.HA423),ring2,0,0,0,,,0,0
+SA_423,Unnamed (No.HA423),buffer1_raw,143,143,0,0.4195804195804196,0.4195804195804196,143,143
+SA_423,Unnamed (No.HA423),buffer5_raw,1096,1096,0,0.05474452554744526,0.05474452554744526,1096,1096
+SA_541,Unnamed (No.HA541),ring0,55,55,0,0.0,0.0,55,55
+SA_541,Unnamed (No.HA541),ring1,9,9,0,,,9,9
+SA_541,Unnamed (No.HA541),ring2,0,0,0,,,0,0
+SA_541,Unnamed (No.HA541),buffer1_raw,80,80,0,0.0,0.0,80,80
+SA_541,Unnamed (No.HA541),buffer5_raw,798,798,0,0.0,0.0,798,798
+SA_788,Unnamed (No.HA788),ring0,55,55,0,0.0,0.0,55,55
+SA_788,Unnamed (No.HA788),ring1,9,9,0,,,9,9
+SA_788,Unnamed (No.HA788),ring2,0,0,0,,,0,0
+SA_788,Unnamed (No.HA788),buffer1_raw,94,94,0,0.0,0.0,94,94
+SA_788,Unnamed (No.HA788),buffer5_raw,817,817,0,0.0,0.0,817,817
+TAS_12687,Sally Peak,ring0,26,26,0,0.0,0.0,26,26
+TAS_12687,Sally Peak,ring1,0,0,0,,,0,0
+TAS_12687,Sally Peak,ring2,0,0,0,,,0,0
+TAS_12687,Sally Peak,buffer1_raw,131,131,0,0.0,0.0,131,131
+TAS_12687,Sally Peak,buffer5_raw,953,953,0,0.02098635886673662,0.02098635886673662,953,953
+TAS_14158,Gardens Road,ring0,0,0,0,,,0,0
+TAS_14158,Gardens Road,ring1,0,0,0,,,0,0
+TAS_14158,Gardens Road,ring2,0,0,0,,,0,0
+TAS_14158,Gardens Road,buffer1_raw,36,36,0,0.0,0.0,36,36
+TAS_14158,Gardens Road,buffer5_raw,559,559,0,0.17889087656529518,0.17889087656529518,559,559
+TAS_21505,Wicks Road Nugara,ring0,1,1,0,,,1,1
+TAS_21505,Wicks Road Nugara,ring1,0,0,0,,,0,0
+TAS_21505,Wicks Road Nugara,ring2,0,0,0,,,0,0
+TAS_21505,Wicks Road Nugara,buffer1_raw,32,32,0,1.25,1.25,32,32
+TAS_21505,Wicks Road Nugara,buffer5_raw,550,550,0,0.8363636363636363,0.8363636363636363,550,550
+TAS_50338,Pelham North,ring0,4,4,0,,,4,4
+TAS_50338,Pelham North,ring1,0,0,0,,,0,0
+TAS_50338,Pelham North,ring2,0,0,0,,,0,0
+TAS_50338,Pelham North,buffer1_raw,42,42,0,0.0,0.0,42,42
+TAS_50338,Pelham North,buffer5_raw,608,608,0,0.0,0.0,608,608
+TAS_50414,Parting Creek,ring0,108,108,0,0.0,0.0,108,108
+TAS_50414,Parting Creek,ring1,8,8,0,,,8,8
+TAS_50414,Parting Creek,ring2,0,0,0,,,0,0
+TAS_50414,Parting Creek,buffer1_raw,170,170,0,1.0,1.0,170,170
+TAS_50414,Parting Creek,buffer5_raw,1180,1180,0,0.3644067796610169,0.3644067796610169,1180,1180
+TAS_50484,Unnamed (Pipers Brook),ring0,20,20,0,0.0,0.0,20,20
+TAS_50484,Unnamed (Pipers Brook),ring1,0,0,0,,,0,0
+TAS_50484,Unnamed (Pipers Brook),ring2,0,0,0,,,0,0
+TAS_50484,Unnamed (Pipers Brook),buffer1_raw,66,66,0,0.0,0.0,66,66
+TAS_50484,Unnamed (Pipers Brook),buffer5_raw,701,701,0,0.0,0.0,701,701
+TAS_50742,Ninth Island,ring0,3,3,0,,,3,3
+TAS_50742,Ninth Island,ring1,0,0,0,,,0,0
+TAS_50742,Ninth Island,ring2,0,0,0,,,0,0
+TAS_50742,Ninth Island,buffer1_raw,41,41,0,0.0,0.0,41,41
+TAS_50742,Ninth Island,buffer5_raw,586,586,0,0.0,0.0,586,586
+VIC_1234,Goyura B.R.,ring0,0,0,0,,,0,0
+VIC_1234,Goyura B.R.,ring1,0,0,0,,,0,0
+VIC_1234,Goyura B.R.,ring2,0,0,0,,,0,0
+VIC_1234,Goyura B.R.,buffer1_raw,23,23,0,0.0,0.0,23,23
+VIC_1234,Goyura B.R.,buffer5_raw,472,472,0,0.0,0.0,472,472
+VIC_1260,White Gate B.R.,ring0,0,0,0,,,0,0
+VIC_1260,White Gate B.R.,ring1,0,0,0,,,0,0
+VIC_1260,White Gate B.R.,ring2,0,0,0,,,0,0
+VIC_1260,White Gate B.R.,buffer1_raw,25,25,0,0.0,0.0,25,25
+VIC_1260,White Gate B.R.,buffer5_raw,490,490,0,0.0,0.0,490,490
+VIC_1273,Kangaroo Dam B.R.,ring0,1,1,0,,,1,1
+VIC_1273,Kangaroo Dam B.R.,ring1,0,0,0,,,0,0
+VIC_1273,Kangaroo Dam B.R.,ring2,0,0,0,,,0,0
+VIC_1273,Kangaroo Dam B.R.,buffer1_raw,31,31,0,0.0,0.0,31,31
+VIC_1273,Kangaroo Dam B.R.,buffer5_raw,503,503,0,0.0,0.0,503,503
+VIC_1801,Lillimur South B.R.,ring0,3,3,0,,,3,3
+VIC_1801,Lillimur South B.R.,ring1,0,0,0,,,0,0
+VIC_1801,Lillimur South B.R.,ring2,0,0,0,,,0,0
+VIC_1801,Lillimur South B.R.,buffer1_raw,39,39,0,0.0,0.0,39,39
+VIC_1801,Lillimur South B.R.,buffer5_raw,557,557,0,0.0,0.0,557,557
+VIC_2067,Arcadia N.C.R.,ring0,0,0,0,,,0,0
+VIC_2067,Arcadia N.C.R.,ring1,0,0,0,,,0,0
+VIC_2067,Arcadia N.C.R.,ring2,0,0,0,,,0,0
+VIC_2067,Arcadia N.C.R.,buffer1_raw,27,27,0,0.0,0.0,27,27
+VIC_2067,Arcadia N.C.R.,buffer5_raw,501,501,0,0.0,0.0,501,501
+VIC_2249,Stawell I13 B.R,ring0,3,3,0,,,3,3
+VIC_2249,Stawell I13 B.R,ring1,0,0,0,,,0,0
+VIC_2249,Stawell I13 B.R,ring2,0,0,0,,,0,0
+VIC_2249,Stawell I13 B.R,buffer1_raw,28,28,0,15.714285714285714,15.714285714285714,28,28
+VIC_2249,Stawell I13 B.R,buffer5_raw,528,528,0,9.18560606060606,9.18560606060606,528,528
+VIC_2588,Karuc-a-ruc Creek SS.R.,ring0,2,2,0,,,2,2
+VIC_2588,Karuc-a-ruc Creek SS.R.,ring1,0,0,0,,,0,0
+VIC_2588,Karuc-a-ruc Creek SS.R.,ring2,0,0,0,,,0,0
+VIC_2588,Karuc-a-ruc Creek SS.R.,buffer1_raw,39,39,0,0.0,0.0,39,39
+VIC_2588,Karuc-a-ruc Creek SS.R.,buffer5_raw,565,565,0,0.0,0.0,565,565
+VIC_3004,Kergunyah SS.R.,ring0,1,1,0,,,1,1
+VIC_3004,Kergunyah SS.R.,ring1,0,0,0,,,0,0
+VIC_3004,Kergunyah SS.R.,ring2,0,0,0,,,0,0
+VIC_3004,Kergunyah SS.R.,buffer1_raw,25,25,0,0.0,0.0,25,25
+VIC_3004,Kergunyah SS.R.,buffer5_raw,481,481,0,0.0,0.0,481,481
+VIC_3494,Korong Vale,ring0,28,28,0,0.0,0.0,28,28
+VIC_3494,Korong Vale,ring1,0,0,0,,,0,0
+VIC_3494,Korong Vale,ring2,0,0,0,,,0,0
+VIC_3494,Korong Vale,buffer1_raw,78,78,0,0.0,0.0,78,78
+VIC_3494,Korong Vale,buffer5_raw,733,733,0,0.927694406548431,0.927694406548431,733,733
+VIC_3497,Rushworth Forest,ring0,20,20,0,0.0,0.0,20,20
+VIC_3497,Rushworth Forest,ring1,0,0,0,,,0,0
+VIC_3497,Rushworth Forest,ring2,0,0,0,,,0,0
+VIC_3497,Rushworth Forest,buffer1_raw,70,70,0,0.0,0.0,70,70
+VIC_3497,Rushworth Forest,buffer5_raw,682,682,0,0.0,0.0,682,682
+VIC_3585,Winnot Creek,ring0,62,62,0,0.0,0.0,62,62
+VIC_3585,Winnot Creek,ring1,10,10,0,0.0,0.0,10,10
+VIC_3585,Winnot Creek,ring2,0,0,0,,,0,0
+VIC_3585,Winnot Creek,buffer1_raw,117,117,0,0.0,0.0,117,117
+VIC_3585,Winnot Creek,buffer5_raw,904,904,0,0.0,0.0,904,904
+VIC_3613,Double Creek,ring0,73,73,0,0.0,0.0,73,73
+VIC_3613,Double Creek,ring1,19,19,0,0.0,0.0,19,19
+VIC_3613,Double Creek,ring2,0,0,0,,,0,0
+VIC_3613,Double Creek,buffer1_raw,115,115,0,0.0,0.0,115,115
+VIC_3613,Double Creek,buffer5_raw,932,932,0,0.0,0.0,932,932
+VIC_380,Lake Coleman W.R,ring0,89,89,0,0.0,0.0,89,89
+VIC_380,Lake Coleman W.R,ring1,35,35,0,0.0,0.0,35,35
+VIC_380,Lake Coleman W.R,ring2,0,0,0,,,0,0
+VIC_380,Lake Coleman W.R,buffer1_raw,140,140,0,0.0,0.0,140,140
+VIC_380,Lake Coleman W.R,buffer5_raw,1019,1019,0,0.009813542688910697,0.009813542688910697,1019,1019
+VIC_4193,Moodemere N.C.R.,ring0,3,3,0,,,3,3
+VIC_4193,Moodemere N.C.R.,ring1,0,0,0,,,0,0
+VIC_4193,Moodemere N.C.R.,ring2,0,0,0,,,0,0
+VIC_4193,Moodemere N.C.R.,buffer1_raw,53,53,0,0.5660377358490566,0.5660377358490566,53,53
+VIC_4193,Moodemere N.C.R.,buffer5_raw,626,626,0,4.680511182108626,4.680511182108626,626,626
+VIC_752,Mullinger Swamp W.R,ring0,1,1,0,,,1,1
+VIC_752,Mullinger Swamp W.R,ring1,0,0,0,,,0,0
+VIC_752,Mullinger Swamp W.R,ring2,0,0,0,,,0,0
+VIC_752,Mullinger Swamp W.R,buffer1_raw,34,34,0,0.0,0.0,34,34
+VIC_752,Mullinger Swamp W.R,buffer5_raw,523,523,0,0.0,0.0,523,523
+VIC_765,School Swamp W.R,ring0,2,2,0,,,2,2
+VIC_765,School Swamp W.R,ring1,0,0,0,,,0,0
+VIC_765,School Swamp W.R,ring2,0,0,0,,,0,0
+VIC_765,School Swamp W.R,buffer1_raw,29,29,0,0.0,0.0,29,29
+VIC_765,School Swamp W.R,buffer5_raw,520,521,1,0.0,0.0,520,521
+WA_05225,Torndirrup,ring0,224,224,0,0.0,0.0,224,224
+WA_05225,Torndirrup,ring1,3,3,0,,,3,3
+WA_05225,Torndirrup,ring2,0,0,0,,,0,0
+WA_05225,Torndirrup,buffer1_raw,337,337,0,0.5934718100890207,0.5934718100890207,337,337
+WA_05225,Torndirrup,buffer5_raw,1803,1803,0,2.1630615640599,2.1630615640599,1803,1803
+WA_07537,John Forrest,ring0,106,106,0,15.283018867924529,15.283018867924529,106,106
+WA_07537,John Forrest,ring1,40,40,0,11.0,11.0,40,40
+WA_07537,John Forrest,ring2,0,0,0,,,0,0
+WA_07537,John Forrest,buffer1_raw,154,154,0,27.07792207792208,27.07792207792208,154,154
+WA_07537,John Forrest,buffer5_raw,1074,1074,0,43.01675977653631,43.01675977653631,1074,1074
+WA_09868,Yanchep,ring0,148,148,0,9.527027027027026,9.527027027027026,148,148
+WA_09868,Yanchep,ring1,12,12,0,5.0,5.0,12,12
+WA_09868,Yanchep,ring2,0,0,0,,,0,0
+WA_09868,Yanchep,buffer1_raw,176,176,0,29.488636363636363,29.488636363636363,176,176
+WA_09868,Yanchep,buffer5_raw,1159,1159,0,33.364969801553066,33.364969801553066,1159,1159
+WA_16305,Lake Hinds,ring0,54,54,0,0.0,0.0,54,54
+WA_16305,Lake Hinds,ring1,10,10,0,0.0,0.0,10,10
+WA_16305,Lake Hinds,ring2,0,0,0,,,0,0
+WA_16305,Lake Hinds,buffer1_raw,104,104,0,0.0,0.0,104,104
+WA_16305,Lake Hinds,buffer5_raw,815,815,0,0.0,0.0,815,815
+WA_22442,Tootanellup,ring0,44,44,0,0.0,0.0,44,44
+WA_22442,Tootanellup,ring1,6,6,0,,,6,6
+WA_22442,Tootanellup,ring2,0,0,0,,,0,0
+WA_22442,Tootanellup,buffer1_raw,102,102,0,0.0,0.0,102,102
+WA_22442,Tootanellup,buffer5_raw,813,813,0,0.0,0.0,813,813
+WA_23825,Mullet Lake,ring0,93,93,0,0.10752688172043011,0.10752688172043011,93,93
+WA_23825,Mullet Lake,ring1,10,10,0,0.0,0.0,10,10
+WA_23825,Mullet Lake,ring2,0,0,0,,,0,0
+WA_23825,Mullet Lake,buffer1_raw,167,167,0,1.0778443113772456,1.0778443113772456,167,167
+WA_23825,Mullet Lake,buffer5_raw,1085,1085,0,2.9769585253456223,2.9769585253456223,1085,1085
+WA_24417,Lake Hurlstone,ring0,256,256,0,0.0,0.0,256,256
+WA_24417,Lake Hurlstone,ring1,8,8,0,,,8,8
+WA_24417,Lake Hurlstone,ring2,0,0,0,,,0,0
+WA_24417,Lake Hurlstone,buffer1_raw,417,417,0,0.0,0.0,417,417
+WA_24417,Lake Hurlstone,buffer5_raw,1910,1910,0,0.0,0.0,1910,1910
+WA_27575,Neerabup,ring0,59,59,0,190.33898305084745,190.33898305084745,59,59
+WA_27575,Neerabup,ring1,0,0,0,,,0,0
+WA_27575,Neerabup,ring2,0,0,0,,,0,0
+WA_27575,Neerabup,buffer1_raw,180,180,0,159.55555555555554,159.55555555555554,180,180
+WA_27575,Neerabup,buffer5_raw,1192,1192,0,102.45805369127517,102.45805369127517,1192,1192
+WA_30191,Moondyne,ring0,104,104,0,0.0,0.0,104,104
+WA_30191,Moondyne,ring1,7,7,0,,,7,7
+WA_30191,Moondyne,ring2,0,0,0,,,0,0
+WA_30191,Moondyne,buffer1_raw,135,135,0,0.0,0.0,135,135
+WA_30191,Moondyne,buffer5_raw,999,999,0,0.08008008008008008,0.08008008008008008,999,999
+WA_31913,Haddleton,ring0,50,50,0,0.0,0.0,50,50
+WA_31913,Haddleton,ring1,9,9,0,,,9,9
+WA_31913,Haddleton,ring2,0,0,0,,,0,0
+WA_31913,Haddleton,buffer1_raw,110,110,0,0.0,0.0,110,110
+WA_31913,Haddleton,buffer5_raw,842,842,0,0.0,0.0,842,842
+WA_33842,Quarram,ring0,213,213,0,0.0,0.0,213,213
+WA_33842,Quarram,ring1,6,6,0,,,6,6
+WA_33842,Quarram,ring2,0,0,0,,,0,0
+WA_33842,Quarram,buffer1_raw,325,325,0,0.0,0.0,325,325
+WA_33842,Quarram,buffer5_raw,1803,1804,1,0.0,0.0,1803,1804
+WA_37883,Mirima,ring0,76,76,0,11.18421052631579,11.18421052631579,76,76
+WA_37883,Mirima,ring1,22,22,0,5.454545454545454,5.454545454545454,22,22
+WA_37883,Mirima,ring2,0,0,0,,,0,0
+WA_37883,Mirima,buffer1_raw,123,123,0,19.91869918699187,19.91869918699187,123,123
+WA_37883,Mirima,buffer5_raw,861,861,0,4.471544715447155,4.471544715447155,861,861
+WA_39584,Henderson,ring0,13,13,0,71.53846153846153,71.53846153846153,13,13
+WA_39584,Henderson,ring1,0,0,0,,,0,0
+WA_39584,Henderson,ring2,0,0,0,,,0,0
+WA_39584,Henderson,buffer1_raw,82,82,0,174.6341463414634,174.6341463414634,82,82
+WA_39584,Henderson,buffer5_raw,721,721,0,143.96671289875172,143.96671289875172,721,721
+WA_47880,Beelu,ring0,246,246,0,6.300813008130081,6.300813008130081,246,246
+WA_47880,Beelu,ring1,12,12,0,0.0,0.0,12,12
+WA_47880,Beelu,ring2,0,0,0,,,0,0
+WA_47880,Beelu,buffer1_raw,366,366,0,15.710382513661202,15.710382513661202,366,366
+WA_47880,Beelu,buffer5_raw,1709,1709,0,45.30719719133997,45.30719719133997,1709,1709
+WA_47881,Korung,ring0,335,335,0,5.91044776119403,5.91044776119403,335,335
+WA_47881,Korung,ring1,10,10,0,0.0,0.0,10,10
+WA_47881,Korung,ring2,0,0,0,,,0,0
+WA_47881,Korung,buffer1_raw,437,437,0,16.018306636155607,16.018306636155607,437,437
+WA_47881,Korung,buffer5_raw,1809,1809,0,48.43559977888336,48.43559977888336,1809,1809
+WA_48436,Unnamed WA48436,ring0,67,67,0,0.0,0.0,67,67
+WA_48436,Unnamed WA48436,ring1,6,6,0,,,6,6
+WA_48436,Unnamed WA48436,ring2,0,0,0,,,0,0
+WA_48436,Unnamed WA48436,buffer1_raw,102,102,0,0.0,0.0,102,102
+WA_48436,Unnamed WA48436,buffer5_raw,857,857,0,0.0,0.0,857,857
+WA_50017,Unnamed WA50017,ring0,0,0,0,,,0,0
+WA_50017,Unnamed WA50017,ring1,0,0,0,,,0,0
+WA_50017,Unnamed WA50017,ring2,0,0,0,,,0,0
+WA_50017,Unnamed WA50017,buffer1_raw,23,23,0,105.65217391304348,105.65217391304348,23,23
+WA_50017,Unnamed WA50017,buffer5_raw,453,453,0,24.525386313465784,24.525386313465784,453,453

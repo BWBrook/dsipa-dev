@@ -1,0 +1,10 @@
+{
+  "matplotlib": "3.10.8",
+  "pandas": "2.3.3",
+  "inputs": {
+    "product_hazards.csv": "8e1ee4ba99f3a35147ea9d1e56bfc9903561f47cc335bbb8d7eacdbb45b95233",
+    "product_distance_hazards.csv": "c9c444f220e436c12d7770fa3d68d36612162902bb24699a2e20d51fd5567db2"
+  },
+  "script_sha256": "aa208bb1204c85cd11ad68d322979f01e055af275dfe13a2a789b885ca0b324d",
+  "output_sha256": "76593b47b4c8e4c025bdd416948351cb60d20429cf0e19d1c0351b6c5ff1f663"
+}

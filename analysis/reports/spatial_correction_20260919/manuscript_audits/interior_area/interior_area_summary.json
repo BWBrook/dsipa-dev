@@ -1,0 +1,102 @@
+{
+  "generated_utc": "2026-09-19T05:53:35.116711+00:00",
+  "software": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+    "pandas": "2.3.3",
+    "numpy": "2.3.5"
+  },
+  "parameters": {
+    "min_valid_pixels": 10,
+    "min_valid_years": 8,
+    "primary_buffer_km": 1.0,
+    "ring_inner_km": 1.0,
+    "ring_outer_km": 5.0,
+    "primary_metric": "mean",
+    "primary_buffer_type": "land_unprotected"
+  },
+  "inputs": {
+    "pa_trends_v0_3_0.csv": {
+      "path": "/data/codex/scratch/dsipa-spatial-correction-20260919/national_v2/data/processed/pa_trends_v0_3_0.csv",
+      "sha256": "4c4ba16c7305d53f4fa358ef9a5104e64eee05901fabba5913a843f5cfa8d32d",
+      "bytes": 5324125
+    },
+    "pa_edge_profiles_national_v0_3_0.csv": {
+      "path": "/data/codex/scratch/dsipa-spatial-correction-20260919/national_v2/data/processed/pa_edge_profiles_national_v0_3_0.csv",
+      "sha256": "408f39ce27027558b4da4eafab4c78bc3ca57cded5d27c8671620077d4dd1533",
+      "bytes": 25293966
+    },
+    "pa_geometries_v0_3_0.csv": {
+      "path": "/data/codex/scratch/dsipa-spatial-correction-20260919/national_v2/data/processed/pa_geometries_v0_3_0.csv",
+      "sha256": "781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b",
+      "bytes": 1768417
+    }
+  },
+  "input_contract": {
+    "mode": "manifest",
+    "analysis_id": "spatial-correction-20260919",
+    "manifest_path": "/data/codex/scratch/dsipa-spatial-correction-20260919/national_v2/input_manifest.json",
+    "manifest_sha256": "56af47d61d1bf13d5ee0478d8025f21f11e2ba3e1b6d48733aa82db4a21348e8"
+  },
+  "ring_definition": {
+    "exact_1_5_km_present": true,
+    "pairs_in_source": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        1.0,
+        5.0
+      ],
+      [
+        5.0,
+        10.0
+      ]
+    ]
+  },
+  "cohort": {
+    "original_paired_n": 4253,
+    "ring_matched_n": 1341,
+    "ring_excluded_n": 2912,
+    "ring_matched_fraction": 0.31530684222901484,
+    "ring_n_year_counts": {
+      "12.0": 1341,
+      "nan": 2912
+    },
+    "ring_exclusion_reasons": {
+      "no_usable_ring_year": 2912,
+      "fewer_than_8_usable_ring_years": 0
+    },
+    "original_quadrants": {
+      "Q1": 347,
+      "Q2": 70,
+      "Q3": 3587,
+      "Q4": 249
+    },
+    "ring_quadrants": {
+      "Q1": 27,
+      "Q2": 15,
+      "Q3": 1126,
+      "Q4": 173
+    }
+  },
+  "outputs": {
+    "interior_area_matched_slopes.csv": {
+      "sha256": "c429edc2e3420662e5299713e1450ed5c48467279f42247072e1120a72eb2c8b",
+      "bytes": 226927
+    },
+    "interior_area_quadrant_transitions.csv": {
+      "sha256": "755692f46bcb58a7a579d631331fd08c1899503fb9ddd22a3d1dfb2279a74284",
+      "bytes": 700
+    },
+    "interior_area_summary.csv": {
+      "sha256": "9ed9a866ce8c65a01074ad4abe40fb7f768fe79ecf008c3fe1c6fc3b53a17ee1",
+      "bytes": 728
+    },
+    "interior_area_audit.md": {
+      "sha256": "843a833291565b8aa3946a6cff062721783831438c041ba59f1079392066b9c2",
+      "bytes": 4124
+    }
+  }
+}

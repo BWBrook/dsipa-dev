@@ -1,0 +1,17 @@
+{
+  "submission": {
+    "pdf_pages": 21,
+    "docx_render_pages": 27,
+    "embedded_images_matched": 4,
+    "build_hashes_match": true
+  },
+  "supplementary": {
+    "pdf_pages": 20,
+    "docx_render_pages": 23,
+    "embedded_images_matched": 8,
+    "build_hashes_match": true
+  },
+  "tests": "Prior analysis tranche: 121 passed, 7 skipped for missing local large inputs. Carried forward; this close-out changes prose only.",
+  "science": "Existing floor, edge, persistence and figure source/output hashes reverified. Close-out arithmetic and dimming counts use saved tables; no new model or raster run.",
+  "visual_review": "Close-out main PDF/DOCX affected pages inspected; unchanged SI retains prior full inspection. LibreOffice rendering used; Microsoft Word itself not tested."
+}

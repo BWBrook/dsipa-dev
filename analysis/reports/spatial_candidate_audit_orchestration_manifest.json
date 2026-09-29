@@ -1,0 +1,88 @@
+{
+  "generated_utc": "2026-09-19T06:03:27.848406+00:00",
+  "input_contract": {
+    "mode": "manifest",
+    "analysis_id": "spatial-correction-20260919",
+    "manifest_path": "/home/bwbrook/papers/dsipa-dev/analysis/reports/spatial_correction_render_input_manifest.json",
+    "manifest_sha256": "860604d6f964e8f1a51bf85e377fbca5773b7977ed06f76b536cfbf30a640540"
+  },
+  "commands": [
+    {
+      "name": "coauthor_evidence",
+      "command": [
+        "/home/bwbrook/papers/dsipa-dev/.venv/bin/python",
+        "/home/bwbrook/papers/dsipa-dev/analysis/coauthor_evidence.py",
+        "--input-manifest",
+        "analysis/reports/spatial_correction_render_input_manifest.json",
+        "--data-dir",
+        "data/processed",
+        "--output-dir",
+        "/tmp/dsipa_candidate_final_audits/coauthor_evidence"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"source\": \"Manifest-provided corrected spatial summaries; no raster extraction or model refit\",\n  \"source_sha256\": {\n    \"pa_radiance_buffers_national_v0_3_0.csv\": \"3173bd9bd3b4a545b34eb740a043a5aaf85175956aa654f0ae52c530cce8344c\",\n    \"pa_trends_v0_3_0.csv\": \"4c4ba16c7305d53f4fa358ef9a5104e64eee05901fabba5913a843f5cfa8d32d\",\n    \"pa_risk_rankings_v0_3_0.csv\": \"3646da37eab2a4f48b3f348fc97ad24bcd0844d103420848cf9f3d70ea9c7b55\",\n    \"pa_geometries_v0_3_0.csv\": \"781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b\"\n  },\n  \"input_contract\": {\n    \"mode\": \"manifest\",\n    \"analysis_id\": \"spatial-correction-20260919\",\n    \"manifest_path\": \"/home/bwbrook/papers/dsipa-dev/analysis/reports/spatial_correction_render_input_manifest.json\",\n    \"manifest_sha256\": \"860604d6f964e8f1a51bf85e377fbca5773b7977ed06f76b536cfbf30a640540\"\n  },\n  \"zero_sen_denominator\": 3969,\n  \"any_observed_annual_variation\": 180,\n  \"all_observed_annual_values_zero\": 3786,\n  \"constant_nonzero\": 3,\n  \"complete_12_year_series\": 3969,\n  \"valid_year_counts\": {\n    \"12\": 3969\n  },\n  \"late_positive_complete\": 78,\n  \"late_positive_definition\": \"All 12 years valid; 2013-2021 mean=0 and at least one 2022-2024 mean>0\",\n  \"paired_sign_counts_q1_q2_q3_q4\": [\n    347,\n    70,\n    3587,\n    249\n  ],\n  \"example_selection\": \"Four illustrative cases selected for contrasting signs; Black Mountain deliberately illustrates two negative slopes. Not a representative sample or priority ranking.\",\n  \"examples\": [\n    {\n      \"pa_id\": \"ACT_03\",\n      \"name\": \"Black Mountain\",\n      \"state\": \"ACT\",\n      \"slope_inside\": -1.0372960372960376,\n      \"slope_buffer_1km\": -3.9515306122448974,\n      \"category\": \"Neither slope positive\"\n    },\n    {\n      \"pa_id\": \"NSW_N1142\",\n      \"name\": \"Bungonia\",\n      \"state\": \"NSW\",\n      \"slope_inside\": 0.0,\n      \"slope_buffer_1km\": 0.4166666666666667,\n      \"category\": \"Surrounding only positive\"\n    },\n    {\n      \"pa_id\": \"WA_27575\",\n      \"name\": \"Neerabup\",\n      \"state\": \"WA\",\n      \"slope_inside\": 8.14971751412429,\n      \"slope_buffer_1km\": 3.8467432950191576,\n      \"category\": \"Both slopes positive\"\n    },\n    {\n      \"pa_id\": \"WA_39584\",\n      \"name\": \"Henderson\",\n      \"state\": \"WA\",\n      \"slope_inside\": 1.7307692307692324,\n      \"slope_buffer_1km\": 2.832988267770878,\n      \"category\": \"Both slopes positive\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "product_continuity",
+      "command": [
+        "/home/bwbrook/papers/dsipa-dev/.venv/bin/python",
+        "/home/bwbrook/papers/dsipa-dev/analysis/audit_product_continuity.py",
+        "--input-manifest",
+        "analysis/reports/spatial_correction_render_input_manifest.json",
+        "--data-dir",
+        "data/processed",
+        "--output-dir",
+        "/tmp/dsipa_candidate_final_audits/product_continuity",
+        "--existing-product-audit",
+        "analysis/reports"
+      ],
+      "returncode": 0,
+      "stdout": "         stratum  year  at_risk  first_positive   hazard\nmiddle_2_to_20km  2014     2338               3 0.001283\nmiddle_2_to_20km  2015     2335               2 0.000857\nmiddle_2_to_20km  2016     2333               1 0.000429\nmiddle_2_to_20km  2017     2332               6 0.002573\nmiddle_2_to_20km  2018     2326               1 0.000430\nmiddle_2_to_20km  2019     2325               3 0.001290\nmiddle_2_to_20km  2020     2322              11 0.004737\nmiddle_2_to_20km  2021     2311               1 0.000433\nmiddle_2_to_20km  2022     2310               3 0.001299\nmiddle_2_to_20km  2023     2307              14 0.006068\nmiddle_2_to_20km  2024     2293              14 0.006106\n       near_<2km  2014      439              17 0.038724\n       near_<2km  2015      422               6 0.014218\n       near_<2km  2016      416               9 0.021635\n       near_<2km  2017      407              47 0.115479\n       near_<2km  2018      360              14 0.038889\n       near_<2km  2019      346               9 0.026012\n       near_<2km  2020      337              13 0.038576\n       near_<2km  2021      324               9 0.027778\n       near_<2km  2022      315               9 0.028571\n       near_<2km  2023      306              16 0.052288\n       near_<2km  2024      290              13 0.044828\n       far_>20km  2014     1246               2 0.001605\n       far_>20km  2015     1244               1 0.000804\n       far_>20km  2016     1243               0 0.000000\n       far_>20km  2017     1243               0 0.000000\n       far_>20km  2018     1243               1 0.000805\n       far_>20km  2019     1242               0 0.000000\n       far_>20km  2020     1242               0 0.000000\n       far_>20km  2021     1242               3 0.002415\n       far_>20km  2022     1239               2 0.001614\n       far_>20km  2023     1237               1 0.000808\n       far_>20km  2024     1236               6 0.004854\n",
+      "stderr": ""
+    },
+    {
+      "name": "interior_area",
+      "command": [
+        "/home/bwbrook/papers/dsipa-dev/.venv/bin/python",
+        "/home/bwbrook/papers/dsipa-dev/analysis/audit_interior_area.py",
+        "--input-manifest",
+        "analysis/reports/spatial_correction_render_input_manifest.json",
+        "--input-dir",
+        "data/processed",
+        "--output-dir",
+        "/tmp/dsipa_candidate_final_audits/interior_area"
+      ],
+      "returncode": 0,
+      "stdout": "{\"original_paired_n\": 4253, \"original_quadrants\": {\"Q1\": 347, \"Q2\": 70, \"Q3\": 3587, \"Q4\": 249}, \"ring_excluded_n\": 2912, \"ring_exclusion_reasons\": {\"fewer_than_8_usable_ring_years\": 0, \"no_usable_ring_year\": 2912}, \"ring_matched_fraction\": 0.31530684222901484, \"ring_matched_n\": 1341, \"ring_n_year_counts\": {\"12.0\": 1341, \"nan\": 2912}, \"ring_quadrants\": {\"Q1\": 27, \"Q2\": 15, \"Q3\": 1126, \"Q4\": 173}}\n",
+      "stderr": ""
+    },
+    {
+      "name": "edge_followup",
+      "command": [
+        "/home/bwbrook/papers/dsipa-dev/.venv/bin/python",
+        "/home/bwbrook/papers/dsipa-dev/analysis/audit_edge_followup.py",
+        "--input-manifest",
+        "analysis/reports/spatial_correction_render_input_manifest.json",
+        "--input-dir",
+        "data/processed",
+        "--output-dir",
+        "/tmp/dsipa_candidate_final_audits/edge_followup"
+      ],
+      "returncode": 0,
+      "stdout": "{\"positive_0_1_positive_1_5_zero_all_zero_n\": 86, \"positive_0_1_positive_1_5_zero_n\": 100, \"positive_0_1_positive_1_5_zero_nonzero_history_n\": 14, \"positive_whole_matched_n\": 150, \"q1_kept_median_area_km2\": 203.89123203363428, \"q1_kept_median_ring_slope\": 0.03105590062111801, \"q1_kept_median_whole_slope\": 0.0562565720294426, \"q1_kept_n\": 27, \"q1_lost_all_zero_1_5_n\": 73, \"q1_lost_area_km2\": 66435.59154068855, \"q1_lost_median_area_km2\": 132.75871490565476, \"q1_lost_median_ring_slope\": 0.0, \"q1_lost_median_whole_slope\": 0.0104112441436751, \"q1_lost_n\": 85, \"q1_lost_ring_zero_slope_n\": 85, \"q1_lost_share_all_positive_area\": 0.10330432114326682, \"q1_lost_share_eligible_area\": 0.03883168824550992, \"q2_lost_all_zero_1_5_n\": 20, \"q2_lost_n\": 23, \"q2_lost_ring_zero_slope_n\": 22, \"ring_0_1_slope_available_n\": 1341, \"same_1_5_km_matched_n\": 1341}\n",
+      "stderr": ""
+    },
+    {
+      "name": "pulse_followup",
+      "command": [
+        "/home/bwbrook/papers/dsipa-dev/.venv/bin/python",
+        "/home/bwbrook/papers/dsipa-dev/analysis/audit_pulse_followup.py",
+        "--reports-dir",
+        "/tmp/dsipa_candidate_final_audits/product_continuity"
+      ],
+      "returncode": 0
+    }
+  ],
+  "output_dir": "/tmp/dsipa_candidate_final_audits"
+}

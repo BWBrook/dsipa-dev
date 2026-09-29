@@ -1,0 +1,51 @@
+{
+  "analysis_id": "spatial-correction-20260919",
+  "whole_reserve_rows_unchanged": true,
+  "whole_reserve_rows": 133596,
+  "output_files": {
+    "data/processed/pa_buffer_validity_v0_3_0.csv": {
+      "sha256": "95903730ad709d501850002860e141cd2d5d3cfe6db2ae76ea573f32201f628b",
+      "bytes": 2467538
+    },
+    "data/processed/pa_edge_profiles_national_v0_3_0.csv": {
+      "sha256": "408f39ce27027558b4da4eafab4c78bc3ca57cded5d27c8671620077d4dd1533",
+      "bytes": 25293966
+    },
+    "data/processed/pa_geometries_v0_3_0.csv": {
+      "sha256": "781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b",
+      "bytes": 1768417
+    },
+    "data/processed/pa_ibra_assignment_v0_3_0.csv": {
+      "sha256": "3f0d8f7cc206302a8d266ac747a20e89bd0ad0a724f8c7a3d2a161f0634a82cf",
+      "bytes": 987075
+    },
+    "data/processed/pa_radiance_buffers_national_v0_3_0.csv": {
+      "sha256": "3173bd9bd3b4a545b34eb740a043a5aaf85175956aa654f0ae52c530cce8344c",
+      "bytes": 101658795
+    },
+    "data/processed/pa_trend_bootstrap_summary_v0_3_0.csv": {
+      "sha256": "cd3c165ed5857d0fb2fcb3be360fe89dfda6757c296fb5cd1bd7aee509078920",
+      "bytes": 582886
+    },
+    "geometry_only/data/processed/pa_buffer_validity_v0_3_0.csv": {
+      "sha256": "e497a473f549162ce1c7096b2d46cf1c8f4128f0061e4a7ec0ff11c8495e8d57",
+      "bytes": 2361463
+    },
+    "geometry_only/data/processed/pa_geometries_v0_3_0.csv": {
+      "sha256": "781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b",
+      "bytes": 1768417
+    },
+    "geometry_only/data/processed/pa_ibra_assignment_v0_3_0.csv": {
+      "sha256": "3f0d8f7cc206302a8d266ac747a20e89bd0ad0a724f8c7a3d2a161f0634a82cf",
+      "bytes": 987075
+    },
+    "geometry_only/data/processed/pa_radiance_buffers_national_v0_3_0.csv": {
+      "sha256": "edeb86161693cd79d19a17d9cf55ca17b8391f65ff82d45ac087fc7ef5447c5e",
+      "bytes": 98327528
+    },
+    "geometry_only/data/processed/pa_trend_bootstrap_summary_v0_3_0.csv": {
+      "sha256": "cd3c165ed5857d0fb2fcb3be360fe89dfda6757c296fb5cd1bd7aee509078920",
+      "bytes": 582886
+    }
+  }
+}

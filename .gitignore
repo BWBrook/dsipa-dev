@@ -76,3 +76,6 @@ artefacts/**/*.h5
 artefacts/**/*.hdf
 artefacts/**/*.grd
 artefacts/**/*.img
+
+# Staged copies of the corrected national tables; canonical copies live in data/processed/ (DEC-023)
+analysis/reports/spatial_correction_20260919/data_processed/

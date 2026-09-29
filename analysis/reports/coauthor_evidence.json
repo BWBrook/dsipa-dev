@@ -1,0 +1,66 @@
+{
+  "source": "Manifest-provided corrected spatial summaries; no raster extraction or model refit",
+  "source_sha256": {
+    "pa_radiance_buffers_national_v0_3_0.csv": "3173bd9bd3b4a545b34eb740a043a5aaf85175956aa654f0ae52c530cce8344c",
+    "pa_trends_v0_3_0.csv": "4c4ba16c7305d53f4fa358ef9a5104e64eee05901fabba5913a843f5cfa8d32d",
+    "pa_risk_rankings_v0_3_0.csv": "3646da37eab2a4f48b3f348fc97ad24bcd0844d103420848cf9f3d70ea9c7b55",
+    "pa_geometries_v0_3_0.csv": "781e80b08db4ed3378021ae51feb0c28f9fc7627195b4c208702ebecfdf6695b"
+  },
+  "input_contract": {
+    "mode": "manifest",
+    "analysis_id": "spatial-correction-20260919",
+    "manifest_path": "/home/bwbrook/papers/dsipa-dev/analysis/reports/spatial_correction_render_input_manifest.json",
+    "manifest_sha256": "860604d6f964e8f1a51bf85e377fbca5773b7977ed06f76b536cfbf30a640540"
+  },
+  "zero_sen_denominator": 3969,
+  "any_observed_annual_variation": 180,
+  "all_observed_annual_values_zero": 3786,
+  "constant_nonzero": 3,
+  "complete_12_year_series": 3969,
+  "valid_year_counts": {
+    "12": 3969
+  },
+  "late_positive_complete": 78,
+  "late_positive_definition": "All 12 years valid; 2013-2021 mean=0 and at least one 2022-2024 mean>0",
+  "paired_sign_counts_q1_q2_q3_q4": [
+    347,
+    70,
+    3587,
+    249
+  ],
+  "example_selection": "Four illustrative cases selected for contrasting signs; Black Mountain deliberately illustrates two negative slopes. Not a representative sample or priority ranking.",
+  "examples": [
+    {
+      "pa_id": "ACT_03",
+      "name": "Black Mountain",
+      "state": "ACT",
+      "slope_inside": -1.0372960372960376,
+      "slope_buffer_1km": -3.9515306122448974,
+      "category": "Neither slope positive"
+    },
+    {
+      "pa_id": "NSW_N1142",
+      "name": "Bungonia",
+      "state": "NSW",
+      "slope_inside": 0.0,
+      "slope_buffer_1km": 0.4166666666666667,
+      "category": "Surrounding only positive"
+    },
+    {
+      "pa_id": "WA_27575",
+      "name": "Neerabup",
+      "state": "WA",
+      "slope_inside": 8.14971751412429,
+      "slope_buffer_1km": 3.8467432950191576,
+      "category": "Both slopes positive"
+    },
+    {
+      "pa_id": "WA_39584",
+      "name": "Henderson",
+      "state": "WA",
+      "slope_inside": 1.7307692307692324,
+      "slope_buffer_1km": 2.832988267770878,
+      "category": "Both slopes positive"
+    }
+  ]
+}

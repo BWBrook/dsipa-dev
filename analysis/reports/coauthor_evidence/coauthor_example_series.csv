@@ -1,0 +1,97 @@
+pa_id,zone,buffer_km,buffer_type,year,valid_pixel_count,mean,name,state,slope_inside,slope_buffer_1km,category
+ACT_03,buffer,1.0,land_unprotected,2013,49,117.3469387755102,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,buffer,1.0,land_unprotected,2014,49,113.26530612244898,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,buffer,1.0,land_unprotected,2015,49,109.18367346938776,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,buffer,1.0,land_unprotected,2016,49,110.6122448979592,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,buffer,1.0,land_unprotected,2017,49,118.16326530612244,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,buffer,1.0,land_unprotected,2018,49,113.26530612244898,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,buffer,1.0,land_unprotected,2019,49,107.75510204081633,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,buffer,1.0,land_unprotected,2020,49,89.18367346938776,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,buffer,1.0,land_unprotected,2021,49,86.12244897959184,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,buffer,1.0,land_unprotected,2022,49,76.93877551020408,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,buffer,1.0,land_unprotected,2023,49,88.16326530612245,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,buffer,1.0,land_unprotected,2024,49,82.65306122448979,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,inside,,inside,2013,26,53.84615384615385,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,inside,,inside,2014,26,53.07692307692308,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,inside,,inside,2015,26,53.07692307692308,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,inside,,inside,2016,26,53.07692307692308,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,inside,,inside,2017,26,53.84615384615385,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,inside,,inside,2018,26,55.0,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,inside,,inside,2019,26,51.53846153846154,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,inside,,inside,2020,26,49.23076923076923,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,inside,,inside,2021,26,48.46153846153846,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,inside,,inside,2022,26,44.61538461538461,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,inside,,inside,2023,26,45.38461538461539,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+ACT_03,inside,,inside,2024,26,42.30769230769231,Black Mountain,ACT,-1.0372960372960376,-3.9515306122448974,Neither slope positive
+NSW_N1142,buffer,1.0,land_unprotected,2013,36,0.2777777777777778,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,buffer,1.0,land_unprotected,2014,36,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,buffer,1.0,land_unprotected,2015,36,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,buffer,1.0,land_unprotected,2016,36,0.2777777777777778,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,buffer,1.0,land_unprotected,2017,36,1.3888888888888888,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,buffer,1.0,land_unprotected,2018,36,1.9444444444444444,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,buffer,1.0,land_unprotected,2019,36,1.6666666666666667,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,buffer,1.0,land_unprotected,2020,36,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,buffer,1.0,land_unprotected,2021,36,1.1111111111111112,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,buffer,1.0,land_unprotected,2022,36,3.888888888888889,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,buffer,1.0,land_unprotected,2023,36,4.444444444444445,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,buffer,1.0,land_unprotected,2024,36,4.166666666666667,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,inside,,inside,2013,45,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,inside,,inside,2014,45,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,inside,,inside,2015,45,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,inside,,inside,2016,45,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,inside,,inside,2017,45,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,inside,,inside,2018,45,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,inside,,inside,2019,45,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,inside,,inside,2020,45,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,inside,,inside,2021,45,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,inside,,inside,2022,45,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,inside,,inside,2023,45,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+NSW_N1142,inside,,inside,2024,45,0.0,Bungonia,NSW,0.0,0.4166666666666667,Surrounding only positive
+WA_27575,buffer,1.0,land_unprotected,2013,174,102.58620689655172,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,buffer,1.0,land_unprotected,2014,174,111.4367816091954,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,buffer,1.0,land_unprotected,2015,174,110.40229885057472,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,buffer,1.0,land_unprotected,2016,174,114.88505747126436,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,buffer,1.0,land_unprotected,2017,174,124.36781609195404,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,buffer,1.0,land_unprotected,2018,174,121.89655172413794,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,buffer,1.0,land_unprotected,2019,174,122.58620689655172,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,buffer,1.0,land_unprotected,2020,174,121.14942528735632,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,buffer,1.0,land_unprotected,2021,174,125.11494252873564,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,buffer,1.0,land_unprotected,2022,174,129.2528735632184,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,buffer,1.0,land_unprotected,2023,174,149.02298850574712,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,buffer,1.0,land_unprotected,2024,174,163.79310344827587,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,inside,,inside,2013,59,68.8135593220339,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,inside,,inside,2014,59,80.33898305084746,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,inside,,inside,2015,59,77.96610169491525,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,inside,,inside,2016,59,78.98305084745763,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,inside,,inside,2017,59,105.9322033898305,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,inside,,inside,2018,59,105.42372881355932,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,inside,,inside,2019,59,104.57627118644068,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,inside,,inside,2020,59,105.76271186440678,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,inside,,inside,2021,59,119.66101694915254,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,inside,,inside,2022,59,127.96610169491524,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,inside,,inside,2023,59,165.76271186440678,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_27575,inside,,inside,2024,59,190.33898305084745,Neerabup,WA,8.14971751412429,3.8467432950191576,Both slopes positive
+WA_39584,buffer,1.0,land_unprotected,2013,69,220.43478260869568,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,buffer,1.0,land_unprotected,2014,69,230.7246376811594,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,buffer,1.0,land_unprotected,2015,69,169.1304347826087,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,buffer,1.0,land_unprotected,2016,69,138.9855072463768,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,buffer,1.0,land_unprotected,2017,69,130.0,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,buffer,1.0,land_unprotected,2018,69,122.89855072463769,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,buffer,1.0,land_unprotected,2019,69,140.28985507246378,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,buffer,1.0,land_unprotected,2020,69,164.05797101449275,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,buffer,1.0,land_unprotected,2021,69,184.4927536231884,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,buffer,1.0,land_unprotected,2022,69,190.8695652173913,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,buffer,1.0,land_unprotected,2023,69,183.18840579710144,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,buffer,1.0,land_unprotected,2024,69,198.5507246376812,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,inside,,inside,2013,13,58.46153846153846,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,inside,,inside,2014,13,66.15384615384616,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,inside,,inside,2015,13,53.07692307692308,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,inside,,inside,2016,13,46.15384615384615,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,inside,,inside,2017,13,44.61538461538461,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,inside,,inside,2018,13,44.61538461538461,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,inside,,inside,2019,13,48.46153846153846,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,inside,,inside,2020,13,60.76923076923077,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,inside,,inside,2021,13,63.07692307692308,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,inside,,inside,2022,13,66.92307692307692,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,inside,,inside,2023,13,66.15384615384616,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive
+WA_39584,inside,,inside,2024,13,71.53846153846153,Henderson,WA,1.7307692307692324,2.832988267770878,Both slopes positive

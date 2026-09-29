@@ -1,0 +1,903 @@
+{
+  "retrieved_at_utc": "2026-09-12T05:24:38.224263+00:00",
+  "source": "Crossref CSL via DOI content negotiation",
+  "records": [
+    {
+      "key": "baker2024",
+      "doi": "10.1111/ddi.13802",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1111%2Fddi.13802/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Effective strategies for correcting spatial sampling bias in species distribution models without independent test data",
+        "author": [
+          {
+            "given": "David J.",
+            "family": "Baker"
+          },
+          {
+            "given": "Ilya M. D.",
+            "family": "Maclean"
+          },
+          {
+            "given": "Kevin J.",
+            "family": "Gaston"
+          }
+        ],
+        "container-title": "Diversity and Distributions",
+        "issued": {
+          "date-parts": [
+            [
+              2024,
+              1,
+              8
+            ]
+          ]
+        },
+        "volume": "30",
+        "issue": "3",
+        "article-number": "e13802"
+      }
+    },
+    {
+      "key": "bara2025",
+      "doi": "10.1016/j.jqsrt.2025.109378",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1016%2Fj.jqsrt.2025.109378/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Diverging evolution of light pollution indicators: Can the globe at night and VIIRS-DNB measurements be reconciled?",
+        "author": [
+          {
+            "given": "Salvador",
+            "family": "Bará"
+          },
+          {
+            "given": "José J.",
+            "family": "Castro-Torres"
+          }
+        ],
+        "container-title": "Journal of Quantitative Spectroscopy and Radiative Transfer",
+        "issued": {
+          "date-parts": [
+            [
+              2025,
+              4
+            ]
+          ]
+        },
+        "volume": "335",
+        "page": "109378",
+        "article-number": "109378"
+      }
+    },
+    {
+      "key": "elvidge2021",
+      "doi": "10.3390/rs13050922",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.3390%2Frs13050922/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Annual Time Series of Global VIIRS Nighttime Lights Derived from Monthly Averages: 2012 to 2019",
+        "author": [
+          {
+            "given": "Christopher D.",
+            "family": "Elvidge"
+          },
+          {
+            "given": "Mikhail",
+            "family": "Zhizhin"
+          },
+          {
+            "given": "Tilottama",
+            "family": "Ghosh"
+          },
+          {
+            "given": "Feng-Chi",
+            "family": "Hsu"
+          },
+          {
+            "given": "Jay",
+            "family": "Taneja"
+          }
+        ],
+        "container-title": "Remote Sensing",
+        "issued": {
+          "date-parts": [
+            [
+              2021,
+              3,
+              2
+            ]
+          ]
+        },
+        "volume": "13",
+        "issue": "5",
+        "page": "922"
+      }
+    },
+    {
+      "key": "falchi2016",
+      "doi": "10.1126/sciadv.1600377",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1126%2Fsciadv.1600377/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "The new world atlas of artificial night sky brightness",
+        "author": [
+          {
+            "given": "Fabio",
+            "family": "Falchi"
+          },
+          {
+            "given": "Pierantonio",
+            "family": "Cinzano"
+          },
+          {
+            "given": "Dan",
+            "family": "Duriscoe"
+          },
+          {
+            "given": "Christopher C. M.",
+            "family": "Kyba"
+          },
+          {
+            "given": "Christopher D.",
+            "family": "Elvidge"
+          },
+          {
+            "given": "Kimberly",
+            "family": "Baugh"
+          },
+          {
+            "given": "Boris A.",
+            "family": "Portnov"
+          },
+          {
+            "given": "Nataliya A.",
+            "family": "Rybnikova"
+          },
+          {
+            "given": "Riccardo",
+            "family": "Furgoni"
+          }
+        ],
+        "container-title": "Science Advances",
+        "issued": {
+          "date-parts": [
+            [
+              2016,
+              6,
+              3
+            ]
+          ]
+        },
+        "volume": "2",
+        "issue": "6",
+        "article-number": "e1600377"
+      }
+    },
+    {
+      "key": "fithian2015",
+      "doi": "10.1111/2041-210X.12242",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1111%2F2041-210X.12242/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Bias correction in species distribution models: pooling survey and collection data for multiple species",
+        "author": [
+          {
+            "given": "William",
+            "family": "Fithian"
+          },
+          {
+            "given": "Jane",
+            "family": "Elith"
+          },
+          {
+            "given": "Trevor",
+            "family": "Hastie"
+          },
+          {
+            "given": "David A.",
+            "family": "Keith"
+          }
+        ],
+        "container-title": "Methods in Ecology and Evolution",
+        "issued": {
+          "date-parts": [
+            [
+              2014,
+              10,
+              10
+            ]
+          ]
+        },
+        "volume": "6",
+        "issue": "4",
+        "page": "424-438"
+      }
+    },
+    {
+      "key": "garrett2020",
+      "doi": "10.1111/acv.12480",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1111%2Facv.12480/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Skyglow extends into the world's Key Biodiversity Areas",
+        "author": [
+          {
+            "given": "J. K.",
+            "family": "Garrett"
+          },
+          {
+            "given": "P. F.",
+            "family": "Donald"
+          },
+          {
+            "given": "K. J.",
+            "family": "Gaston"
+          }
+        ],
+        "container-title": "Animal Conservation",
+        "issued": {
+          "date-parts": [
+            [
+              2019,
+              2,
+              10
+            ]
+          ]
+        },
+        "volume": "23",
+        "issue": "2",
+        "page": "153-159"
+      }
+    },
+    {
+      "key": "gaston2013",
+      "doi": "10.1111/brv.12036",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1111%2Fbrv.12036/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "The ecological impacts of nighttime light pollution: a mechanistic appraisal",
+        "author": [
+          {
+            "given": "Kevin J.",
+            "family": "Gaston"
+          },
+          {
+            "given": "Jonathan",
+            "family": "Bennie"
+          },
+          {
+            "given": "Thomas W.",
+            "family": "Davies"
+          },
+          {
+            "given": "John",
+            "family": "Hopkins"
+          }
+        ],
+        "container-title": "Biological Reviews",
+        "issued": {
+          "date-parts": [
+            [
+              2013,
+              4,
+              8
+            ]
+          ]
+        },
+        "volume": "88",
+        "issue": "4",
+        "page": "912-927"
+      }
+    },
+    {
+      "key": "gaston2015",
+      "doi": "10.1111/cobi.12462",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1111%2Fcobi.12462/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Quantifying the erosion of natural darkness in the global protected area system",
+        "author": [
+          {
+            "given": "Kevin J.",
+            "family": "Gaston"
+          },
+          {
+            "given": "James P.",
+            "family": "Duffy"
+          },
+          {
+            "given": "Jonathan",
+            "family": "Bennie"
+          }
+        ],
+        "container-title": "Conservation Biology",
+        "issued": {
+          "date-parts": [
+            [
+              2015,
+              2,
+              17
+            ]
+          ]
+        },
+        "volume": "29",
+        "issue": "4",
+        "page": "1132-1141"
+      }
+    },
+    {
+      "key": "guette2018",
+      "doi": "10.1016/j.biocon.2018.04.018",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1016%2Fj.biocon.2018.04.018/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Worldwide increase in Artificial Light At Night around protected areas and within biodiversity hotspots",
+        "author": [
+          {
+            "given": "Adrien",
+            "family": "Guetté"
+          },
+          {
+            "given": "Laurent",
+            "family": "Godet"
+          },
+          {
+            "given": "Martin",
+            "family": "Juigner"
+          },
+          {
+            "given": "Marc",
+            "family": "Robin"
+          }
+        ],
+        "container-title": "Biological Conservation",
+        "issued": {
+          "date-parts": [
+            [
+              2018,
+              7
+            ]
+          ]
+        },
+        "volume": "223",
+        "page": "97-103"
+      }
+    },
+    {
+      "key": "haddock2019",
+      "doi": "10.1016/j.biocon.2019.05.016",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1016%2Fj.biocon.2019.05.016/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Light pollution at the urban forest edge negatively impacts insectivorous bats",
+        "author": [
+          {
+            "given": "Joanna K.",
+            "family": "Haddock"
+          },
+          {
+            "given": "Caragh G.",
+            "family": "Threlfall"
+          },
+          {
+            "given": "Bradley",
+            "family": "Law"
+          },
+          {
+            "given": "Dieter F.",
+            "family": "Hochuli"
+          }
+        ],
+        "container-title": "Biological Conservation",
+        "issued": {
+          "date-parts": [
+            [
+              2019,
+              8
+            ]
+          ]
+        },
+        "volume": "236",
+        "page": "17-28"
+      }
+    },
+    {
+      "key": "hirt2023",
+      "doi": "10.1098/rstb.2022.0351",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1098%2Frstb.2022.0351/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Light pollution in complex ecological systems",
+        "author": [
+          {
+            "given": "Myriam R.",
+            "family": "Hirt"
+          },
+          {
+            "given": "Darren M.",
+            "family": "Evans"
+          },
+          {
+            "given": "Colleen R.",
+            "family": "Miller"
+          },
+          {
+            "given": "Remo",
+            "family": "Ryser"
+          }
+        ],
+        "container-title": "Philosophical Transactions of the Royal Society B: Biological Sciences",
+        "issued": {
+          "date-parts": [
+            [
+              2023,
+              10,
+              30
+            ]
+          ]
+        },
+        "volume": "378",
+        "issue": "1892",
+        "article-number": "20220351"
+      }
+    },
+    {
+      "key": "kyba2023",
+      "doi": "10.1126/science.abq7781",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1126%2Fscience.abq7781/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Citizen scientists report global rapid reductions in the visibility of stars from 2011 to 2022",
+        "author": [
+          {
+            "given": "Christopher C. M.",
+            "family": "Kyba"
+          },
+          {
+            "given": "Yiğit Öner",
+            "family": "Altıntaş"
+          },
+          {
+            "given": "Constance E.",
+            "family": "Walker"
+          },
+          {
+            "given": "Mark",
+            "family": "Newhouse"
+          }
+        ],
+        "container-title": "Science",
+        "issued": {
+          "date-parts": [
+            [
+              2023,
+              1,
+              20
+            ]
+          ]
+        },
+        "volume": "379",
+        "issue": "6629",
+        "page": "265-268"
+      }
+    },
+    {
+      "key": "levin2025",
+      "doi": "10.1016/j.rse.2025.114869",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1016%2Fj.rse.2025.114869/transform",
+      "correction_note": "replaces invalid repository DOI 10.1038/s41586-024-08093-0",
+      "metadata": {
+        "title": "Challenges in remote sensing of night lights – a research agenda for the next decade",
+        "author": [
+          {
+            "given": "Noam",
+            "family": "Levin"
+          }
+        ],
+        "container-title": "Remote Sensing of Environment",
+        "issued": {
+          "date-parts": [
+            [
+              2025,
+              10
+            ]
+          ]
+        },
+        "volume": "328",
+        "page": "114869",
+        "article-number": "114869"
+      }
+    },
+    {
+      "key": "lewanzik2017",
+      "doi": "10.1111/1365-2664.12758",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1111%2F1365-2664.12758/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Transition from conventional to light‐emitting diode street lighting changes activity of urban bats",
+        "author": [
+          {
+            "given": "Daniel",
+            "family": "Lewanzik"
+          },
+          {
+            "given": "Christian C.",
+            "family": "Voigt"
+          }
+        ],
+        "container-title": "Journal of Applied Ecology",
+        "issued": {
+          "date-parts": [
+            [
+              2016,
+              9
+            ]
+          ]
+        },
+        "volume": "54",
+        "issue": "1",
+        "page": "264-271"
+      }
+    },
+    {
+      "key": "linley2017",
+      "doi": "10.1071/AM15047",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1071%2FAM15047/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "The impact of artificial lighting on bats along native coastal vegetation",
+        "author": [
+          {
+            "given": "Grant D.",
+            "family": "Linley"
+          }
+        ],
+        "container-title": "Australian Mammalogy",
+        "issued": {
+          "date-parts": [
+            [
+              2016,
+              10,
+              7
+            ]
+          ]
+        },
+        "volume": "39",
+        "issue": "2",
+        "page": "178-184"
+      }
+    },
+    {
+      "key": "longcore2004",
+      "doi": "10.1890/1540-9295(2004)002[0191:ELP]2.0.CO;2",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1890%2F1540-9295%282004%29002%5B0191%3AELP%5D2.0.CO%3B2/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Ecological light pollution",
+        "author": [
+          {
+            "given": "Travis",
+            "family": "Longcore"
+          },
+          {
+            "given": "Catherine",
+            "family": "Rich"
+          }
+        ],
+        "container-title": "Frontiers in Ecology and the Environment",
+        "issued": {
+          "date-parts": [
+            [
+              2004,
+              5
+            ]
+          ]
+        },
+        "volume": "2",
+        "issue": "4",
+        "page": "191-198"
+      }
+    },
+    {
+      "key": "mu2021",
+      "doi": "10.3390/rs13091849",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.3390%2Frs13091849/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Evaluation of Light Pollution in Global Protected Areas from 1992 to 2018",
+        "author": [
+          {
+            "given": "Haowei",
+            "family": "Mu"
+          },
+          {
+            "given": "Xuecao",
+            "family": "Li"
+          },
+          {
+            "given": "Xiaoping",
+            "family": "Du"
+          },
+          {
+            "given": "Jianxi",
+            "family": "Huang"
+          },
+          {
+            "given": "Wei",
+            "family": "Su"
+          },
+          {
+            "given": "Tengyun",
+            "family": "Hu"
+          },
+          {
+            "given": "Yanan",
+            "family": "Wen"
+          },
+          {
+            "given": "Peiyi",
+            "family": "Yin"
+          },
+          {
+            "given": "Yuan",
+            "family": "Han"
+          },
+          {
+            "given": "Fei",
+            "family": "Xue"
+          }
+        ],
+        "container-title": "Remote Sensing",
+        "issued": {
+          "date-parts": [
+            [
+              2021,
+              5,
+              9
+            ]
+          ]
+        },
+        "volume": "13",
+        "issue": "9",
+        "page": "1849"
+      }
+    },
+    {
+      "key": "phillips2009",
+      "doi": "10.1890/07-2153.1",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1890%2F07-2153.1/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Sample selection bias and presence‐only distribution models: implications for background and pseudo‐absence data",
+        "author": [
+          {
+            "given": "Steven J.",
+            "family": "Phillips"
+          },
+          {
+            "given": "Miroslav",
+            "family": "Dudík"
+          },
+          {
+            "given": "Jane",
+            "family": "Elith"
+          },
+          {
+            "given": "Catherine H.",
+            "family": "Graham"
+          },
+          {
+            "given": "Anthony",
+            "family": "Lehmann"
+          },
+          {
+            "given": "John",
+            "family": "Leathwick"
+          },
+          {
+            "given": "Simon",
+            "family": "Ferrier"
+          }
+        ],
+        "container-title": "Ecological Applications",
+        "issued": {
+          "date-parts": [
+            [
+              2009,
+              1
+            ]
+          ]
+        },
+        "volume": "19",
+        "issue": "1",
+        "page": "181-197"
+      }
+    },
+    {
+      "key": "roberts2017",
+      "doi": "10.1111/ecog.02881",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1111%2Fecog.02881/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Cross‐validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure",
+        "author": [
+          {
+            "given": "David R.",
+            "family": "Roberts"
+          },
+          {
+            "given": "Volker",
+            "family": "Bahn"
+          },
+          {
+            "given": "Simone",
+            "family": "Ciuti"
+          },
+          {
+            "given": "Mark S.",
+            "family": "Boyce"
+          },
+          {
+            "given": "Jane",
+            "family": "Elith"
+          },
+          {
+            "given": "Gurutzeta",
+            "family": "Guillera‐Arroita"
+          },
+          {
+            "given": "Severin",
+            "family": "Hauenstein"
+          },
+          {
+            "given": "José J.",
+            "family": "Lahoz‐Monfort"
+          },
+          {
+            "given": "Boris",
+            "family": "Schröder"
+          },
+          {
+            "given": "Wilfried",
+            "family": "Thuiller"
+          },
+          {
+            "given": "David I.",
+            "family": "Warton"
+          },
+          {
+            "given": "Brendan A.",
+            "family": "Wintle"
+          },
+          {
+            "given": "Florian",
+            "family": "Hartig"
+          },
+          {
+            "given": "Carsten F.",
+            "family": "Dormann"
+          }
+        ],
+        "container-title": "Ecography",
+        "issued": {
+          "date-parts": [
+            [
+              2017,
+              3,
+              3
+            ]
+          ]
+        },
+        "volume": "40",
+        "issue": "8",
+        "page": "913-929"
+      }
+    },
+    {
+      "key": "stone2009",
+      "doi": "10.1016/j.cub.2009.05.058",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1016%2Fj.cub.2009.05.058/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Street Lighting Disturbs Commuting Bats",
+        "author": [
+          {
+            "given": "Emma Louise",
+            "family": "Stone"
+          },
+          {
+            "given": "Gareth",
+            "family": "Jones"
+          },
+          {
+            "given": "Stephen",
+            "family": "Harris"
+          }
+        ],
+        "container-title": "Current Biology",
+        "issued": {
+          "date-parts": [
+            [
+              2009,
+              7
+            ]
+          ]
+        },
+        "volume": "19",
+        "issue": "13",
+        "page": "1123-1127"
+      }
+    },
+    {
+      "key": "stone2015",
+      "doi": "10.1016/j.mambio.2015.02.004",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1016%2Fj.mambio.2015.02.004/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "Impacts of artificial lighting on bats: a review of challenges and solutions",
+        "author": [
+          {
+            "given": "Emma Louise",
+            "family": "Stone"
+          },
+          {
+            "given": "Stephen",
+            "family": "Harris"
+          },
+          {
+            "given": "Gareth",
+            "family": "Jones"
+          }
+        ],
+        "container-title": "Mammalian Biology",
+        "issued": {
+          "date-parts": [
+            [
+              2015,
+              5
+            ]
+          ]
+        },
+        "volume": "80",
+        "issue": "3",
+        "page": "213-219"
+      }
+    },
+    {
+      "key": "threlfall2013",
+      "doi": "10.1111/aec.12034",
+      "retrieval_url": "https://api.crossref.org/v1/works/10.1111%2Faec.12034/transform",
+      "correction_note": null,
+      "metadata": {
+        "title": "The urban matrix and artificial light restricts the nightly ranging behaviour of <scp>G</scp>ould's long‐eared bat (<i><scp>N</scp>yctophilus gouldi</i>)",
+        "author": [
+          {
+            "given": "C. G.",
+            "family": "Threlfall"
+          },
+          {
+            "given": "B.",
+            "family": "Law"
+          },
+          {
+            "given": "P. B.",
+            "family": "Banks"
+          }
+        ],
+        "container-title": "Austral Ecology",
+        "issued": {
+          "date-parts": [
+            [
+              2013,
+              4,
+              29
+            ]
+          ]
+        },
+        "volume": "38",
+        "issue": "8",
+        "page": "921-930"
+      }
+    }
+  ]
+}

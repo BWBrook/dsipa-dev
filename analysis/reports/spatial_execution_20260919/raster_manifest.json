@@ -1,0 +1,254 @@
+{
+  "2013": {
+    "path": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/nightlights_zenodo_v0_4/nightlights.average_viirs.v21_m_500m_s_20130101_20131231_go_epsg4326_v20250904.tif",
+    "sha256": "9f9e1dc7d80e7b50cfcbfbdde6e45938e9070a8d234e27d331cd8e027f1d1289",
+    "crs": "EPSG:4326",
+    "transform": [
+      0.00416666666666667,
+      0.0,
+      -180.0,
+      0.0,
+      -0.00416666666666667,
+      87.37,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "width": 86400,
+    "height": 35849,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0
+  },
+  "2014": {
+    "path": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/nightlights_zenodo_v0_4/nightlights.average_viirs.v21_m_500m_s_20140101_20141231_go_epsg4326_v20250904.tif",
+    "sha256": "12e24b91f3fef11117ac6bfb66142b1088541884602921128d3ddd44e3e40cbd",
+    "crs": "EPSG:4326",
+    "transform": [
+      0.00416666666666667,
+      0.0,
+      -180.0,
+      0.0,
+      -0.00416666666666667,
+      87.37,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "width": 86400,
+    "height": 35849,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0
+  },
+  "2015": {
+    "path": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/nightlights_zenodo_v0_4/nightlights.average_viirs.v21_m_500m_s_20150101_20151231_go_epsg4326_v20250904.tif",
+    "sha256": "a673f35bd6240c6dc69e05550cdfcd46080a23364a12b91fe897312a308f712f",
+    "crs": "EPSG:4326",
+    "transform": [
+      0.00416666666666667,
+      0.0,
+      -180.0,
+      0.0,
+      -0.00416666666666667,
+      87.37,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "width": 86400,
+    "height": 35849,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0
+  },
+  "2016": {
+    "path": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/nightlights_zenodo_v0_4/nightlights.average_viirs.v21_m_500m_s_20160101_20161231_go_epsg4326_v20250904.tif",
+    "sha256": "319ef2d91a2ff4733c61a555a81f05b483c9b47463b1f91f00bbc5385556ca45",
+    "crs": "EPSG:4326",
+    "transform": [
+      0.00416666666666667,
+      0.0,
+      -180.0,
+      0.0,
+      -0.00416666666666667,
+      87.37,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "width": 86400,
+    "height": 35849,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0
+  },
+  "2017": {
+    "path": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/nightlights_zenodo_v0_4/nightlights.average_viirs.v21_m_500m_s_20170101_20171231_go_epsg4326_v20250904.tif",
+    "sha256": "6c767ca0d2c5b2c45c87fea60039bd232ed6a0114229ab31d9c2fa2238114c46",
+    "crs": "EPSG:4326",
+    "transform": [
+      0.00416666666666667,
+      0.0,
+      -180.0,
+      0.0,
+      -0.00416666666666667,
+      87.37,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "width": 86400,
+    "height": 35849,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0
+  },
+  "2018": {
+    "path": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/nightlights_zenodo_v0_4/nightlights.average_viirs.v21_m_500m_s_20180101_20181231_go_epsg4326_v20250904.tif",
+    "sha256": "62fd7052dc69cadaf446d61ea135e8489b321be24cb4b3b4e26f689b81a3405a",
+    "crs": "EPSG:4326",
+    "transform": [
+      0.00416666666666667,
+      0.0,
+      -180.0,
+      0.0,
+      -0.00416666666666667,
+      87.37,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "width": 86400,
+    "height": 35849,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0
+  },
+  "2019": {
+    "path": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/nightlights_zenodo_v0_4/nightlights.average_viirs.v21_m_500m_s_20190101_20191231_go_epsg4326_v20250904.tif",
+    "sha256": "9f84fedf65c5a1bdbda63295849d80f99c3b03a9a569e19b173026829c1760b3",
+    "crs": "EPSG:4326",
+    "transform": [
+      0.00416666666666667,
+      0.0,
+      -180.0,
+      0.0,
+      -0.00416666666666667,
+      87.37,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "width": 86400,
+    "height": 35849,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0
+  },
+  "2020": {
+    "path": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/nightlights_zenodo_v0_4/nightlights.average_viirs.v21_m_500m_s_20200101_20201231_go_epsg4326_v20250904.tif",
+    "sha256": "2f43ac1a2a5f12d6142182364dfc5f26e666aece2d83b8005e54468e3f53674c",
+    "crs": "EPSG:4326",
+    "transform": [
+      0.00416666666666667,
+      0.0,
+      -180.0,
+      0.0,
+      -0.00416666666666667,
+      87.37,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "width": 86400,
+    "height": 35849,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0
+  },
+  "2021": {
+    "path": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/nightlights_zenodo_v0_4/nightlights.average_viirs.v21_m_500m_s_20210101_20211231_go_epsg4326_v20250904.tif",
+    "sha256": "657f96793c82e052d89f6926e2ad2409ddb9023c99bf860856a22efbe84a54f8",
+    "crs": "EPSG:4326",
+    "transform": [
+      0.00416666666666667,
+      0.0,
+      -180.0,
+      0.0,
+      -0.00416666666666667,
+      87.37,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "width": 86400,
+    "height": 35849,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0
+  },
+  "2022": {
+    "path": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/nightlights_zenodo_v0_4/nightlights.average_viirs.v21_m_500m_s_20220101_20221231_go_epsg4326_v20250904.tif",
+    "sha256": "006a469c3e3e2ffac6d3cd5060c844b1bdf015650e049e9e4f61e041d538e25b",
+    "crs": "EPSG:4326",
+    "transform": [
+      0.00416666666666667,
+      0.0,
+      -180.0,
+      0.0,
+      -0.00416666666666667,
+      87.37,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "width": 86400,
+    "height": 35849,
+    "scale": 10.0,
+    "offset": 0.0,
+    "nodata": -32768.0
+  },
+  "2023": {
+    "path": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/nightlights_zenodo_v0_4/nightlights.average_viirs.v21_m_500m_s_20230101_20231231_go_epsg4326_v20250904.tif",
+    "sha256": "97c9e6e2e66d6c229f865ca59ebf8ff0eafb9346a13a07ed3387c2a69c8b3f7b",
+    "crs": "EPSG:4326",
+    "transform": [
+      0.00416666666666667,
+      0.0,
+      -180.0,
+      0.0,
+      -0.00416666666666667,
+      87.37,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "width": 86400,
+    "height": 35849,
+    "scale": 10.0,
+    "offset": 0.0,
+    "nodata": -32768.0
+  },
+  "2024": {
+    "path": "/data/codex/repos/dsipa-dev-goal012-20260723T115300Z/data/raw/nightlights_zenodo_v0_4/nightlights.average_viirs.v21_m_500m_s_20240101_20241231_go_epsg4326_v20250904.tif",
+    "sha256": "e6edde68952052f8c53050e2ce7082bab08ddd0e15a696f999215e2d57194c53",
+    "crs": "EPSG:4326",
+    "transform": [
+      0.00416666666666667,
+      0.0,
+      -180.0,
+      0.0,
+      -0.00416666666666667,
+      87.37,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "width": 86400,
+    "height": 35849,
+    "scale": 10.0,
+    "offset": 0.0,
+    "nodata": -32768.0
+  }
+}

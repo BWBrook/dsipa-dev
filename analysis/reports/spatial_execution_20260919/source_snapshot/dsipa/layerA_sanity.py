@@ -1,0 +1,445 @@
+"""Layer A sanity dashboard (WP0.10c)."""
+
+from __future__ import annotations
+
+import argparse
+import shutil
+from datetime import datetime, timezone
+from pathlib import Path
+
+import geopandas as gpd
+import numpy as np
+import pandas as pd
+from shapely.geometry import Point
+
+from dsipa.manifest import build_manifest, write_manifest
+from dsipa.paths import find_repo_root
+from dsipa.schema import EDGE_PROFILES_NATIONAL_CSV, PA_GEOMETRIES_GPKG, RADIANCE_BUFFERS_NATIONAL_CSV
+from dsipa.triad import CITY_POINTS
+
+try:
+    from shapely import make_valid
+except ImportError:  # pragma: no cover
+    from shapely.validation import make_valid  # type: ignore
+
+REPORT_PATH = "analysis/reports/layerA_sanity_dashboard.md"
+PLOT_PATH = "analysis/reports/layerA_sensitivity_mean_vs_median.png"
+
+MIN_VALID_PIXELS = 10
+ALT_VALID_PIXELS = 50
+PRIMARY_BUFFER_TYPE = "land_unprotected"
+
+
+def _now_utc() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+
+
+def _build_city_gdf() -> gpd.GeoDataFrame:
+    rows = [(name, Point(lon, lat)) for name, lon, lat in CITY_POINTS]
+    return gpd.GeoDataFrame(rows, columns=["city", "geometry"], crs="EPSG:4326").to_crs("EPSG:3577")
+
+
+def _assign_distance_band(distance_km: float) -> str:
+    if distance_km <= 20.0:
+        return "urban_0_20km"
+    if distance_km <= 100.0:
+        return "peri_20_100km"
+    if distance_km >= 300.0:
+        return "remote_300km_plus"
+    return "mid_100_300km"
+
+
+def _assign_area_quartiles(area_km2: pd.Series) -> pd.Series:
+    try:
+        return pd.qcut(area_km2, q=4, labels=["Q1", "Q2", "Q3", "Q4"])
+    except ValueError:
+        ranked = area_km2.rank(method="first")
+        return pd.qcut(ranked, q=4, labels=["Q1", "Q2", "Q3", "Q4"])
+
+
+def _attach_city_distance(gdf: gpd.GeoDataFrame) -> pd.DataFrame:
+    gdf = gdf.to_crs("EPSG:3577").copy()
+    gdf["centroid"] = gdf.geometry.centroid
+    cities = _build_city_gdf()
+    city_geoms = cities.geometry.to_list()
+    city_names = cities["city"].to_list()
+    nearest_city = []
+    nearest_dist_km = []
+    for geom in gdf["centroid"]:
+        distances = [geom.distance(city_geom) for city_geom in city_geoms]
+        idx = int(np.argmin(distances))
+        nearest_city.append(city_names[idx])
+        nearest_dist_km.append(distances[idx] / 1000.0)
+    gdf["nearest_city"] = nearest_city
+    gdf["distance_km"] = nearest_dist_km
+    gdf["distance_band"] = gdf["distance_km"].apply(_assign_distance_band)
+    gdf["area_quartile"] = _assign_area_quartiles(gdf["area_km2"])
+    cols = ["pa_id", "nearest_city", "distance_km", "distance_band", "area_quartile", "area_km2"]
+    for col in ["NAME", "STATE"]:
+        if col in gdf.columns:
+            cols.append(col)
+    return gdf[cols]
+
+
+def _invariant_checks(df: pd.DataFrame) -> list[str]:
+    lines = ["## Invariants", ""]
+    lines.append(f"valid_fraction within [0,1]: {((df['valid_fraction'] >= 0) & (df['valid_fraction'] <= 1)).all()}")
+    lines.append(f"valid_pixel_count >= 0: {(df['valid_pixel_count'] >= 0).all()}")
+    lines.append(f"mean >= 0 (ignoring NaN): {(df['mean'].dropna() >= 0).all()}")
+    if "frac_gt0" in df.columns:
+        lines.append(
+            f"frac_gt0 within [0,1] (ignoring NaN): {((df['frac_gt0'].dropna() >= 0) & (df['frac_gt0'].dropna() <= 1)).all()}"
+        )
+    if "p95" in df.columns:
+        valid = df.dropna(subset=["p95", "median", "min"])
+        lines.append(f"p95 >= median >= min (valid rows): {((valid['p95'] >= valid['median']) & (valid['median'] >= valid['min'])).all()}")
+    return lines
+
+
+def _summarise_anchor(label: str, subset: pd.DataFrame) -> str:
+    if subset.empty:
+        return f"- {label}: n=0"
+    return (
+        f"- {label}: n={len(subset)}, mean median={subset['mean'].median():.3f}, "
+        f"mean p95={subset['mean'].quantile(0.95):.3f}, "
+        f"fraction mean>0={(subset['mean'] > 0).mean():.3f}, "
+        f"median distance={subset['distance_km'].median():.1f} km"
+    )
+
+
+def _format_top_anchor_rows(subset: pd.DataFrame, *, n: int = 8) -> str:
+    cols = [col for col in ["pa_id", "NAME", "STATE", "mean", "p95", "frac_gt0", "distance_km", "nearest_city"] if col in subset.columns]
+    if subset.empty:
+        return "No rows."
+    return subset.sort_values("mean", ascending=False).head(n)[cols].round(3).to_string(index=False)
+
+
+def _anchor_checks(radiance_df: pd.DataFrame, pa_meta: pd.DataFrame) -> list[str]:
+    lines = ["## Anchor checks (explicit bright/dark contexts)", ""]
+    lines.append(
+        "Anchors are defined from PA/radiance evidence, not from nearest-city medians. "
+        "This avoids the earlier failure mode where many remote PAs were still assigned to a major city label."
+    )
+    lines.append("")
+
+    merged = radiance_df.merge(pa_meta, on="pa_id", how="left")
+    year_df = merged[(merged["year"] == 2024) & (merged["valid_pixel_count"] >= MIN_VALID_PIXELS)].copy()
+    inside = year_df[year_df["zone"] == "inside"].copy()
+    buffer1 = year_df[
+        (year_df["zone"] == "buffer")
+        & (year_df["buffer_km"] == 1.0)
+        & (year_df["buffer_type"] == PRIMARY_BUFFER_TYPE)
+    ].copy()
+
+    urban_inside = inside[inside["distance_km"] <= 20.0]
+    remote_inside = inside[inside["distance_km"] >= 300.0]
+    bright_inside = inside[inside["mean"] > 0].sort_values("mean", ascending=False).head(50)
+    bright_buffer = buffer1[buffer1["mean"] > 0].sort_values("mean", ascending=False).head(50)
+
+    lines.extend(
+        [
+            _summarise_anchor("Urban-adjacent inside PAs (<=20 km)", urban_inside),
+            _summarise_anchor("Remote inside PAs (>=300 km)", remote_inside),
+            _summarise_anchor("Top non-zero inside PAs by 2024 mean (top 50)", bright_inside),
+            _summarise_anchor("Top non-zero 1 km buffer contexts by 2024 mean (top 50)", bright_buffer),
+            "",
+            "Top inside bright-context rows (2024):",
+            "",
+            _format_top_anchor_rows(bright_inside),
+            "",
+        ]
+    )
+
+    urban_p95 = urban_inside["mean"].quantile(0.95) if not urban_inside.empty else np.nan
+    remote_p95 = remote_inside["mean"].quantile(0.95) if not remote_inside.empty else np.nan
+    bright_median = bright_inside["mean"].median() if not bright_inside.empty else np.nan
+    verdicts = []
+    if pd.notna(urban_p95) and pd.notna(remote_p95):
+        verdicts.append(f"urban p95 > remote p95: {urban_p95 > remote_p95} ({urban_p95:.3f} vs {remote_p95:.3f})")
+    if pd.notna(bright_median) and pd.notna(remote_p95):
+        verdicts.append(f"bright-context median > remote p95: {bright_median > remote_p95} ({bright_median:.3f} vs {remote_p95:.3f})")
+    lines.extend(["Anchor sanity verdicts:", ""])
+    lines.extend(f"- {verdict}" for verdict in verdicts)
+    return lines
+
+
+def _sensitivity_checks(df_inside: pd.DataFrame) -> list[str]:
+    lines = ["## Sensitivity checks", ""]
+    corr = df_inside[["mean", "median"]].dropna().corr().iloc[0, 1]
+    lines.append(f"Mean vs median correlation (inside): {corr:.3f}")
+    for threshold in [MIN_VALID_PIXELS, ALT_VALID_PIXELS]:
+        frac = (df_inside["valid_pixel_count"] >= threshold).mean()
+        lines.append(f"Fraction inside with >= {threshold} valid pixels: {frac:.3f}")
+    return lines
+
+
+def _floor_summary(df_inside: pd.DataFrame, pa_meta: pd.DataFrame) -> list[str]:
+    lines = ["## Floor/selection summary (inside)", ""]
+    valid = df_inside[df_inside["valid_pixel_count"] >= MIN_VALID_PIXELS].copy()
+    lines.append(f"Inside rows with >= {MIN_VALID_PIXELS} valid pixels: n={len(valid)}")
+    if valid.empty:
+        lines.append("No valid inside rows after threshold.")
+        return lines
+    lines.append(f"Fraction mean==0: {(valid['mean'] == 0).mean():.3f}")
+    lines.append(f"Fraction median==0: {(valid['median'] == 0).mean():.3f}")
+    if "frac_gt0" in valid.columns:
+        lines.append(f"Fraction frac_gt0==0: {(valid['frac_gt0'] == 0).mean():.3f}")
+    if "p95" in valid.columns:
+        lines.append(f"Fraction p95==0: {(valid['p95'] == 0).mean():.3f}")
+
+    merged = valid.merge(pa_meta, on="pa_id", how="left")
+    metrics = []
+    if "mean" in merged.columns:
+        metrics.append(("mean", "mean_gt0"))
+    if "median" in merged.columns:
+        metrics.append(("median", "median_gt0"))
+    if "frac_gt0" in merged.columns:
+        metrics.append(("frac_gt0", "frac_gt0_gt0"))
+    if "p95" in merged.columns:
+        metrics.append(("p95", "p95_gt0"))
+
+    if metrics:
+        lines.append("")
+        lines.append("Fraction with non-zero exposure by distance band + area quartile:")
+        rows = []
+        counts = (
+            merged.groupby(["distance_band", "area_quartile"], observed=True)["pa_id"]
+            .nunique()
+            .reset_index()
+            .rename(columns={"pa_id": "n_pa"})
+        )
+        for metric, label in metrics:
+            strata = (
+                merged.groupby(["distance_band", "area_quartile"], observed=True)[metric]
+                .apply(lambda s: (s > 0).mean())
+                .reset_index()
+                .rename(columns={metric: label})
+            )
+            rows.append(strata)
+        merged_stats = counts
+        for extra in rows:
+            merged_stats = merged_stats.merge(
+                extra, on=["distance_band", "area_quartile"], how="left"
+            )
+        lines.append("")
+        lines.append(merged_stats.round(3).to_string(index=False))
+    return lines
+
+
+def _conditional_inside_vs_buffer(
+    radiance_df: pd.DataFrame,
+    pa_meta: pd.DataFrame,
+    *,
+    year: int,
+    buffer_km: float,
+    distance_max_km: float,
+) -> list[str]:
+    subset = radiance_df[
+        (radiance_df["year"] == year)
+        & (
+            (radiance_df["zone"] == "inside")
+            | (
+                (radiance_df["zone"] == "buffer")
+                & (radiance_df["buffer_km"] == buffer_km)
+                & (radiance_df["buffer_type"] == PRIMARY_BUFFER_TYPE)
+            )
+        )
+    ].copy()
+    subset = subset[subset["valid_pixel_count"] >= MIN_VALID_PIXELS]
+    merged = subset.merge(pa_meta, on="pa_id", how="left")
+    merged = merged[merged["distance_km"] <= distance_max_km]
+    inside = merged[merged["zone"] == "inside"][["pa_id", "mean"]].rename(columns={"mean": "mean_inside"})
+    buffer = merged[merged["zone"] == "buffer"][["pa_id", "mean"]].rename(columns={"mean": "mean_buffer"})
+    joined = inside.merge(buffer, on="pa_id", how="inner")
+    if joined.empty:
+        return [f"No inside/buffer pairs for <= {distance_max_km} km (year {year})."]
+    frac = (joined["mean_buffer"] > joined["mean_inside"]).mean()
+    nonzero = joined[(joined["mean_inside"] > 0) | (joined["mean_buffer"] > 0)]
+    frac_nonzero = (nonzero["mean_buffer"] > nonzero["mean_inside"]).mean() if not nonzero.empty else np.nan
+    return [
+        f"Conditional inside vs buffer ({buffer_km:.0f} km, {PRIMARY_BUFFER_TYPE}; year {year})",
+        f"- PAs within {distance_max_km:.0f} km of city: n={len(joined)}, fraction buffer>inside={frac:.3f}",
+        f"- Non-zero subset (inside>0 or buffer>0): n={len(nonzero)}, fraction buffer>inside={frac_nonzero:.3f}",
+    ]
+
+def _stratified_inside_vs_buffer(
+    radiance_df: pd.DataFrame,
+    pa_meta: pd.DataFrame,
+    *,
+    year: int,
+    buffer_km: float,
+) -> list[str]:
+    subset = radiance_df[
+        (radiance_df["year"] == year)
+        & (
+            (radiance_df["zone"] == "inside")
+            | (
+                (radiance_df["zone"] == "buffer")
+                & (radiance_df["buffer_km"] == buffer_km)
+                & (radiance_df["buffer_type"] == PRIMARY_BUFFER_TYPE)
+            )
+        )
+    ].copy()
+    subset = subset[subset["valid_pixel_count"] >= MIN_VALID_PIXELS]
+    merged = subset.merge(pa_meta, on="pa_id", how="left")
+    grouped = (
+        merged.groupby(["distance_band", "area_quartile", "zone"], observed=True)["mean"]
+        .median()
+        .unstack("zone")
+        .rename(columns={"inside": "inside_mean", "buffer": f"buffer_{buffer_km}km_mean"})
+    )
+    grouped = grouped.dropna(subset=["inside_mean", f"buffer_{buffer_km}km_mean"])
+    grouped[f"inside_minus_buffer_{buffer_km}km"] = (
+        grouped["inside_mean"] - grouped[f"buffer_{buffer_km}km_mean"]
+    )
+    grouped = grouped.reset_index().sort_values(["distance_band", "area_quartile"])
+    lines = [
+        f"### Stratified inside vs buffer ({buffer_km:.0f} km, {PRIMARY_BUFFER_TYPE}) — year {year}",
+        "",
+        grouped.round(3).to_string(index=False),
+        "",
+    ]
+    return lines
+
+
+def _write_plot(df_inside: pd.DataFrame, plot_path: Path) -> None:
+    import matplotlib.pyplot as plt
+
+    plot_path.parent.mkdir(parents=True, exist_ok=True)
+    subset = df_inside[df_inside["year"] == 2024].dropna(subset=["mean", "median"])
+    fig, ax = plt.subplots(figsize=(5, 5))
+    ax.scatter(subset["mean"], subset["median"], s=6, alpha=0.4, color="#2C7FB8")
+    ax.set_xlabel("Mean radiance (scaled)")
+    ax.set_ylabel("Median radiance (scaled)")
+    ax.set_title("Inside mean vs median (2024)")
+    fig.tight_layout()
+    fig.savefig(plot_path, dpi=150)
+    plt.close(fig)
+
+
+def write_report(
+    *,
+    report_path: Path,
+    plot_path: Path,
+    radiance_df: pd.DataFrame,
+    ring_df: pd.DataFrame,
+    pa_meta: pd.DataFrame,
+) -> None:
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+
+    inside = radiance_df[radiance_df["zone"] == "inside"].copy()
+    lines = [
+        "# Layer A sanity dashboard",
+        "",
+        f"Generated: {_now_utc()}",
+        "",
+        f"Minimum valid pixels: {MIN_VALID_PIXELS}",
+        f"Alternative threshold: {ALT_VALID_PIXELS}",
+        "",
+    ]
+    lines.extend(_invariant_checks(radiance_df))
+    lines.append("")
+    lines.extend(_anchor_checks(radiance_df, pa_meta))
+    lines.append("")
+    lines.extend(_sensitivity_checks(inside))
+    lines.append("")
+    lines.extend(_floor_summary(inside, pa_meta))
+    lines.append("")
+    ring_missing = ring_df[ring_df["valid_pixel_count"] < MIN_VALID_PIXELS]
+    lines.append("## Ring missingness")
+    lines.append("")
+    lines.append(
+        ring_missing.groupby("ring_index")["pa_id"].count().to_string()
+        if not ring_missing.empty
+        else "No ring rows below threshold."
+    )
+    if not ring_df.empty:
+        n_rings = ring_df["ring_index"].nunique()
+        valid = ring_df[ring_df["valid_pixel_count"] >= MIN_VALID_PIXELS]
+        complete = valid.groupby(["pa_id", "year"])["ring_index"].nunique()
+        frac_complete = (complete == n_rings).mean()
+        lines.append("")
+        lines.append(f"Fraction of PA-years with complete ring coverage: {frac_complete:.3f}")
+    lines.append("")
+    lines.append("## Stratified inside vs buffer (median of means)")
+    lines.append("")
+    lines.append(
+        "Bands: urban<=20 km, peri=20–100 km, mid=100–300 km, remote>=300 km; area quartiles computed across all PAs."
+    )
+    lines.append("")
+    lines.extend(_stratified_inside_vs_buffer(radiance_df, pa_meta, year=2024, buffer_km=1.0))
+    lines.extend(_stratified_inside_vs_buffer(radiance_df, pa_meta, year=2024, buffer_km=5.0))
+    lines.append("")
+    lines.append("## Conditional inside vs buffer (urban proximity)")
+    lines.append("")
+    lines.extend(
+        _conditional_inside_vs_buffer(
+            radiance_df, pa_meta, year=2024, buffer_km=1.0, distance_max_km=20.0
+        )
+    )
+    lines.append(f"Plot: {plot_path.name}")
+
+    report_path.write_text("\n".join(lines), encoding="utf-8")
+
+
+def write_artefact(report_path: Path, plot_path: Path, root: Path) -> Path:
+    artefact_dir = root / "artefacts" / "wp0_10c_layerA_sanity"
+    artefact_dir.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(report_path, artefact_dir / report_path.name)
+    shutil.copyfile(plot_path, artefact_dir / plot_path.name)
+
+    manifest = build_manifest(
+        run_id="wp0_10c_layerA_sanity",
+        wp="WP0.10c",
+        root=root,
+        outputs=[report_path.name, plot_path.name],
+        inputs=[RADIANCE_BUFFERS_NATIONAL_CSV, EDGE_PROFILES_NATIONAL_CSV, PA_GEOMETRIES_GPKG],
+        notes="WP0.10c Layer A sanity dashboard (stratified, censoring-aware)",
+    )
+    write_manifest(artefact_dir / "MANIFEST.json", manifest)
+
+    (artefact_dir / "README.txt").write_text(
+        "WP0.10c Layer A sanity artefact. Contains sanity dashboard and sensitivity plot.\n",
+        encoding="utf-8",
+    )
+    return artefact_dir
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Generate Layer A sanity dashboard (WP0.10).")
+    parser.add_argument(
+        "--skip-artefact",
+        action="store_true",
+        help="Skip writing the canonical artefact folder.",
+    )
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    root = find_repo_root()
+
+    radiance_df = pd.read_csv(root / RADIANCE_BUFFERS_NATIONAL_CSV)
+    ring_df = pd.read_csv(root / EDGE_PROFILES_NATIONAL_CSV)
+    pa_gdf = gpd.read_file(root / PA_GEOMETRIES_GPKG)
+    pa_meta = _attach_city_distance(pa_gdf)
+
+    report_path = root / REPORT_PATH
+    plot_path = root / PLOT_PATH
+    _write_plot(radiance_df[radiance_df["zone"] == "inside"], plot_path)
+    write_report(
+        report_path=report_path,
+        plot_path=plot_path,
+        radiance_df=radiance_df,
+        ring_df=ring_df,
+        pa_meta=pa_meta,
+    )
+
+    if not args.skip_artefact:
+        write_artefact(report_path, plot_path, root)
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

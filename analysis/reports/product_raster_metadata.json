@@ -1,0 +1,347 @@
+[
+  {
+    "year": 2013,
+    "file": "nightlights.average_viirs.v21_m_500m_s_20130101_20131231_go_epsg4326_v20250904.tif",
+    "bytes": 69355797,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0,
+    "dtype": "int16",
+    "tags": {
+      "AREA_OR_POINT": "Area"
+    },
+    "bounds_requested": [
+      95.81692031509498,
+      -44.861140451983275,
+      168.95822725017044,
+      -9.413782260630022
+    ],
+    "window": [
+      66196,
+      23228,
+      17554,
+      8507
+    ],
+    "sha256": "9f9e1dc7d80e7b50cfcbfbdde6e45938e9070a8d234e27d331cd8e027f1d1289",
+    "minimum_positive_stored": 10,
+    "positive_pixels": 233197,
+    "zero_pixels": 149098676,
+    "negative_pixels_including_nodata": 5
+  },
+  {
+    "year": 2014,
+    "file": "nightlights.average_viirs.v21_m_500m_s_20140101_20141231_go_epsg4326_v20250904.tif",
+    "bytes": 68076008,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0,
+    "dtype": "int16",
+    "tags": {
+      "AREA_OR_POINT": "Area"
+    },
+    "bounds_requested": [
+      95.81692031509498,
+      -44.861140451983275,
+      168.95822725017044,
+      -9.413782260630022
+    ],
+    "window": [
+      66196,
+      23228,
+      17554,
+      8507
+    ],
+    "sha256": "12e24b91f3fef11117ac6bfb66142b1088541884602921128d3ddd44e3e40cbd"
+  },
+  {
+    "year": 2015,
+    "file": "nightlights.average_viirs.v21_m_500m_s_20150101_20151231_go_epsg4326_v20250904.tif",
+    "bytes": 67422293,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0,
+    "dtype": "int16",
+    "tags": {
+      "AREA_OR_POINT": "Area"
+    },
+    "bounds_requested": [
+      95.81692031509498,
+      -44.861140451983275,
+      168.95822725017044,
+      -9.413782260630022
+    ],
+    "window": [
+      66196,
+      23228,
+      17554,
+      8507
+    ],
+    "sha256": "a673f35bd6240c6dc69e05550cdfcd46080a23364a12b91fe897312a308f712f"
+  },
+  {
+    "year": 2016,
+    "file": "nightlights.average_viirs.v21_m_500m_s_20160101_20161231_go_epsg4326_v20250904.tif",
+    "bytes": 67142087,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0,
+    "dtype": "int16",
+    "tags": {
+      "AREA_OR_POINT": "Area"
+    },
+    "bounds_requested": [
+      95.81692031509498,
+      -44.861140451983275,
+      168.95822725017044,
+      -9.413782260630022
+    ],
+    "window": [
+      66196,
+      23228,
+      17554,
+      8507
+    ],
+    "sha256": "319ef2d91a2ff4733c61a555a81f05b483c9b47463b1f91f00bbc5385556ca45"
+  },
+  {
+    "year": 2017,
+    "file": "nightlights.average_viirs.v21_m_500m_s_20170101_20171231_go_epsg4326_v20250904.tif",
+    "bytes": 75369463,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0,
+    "dtype": "int16",
+    "tags": {
+      "AREA_OR_POINT": "Area"
+    },
+    "bounds_requested": [
+      95.81692031509498,
+      -44.861140451983275,
+      168.95822725017044,
+      -9.413782260630022
+    ],
+    "window": [
+      66196,
+      23228,
+      17554,
+      8507
+    ],
+    "sha256": "6c767ca0d2c5b2c45c87fea60039bd232ed6a0114229ab31d9c2fa2238114c46"
+  },
+  {
+    "year": 2018,
+    "file": "nightlights.average_viirs.v21_m_500m_s_20180101_20181231_go_epsg4326_v20250904.tif",
+    "bytes": 76305045,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0,
+    "dtype": "int16",
+    "tags": {
+      "AREA_OR_POINT": "Area"
+    },
+    "bounds_requested": [
+      95.81692031509498,
+      -44.861140451983275,
+      168.95822725017044,
+      -9.413782260630022
+    ],
+    "window": [
+      66196,
+      23228,
+      17554,
+      8507
+    ],
+    "sha256": "62fd7052dc69cadaf446d61ea135e8489b321be24cb4b3b4e26f689b81a3405a"
+  },
+  {
+    "year": 2019,
+    "file": "nightlights.average_viirs.v21_m_500m_s_20190101_20191231_go_epsg4326_v20250904.tif",
+    "bytes": 76453018,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0,
+    "dtype": "int16",
+    "tags": {
+      "AREA_OR_POINT": "Area"
+    },
+    "bounds_requested": [
+      95.81692031509498,
+      -44.861140451983275,
+      168.95822725017044,
+      -9.413782260630022
+    ],
+    "window": [
+      66196,
+      23228,
+      17554,
+      8507
+    ],
+    "sha256": "9f84fedf65c5a1bdbda63295849d80f99c3b03a9a569e19b173026829c1760b3"
+  },
+  {
+    "year": 2020,
+    "file": "nightlights.average_viirs.v21_m_500m_s_20200101_20201231_go_epsg4326_v20250904.tif",
+    "bytes": 79245522,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0,
+    "dtype": "int16",
+    "tags": {
+      "AREA_OR_POINT": "Area"
+    },
+    "bounds_requested": [
+      95.81692031509498,
+      -44.861140451983275,
+      168.95822725017044,
+      -9.413782260630022
+    ],
+    "window": [
+      66196,
+      23228,
+      17554,
+      8507
+    ],
+    "sha256": "2f43ac1a2a5f12d6142182364dfc5f26e666aece2d83b8005e54468e3f53674c",
+    "minimum_positive_stored": 10,
+    "positive_pixels": 325424,
+    "zero_pixels": 149006449,
+    "negative_pixels_including_nodata": 5
+  },
+  {
+    "year": 2021,
+    "file": "nightlights.average_viirs.v21_m_500m_s_20210101_20211231_go_epsg4326_v20250904.tif",
+    "bytes": 83892922,
+    "scale": 1.0,
+    "offset": 0.0,
+    "nodata": -32768.0,
+    "dtype": "int16",
+    "tags": {
+      "AREA_OR_POINT": "Area"
+    },
+    "bounds_requested": [
+      95.81692031509498,
+      -44.861140451983275,
+      168.95822725017044,
+      -9.413782260630022
+    ],
+    "window": [
+      66196,
+      23228,
+      17554,
+      8507
+    ],
+    "sha256": "657f96793c82e052d89f6926e2ad2409ddb9023c99bf860856a22efbe84a54f8",
+    "minimum_positive_stored": 10,
+    "positive_pixels": 338602,
+    "zero_pixels": 148993267,
+    "negative_pixels_including_nodata": 9
+  },
+  {
+    "year": 2022,
+    "file": "nightlights.average_viirs.v21_m_500m_s_20220101_20221231_go_epsg4326_v20250904.tif",
+    "bytes": 59051868,
+    "scale": 10.0,
+    "offset": 0.0,
+    "nodata": -32768.0,
+    "dtype": "int16",
+    "tags": {
+      "TIFFTAG_DOCUMENTNAME": "./VNL_v22_npp-j01_2022_global_vcmslcfg_c202303062300.average_masked.dat.tif",
+      "TIFFTAG_IMAGEDESCRIPTION": "IDL TIFF file",
+      "TIFFTAG_SOFTWARE": "IDL 8.7.2, Harris Geospatial Solutions, Inc.",
+      "TIFFTAG_DATETIME": "2023:06:30 13:04:19",
+      "TIFFTAG_XRESOLUTION": "100",
+      "TIFFTAG_YRESOLUTION": "100",
+      "TIFFTAG_RESOLUTIONUNIT": "2 (pixels/inch)",
+      "AREA_OR_POINT": "Area"
+    },
+    "bounds_requested": [
+      95.81692031509498,
+      -44.861140451983275,
+      168.95822725017044,
+      -9.413782260630022
+    ],
+    "window": [
+      66196,
+      23228,
+      17554,
+      8507
+    ],
+    "sha256": "006a469c3e3e2ffac6d3cd5060c844b1bdf015650e049e9e4f61e041d538e25b",
+    "minimum_positive_stored": 1,
+    "positive_pixels": 345118,
+    "zero_pixels": 148986760,
+    "negative_pixels_including_nodata": 0
+  },
+  {
+    "year": 2023,
+    "file": "nightlights.average_viirs.v21_m_500m_s_20230101_20231231_go_epsg4326_v20250904.tif",
+    "bytes": 62086259,
+    "scale": 10.0,
+    "offset": 0.0,
+    "nodata": -32768.0,
+    "dtype": "int16",
+    "tags": {
+      "TIFFTAG_DOCUMENTNAME": "./VNL_npp_2023_global_vcmslcfg_v2_c202402081600.average_masked.dat.tif",
+      "TIFFTAG_IMAGEDESCRIPTION": "IDL TIFF file",
+      "TIFFTAG_SOFTWARE": "IDL 8.7.2, Harris Geospatial Solutions, Inc.",
+      "TIFFTAG_DATETIME": "2024:03:01 12:22:53",
+      "TIFFTAG_XRESOLUTION": "100",
+      "TIFFTAG_YRESOLUTION": "100",
+      "TIFFTAG_RESOLUTIONUNIT": "2 (pixels/inch)",
+      "AREA_OR_POINT": "Area"
+    },
+    "bounds_requested": [
+      95.81692031509498,
+      -44.861140451983275,
+      168.95822725017044,
+      -9.413782260630022
+    ],
+    "window": [
+      66196,
+      23228,
+      17554,
+      8507
+    ],
+    "sha256": "97c9e6e2e66d6c229f865ca59ebf8ff0eafb9346a13a07ed3387c2a69c8b3f7b",
+    "minimum_positive_stored": 1,
+    "positive_pixels": 390418,
+    "zero_pixels": 148941460,
+    "negative_pixels_including_nodata": 0
+  },
+  {
+    "year": 2024,
+    "file": "nightlights.average_viirs.v21_m_500m_s_20240101_20241231_go_epsg4326_v20250904.tif",
+    "bytes": 63713625,
+    "scale": 10.0,
+    "offset": 0.0,
+    "nodata": -32768.0,
+    "dtype": "int16",
+    "tags": {
+      "TIFFTAG_DOCUMENTNAME": "./VNL_npp_2024_global_vcmslcfg_v2_c202502261200.average_masked.dat.tif",
+      "TIFFTAG_IMAGEDESCRIPTION": "IDL TIFF file",
+      "TIFFTAG_SOFTWARE": "IDL 8.7.2, Harris Geospatial Solutions, Inc.",
+      "TIFFTAG_DATETIME": "2025:04:03 14:16:11",
+      "TIFFTAG_XRESOLUTION": "100",
+      "TIFFTAG_YRESOLUTION": "100",
+      "TIFFTAG_RESOLUTIONUNIT": "2 (pixels/inch)",
+      "AREA_OR_POINT": "Area"
+    },
+    "bounds_requested": [
+      95.81692031509498,
+      -44.861140451983275,
+      168.95822725017044,
+      -9.413782260630022
+    ],
+    "window": [
+      66196,
+      23228,
+      17554,
+      8507
+    ],
+    "sha256": "e6edde68952052f8c53050e2ce7082bab08ddd0e15a696f999215e2d57194c53",
+    "minimum_positive_stored": 1,
+    "positive_pixels": 402212,
+    "zero_pixels": 148929666,
+    "negative_pixels_including_nodata": 0
+  }
+]
