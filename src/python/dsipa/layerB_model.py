@@ -41,6 +41,15 @@ IBRA_SUMMARY_REPORT = "analysis/reports/layerB_ibra_summary.md"
 IBRA_EFFECTS_CSV = "analysis/reports/layerB_ibra_effects.csv"
 IBRA_FOREST_FIG = "manuscript/figures/fig_layerB_ibra_intensity_forest.png"
 
+# Keep the fitted classifier contract explicit. The accepted Layer B runs used
+# scikit-learn's default L2-penalised logistic model with C=1 and no feature
+# standardisation; naming the settings here prevents a library-default drift.
+MODEL_FEATURES = ("any_light", "log1p_alan")
+LOGISTIC_PENALTY = "l2"
+LOGISTIC_C = 1.0
+LOGISTIC_SOLVER = "liblinear"
+LOGISTIC_MAX_ITER = 200
+
 
 @dataclass
 class DatasetResult:
@@ -168,16 +177,53 @@ def _iter_occurrence_chunks(path: Path, chunksize: int = 200_000) -> Iterable[pd
 
 
 def _sample_raster(dataset, lons: np.ndarray, lats: np.ndarray) -> np.ndarray:
-    coords = list(zip(lons, lats))
-    values = np.array([val[0] for val in dataset.sample(coords)], dtype=float)
+    """Sample decoded ALAN values, retaining only valid raw raster codes.
+
+    Raster nodata and negative sentinel values must be identified in the stored
+    domain before scale/offset decoding. Coordinates that map outside the
+    raster support are missing rather than an observed zero-light value.
+    """
+    lons_arr = np.asarray(lons, dtype=float).reshape(-1)
+    lats_arr = np.asarray(lats, dtype=float).reshape(-1)
+    if lons_arr.shape != lats_arr.shape:
+        raise ValueError("lons and lats must have the same shape")
+
+    values = np.full(lons_arr.shape, np.nan, dtype=float)
+    valid_coords: list[tuple[int, float, float]] = []
+    for idx, (lon, lat) in enumerate(zip(lons_arr, lats_arr)):
+        if not (np.isfinite(lon) and np.isfinite(lat)):
+            continue
+        try:
+            row, col = dataset.index(float(lon), float(lat))
+        except (IndexError, ValueError, TypeError):
+            continue
+        if 0 <= row < dataset.height and 0 <= col < dataset.width:
+            valid_coords.append((idx, float(lon), float(lat)))
+
+    if not valid_coords:
+        return values
+
+    coords = [(lon, lat) for _, lon, lat in valid_coords]
+    samples = dataset.sample(coords, indexes=1, masked=True)
     scale = dataset.scales[0] if dataset.scales else None
     offset = dataset.offsets[0] if dataset.offsets else None
     scale_value = 1.0 if scale is None else float(scale)
     offset_value = 0.0 if offset is None else float(offset)
-    values = values * scale_value + offset_value
     nodata = dataset.nodata
-    if nodata is not None:
-        values = np.where(values == nodata, np.nan, values)
+    for (idx, _, _), sample in zip(valid_coords, samples):
+        raw_value = sample[0]
+        if np.ma.is_masked(raw_value):
+            continue
+        raw_value = float(raw_value)
+        if not np.isfinite(raw_value):
+            continue
+        if nodata is not None and raw_value == float(nodata):
+            continue
+        if raw_value < 0:
+            continue
+        decoded = raw_value * scale_value + offset_value
+        if np.isfinite(decoded):
+            values[idx] = decoded
     return values
 
 
@@ -475,7 +521,7 @@ def _run_model(
     block_km: float,
     seed: int,
 ) -> ModelResult:
-    features = ["any_light", "log1p_alan"]
+    features = list(MODEL_FEATURES)
     X = df[features].to_numpy()
     y = (df["group"] == "microbats").astype(int).to_numpy()
     groups = df["block_id"].to_numpy()
@@ -489,7 +535,12 @@ def _run_model(
     metrics = []
     coeffs = []
     for fold, (train_idx, test_idx) in enumerate(cv.split(X, y, groups=groups), start=1):
-        model = LogisticRegression(max_iter=200, solver="liblinear")
+        model = LogisticRegression(
+            penalty=LOGISTIC_PENALTY,
+            C=LOGISTIC_C,
+            solver=LOGISTIC_SOLVER,
+            max_iter=LOGISTIC_MAX_ITER,
+        )
         model.fit(X[train_idx], y[train_idx])
         probs = model.predict_proba(X[test_idx])[:, 1]
         y_test = y[test_idx]
@@ -529,6 +580,11 @@ def _summarize_coefficients(coeffs: pd.DataFrame) -> pd.DataFrame:
             }
         )
     return pd.DataFrame(summary)
+
+
+def _mean_fold_metrics(metrics: pd.DataFrame) -> pd.DataFrame:
+    """Return arithmetic means of held-out metrics across CV folds."""
+    return metrics.groupby("run")[["auc", "log_loss"]].mean()
 
 
 def _shuffle_within_blocks(df: pd.DataFrame, seed: int) -> pd.DataFrame:
@@ -632,6 +688,9 @@ def write_model_report(
         "- Response: microbats (1) vs passerines (0) case-control classification",
         "- Control design: passerines as target-group background (provider-matched)",
         "- ALAN covariates: any_light indicator + log1p(ALAN) conditional on >0",
+        f"- Classifier: logistic regression with penalty={LOGISTIC_PENALTY}, C={LOGISTIC_C:g}, solver={LOGISTIC_SOLVER}, max_iter={LOGISTIC_MAX_ITER}; predictors are not standardised",
+        "- Contrasts: any_light compares ALAN=0 with ALAN>0; log1p(ALAN) is per one-unit increase among ALAN>0",
+        "- Reported CV metrics: arithmetic means of held-out fold AUC and log loss (fold SD is not inferential uncertainty)",
         "- Scope: records inside protected areas or within 10 km buffers",
         f"- Sensitivity birds sample rate: {sensitivity_sample_rate:.2f}",
         "",
@@ -643,28 +702,28 @@ def write_model_report(
         primary_summary.to_string(index=False),
         "",
         "### Cross-validated metrics",
-        primary_metrics.groupby("run")[["auc", "log_loss"]].mean().to_string(),
+        _mean_fold_metrics(primary_metrics).to_string(),
         "",
         "## Falsification (ALAN shuffled within blocks)",
         "### Coefficients (log-odds)",
         shuffle_summary.to_string(index=False),
         "",
         "### Cross-validated metrics",
-        shuffle_metrics.groupby("run")[["auc", "log_loss"]].mean().to_string(),
+        _mean_fold_metrics(shuffle_metrics).to_string(),
         "",
         "## Falsification (ALAN shuffled within IBRA × year)",
         "### Coefficients (log-odds)",
         ibra_shuffle_summary.to_string(index=False),
         "",
         "### Cross-validated metrics",
-        ibra_shuffle_metrics.groupby("run")[["auc", "log_loss"]].mean().to_string(),
+        _mean_fold_metrics(ibra_shuffle_metrics).to_string(),
         "",
         "## Sensitivity (multi-provider)",
         "### Coefficients (log-odds)",
         sensitivity_summary.to_string(index=False),
         "",
         "### Cross-validated metrics",
-        sensitivity_metrics.groupby("run")[["auc", "log_loss"]].mean().to_string(),
+        _mean_fold_metrics(sensitivity_metrics).to_string(),
         "",
         "## IBRA heterogeneity (log1p(ALAN) coefficient)",
         f"- Minimum records per class: {ibra_min_records}",

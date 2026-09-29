@@ -71,3 +71,13 @@ def test_dedupe_occurrences_grid():
     deduped = dedupe_occurrences(filtered, transformer, set())
     # Two unique dates should remain
     assert len(deduped) == 2
+
+
+def test_dedupe_occurrences_keeps_distinct_species_same_cell_day():
+    df = _base_df().iloc[[0]].copy()
+    second_species = df.copy()
+    second_species["species"] = "Another species"
+    filtered = apply_quality_filters(pd.concat([df, second_species], ignore_index=True), uncertainty_m=1000)
+    transformer = Transformer.from_crs("EPSG:4326", "EPSG:3577", always_xy=True)
+    deduped = dedupe_occurrences(filtered, transformer, set())
+    assert len(deduped) == 2

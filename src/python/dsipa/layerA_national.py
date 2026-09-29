@@ -16,12 +16,12 @@ import numpy as np
 import pandas as pd
 import rasterio
 from rasterio.mask import mask
-from shapely.geometry import GeometryCollection, Point
+from shapely.geometry import GeometryCollection, Point, box
 try:
     from shapely.errors import GEOSException
 except Exception:  # pragma: no cover
     GEOSException = Exception
-from shapely import wkb
+from shapely import wkb, union_all
 
 from dsipa.landmask import download_landmask
 from dsipa.layerA_reproducibility import (
@@ -57,8 +57,10 @@ LANDMASK_DIR = "data/raw/ne_110m_land"
 LAND_UNION_CACHE = "data/processed/cache/land_union_ne_110m.wkb"
 PA_UNION_CACHE = f"data/processed/cache/pa_union_v{SCHEMA_SLUG}.wkb"
 LAND_UNPROTECTED_CACHE = f"data/processed/cache/land_unprotected_union_v{SCHEMA_SLUG}.wkb"
-BUFFER_QUAD_SEGS = 1
-GEOM_SIMPLIFY_TOLERANCE_M = 500.0
+# At the largest (10 km) erosion, the circular-arc chord error is <0.19 m.
+# Keep the repaired CAPAD boundary: simplifying it changes the measurement support.
+BUFFER_QUAD_SEGS = 128
+GEOM_SIMPLIFY_TOLERANCE_M = 0.0
 
 REPORT_PATH = "analysis/reports/national_layerA_coverage_and_sanity.md"
 PLOT_PATH = "analysis/reports/national_layerA_distributions.png"
@@ -92,7 +94,8 @@ def _stats_for_geom(
     offset: float | None,
     min_valid_pixels: int,
 ) -> dict[str, float]:
-    if geom is None or geom.is_empty:
+    geom = _polygonal_geom(geom)
+    if geom is None or geom.is_empty or not geom.intersects(box(*dataset.bounds)):
         return {
             "pixel_count": 0,
             "valid_pixel_count": 0,
@@ -107,21 +110,9 @@ def _stats_for_geom(
         }
 
     nodata = dataset.nodata
-    try:
-        data, _ = mask(dataset, [geom], crop=True, filled=True, nodata=nodata)
-    except Exception:
-        return {
-            "pixel_count": 0,
-            "valid_pixel_count": 0,
-            "valid_fraction": 0.0,
-            "mean": np.nan,
-            "median": np.nan,
-            "min": np.nan,
-            "max": np.nan,
-            "std": np.nan,
-            "frac_gt0": np.nan,
-            "p95": np.nan,
-        }
+    # Empty geometry is normal; I/O, geometry and window errors are not evidence
+    # of absent radiance. Let callers fail with the affected support identified.
+    data, _ = mask(dataset, [geom], crop=True, filled=True, nodata=nodata)
     band = data[0]
 
     mask_invalid = np.isnan(band)
@@ -181,6 +172,24 @@ def _safe_geom(geom):
     if not geom.is_valid:
         geom = make_valid(geom)
     return geom
+
+
+def _polygonal_geom(geom):
+    """Keep only areal components of a repaired spatial support.
+
+    Boolean overlays can retain coincident line/point remnants. They have no
+    land area and must not select raster cells. Normalising collections also
+    avoids Rasterio's transformed-window handling of GeometryCollection.
+    """
+    if geom is None or geom.is_empty:
+        return GeometryCollection()
+    geom = _safe_geom(geom)
+    if geom.geom_type in {"Polygon", "MultiPolygon"}:
+        return geom
+    if geom.geom_type == "GeometryCollection":
+        parts = [_polygonal_geom(part) for part in geom.geoms]
+        return union_all([part for part in parts if not part.is_empty])
+    return GeometryCollection()
 
 
 def _safe_difference(a, b):
@@ -417,7 +426,14 @@ def build_buffers(
     land_union,
     pa_union,
     land_unprotected_union=None,
+    quad_segs: int = BUFFER_QUAD_SEGS,
 ) -> tuple[gpd.GeoDataFrame, pd.DataFrame]:
+    if land_union is not None:
+        land_union = _polygonal_geom(land_union)
+    if pa_union is not None:
+        pa_union = _polygonal_geom(pa_union)
+    if land_unprotected_union is not None:
+        land_unprotected_union = _polygonal_geom(land_unprotected_union)
     if land_unprotected_union is None:
         if land_union is None:
             land_unprotected_union = None
@@ -427,17 +443,15 @@ def build_buffers(
             land_unprotected_union = _safe_difference(land_union, pa_union)
 
     base = pa_gdf[["pa_id", "geometry"]].copy()
-    base["geometry"] = base.geometry.apply(_safe_geom).simplify(
-        GEOM_SIMPLIFY_TOLERANCE_M, preserve_topology=True
-    )
+    base["geometry"] = base.geometry.apply(_polygonal_geom)
     base = base[~base.geometry.is_empty]
 
     buffer_frames: list[gpd.GeoDataFrame] = []
     validity_frames: list[pd.DataFrame] = []
 
     for dist_km in BUFFER_DISTANCES_KM:
-        buffer_geom = base.geometry.buffer(dist_km * 1000.0, resolution=BUFFER_QUAD_SEGS)
-        outside = buffer_geom.difference(base.geometry)
+        buffer_geom = base.geometry.buffer(dist_km * 1000.0, resolution=quad_segs)
+        outside = buffer_geom.difference(base.geometry).apply(_polygonal_geom)
         valid_mask = ~outside.is_empty
         if not valid_mask.any():
             continue
@@ -446,14 +460,14 @@ def build_buffers(
 
         raw_area = outside.area.to_numpy()
         if land_union is not None:
-            land_geom = _safe_intersection_series(outside, land_union)
+            land_geom = _safe_intersection_series(outside, land_union).apply(_polygonal_geom)
             land_area = land_geom.area.to_numpy()
         else:
             land_geom = None
             land_area = np.zeros_like(raw_area)
 
         if land_unprotected_union is not None:
-            land_unprotected = _safe_intersection_series(outside, land_unprotected_union)
+            land_unprotected = _safe_intersection_series(outside, land_unprotected_union).apply(_polygonal_geom)
             land_unprotected_area = land_unprotected.area.to_numpy()
         else:
             land_unprotected = land_geom
@@ -548,9 +562,11 @@ def build_buffers(
     return buffers, validity
 
 
-def build_rings(pa_gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+def build_rings(
+    pa_gdf: gpd.GeoDataFrame, *, quad_segs: int = BUFFER_QUAD_SEGS
+) -> gpd.GeoDataFrame:
     base = pa_gdf[["pa_id", "geometry"]].copy()
-    base["geometry"] = base.geometry.apply(_safe_geom)
+    base["geometry"] = base.geometry.apply(_polygonal_geom)
     base = base[~base.geometry.is_empty]
     area_km2 = base.geometry.area.to_numpy() / 1_000_000.0
 
@@ -566,7 +582,7 @@ def build_rings(pa_gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
             inner_mask = area_km2 >= inner_threshold
             if inner_mask.any():
                 inner_geom.loc[inner_mask] = base.geometry.loc[inner_mask].buffer(
-                    -inner_km * 1000.0, resolution=BUFFER_QUAD_SEGS
+                    -inner_km * 1000.0, resolution=quad_segs
                 )
 
         ring_geom = inner_geom.copy()
@@ -574,7 +590,7 @@ def build_rings(pa_gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
         outer_mask = area_km2 >= outer_threshold
         if outer_mask.any():
             outer_geom = base.geometry.loc[outer_mask].buffer(
-                -outer_km * 1000.0, resolution=BUFFER_QUAD_SEGS
+                -outer_km * 1000.0, resolution=quad_segs
             )
             ring_geom.loc[outer_mask] = inner_geom.loc[outer_mask].difference(outer_geom)
 
@@ -585,7 +601,7 @@ def build_rings(pa_gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
                     "ring_index": idx,
                     "ring_inner_km": float(inner_km),
                     "ring_outer_km": float(outer_km),
-                    "geometry": ring_geom,
+                    "geometry": ring_geom.apply(_polygonal_geom),
                 },
                 crs=pa_gdf.crs,
             )
@@ -1077,11 +1093,22 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Skip writing the canonical artefact folder.",
     )
+    parser.add_argument(
+        "--historical-mask-diagnostic", action="store_true",
+        help="Explicitly run the coarse historical land-mask diagnostic into --output-dir; not the corrected manuscript pipeline.",
+    )
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    if not args.historical_mask_diagnostic or not args.output_dir:
+        raise SystemExit(
+            "Use analysis/run_spatial_correction.py for the corrected manuscript. "
+            "This legacy entry point retains a coarse land mask and is available "
+            "only with --historical-mask-diagnostic and an explicit --output-dir. "
+            "Reproducing the archived baseline requires its archived code."
+        )
     root = find_repo_root()
     raw_dir = root / "data" / "raw" / "nightlights_zenodo_v0_4"
 
