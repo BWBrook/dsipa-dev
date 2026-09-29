@@ -27,70 +27,199 @@ def _now_utc() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
 
-def plot_baseline_map(root: Path) -> Path:
+def _plot_extent(gdf: gpd.GeoDataFrame) -> tuple[float, float, float, float]:
+    """Return a stable mainland/Tasmania plotting window in lon/lat."""
+    # CAPAD also contains marine and remote-island features. A fixed window
+    # keeps those features from expanding the map to mostly empty ocean.
+    return (112.0, 155.0, -44.5, -9.0)
+
+
+def plot_baseline_map(
+    root: Path,
+    output_root: Path | None = None,
+    *,
+    radiance_path: Path | None = None,
+    geometry_path: Path | None = None,
+) -> Path:
     import matplotlib.pyplot as plt
 
-    df = pd.read_csv(root / RADIANCE_BUFFERS_NATIONAL_CSV)
+    df = pd.read_csv(radiance_path or (root / RADIANCE_BUFFERS_NATIONAL_CSV))
     inside = df[(df["zone"] == "inside") & (df["year"] == YEARS[-1])][
         ["pa_id", "mean", "valid_pixel_count"]
-    ]
+    ].copy()
     inside["eligible"] = inside["valid_pixel_count"] >= MIN_VALID_PIXELS
-    gdf = gpd.read_file(root / PA_GEOMETRIES_GPKG)[["pa_id", "geometry"]]
-    merged = gdf.merge(inside, on="pa_id", how="left")
+    source_gdf = gpd.read_file(geometry_path or (root / PA_GEOMETRIES_GPKG))[["pa_id", "geometry"]]
+    projected = source_gdf.to_crs("EPSG:3577")
+    # Simplify only the display footprints. Counts, eligibility, and centroid
+    # markers below continue to use the full source geometries.
+    display_gdf = projected.copy()
+    display_gdf["geometry"] = display_gdf.geometry.simplify(250.0, preserve_topology=True)
+    # Geographic coordinates make the fixed mainland extent and labels transparent.
+    merged = display_gdf.to_crs("EPSG:4326").merge(inside, on="pa_id", how="left")
 
     eligible = merged["eligible"].fillna(False)
-    zero_mass = (merged.loc[eligible, "mean"] == 0).mean() if eligible.any() else 0.0
+    zero = eligible & merged["mean"].eq(0)
+    nonzero = eligible & merged["mean"].gt(0)
+    zero_mass = zero.sum() / eligible.sum() if eligible.any() else 0.0
+    positive = merged.loc[nonzero, "mean"]
+    vmax = float(positive.quantile(0.99)) if not positive.empty else 1.0
+    if not np.isfinite(vmax) or vmax <= 0:
+        vmax = float(positive.max()) if not positive.empty else 1.0
 
-    vmax = merged.loc[eligible, "mean"].quantile(0.99) if eligible.any() else 1.0
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-    minx, miny, maxx, maxy = merged.total_bounds
-
-    merged[~eligible].plot(ax=axes[0], color="#F0F0F0", linewidth=0)
-    merged[eligible].plot(ax=axes[0], color="#2C7FB8", linewidth=0)
+    fig, axes = plt.subplots(1, 2, figsize=(8.0, 4.0), constrained_layout=True)
+    minx, maxx, miny, maxy = _plot_extent(merged)
     n_total = len(merged)
     n_eligible = int(eligible.sum())
     n_ineligible = n_total - n_eligible
+
+    # Pale footprints provide context; coloured circles are explicitly
+    # centroid markers so small bright PAs remain visible without suggesting
+    # that a marker is the footprint itself.
+    for ax in axes:
+        merged.plot(ax=ax, color="#FFFFFF", edgecolor="#BDBDBD", linewidth=0.12)
+        if (~eligible).any():
+            merged.loc[~eligible].plot(
+                ax=ax, color="#F2F2F2", edgecolor="#D0D0D0", linewidth=0.12
+            )
+        if zero.any():
+            merged.loc[zero].plot(
+                ax=ax, color="#D9D9D9", edgecolor="#969696", linewidth=0.16
+            )
+        ax.set_xlim(minx, maxx)
+        ax.set_ylim(miny, maxy)
+        ax.set_aspect("equal")
+        ax.set_xlabel("Longitude (°E)")
+        ax.set_ylabel("Latitude (°; south negative)")
+
+    # Compute centroids in the projected source CRS, then transform them to
+    # geographic coordinates for plotting.
+    centroid_gdf = projected.merge(inside, on="pa_id", how="left")
+    centroid_gdf = centroid_gdf.loc[nonzero].copy()
+    centroid_gdf["geometry"] = centroid_gdf.geometry.centroid
+    centroids = centroid_gdf.to_crs("EPSG:4326")
+    full_bounds = source_gdf.to_crs("EPSG:4326").total_bounds
+    span = max(full_bounds[2] - full_bounds[0], full_bounds[3] - full_bounds[1], 1.0)
+    margin = 0.05 * span
+    if not centroids.empty:
+        axes[0].scatter(
+            centroids.geometry.x,
+            centroids.geometry.y,
+            s=7,
+            color="#C43C39",
+            alpha=0.75,
+            linewidths=0,
+            label="Eligible, non-zero (centroid marker)",
+            zorder=4,
+        )
+    for ax, color, edge, label in [
+        (axes[0], "#F2F2F2", "#D0D0D0", "Ineligible (fewer than 10 valid pixels)"),
+        (axes[0], "#D9D9D9", "#969696", "Eligible, zero mean"),
+        (axes[1], "#F2F2F2", "#D0D0D0", "Ineligible (fewer than 10 valid pixels)"),
+        (axes[1], "#E2E2E2", "#A0A0A0", "Eligible, zero mean"),
+    ]:
+        ax.scatter([], [], s=24, color=color, edgecolor=edge, label=label)
     axes[0].set_title(
-        f"Eligibility (>= {MIN_VALID_PIXELS} px; eligible={n_eligible}, "
-        f"ineligible={n_ineligible})"
+        f"2024 inside-summary eligibility\n"
+        f"eligible={n_eligible:,}; ineligible={n_ineligible:,}"
     )
-    axes[0].set_axis_off()
-    axes[0].set_xlim(minx, maxx)
-    axes[0].set_ylim(miny, maxy)
-    axes[0].set_aspect("equal")
+    axes[0].legend(loc="lower left", fontsize=7.5, frameon=True, framealpha=0.92)
 
-    merged[~eligible].plot(ax=axes[1], color="#D9D9D9", linewidth=0)
-    merged[eligible].plot(
-        column="mean",
-        ax=axes[1],
-        cmap="magma",
-        vmin=0,
-        vmax=vmax,
-        legend=True,
-        legend_kwds={"label": "Mean radiance (scaled)", "shrink": 0.4, "aspect": 30, "pad": 0.01},
-        linewidth=0,
-    )
+    if not centroids.empty:
+        values = centroids["mean"].clip(lower=0, upper=vmax)
+        sc = axes[1].scatter(
+            centroids.geometry.x,
+            centroids.geometry.y,
+            c=values,
+            cmap="magma",
+            vmin=0,
+            vmax=vmax,
+            s=10,
+            alpha=0.82,
+            linewidths=0,
+            label="Eligible, non-zero (centroid marker)",
+            zorder=4,
+        )
+        cbar = fig.colorbar(sc, ax=axes[1], shrink=0.72, pad=0.015, extend="max")
+        cbar.set_label("Product-scaled radiance", fontsize=8)
     axes[1].set_title(
-        f"Inside mean radiance ({YEARS[-1]}; zero-mass={zero_mass:.1%}, n={n_eligible})"
+        f"Inside mean radiance ({YEARS[-1]})\n"
+        f"eligible zero mean={zero_mass:.1%}; n={n_eligible:,}"
     )
-    axes[1].set_axis_off()
-    axes[1].set_xlim(minx, maxx)
-    axes[1].set_ylim(miny, maxy)
-    axes[1].set_aspect("equal")
+    axes[1].legend(loc="lower left", fontsize=7.5, frameon=True, framealpha=0.92)
 
-    fig.subplots_adjust(wspace=0.02, bottom=0.05, top=0.95)
+    # Keep remote islands and offshore features available in a compact
+    # overview without letting their extent dominate the mainland/Tasmania
+    # panels. The inset is geographic context; the main quantitative encoding
+    # remains the centroid marker and colour scale above.
+    for ax, show_values in [(axes[0], False), (axes[1], True)]:
+        inset = ax.inset_axes([0.73, 0.69, 0.25, 0.25])
+        inset.set_facecolor("#EAF3F8")
+        merged.plot(ax=inset, color="#FFFFFF", edgecolor="#BDBDBD", linewidth=0.05)
+        if (~eligible).any():
+            merged.loc[~eligible].plot(ax=inset, color="#F2F2F2", edgecolor="#D0D0D0", linewidth=0.05)
+        if zero.any():
+            merged.loc[zero].plot(ax=inset, color="#D9D9D9", edgecolor="#969696", linewidth=0.05)
+        if not centroids.empty:
+            if show_values:
+                inset.scatter(
+                    centroids.geometry.x,
+                    centroids.geometry.y,
+                    c=centroids["mean"].clip(lower=0, upper=vmax),
+                    cmap="magma",
+                    vmin=0,
+                    vmax=vmax,
+                    s=2,
+                    linewidths=0,
+                    zorder=4,
+                )
+            else:
+                inset.scatter(
+                    centroids.geometry.x,
+                    centroids.geometry.y,
+                    s=2,
+                    color="#C43C39",
+                    linewidths=0,
+                    zorder=4,
+                )
+        inset.set_xlim(full_bounds[0] - margin, full_bounds[2] + margin)
+        inset.set_ylim(full_bounds[1] - margin, full_bounds[3] + margin)
+        inset.set_xticks([])
+        inset.set_yticks([])
+        inset.set_title("Offshore context", fontsize=7.5, pad=1)
+        for spine in inset.spines.values():
+            spine.set_linewidth(0.6)
 
-    out_path = root / BASELINE_FIG
+    fig.text(
+        0.5,
+        0.005,
+        "Display footprints simplified to 250 m; colour capped at 99th percentile; centroid markers use full geometries.",
+        ha="center",
+        va="bottom",
+        fontsize=6.5,
+        color="#555555",
+    )
+
+    out_path = (output_root or root) / BASELINE_FIG
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(out_path, dpi=150)
+    fig.savefig(out_path, dpi=200)
     plt.close(fig)
     return out_path
 
 
-def plot_edge_profiles(root: Path) -> Path:
+def plot_edge_profiles(
+    root: Path,
+    *,
+    edge_profile_path: Path | None = None,
+    output_path: Path | None = None,
+) -> Path:
+    """Render the aggregate edge profile from an explicit input when given.
+
+    The optional paths let corrected-run renderers keep inputs and outputs
+    under a declared run root without changing the historical CLI behaviour.
+    """
     import matplotlib.pyplot as plt
 
-    df = pd.read_csv(root / EDGE_PROFILES_NATIONAL_CSV)
+    df = pd.read_csv(edge_profile_path or (root / EDGE_PROFILES_NATIONAL_CSV))
     valid = df[df["valid_pixel_count"] >= MIN_VALID_PIXELS]
     year_df = valid[valid["year"] == YEARS[-1]]
     n_total = df["pa_id"].nunique()
@@ -152,7 +281,7 @@ def plot_edge_profiles(root: Path) -> Path:
 
     fig.tight_layout()
 
-    out_path = root / EDGE_FIG
+    out_path = output_path or (root / EDGE_FIG)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(out_path, dpi=150)
     plt.close(fig)
