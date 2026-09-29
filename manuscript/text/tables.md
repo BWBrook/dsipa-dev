@@ -26,8 +26,8 @@
 | Only inside slope positive (Q2) | 70 | 4,253 | 1.6 | — |
 | Neither slope positive (Q3) | 3,587 | 4,253 | 84.3 | — |
 | Only surrounding slope positive (Q4) | 249 | 4,253 | 5.9 | — |
-| Valid 0-1 km interior band in 2024 | 4,426 | 11,133 | 39.8 | — |
-| Valid 1-5 km interior band in 2024 | 1,398 | 11,133 | 12.6 | — |
+| Valid 0–1 km interior band in 2024 | 4,426 | 11,133 | 39.8 | — |
+| Valid 1–5 km interior band in 2024 | 1,398 | 11,133 | 12.6 | — |
 | Complete three-band set in 2024 | 369 | 11,133 | 3.3 | — |
 
 Zone-year summaries require at least 10 valid pixels; slopes require at least eight valid years (2013–2024). Surrounding land is the 1 km buffer excluding ocean and protected tenure. Nine paired comparisons near documented coastline-source exceptions are flagged as provisional and require local map validation before site use. Categories use point-estimate signs; Q3 includes negative slopes. Annual variation requires distinct annual means. Late-positive series have nine zero years (2013–2021) and a positive observation in 2022–2024, with all years valid. All 3,969 zero-slope series were complete; the 78 late-positive cases are among the 180 varying series. Count shares use Base n. Summed area uses all or eligible polygons as labelled, assigning each whole reserve to its trend class. Overlaps may be counted twice; these are not illuminated or changing-area shares. Dashes indicate uncalculated shares. Counts combine corrected spatial outputs with the unchanged whole-reserve observations and review-stage diagnostics.
