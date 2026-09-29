@@ -43,6 +43,31 @@ def git_identity(root: Path) -> dict[str, Any]:
     resolved = root.expanduser().resolve()
     if not resolved.is_dir():
         raise ValueError(f"repository root does not exist: {resolved}")
+    if not (resolved / ".git").exists():
+        receipt = resolved / "FILE_MANIFEST.json"
+        if not receipt.is_file():
+            raise ValueError(f"git metadata absent and curated archive receipt missing: {receipt}")
+        try:
+            data = json.loads(receipt.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise ValueError(f"cannot read curated archive receipt {receipt}: {exc}") from exc
+        records = data.get("files") if isinstance(data, dict) else None
+        if not isinstance(records, list) or not records:
+            raise ValueError(f"curated archive receipt has no files list: {receipt}")
+        verified = 0
+        for record in records:
+            if not isinstance(record, dict) or not isinstance(record.get("path"), str) or not isinstance(record.get("sha256"), str):
+                raise ValueError(f"invalid curated archive receipt entry: {record!r}")
+            target = resolved / record["path"]
+            if not target.is_file():
+                raise ValueError(f"curated archive file missing: {target}")
+            import hashlib
+            digest = hashlib.sha256(target.read_bytes()).hexdigest()
+            if digest != record["sha256"]:
+                raise ValueError(f"curated archive file hash mismatch: {target}")
+            verified += 1
+        import hashlib
+        return {"root": str(resolved), "mode": "curated_archive", "file_manifest": str(receipt), "file_manifest_sha256": hashlib.sha256(receipt.read_bytes()).hexdigest(), "files_verified": verified}
     return {
         "root": str(resolved),
         "sha": _git(resolved, "rev-parse", "HEAD"),

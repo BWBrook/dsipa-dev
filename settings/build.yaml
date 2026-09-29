@@ -6,6 +6,7 @@ profiles:
     manuscript_sources:
       - ../manuscript/text/manuscript_draft.md
       - ../manuscript/text/tables.md
+      - ../manuscript/text/supplementary_methods.md
       - ../manuscript/text/supplementary_tables.md
       - ../manuscript/text/references.md
       - ../manuscript/text/figures.md
@@ -13,6 +14,7 @@ profiles:
     lint_sources:
       - ../manuscript/text/manuscript_draft.md
       - ../manuscript/text/tables.md
+      - ../manuscript/text/supplementary_methods.md
       - ../manuscript/text/supplementary_tables.md
       - ../manuscript/text/figures.md
       - ../manuscript/text/supplementary_figures.md
@@ -76,16 +78,17 @@ profiles:
       left: 2.5
 
   supplementary:
-    description: RSEC Supporting Information PDF build; generated DOCX is diagnostic only.
+    description: RSEC Supporting Information reading build with compact editable tables.
     manuscript_sources:
       - ../manuscript/submission/rsec/supplementary_frontmatter.md
+      - ../manuscript/text/supplementary_methods.md
       - ../manuscript/text/supplementary_tables.md
-      - ../manuscript/submission/rsec/supplementary_table_end.md
       - ../manuscript/text/supplementary_figures.md
+      - ../manuscript/text/references.md
     lint_sources:
       - ../manuscript/submission/rsec/supplementary_frontmatter.md
+      - ../manuscript/text/supplementary_methods.md
       - ../manuscript/text/supplementary_tables.md
-      - ../manuscript/submission/rsec/supplementary_table_end.md
       - ../manuscript/text/supplementary_figures.md
     bibliography: ../references/refs.yaml
     csl: ../csl/cambridge-university-press-author-date-cambridge-a.csl
@@ -99,13 +102,13 @@ profiles:
     line_numbering: continuous
     references_new_page: false
     figures:
-      placement: captions_page
+      placement: pages
       caption_position: top
       placeholder_id: figures
     margins:
       unit: cm
       paper_size: a4
       top: 2.0
-      right: 0.75
+      right: 2.0
       bottom: 2.0
-      left: 0.75
+      left: 2.0

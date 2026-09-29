@@ -143,7 +143,7 @@ def test_success_refreshes_dual_provenance_when_upstream_manifest_is_unchanged(
     assert manifest["repository_provenance"]["source"] == _git_identity(source_root)
     assert manifest["repository_provenance"]["build_tool"] == _git_identity(tool_root)
     assert manifest["repository_provenance"]["annotated_at_utc"]
-    assert f"PROFILE=draft {target}" in log.read_text(encoding="utf-8")
+    assert {"PROFILE=draft", "-B", target} <= set(log.read_text(encoding="utf-8").split())
 
 
 def test_upstream_failure_is_propagated_and_manifest_is_not_annotated(
@@ -170,7 +170,7 @@ def test_upstream_failure_is_propagated_and_manifest_is_not_annotated(
 
     assert result.returncode == 37
     assert manifest_path.read_bytes() == before
-    assert "PROFILE=draft check" in log.read_text(encoding="utf-8")
+    assert {"PROFILE=draft", "-B", "check"} <= set(log.read_text(encoding="utf-8").split())
 
 
 def test_successful_non_build_target_does_not_annotate(tmp_path: Path) -> None:

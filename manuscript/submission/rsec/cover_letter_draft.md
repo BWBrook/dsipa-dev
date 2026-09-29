@@ -1,61 +1,29 @@
-# Cover Letter Draft
+# Cover letter draft
 
-**DO NOT SUBMIT: Barry and the orchestrator must confirm every marked field and
-authorize the external action.**
+Private draft for later author approval; not submitted.
 
 `[BARRY CONFIRM: date]`
 
 Dear Editors,
 
-Please consider the manuscript **"Detectable change in dark-sky integrity
-across Australia’s protected areas"** for publication as an Original Research
-article in *Remote Sensing in Ecology and Conservation*.
+Please consider **Satellite screening of lighting change across Australia's protected areas** as an Original Research article in *Remote Sensing in Ecology and Conservation*.
 
-The study presents a detectability-aware national VIIRS assessment of
-artificial light at night inside Australian protected areas and in corrected
-surrounding unprotected-land buffers during 2013-2024. Its primary contribution
-is a detectability-aware categorical screening framework that distinguishes
-widespread non-detection from a smaller, spatially uneven set of detectable
-internal and surrounding brightening signals while keeping eligibility and the
-annual product's floor explicit. The analysis was run through an internally
-versioned, scripted, tested, and manifest-backed pipeline. A compact secondary
-analysis shows why opportunistic microbat and passerine occurrence records
-cannot securely establish the corresponding biological response.
+The study applies annual VIIRS-derived night-lights to Australia's protected-area estate during 2013-2024. Its conservation-monitoring contribution is a reproducible screening sequence that combines explicit raster eligibility, corrected surrounding-land comparisons and the annual observations underlying full-period trends. Among 4,253 paired comparisons, 347 reserves had both inside and surrounding slopes positive and 249 had only the surrounding slope positive. The assessment also exposes a practical limitation of trend screening: 180 reserves had zero Sen slopes despite observed annual variation, including 78 with positive values late in the series following nine zero-valued years.
 
-The work fits the journal's interface between remote sensing, ecology, and
-conservation by combining a national remote-sensing assessment with explicit
-measurement limits and management-facing interpretation. The main manuscript
-contains four figures and one table; separate Supporting Information contains
-seven figures and two tables.
+Four named reserve trajectories show how these categories guide local investigation and why slope signs alone can conceal relevant temporal information. The paper distinguishes product-scaled radiance from ecological exposure and presents temporal resampling as a sensitivity diagnostic.
 
-`[BARRY CONFIRM: concise novelty statement and whether any related manuscript,
-preprint, or overlapping material must be disclosed]`
+This emphasis on translating remote-sensing measurements into interpretable conservation monitoring fits RSEC's interdisciplinary remit. The main article contains four figures and one table; Supporting Information contains three methods sections, three figures and five numbered tables.
 
-`[BARRY CONFIRM: all authors have approved the submitted version, satisfy the
-journal's authorship/accountability requirements, and agree to this
-submission]`
+Nine earlier baseline outputs are archived as a Zenodo Dataset, version 0.3.0, DOI <https://doi.org/10.5281/zenodo.21524637>. The corrected spatial outputs and source code remain private; public software release and a corrected dataset version remain pre-submission decisions. Nine paired comparisons near documented coastline-source exceptions are explicitly provisional pending local mapping checks.
 
-`[BARRY CONFIRM immediately before submission: the manuscript is submitted
-solely to Remote Sensing in Ecology and Conservation and is not published, in
-press, or under consideration elsewhere, with any permitted preprint
-disclosed]`
+`[BARRY CONFIRM: related manuscripts, preprints or overlapping material to disclose]`
+
+`[BARRY CONFIRM immediately before submission: author approval, authorship/accountability, sole submission, and any permitted preprint disclosure]`
 
 Funding: No specific funding.
 
-`[BARRY CONFIRM: conflicts of interest, AI-use disclosure, ethics/consent
-applicability, suggested/excluded reviewers if requested, and cover-image
-availability/rights]`
-
-The nine processed Layer A outputs are publicly available as a Zenodo Dataset:
-Brook, B. W. (2026), version 0.3.0,
-<https://doi.org/10.5281/zenodo.21524637>. The source GitHub repository remains
-private and is not presented as a public access route. The Dataset is not a
-software release; public release of source code and the complete Layer B
-reproduction route remains a pre-submission decision.
-
-Thank you for considering the manuscript.
+`[BARRY CONFIRM: conflicts of interest, exact AI-use disclosure, ethics/consent applicability, and any requested reviewer information]`
 
 Sincerely,
 
-`[BARRY CONFIRM: corresponding author name, degrees if desired, full
-institutional address, email, and other required contact details]`
+`[BARRY CONFIRM: corresponding author name, institutional address and email]`

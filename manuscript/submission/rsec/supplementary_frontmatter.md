@@ -1,29 +1,13 @@
 # Supporting Information
 
-## Detectable change in dark-sky integrity across Australia’s protected areas
+## Satellite screening of lighting change across Australia's protected areas
 
-Article type: Original Research
+Original Research for *Remote Sensing in Ecology and Conservation*
 
-Journal: *Remote Sensing in Ecology and Conservation*
+Private reading version, 19 September 2026.
 
-Authors and affiliations: `[BARRY CONFIRM]`
+Author: Barry W. Brook
 
-Corresponding author and full address: `[BARRY CONFIRM]`
+Affiliation and corresponding address: `[BARRY CONFIRM exact submission details]`
 
-This Supporting Information contains Tables S1-S2 and Figures S1-S7 cited by
-the main manuscript. It is built separately from the main text and is intended
-to be published as supplied.
-
-Status: Goal 016 final-read asset only; not authorized for Wiley submission.
-
-Final version/date and main-article DOI: `[PENDING EXTERNAL ACTION AND BARRY
-CONFIRMATION]`
-
-```{=latex}
-\begin{landscape}
-\begingroup
-\footnotesize
-\linespread{1.05}\selectfont
-\setlength{\tabcolsep}{2pt}
-\renewcommand{\_}{\textunderscore\allowbreak}
-```
+This supplement contains Supporting Methods S1-S3, Tables S1-S5 and Figures S1-S3. It documents temporal sensitivity, product continuity, corrected spatial support and selected reserve tables. Final contact metadata and submission declarations remain pending.

@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 PYTHON_VERSION ?= 3.12
-MAKEDOC_ROOT ?= /Users/bwbrook/work/makedoc
+MAKEDOC_ROOT ?= $(HOME)/work/makedoc
 PROFILE ?= draft
 DSIPA_WORKERS ?= 6
 DSIPA_STATES ?= ACT,NSW,NT,QLD,SA,TAS,VIC,WA,JBT,EXT

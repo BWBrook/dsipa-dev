@@ -1,15 +1,14 @@
 title_note: >-
-  Submission author metadata is intentionally unresolved.
-  [BARRY CONFIRM: author names and order, affiliations, corresponding author,
-  full address, and contact details]
+  Private reading version. Barry confirmed sole human authorship on 17 September 2026.
+  [BARRY CONFIRM: exact affiliation, full address, and contact details before submission]
 
 affiliations:
-  pending: "[BARRY CONFIRM: affiliations and full institutional addresses]"
+  pending: "[BARRY CONFIRM: exact affiliation and full institutional address]"
 
 authors:
-  - name: "[BARRY CONFIRM: author names and order]"
+  - name: Barry W. Brook
     affiliations:
       - pending
     corresponding: true
-    email: "[BARRY CONFIRM: corresponding author, full address, and contact details]"
-    orcid: "[BARRY CONFIRM: ORCIDs for each author]"
+    email: "[BARRY CONFIRM: corresponding author contact details]"
+    orcid: "[BARRY CONFIRM: ORCID]"

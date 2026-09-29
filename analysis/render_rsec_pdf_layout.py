@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extend Makedoc's PDF layout for the RSEC Supporting Information."""
+"""Extend Makedoc's PDF layout for RSEC manuscript tables."""
 
 from __future__ import annotations
 
@@ -13,6 +13,12 @@ from pathlib import Path
 
 UPSTREAM_ENV = "DSIPA_MAKEDOC_UPSTREAM_LAYOUT_RENDER"
 LANDSCAPE_PACKAGE = "\\usepackage{pdflscape}"
+TABLE_LAYOUT_LINES = (
+    "\\usepackage{etoolbox}",
+    "\\usepackage{setspace}",
+    "\\AtBeginEnvironment{longtable}{\\singlespacing}",
+)
+RSEC_PROFILES = {"submission", "supplementary"}
 
 
 def parse_args() -> argparse.Namespace:
@@ -24,15 +30,25 @@ def parse_args() -> argparse.Namespace:
 
 
 def _extend_layout(content: str, profile: str) -> str:
-    if profile != "supplementary" or LANDSCAPE_PACKAGE in content:
+    if profile not in RSEC_PROFILES:
         return content
     if content and not content.endswith("\n"):
         content += "\n"
-    return (
-        content
-        + "% RSEC Supporting Information landscape table support\n"
-        + f"{LANDSCAPE_PACKAGE}\n"
-    )
+    additions: list[str] = []
+    if profile == "supplementary" and LANDSCAPE_PACKAGE not in content:
+        additions.extend(
+            [
+                "% RSEC Supporting Information landscape table support",
+                LANDSCAPE_PACKAGE,
+            ]
+        )
+    missing_table_lines = [line for line in TABLE_LAYOUT_LINES if line not in content]
+    if missing_table_lines:
+        additions.append("% RSEC compact table spacing; body spacing is unchanged")
+        additions.extend(missing_table_lines)
+    if not additions:
+        return content
+    return content + "\n".join(additions) + "\n"
 
 
 def main() -> int:

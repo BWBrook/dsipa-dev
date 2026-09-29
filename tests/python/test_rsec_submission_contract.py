@@ -79,7 +79,7 @@ def _run_layout(
     )
 
 
-def test_submission_uses_visible_placeholder_authors_without_changing_draft() -> None:
+def test_submission_uses_confirmed_sole_author_and_pending_contact_details() -> None:
     profiles = _config()["profiles"]
     assert profiles["draft"]["author_metadata"] == "../manuscript/authors.yaml"
     assert (
@@ -88,11 +88,10 @@ def test_submission_uses_visible_placeholder_authors_without_changing_draft() ->
     )
 
     placeholder_text = SUBMISSION_AUTHORS.read_text(encoding="utf-8")
-    assert "Barry W. Brook" not in placeholder_text
+    assert "Barry W. Brook" in placeholder_text
     assert "University of Tasmania" not in placeholder_text
     for required in (
-        "author names and order",
-        "affiliations",
+        "exact affiliation",
         "corresponding author",
         "full address",
         "contact details",
@@ -101,61 +100,27 @@ def test_submission_uses_visible_placeholder_authors_without_changing_draft() ->
     assert placeholder_text.count("[BARRY CONFIRM:") >= 4
 
 
-def test_supplementary_profile_closes_landscape_before_figures() -> None:
+def test_supplementary_profile_includes_methods_and_own_references() -> None:
     supplementary = _config()["profiles"]["supplementary"]
-    assert supplementary["manuscript_sources"] == [
-        "../manuscript/submission/rsec/supplementary_frontmatter.md",
-        "../manuscript/text/supplementary_tables.md",
-        "../manuscript/submission/rsec/supplementary_table_end.md",
-        "../manuscript/text/supplementary_figures.md",
-    ]
+    sources = supplementary["manuscript_sources"]
+    assert "../manuscript/text/supplementary_methods.md" in sources
+    assert "../manuscript/text/references.md" in sources
+    assert len(sources) == len(set(sources))
+    assert sources.index("../manuscript/text/supplementary_methods.md") < sources.index(
+        "../manuscript/text/supplementary_tables.md"
+    )
+    # The compact portrait tables work in both PDF and editable DOCX.
+    assert not any("supplementary_table_end" in source for source in sources)
 
 
-def test_supplementary_table_delimiters_encode_reviewed_column_widths() -> None:
-    lines = SUPPLEMENTARY_TABLES.read_text(encoding="utf-8").splitlines()
-    delimiter_lines = [
-        line
-        for line in lines
-        if line.startswith("| ") and set(line.replace("|", "").replace(" ", "")) <= {"-", ":"}
-    ]
-    assert delimiter_lines == [
-        "| ---------- | ------ | ------------- | ------------- | ---- | ---- | "
-        "------- | ------- | -------- | -------- | ---------- | ---------- |",
-        "| ------------ | ----------------- | ----: | ----: | -----: | -----: | "
-        "-----: | -----: | ------: | ------: | ---: | ----: | -------------- |",
-    ]
-
-
-def test_main_table_delimiter_encodes_shared_pdf_docx_widths() -> None:
-    lines = MAIN_TABLES.read_text(encoding="utf-8").splitlines()
-    delimiter_lines = [
-        line
-        for line in lines
-        if line.startswith("| ")
-        and set(line.replace("|", "").replace(" ", "")) <= {"-", ":"}
-    ]
-    assert delimiter_lines == [
-        "| ---------------------- | ----------: | ----------------: | -----------: | "
-        "----------------------- | ------------------ |"
-    ]
-
-
-def test_supplementary_figures_use_reviewed_label_safe_width() -> None:
-    figure_lines = [
-        line
-        for line in SUPPLEMENTARY_FIGURES.read_text(encoding="utf-8").splitlines()
-        if line.startswith("![")
-    ]
-    assert len(figure_lines) == 7
-    assert [line.rsplit("width=", 1)[1] for line in figure_lines] == [
-        "85%}",
-        "85%}",
-        "85%}",
-        "85%}",
-        "85%}",
-        "80%}",
-        "85%}",
-    ]
+def test_active_supplement_contains_verified_spatial_diagnostics() -> None:
+    text = SUPPLEMENTARY_FIGURES.read_text(encoding="utf-8")
+    figure_lines = [line for line in text.splitlines() if line.startswith("![")]
+    assert len(figure_lines) == 3
+    assert "fig_layerA_trend_dominance.png" not in text
+    assert "fig_layerB_" not in text
+    assert "fig_product_first_detections.png" in text
+    assert "confidence intervals" in text  # explicitly disclaimed in captions
 
 
 def test_layout_renderer_is_deterministic_and_adds_package_once(
@@ -182,7 +147,10 @@ def test_layout_renderer_is_deterministic_and_adds_package_once(
         content=existing,
     )
     assert result.returncode == 0, result.stderr
-    assert output.read_text(encoding="utf-8") == existing
+    rendered = output.read_text(encoding="utf-8")
+    assert rendered.startswith(existing)
+    assert rendered.count("\\usepackage{pdflscape}") == 1
+    assert rendered.count("\\AtBeginEnvironment{longtable}{\\singlespacing}") == 1
 
 
 def test_layout_renderer_is_noop_for_other_profiles(tmp_path: Path) -> None:

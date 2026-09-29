@@ -5,8 +5,7 @@ WORDING.**
 
 ## Authors' Contributions
 
-`[BARRY CONFIRM: list every author and their CRediT roles; confirm all authors
-contributed substantially, approved the final version, accept accountability,
+`[BARRY CONFIRM: state Barry's CRediT roles; confirm approval of the final version and accountability,
 and that nobody entitled to authorship was omitted]`
 
 ## Funding
@@ -15,7 +14,7 @@ No specific funding.
 
 ## Conflict Of Interest
 
-`[BARRY CONFIRM after consultation with every author: disclose all relevant
+`[BARRY CONFIRM disclose all relevant
 financial and non-financial interests, or provide the exact no-conflict
 statement if true]`
 
@@ -33,15 +32,12 @@ factual disclosure and the live workflow or editor's interpretation.
 
 ## Data Accessibility
 
-The manuscript's nine processed Layer A outputs are publicly archived as
+Nine earlier, pre-correction Layer A outputs are publicly archived as
 Zenodo Dataset version `0.3.0` under CC BY 4.0:
 <https://doi.org/10.5281/zenodo.21524637>. The canonical record is
 <https://zenodo.org/records/21524637>. The source GitHub repository remains
 private and is not a public access route. The Dataset is not a software
-record. Source code, the complete runnable environment, and derived Layer B
-summaries and figures are not yet publicly archived; raw and row-level ALA
-records are not redistributed, and exact Layer B reconstruction requires
-reacquisition under provider terms.
+record. The corrected spatial outputs, source code, runnable environment and audit tables remain in the private candidate. The historical public dataset does not reproduce the corrected surrounding and interior-band comparisons. A curated software release and a corrected dataset version remain for Barry's authorisation.
 
 ## Ethics, Consent, And Monitoring-Device Policy
 
@@ -51,13 +47,13 @@ provide the exact approved statement or not-applicable rationale]`
 
 No ethics or consent determination is invented here.
 
-## Authors' Declaration And Sole Submission
+## Author Declaration And Sole Submission
 
-`[BARRY CONFIRM immediately before submission: all authors have seen and
-approved the submitted version; all substantially contributed; all entitled
-co-authors are included; the manuscript is submitted solely to RSEC; and it is
-not published, in press, or under consideration elsewhere, with any allowed
-preprint disclosed]`
+Barry W. Brook is the sole human author, confirmed 17 September 2026.
+
+`[BARRY CONFIRM immediately before submission: approval and accountability for
+the submitted version; sole submission to RSEC; and any permitted preprint
+disclosure]`
 
 ## Rights, Licence, Fees, And Open Access
 
@@ -67,7 +63,7 @@ preprint disclosed]`
 - Journal open-access licence choice: `[BARRY CONFIRM in the live authorized
   workflow]`
 - Publication-fee willingness and funding source: `[BARRY CONFIRM]`
-- Authority to agree on behalf of all authors: `[BARRY CONFIRM]`
+- Authority to agree for the author: `[BARRY CONFIRM]`
 
 The archive licence is confirmed and published. No journal licence choice,
 fee commitment, payment, or open-access agreement has been made.

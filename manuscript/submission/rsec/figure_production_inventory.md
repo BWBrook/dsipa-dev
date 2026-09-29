@@ -1,43 +1,19 @@
-# Figure Production Inventory
+# Active figure inventory, 19 September 2026
 
-Status: current PNGs are adequate and legible for the accepted Goal 016 reader
-build. This inventory does not certify production readiness and does not
-regenerate any figure.
+Current source inventory for the corrected Layer A candidate: four main
+figures and three supporting figures. Final PDF/DOCX render QA passed; see `analysis/reports/spatial_document_qa_20260919.md`.
 
-Embedded density values below are metadata, not proof of publication quality.
-Current official Wiley guidance allows legible standard files for initial
-review. Later production preparation generally favours PDF or 600 dpi for line
-art and PNG/TIFF at 300 dpi for images, with at least 1,800 pixels width where
-applicable.
+| Figure | Source | Pixels | Bytes | SHA-256 |
+| --- | --- | ---: | ---: | --- |
+| 1 | `manuscript/figures/fig_layerA_baseline_map.png` | 1600 × 800 | 384,758 | `19d103c9cf9b152b0db67d3769f370737bd2c03d4e291da8e2661d9830357da9` |
+| 2 | `manuscript/figures/fig_layerA_trend_distribution.png` | 1500 × 1240 | 156,187 | `421ccbe0d33ba83a0239587cee80168a68ed46d0672b2edc2531e702db9bcb9e` |
+| 3 | `manuscript/figures/fig_layerA_retention_quadrant.png` | 1110 × 930 | 148,067 | `f80322c695979c42e82e9bda036ee3720b576563d38d99a49a3defa12f7d21fe` |
+| 4 | `manuscript/figures/fig_layerA_example_trajectories.png` | 1600 × 1240 | 223,466 | `f0014e62157c2c166cb7497c8058710ca580df6e885a3f9eea2f17f284d7b64a` |
+| S1 | `manuscript/figures/fig_layerA_edge_profiles_aggregate.png` | 1650 × 600 | 64,162 | `099b0e680c851f30e35bef95997d0c3546051eb015a187eb65cdce1ced89a709` |
+| S2 | `manuscript/figures/fig_layerA_trend_uncertainty_forest.png` | 1800 × 1739 | 170,152 | `d04a6f055020c3c29b044c72e3bc51f1dc17a47c47a6972d8c599b2d4c84e6fa` |
+| S3 | `manuscript/figures/fig_product_first_detections.png` | 2820 × 1950 | 416,891 | `76593b47b4c8e4c025bdd416948351cb60d20429cf0e19d1c0351b6c5ff1f663` |
 
-## Main Figures
-
-| Figure | Current path | Role | Pixels | Density metadata | Bytes | Later production consideration |
-| --- | --- | --- | ---: | --- | ---: | --- |
-| Fig. 1 | `manuscript/figures/fig_layerA_baseline_map.png` | 2024 baseline radiance and eligibility | 1800 x 750 | 59.06 px/cm (~150 ppi) | 169,883 | Prefer vector or higher-density map export if requested. |
-| Fig. 2 | `manuscript/figures/fig_layerA_trend_distribution.png` | Inside-slope zero mass and non-zero tail | 1500 x 600 | 59.06 px/cm (~150 ppi) | 68,901 | Export wider and preferably vector for production. |
-| Fig. 3 | `manuscript/figures/fig_layerA_retention_quadrant.png` | Four categorical inside/surrounding screens | 900 x 750 | 59.06 px/cm (~150 ppi) | 70,445 | Higher-resolution or vector export is advisable. |
-| Fig. 4 | `manuscript/figures/fig_layerB_alan_effects.png` | Provider-matched association and shuffle benchmarks | 2400 x 1200 | 118.11 px/cm (~300 ppi) | 127,067 | Required before submission: reproducibly replace the internal legacy `falsification` title with `illustrative benchmarks`; do not edit pixels manually. |
-
-## Supporting Figures
-
-| Figure | Current path | Role | Pixels | Density metadata | Bytes | Later production consideration |
-| --- | --- | --- | ---: | --- | ---: | --- |
-| Fig. S1 | `manuscript/figures/fig_layerA_edge_profiles_aggregate.png` | Interior-band feasibility and conditional profile | 1650 x 600 | 59.06 px/cm (~150 ppi) | 64,136 | Export wider and preferably vector. |
-| Fig. S2 | `manuscript/figures/fig_layerA_trend_uncertainty_forest.png` | Top-20 bootstrap uncertainty forest | 1350 x 1275 | 59.06 px/cm (~150 ppi) | 115,069 | Higher-resolution or vector text/line export is advisable. |
-| Fig. S3 | `manuscript/figures/fig_layerA_trend_dominance.png` | Top-15 pairwise ordering frequencies | 975 x 825 | 59.06 px/cm (~150 ppi) | 56,977 | Higher-resolution export is advisable for cell labels. |
-| Fig. S4 | `manuscript/figures/fig_layerB_exposure_summary.png` | Occurrence-record exposure summaries | 1500 x 600 | 59.06 px/cm (~150 ppi) | 67,079 | Export wider and preferably vector. |
-| Fig. S5 | `manuscript/figures/fig_layerB_occurrence_counts.png` | Jurisdiction-by-year record counts | 1800 x 600 | 59.06 px/cm (~150 ppi) | 56,755 | Pixel width is adequate; higher density/vector remains preferable. |
-| Fig. S6 | `manuscript/figures/fig_layerB_occurrence_density.png` | Spatial record density diagnostics | 1800 x 600 | 59.06 px/cm (~150 ppi) | 273,084 | Check final physical size; higher-density export may be requested. |
-| Fig. S7 | `manuscript/figures/fig_layerB_ibra_intensity_forest.png` | Descriptive within-IBRA coefficient variation | 2400 x 1605 | 118.11 px/cm (~300 ppi) | 96,739 | Strong raster candidate; retain vector option if available. |
-
-Several figures therefore merit a later vector or higher-resolution export if
-the journal requests production files. That is production preparation, not a
-Goal 016 scientific correction.
-
-## Optional Cover Image
-
-Barry owns the cover-image decision. Fig. 1 is the most natural existing
-candidate because it shows the national protected-area subject directly, but
-its suitability, rights, crop, and production export should be assessed only
-after Barry chooses to pursue a cover image. Goal 016 creates none.
+The active manuscript sources reference these seven PNGs. Layer B figure assets
+and the deprecated dominance figure are excluded from the current Layer A-only
+candidate. The listed byte sizes and hashes were computed from the current
+working tree; final rendered-package QA passed.
