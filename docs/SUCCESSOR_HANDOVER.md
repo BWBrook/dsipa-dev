@@ -1,5 +1,157 @@
 # DSIPA successor handover
 
+## Current status: corrected private candidate complete and independently approved
+
+The authorised 19 September revision corrects outward buffers, inward bands and
+coastal masking. Accurate unsimplified supports use 128 segments per quadrant;
+AIMS/eAtlas Australian Coastline 50K replaces the historical coarse land mask.
+All 11,133 reserves were re-extracted on deep-server in a clean national v2 run.
+Whole-reserve observations and slopes remain exactly unchanged. Paired 1-km
+coverage is now 4,253: Q1=347, Q2=70, Q3=3,587, Q4=249. The matched 1–5 km cohort
+contains 1,341 reserves; 150 have positive whole slopes and 42 positive deeper
+band slopes. Nine paired comparisons near known coastline exceptions have
+explicit provisional flags; exclusion gives 4,244 / 341 / 70 / 3,585 / 248.
+
+The optional numerical Layer B section is omitted because original occurrence
+inputs could not be recovered to verify a sampling repair. Its archive remains.
+Active SI has three methods sections, five tables and three figures. Corrected
+canonical inputs are in data/processed/; flat analysis/reports/ plus the current
+interior/edge subdirectories hold the audit outputs. Earlier nested staging
+folders are not candidate inputs. See docs/spatial_reproduction_20260919.md.
+
+Frozen executed source, input/runtime manifests and the 928-chunk receipt are
+preserved in analysis/reports/spatial_execution_20260919/. Current code has a
+post-run polygonal pre-buffer normalization and a schema-only validity-column
+amendment. Separate receipts establish unchanged raster values; do not present
+the current source as the originally executed snapshot.
+
+Final PDF/Word QA and private packet checks passed. The current reading bundle
+is build/final_read/spatial_20260919/; its ZIP is dsipa_rsec_spatial_20260919.zip.
+The full private source/evidence package is artefacts/spatial_candidate_20260919/,
+with ZIP build/final_read/dsipa_spatial_reproducibility_20260919.zip.
+Independent verdict: APPROVE, no open scientific/numerical/artifact blocker.
+The final source count is 237 abstract + 3,931 body = 4,168. Main/SI PDF pages
+are 21/14; editable Word conversions are 27/17. Full tests154; curated tests38.
+Archive identities are in analysis/reports/spatial_candidate_seal_20260919.json. Public Zenodo still holds
+the historical baseline. No publication, submission, commit or push is authorised.
+Session record: docs/log/144_spatial_review_correction.md.
+
+## Historical scientific close-out: 18 September 2026
+
+Fable's message 225 regards the manuscript as a scientific submission candidate
+and closes their requests for this tranche. Astra's reply 230 accepts the
+positive-form area statement with an explicit threshold qualification and adds
+the dimming comparison. The upper two positive-slope terciles contain 280
+reserves and 0.320638% of eligible summed polygon area. The 0.04-unit-per-year
+cutoff is descriptive, not an ecological-effect threshold. Seven matched reserves
+have negative whole and outer-band slopes: six zero and one negative deeper-band
+slopes. No inference of a beyond-5-km origin is made from zero band slopes.
+
+Current bundle: `build/final_read/audit_20260918_closeout/`; ZIP:
+`build/final_read/dsipa_rsec_audit_20260918_closeout.zip`.
+Canonical snapshot: `artefacts/rsec_audit_20260918_closeout/`.
+Source count: 237 abstract + 3,887 body = 4,124 words. SI is unchanged.
+See `analysis/reports/product_closeout_review.md`, arithmetic/validation JSONs,
+and `docs/log/142_scientific_review_closeout.md`.
+
+Next step is Barry's full main/SI read and author metadata/declarations/AI-use
+wording. Curated public code plus a software record and an updated dataset
+containing the audit source tables are recommendations, not authorised releases.
+No further scientific work is queued absent issues raised by that read.
+
+
+## Earlier update: 18 September 2026
+
+Fable's review is integrated. The manuscript now foregrounds the 2017 pulse and
+2023 synchronous increases, not reassurance from absence of a 2022 spike.
+A processing-related dip/rebound is plausible but unidentified. The observed
+positive pixel floor is 10 product units in every annual audit window; masking
+and derivative-encoding contributions to zeros remain unresolved, and no physical
+unit conversion is asserted. Persistence does not distinguish explanations.
+
+The same 1,205-reserve cohort supplies both bands. Among 119 positive-whole cases,
+79 have positive 0–1 km and zero 1–5 km slopes, and 30 both positive. Of 68 Q1
+losses, 54 have all-zero deeper-band histories and 14 varying positive histories.
+This supports selected-cohort outer-ring concentration, not diagnosed spillover.
+The lowest count-based positive-slope tercile carries 99.147% of positive-class
+summed polygon area; the 37.6% eligible-area share does not measure substantial
+change or illuminated land. Supporting Table S5 makes both qualifications visible.
+
+Evidence: `analysis/reports/product_followup_review.md`,
+`product_floor_followup.md`, `edge_followup/` and their source/hash manifests.
+The floor and edge extensions ran on deep-server in tmux, with accepted inputs
+read-only. These are explicitly post-review exploratory checks; the September 17
+protocol is preserved. Figure S8 now has separate zero-based distance panels.
+Layer B Results are folded into 3.3; Table 1 and Data accessibility are clarified.
+
+Current private bundle: `build/final_read/audit_20260918/`; canonical receipt:
+`artefacts/rsec_audit_20260918/`. Main has four figures/one table; SI eight
+figures/five tables. Main source count: 234 abstract + 3,826 body = 4,060 words.
+See `docs/log/141_fable_review_followup.md` and
+`analysis/reports/product_followup_validation.json` for verification.
+Prior bundles are unchanged. Work is uncommitted. Final author details,
+declarations/AI disclosure, public release and submission remain Barry's decisions.
+
+
+## Historical update: 17 September 2026
+
+Barry authorised the product-continuity audit, area summaries, interior-band
+sensitivity, discretionary Layer B compression and an external anchor only if
+necessary. He clarified that he is the sole human author; there is no additional
+co-author circulation stage. The current reading version supersedes September
+12, while preserving those historical files and the accepted primary analysis.
+
+The 2022 source tag confirms a mixed Suomi-NPP/NOAA-20 EOG V2.2 masked input.
+The observed decoded low-end value grid is unchanged despite different integer
+encodings. No 2022 first-detection excess appears: inside 14/3,864 versus
+13/3,877 in 2021; fixed far-from-2013-light 2/1,239 versus 3/1,242. The original
+multi-year distance proposal was prospectively amended to prevent outcome
+leakage. The 78 late-positive series remain product observations, not confirmed
+environmental onsets; the higher 2023/2024 counts remain unattributed.
+
+Eligible IDs contain 99.8% of summed polygon area; positive-slope IDs contain
+37.6% of eligible summed area. These are not unique illuminated land shares.
+The common interior-band subset contains 1,205 paired reserves: 32/119 positive
+whole-reserve cases retain positive 1–5 km slopes. This cannot locate change at
+the boundary or diagnose spillover. Layer B now has only brief main-text methods
+and results, with details in SI. Spectral limits cite Kyba et al. (2017).
+
+Use `analysis/reports/product_audit_review.md`, the amended protocol, lineage
+review and `interior_area_audit/` for evidence. Current manuscript sources retain
+four main figures; SI has eight figures and four tables. The new private bundle
+is `build/final_read/audit_20260917/`; canonical receipt:
+`artefacts/rsec_audit_20260917/`. See `docs/log/140_product_continuity_audit.md`
+for final validation status. Work remains uncommitted; check live Git state.
+No external raster anchor was needed for the retained descriptive claims.
+Final contact/declaration/AI-use wording, public code release and submission
+remain human decisions. No new public deposit, commit or push was made.
+
+## Historical update: 12 September 2026
+
+Barry authorised all five orientation priorities and reconfirmed RSEC, with
+remote sensing for conservation as the emphasis. The current title is
+**Satellite screening of lighting change across Australia's protected areas**.
+The revised source and reading bundle supersede the Goal 016 reader version.
+Current workspace: `/home/bwbrook/papers/dsipa-dev`; base commit `907075e`.
+Revisions are uncommitted pending Barry's review; verify live Git state.
+
+The accepted primary data, slopes and sign counts are preserved. The new
+descriptive annual-series diagnostic finds 180 varying series among 3,969
+zero-Sen-slope areas, including 78 with at least one positive value in 2022-2024
+after nine zero years. The archived resampling is presented as marginal temporal
+sensitivity, not joint spatial inference or calibrated confidence intervals.
+The dominance display is excluded. Main Figure 4 now shows four illustrative
+reserve trajectories; detailed biological-record methods and its association
+figure are in SI. Bibliographic metadata and the derivative product citation
+have been checked and corrected.
+
+Use `manuscript/submission/rsec/final_read_guide.md` and
+`docs/log/138_rsec_coauthor_revision.md` for the current package and validation.
+Author confirmation, co-author comments, code-release arrangements and final
+submission remain future decisions. No new public release has occurred.
+
+## Historical handover (5 September 2026)
+
 **Current at 2026-09-05. Read this first in a fresh DSIPA thread, then verify
 the live Git state before acting.**
 

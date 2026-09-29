@@ -1,5 +1,7 @@
 # DSIPA-NBS: Dark-Sky Integrity of Protected Areas & Nocturnal Biodiversity Signals (Australia)
 
+**Current status: corrected spatial candidate independently approved for private reading (19 September 2026).** The independent Astra/max review found errors in surrounding buffers, inward bands and coastal masking. Whole-reserve observations remain unchanged. The corrected route is documented in [spatial reproduction](docs/spatial_reproduction_20260919.md); the older Goal 012 runner and reference contract describe the historical baseline, not the current manuscript's surrounding or band results. Previous private reading bundles remain preserved. Optional numerical Layer B results are excluded from the active candidate because original occurrence inputs could not be recovered to verify a sampling repair. Source code and historical results remain available for research. No public release is authorised.
+
 This repository investigates a conservation question with a strong “dark-sky” angle:
 
 How has artificial light at night changed inside Australian protected areas over time, how much of that change looks like boundary/encroachment pressure, and (optionally) can we detect a conservative nocturnal biodiversity occurrence signal consistent with ALAN exposure?
@@ -40,7 +42,7 @@ This is an “AI for Science” autonomy experiment:
 - `references/` and `csl/` — manuscript bibliography and citation style used by `makedoc`.
 - `tests/` — automated tests and domain sanity checks.
 
-Note: Large derived outputs (national tables, large GPKGs, and `artefacts/`) are not tracked in git. Nine processed national Layer A outputs are publicly archived as Zenodo Dataset version `0.3.0` under CC BY 4.0 at <https://doi.org/10.5281/zenodo.21524637>; raw and row-level ALA data, Layer B payloads, and unlisted files are excluded. The source GitHub repository remains private and is not a public access route. Release provenance is recorded in `analysis/reports/final_release_manifest.md`; smoke-test outputs remain in-repo for fast regression tests.
+Note: Large derived outputs (national tables, large GPKGs, and `artefacts/`) are not tracked in git. Nine historical baseline national Layer A outputs are publicly archived as Zenodo Dataset version `0.3.0` under CC BY 4.0 at <https://doi.org/10.5281/zenodo.21524637>; raw and row-level ALA data, Layer B payloads, and unlisted files are excluded. The source GitHub repository remains private and is not a public access route. Release provenance is recorded in `analysis/reports/final_release_manifest.md`; smoke-test outputs remain in-repo for fast regression tests.
 
 The nine processed national Layer A outputs are already cited through the
 Zenodo DOI above. Use `analysis/reports/final_release_manifest.md` and the
@@ -154,3 +156,10 @@ uv run python -m dsipa.layerB_model --provider dr368 --sensitivity-sample-rate 0
 
 If you are running Codex in this repo, follow `docs/roadmap.md` strictly.
 When a milestone review gate is reached, zip the repo and send it for PI review.
+
+Current reading documents are in `build/final_read/spatial_20260919/`; the
+private source/evidence package is `artefacts/spatial_candidate_20260919/`.
+The independent acceptance memo is
+`analysis/reports/spatial_correction_acceptance_review_20260919.md`; archive
+hashes and verification are in `analysis/reports/spatial_candidate_seal_20260919.json`.
+Earlier 18 September bundles remain preserved as historical versions.

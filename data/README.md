@@ -85,3 +85,36 @@ Rules:
 - Do not hand-edit files in `data/raw/`; recreate via scripts.
 - Store scripts used for downloads/processing in `src/` or `analysis/` and reference them here.
 - If data cannot be redistributed, keep it out of git and document the retrieval steps instead.
+
+
+## 17 September 2026 continuity audit
+
+Accepted primary inputs remain unchanged. The review-stage audit records all
+12 raster SHA-256 identities and embedded source tags in
+`analysis/reports/product_raster_metadata.json`, and accepted annual-table
+identities in `product_audit_manifest.json`. The source lineage and remaining
+construction limits are documented in `product_lineage_review.md`. The 2022
+file identifies a mixed Suomi-NPP/NOAA-20 V2.2 masked source; 2023–2024 source
+names identify Suomi-NPP masked V2 inputs. Raw integer code spacing differs
+across 2021/2022 but observed decoded low-end spacing is 10 product units on
+both sides. No new external raster product was downloaded, and the public
+processed-data archive has not been updated with these private diagnostics.
+
+## Corrected private spatial outputs (19 September 2026)
+
+Current canonical data/processed/ contains the spatially corrected nine-file
+candidate. It is not byte-identical to the public historical v0.3.0 deposit:
+schema version remains 0.3.0, so identify this candidate by SHA-256 contracts,
+not filenames alone. Whole-reserve annual values/slopes are unchanged; corrected
+surrounding/band values and eligibility drive revised paired results. The input
+contract is analysis/reports/spatial_correction_render_input_manifest.json.
+Execution sources and receipts are in analysis/reports/spatial_execution_20260919/.
+The original buffer-validity output is preserved there; its candidate amendment
+adds only schema_version (receipt: spatial_schema_amendment.json).
+
+Coastline: AIMS/eAtlas Australian Coastline 50K 2024 v1-1 Split, Hammerton and
+Lawrey, CC BY 4.0, DOI 10.26274/qfy8-hj59. Known source exceptions remain flagged
+in reserve_screening_results.csv, with a nine-reserve exclusion sensitivity.
+Raw rasters and national extraction parts remain on deep-server. Reproduction
+from pinned public baseline inputs is documented in docs/spatial_reproduction_20260919.md.
+No corrected public dataset or software release has been made.

@@ -378,3 +378,134 @@ When the results are coherent enough for manuscript drafting, write a short summ
   - Scaling metadata changes in 2022-2024; we apply scale/offset metadata and document it.
   - Risk/retention rankings are descriptive, uncertainty-aware triage outputs; they do not imply causality or precise rank ordering.
   - Layer B is presence-only, provider-bounded, and mixed-licence aware; it cannot support population decline, population-trend, causal-impact, or national biodiversity-response claims.
+
+## RSEC co-author revision — 2026-09-12
+
+This entry supersedes the spatial-uncertainty and stable/non-detect wording in
+older interpretation notes; accepted numerical outputs remain unchanged.
+
+- All 3,969 eligible zero-Sen areas have 12 valid annual values: 3,786 are zero
+  throughout, three are constant non-zero, and 180 vary. Seventy-eight meet the
+  defined late-positive pattern. A zero median pairwise slope is consequently
+  not an absence of annual change. These are descriptive counts, not new trend
+  or onset tests.
+- Q3 combines zero and negative slopes. Black Mountain demonstrates dimming;
+  Henderson demonstrates a decline/recovery with a non-positive surrounding
+  slope despite a larger 2024 than 2013 value. Neerabup and Bungonia illustrate
+  paired-positive and surrounding-only-positive patterns, respectively.
+- Marginal temporal-resampling percentiles describe algorithm sensitivity;
+  they are not confidence intervals or joint spatial uncertainty. The
+  Cartesian-marginal dominance analysis is excluded from the revised paper.
+- The biological comparison remains weakly discriminating and non-causal,
+  with detail in SI. Single shuffle realisations cannot establish null
+  distributions or determine whether pairing information is ecological.
+- Revised figures must retain sign ranges, make map markers distinct from
+  reserve footprints, and show annual observations underlying each example.
+  Pixel support and product-scaled units remain explicit.
+
+### Co-author artefact review completed, 12 September 2026
+
+All revised main figures retain accepted values and now show full slope tails,
+zero-series variation and four named annual trajectories. Captions distinguish
+point-estimate categories, marginal resampling percentiles and fold variability.
+Main and SI tables/figures were checked in native PDF and Word-derived rendering.
+The current package is ready for private scientific/editorial comments; it does
+not establish ecological darkness, lighting sources, biological responses or
+formal reserve ordering. No additional primary runs were indicated by this review.
+
+
+## 2026-09-17: product continuity and interior-band sensitivity
+
+- The observed decoded low-end value grid is unchanged across 2021/2022 despite
+  different stored codes. Documented sensor/processing changes remain relevant.
+- No 2022 first-detection excess appears in inside, buffer or fixed far-from-light
+  diagnostics. Later 2023/2024 detections and individual attribution remain
+  unresolved; the 78 series are product flags for investigation.
+- The proposed multi-year distance reference would have leaked historical first
+  detections into their own stratum. The prospective fixed-2013 amendment removes
+  that flaw but does not create an exogenous environmental comparison.
+- Eligible IDs contain 99.8% of summed polygon area, and positive-slope IDs contain
+  37.6% of eligible area. Neither statistic estimates unique illuminated land.
+- Only 32/119 positive whole-reserve slopes persist in eligible 1–5 km bands.
+  This is conditional on spatial support and cannot locate light at boundaries
+  or diagnose spillover. Primary national trend estimates remain unchanged.
+
+Evidence: `analysis/reports/product_audit_review.md`, `product_audit_protocol.md`,
+`product_lineage_review.md` and `interior_area_audit/`; Fig. S8 and Tables S3–S4.
+
+- [x] Test missing-history and first-event risk-set handling.
+- [x] Review value encoding and correct the initial coarser-quantum inference.
+- [x] Independently review the numerical outputs and interpretation limits.
+- [x] Carry the unresolved environmental attribution into the manuscript.
+- [x] Final rendered-document checks and evidence handoff.
+
+
+## 18 September 2026 — Fable review follow-up
+
+- Calendar synchrony in 2017 and 2023 prevents using no 2022 spike as reassurance
+  about continuity. A mixed-sensor suppression/rebound remains a hypothesis;
+  persistence cannot distinguish it from environmental explanations.
+- The audited positive pixel minimum is 10 decoded product units in every
+  2013–2024 window. This is not a physical detection threshold; masking/encoding
+  contributions to zero mass are unidentified, and means can be below 10.
+- Matched bands: 79/119 positive-whole reserves have positive 0–1 km and zero
+  1–5 km slopes; 30 have both positive. Outer-ring concentration is conditional
+  on the selected cohort and does not diagnose spillover.
+- Of 68 Q1 losses, 54 are all-zero annually and 14 contain positive values.
+  Zero slopes and zero annual histories must remain separate.
+- The lowest slope tercile holds 99.147% of positive-class summed polygon area.
+  The 37.6% eligible-area classification does not measure substantial change
+  or illuminated area. Table S5 and the private follow-up evidence make this
+  qualification inspectable.
+- Closed follow-ups: annual floor completion, persistence reproduction, outer
+  band slopes, magnitude-weighted area check. Unresolved environmental
+  attribution is retained as a limitation; no further data download is needed
+  for the product-descriptive manuscript.
+
+Evidence: `analysis/reports/product_followup_review.md`,
+`product_floor_followup.md`, and `edge_followup/edge_followup_report.md`.
+
+
+## 18 September 2026 — Scientific review close-out
+
+The upper two positive-slope terciles contain 0.320638% of eligible summed
+polygon area (280 reserves; 5,485.671631 km²). This complements the lowest-tercile
+qualification but does not validate 0.04 product units per year as an ecological
+threshold. Seven matched whole-negative reserves also have negative outer-band
+slopes; six have zero deeper-band slopes and one a negative slope. The manuscript
+now balances the spatial description across signs. Two zero band slopes do not
+prove that a positive whole-reserve slope originates beyond 5 km: median pairwise
+slopes are not additive. No further scientific analysis is required for this
+tranche; Fable's close-out is reviewer advice, with author approval still pending.
+
+Evidence: `analysis/reports/product_closeout_arithmetic.json` and
+`product_closeout_review.md`; board messages 225 and 230.
+
+## Corrected spatial results — 19 September 2026
+
+The completed clean national v2 extraction covers all 11,133 reserves. Whole
+observations/slopes are exactly unchanged. Corrected paired coverage is 4,253
+(Q1 347; Q2 70; Q3 3,587; Q4 249). Geometry and coastline effects are separated
+in spatial_correction_summary.json. The matched deeper-band cohort changes
+from 1,205 to 1,341; among common paired eligible reserves no interior slope
+sign changes. The change is principally eligibility/support selection, not a
+reversal of common-reserve trends. Whole-positive/deeper-positive counts are
+150/42. Henderson changes from historical Q2 to Q1 and remains a transparent
+example of spatial-support sensitivity.
+
+AIMS 50K is a substantial improvement but not local ground truth. Nineteen
+reserves overlap a proximity screen around source-listed exceptions; nine
+are paired comparisons and explicitly provisional in reserve_screening_results.csv.
+Excluding those nine gives 4,244 paired, Q1=341, Q2=70, Q3=3,585, Q4=248.
+Swan River and Brisbane Water are newly eligible Q1 cases near these exceptions.
+Maps do not delimit actual mapping error; local validation remains necessary.
+
+The observed pixel floor and 2017/2023 synchrony remain material limitations.
+Corrected spatial screening does not identify biological effects or establish
+encroachment causally. The upper two positive-slope terciles still cover 0.32%
+of eligible summed polygon area; their empirical cutoff is not ecological.
+
+Optional numerical Layer B is omitted from the active candidate because the
+original occurrence downloads are unavailable for verifying a nodata-sampling
+repair. This uses the authorised discretion over this secondary section and
+preserves historical outputs; it is not evidence that old coefficients are wrong.

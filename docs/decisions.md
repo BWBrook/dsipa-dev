@@ -107,3 +107,120 @@ Record:
 - taxa selection
 - negative controls
 - bias-control design and why it is defensible
+
+## 2026-09-12 — RSEC co-author revision and corrected resampling interpretation
+
+Barry confirmed RSEC and authorised all five orientation priorities. The main
+article now leads with satellite screening for conservation, with detailed
+biological-record methods/results moved to SI. Its title is "Satellite
+screening of lighting change across Australia's protected areas".
+
+Primary source identities, extraction thresholds, full-period Sen slopes and
+Q1/Q2/Q3/Q4 counts are unchanged. Q3 is called "Neither slope positive";
+zero slopes are not equated with unchanging observed series. An independently
+reviewed interpretation retains the archived marginal per-reserve resampling
+as temporal sensitivity only: percentile ranges are not confidence intervals,
+IBRA selection affects draw multiplicity, and independent temporal draws do
+not establish joint spatial uncertainty. The dominance display is removed
+from the manuscript/build inventory. Historical outputs and schema names
+remain preserved; they do not override the corrected interpretation.
+
+The review-stage descriptive check is fixed as any annual variation among
+zero-Sen areas, plus a complete-series late-positive pattern (2013-2021 zero;
+any 2022-2024 positive). It does not redefine the primary estimand or screening
+categories. The four illustrated IDs were fixed before rendering: WA_27575,
+WA_39584, ACT_03 and NSW_N1142, covering Q1, Q2, Q3 and Q4. Black Mountain was
+chosen specifically to illustrate two negative slopes, not to represent the
+large zero-valued component of Q3. No local lighting source is attributed.
+
+See `docs/log/138_rsec_coauthor_revision.md` and
+`analysis/reports/coauthor_evidence.json` for execution and provenance.
+
+### Co-author document layout and provenance, 12 September 2026
+
+The main and SI reader versions use A4 pages, double-spaced body text and
+compact single-spaced editable tables. A local makedoc source adapter places
+each SI caption with its image, retaining S-numbering without a redundant
+heading-only page. A DOCX postprocessor applies the profile page dimensions
+and margins and refreshes the output hash in the build manifest. These local
+adapters leave the shared makedoc checkout unchanged. The canonical private
+tranche is `artefacts/rsec_coauthor_20260912/`; the portable co-author reading
+ZIP remains under the existing `build/final_read/` location.
+
+
+## 2026-09-17: authorised continuity audit and reading revision
+
+Barry authorised the product audit before the next reading bundle, whole-polygon
+area summaries, an eligible-cohort 1–5 km interior sensitivity and discretionary
+Layer B compression. He authorised an external EOG/Black Marble anchor if really
+necessary and clarified that he is the sole human author. This supersedes the
+planned additional co-author circulation stage, not the historical records.
+
+The distance audit uses a fixed 2013 detected-light reference, prospectively
+amended from Fable's 2013–2021 union proposal to avoid historical outcomes
+entering their own distance strata. Comparisons remain descriptive. No 2022
+excess was observed; no external anchor was required for the retained product
+claims. The 78 cases are not asserted to be new environmental lighting.
+
+The interior sensitivity fixes the original 1 km surrounding slope and compares
+whole-reserve versus exact 1–5 km band slopes in a common eligible subset. Only
+32/119 positive whole-reserve cases retain positive band slopes; this does not
+locate the source of change. Layer B remains a brief main-text diagnostic with
+full methods/results in SI. The sole author's contact and final declaration
+wording remain visible review fields; no AI system is added to author metadata.
+
+New folders within existing project locations organise these outputs:
+`analysis/reports/interior_area_audit/` for the independent numerical audit,
+`artefacts/rsec_audit_20260917/` for the canonical evidence/build receipt,
+`build/final_read/audit_20260917/` for the reading files, and
+`build/qa/audit_20260917/` for rendering checks. The September 12 bundle and
+accepted remote input tables are preserved. No public deposit, code release,
+submission, commit or push is authorised by this tranche.
+
+
+## 18 September 2026 — Post-review interpretation and bounded extension
+
+Fable's review motivates explicit reporting of the 2017 pulse and 2023 increases,
+a complete annual positive-floor check, and exploratory 0–1 km slopes on the
+already fixed 1,205-reserve cohort. These are post-inspection descriptive
+analyses, not a retroactive amendment to the frozen September 17 audit protocol.
+The original extraction, national trends and sign definitions remain accepted.
+The lowest count-based positive-slope tercile is used to describe magnitude
+behind whole-polygon area shares, not as a new significance/effect threshold.
+No physical-unit conversion or environmental-onset attribution is made.
+The new private bundle supersedes the September 17 reading version; earlier
+artefacts are retained. No external-product acquisition or public deposit is
+needed for this interpretation.
+
+Generated edge follow-up tables use `analysis/reports/edge_followup/`, within
+the existing report structure; README links this directory.
+
+### 2026-09-19 — Correct the spatial measurement support before submission
+
+Barry authorised the independent-review remedies. Use repaired unsimplified CAPAD
+boundaries, EPSG:3577 projected distances and 128 circular-arc segments per
+quadrant. The precision pilot supports this choice with disclosed single-cell
+residuals. Replace Natural Earth 1:110 million with AIMS Australian Coastline
+50K 2024 v1-1 Split land polygons (CC BY 4.0), clipping locally and excluding the
+complete protected-area estate. Six unresolved zero-overlap coastal polygons
+receive unavailable land-dependent comparisons, never observed zeros. The
+whole-reserve annual series is preserved and checked exactly. Schema 0.3.0 is
+unchanged; analysis identity is `spatial-correction-20260919`. This is an analysis
+correction, not an update to the historical baseline contract. Detailed prospective
+rules: `analysis/reports/spatial_correction_20260919_protocol.md`; source decision:
+`analysis/reports/spatial_correction_20260919_coastline.md`. Private release
+preparation is authorised; public publication and submission are not.
+
+## 2026-09-19 — Corrected private candidate and remaining coastline uncertainty
+
+Use converged unsimplified polygonal supports (q=128) and AIMS/eAtlas 50K
+2024 v1-1 Split for current spatial comparisons. Retain the clean national v2
+source snapshot and hashes separately from subsequent compatibility/schema
+repairs. Nine eligible comparisons near documented coastline exceptions stay
+in national screening totals with explicit provisional flags and a published
+exclusion sensitivity; they need local validation before management decisions.
+Omit optional numerical Layer B from the active paper because original records
+are unavailable to verify its sampler repair; preserve the historical archive.
+The private candidate does not change the public baseline Zenodo record.
+See spatial_correction_support_validation_20260919.md, spatial_schema_amendment.json,
+reserve_screening_results.csv and docs/spatial_reproduction_20260919.md.

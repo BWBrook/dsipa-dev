@@ -1,5 +1,75 @@
 # DSIPA-NBS Roadmap (execution queue)
 
+## Spatial correction and private release candidate (authorised 19 September 2026)
+
+- [x] Specify and validate accurate kilometre supports and an appropriate coastline.
+- [x] Re-extract affected annual comparisons on deep-server and quantify changes.
+- [x] Resolve Layer B sampling and reporting findings with an impact audit.
+- [x] Regenerate affected analyses, figures, tables and manuscript text.
+- [x] Reconcile public/private inputs and verify a documented reproduction route.
+- [x] Independently check the corrected evidence and preserve a private reading bundle.
+
+Session record: `docs/log/144_spatial_review_correction.md`. The accepted baseline
+and earlier bundles remain preserved for comparison.
+
+## Independent adversarial review (commissioned 18 September 2026)
+
+- [x] Commission fresh Astra/max reviewer without conversation history.
+- [x] Complete referee memo, independent parent checks and evidence preservation.
+
+Review outcome: major revision. Barry authorised the recommended implementation
+on 19 September 2026. Spatial correction, sensitivity, affected-result regeneration,
+Layer B scope resolution and a coherent private candidate are complete; the
+independent acceptance verdict is APPROVE.
+Public release, submission and Git publication remain unauthorised. The earlier scientific
+close-out below is historical. See `docs/log/143_independent_astra_adversarial_review.md`.
+
+
+## Scientific review close-out (18 September 2026)
+
+- [x] Read Fable's close-out and verify the complementary area and dimming summaries.
+- [x] Add bounded descriptive statements and clarify the abstract wording.
+- [x] Verify and preserve the final reading bundle for Barry's full read.
+
+No further scientific work is queued for this tranche. Publication decisions
+remain with Barry; see `analysis/reports/product_closeout_review.md`.
+
+
+## Review follow-up (18 September 2026)
+
+- [x] Reproduce onset persistence and revise the 2017/2023 pulse interpretation.
+- [x] Verify the all-year pixel floor and same-cohort 0–1 km spatial sensitivity.
+- [x] Integrate magnitude/area qualifications and smaller manuscript edits.
+- [x] Rebuild, visually inspect and preserve the revised private evidence packet.
+
+
+Current follow-up evidence: `analysis/reports/product_followup_review.md` and
+`docs/log/141_fable_review_followup.md`.
+
+## Current audit tranche (authorised 17 September 2026)
+
+- [x] Freeze an amended continuity protocol without historical-detection leakage.
+- [x] Audit stored raster values, first-positive risk sets and fixed baseline distances.
+- [x] Reproduce whole-polygon area shares and the matched interior-band sensitivity.
+- [x] Revise the manuscript, compress Layer B and record sole human authorship.
+- [x] Complete final document QA, preserve the evidence packet and report to Fable.
+
+Current evidence: `analysis/reports/product_audit_review.md` and
+`docs/log/140_product_continuity_audit.md`. Earlier completed work below is
+historical; no additional co-author circulation stage is planned.
+
+## Current manuscript tranche (authorised 12 September 2026)
+
+- [x] Correct zero-slope and non-positive category interpretations.
+- [x] Independently review and bound temporal-resampling claims.
+- [x] Rebuild maps, trend displays and captions from accepted evidence.
+- [x] Compress the main biological comparison and expand its SI account.
+- [x] Add named annual trajectories and a descriptive zero-series check.
+- [x] Complete visual QA and package the private main/SI PDF and DOCX files.
+
+Evidence and outcome: `docs/log/138_rsec_coauthor_revision.md`.
+Older work packages below preserve the project's development history.
+
 `docs/plan.md` is the brochure (narrative framing).
 This file is the GPS (execution). When told to “Follow the roadmap”, you follow this file.
 
