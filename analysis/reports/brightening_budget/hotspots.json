@@ -1,0 +1,632 @@
+{
+ "CWTH_IPA20": {
+  "name": "Anindilyakwa",
+  "year_from": 2013,
+  "year_to": 2024,
+  "rasters": [
+   {
+    "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20130101_20131231_go_epsg4326_v20250904.tif",
+    "scale": 1.0,
+    "offset": 0.0,
+    "window": [
+     75860,
+     24227,
+     216,
+     189
+    ],
+    "transform": [
+     0.00416666666666667,
+     0.0,
+     136.0833333333336,
+     0.0,
+     -0.00416666666666667,
+     -13.575833333333406
+    ],
+    "decoded_sha256": "237d4222e6e80cd10fc3f2d9956ff619fd8ff64d96b6a60512879007f0e12bcd"
+   },
+   {
+    "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20240101_20241231_go_epsg4326_v20250904.tif",
+    "scale": 10.0,
+    "offset": 0.0,
+    "window": [
+     75860,
+     24227,
+     216,
+     189
+    ],
+    "transform": [
+     0.00416666666666667,
+     0.0,
+     136.0833333333336,
+     0.0,
+     -0.00416666666666667,
+     -13.575833333333406
+    ],
+    "decoded_sha256": "89578584c0e3a9986ac2c16f75e4b585c41176dee832c55f5c1553f94e23d6fd"
+   }
+  ],
+  "inside_cells": 12583,
+  "common_valid_cells": 12583,
+  "valid_from_only": 0,
+  "valid_to_only": 0,
+  "inside_sum_from": 7530.0,
+  "inside_sum_to": 10480.0,
+  "gross_increase": 5390.0,
+  "gross_decrease": -2440.0,
+  "clusters": [
+   {
+    "sign": 1,
+    "change": 4160.0,
+    "share": 0.7717996289424861,
+    "pixels": 227,
+    "lat": -13.9884,
+    "lon": 136.4539,
+    "sum_from": 2160.0,
+    "sum_to": 6320.0
+   },
+   {
+    "sign": 1,
+    "change": 720.0,
+    "share": 0.13358070500927643,
+    "pixels": 41,
+    "lat": -13.8515,
+    "lon": 136.4355,
+    "sum_from": 720.0,
+    "sum_to": 1440.0
+   },
+   {
+    "sign": -1,
+    "change": -680.0,
+    "share": 0.2786885245901639,
+    "pixels": 25,
+    "lat": -14.0032,
+    "lon": 136.4597,
+    "sum_from": 770.0,
+    "sum_to": 90.0
+   },
+   {
+    "sign": -1,
+    "change": -610.0,
+    "share": 0.25,
+    "pixels": 13,
+    "lat": -13.9267,
+    "lon": 136.4577,
+    "sum_from": 750.0,
+    "sum_to": 140.0
+   },
+   {
+    "sign": -1,
+    "change": -280.0,
+    "share": 0.11475409836065574,
+    "pixels": 7,
+    "lat": -13.8592,
+    "lon": 136.8101,
+    "sum_from": 530.0,
+    "sum_to": 250.0
+   },
+   {
+    "sign": -1,
+    "change": -270.0,
+    "share": 0.11065573770491803,
+    "pixels": 14,
+    "lat": -13.9498,
+    "lon": 136.4683,
+    "sum_from": 270.0,
+    "sum_to": 0.0
+   },
+   {
+    "sign": -1,
+    "change": -260.0,
+    "share": 0.10655737704918032,
+    "pixels": 16,
+    "lat": -14.0508,
+    "lon": 136.4519,
+    "sum_from": 300.0,
+    "sum_to": 40.0
+   }
+  ]
+ },
+ "NSW_N0018": {
+  "name": "Kosciuszko",
+  "year_from": 2019,
+  "year_to": 2024,
+  "rasters": [
+   {
+    "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20190101_20191231_go_epsg4326_v20250904.tif",
+    "scale": 1.0,
+    "offset": 0.0,
+    "window": [
+     78729,
+     29449,
+     194,
+     406
+    ],
+    "transform": [
+     0.00416666666666667,
+     0.0,
+     148.03750000000025,
+     0.0,
+     -0.00416666666666667,
+     -35.33416666666676
+    ],
+    "decoded_sha256": "e0bc2cd67ea93b4c92d732fcffd176a428befb35f6213bfb03db9ea8e3cd0aa1"
+   },
+   {
+    "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20240101_20241231_go_epsg4326_v20250904.tif",
+    "scale": 10.0,
+    "offset": 0.0,
+    "window": [
+     78729,
+     29449,
+     194,
+     406
+    ],
+    "transform": [
+     0.00416666666666667,
+     0.0,
+     148.03750000000025,
+     0.0,
+     -0.00416666666666667,
+     -35.33416666666676
+    ],
+    "decoded_sha256": "0cbc53018816dcaa7c4efc2fc066e40aa90e9fda8c24c5cfe117ce4d7ec1c552"
+   }
+  ],
+  "inside_cells": 39721,
+  "common_valid_cells": 39721,
+  "valid_from_only": 0,
+  "valid_to_only": 0,
+  "inside_sum_from": 1220.0,
+  "inside_sum_to": 26970.0,
+  "gross_increase": 26110.0,
+  "gross_decrease": -360.0,
+  "clusters": [
+   {
+    "sign": 1,
+    "change": 18320.0,
+    "share": 0.7016468785905783,
+    "pixels": 378,
+    "lat": -35.7833,
+    "lon": 148.4142,
+    "sum_from": 0.0,
+    "sum_to": 18320.0
+   },
+   {
+    "sign": 1,
+    "change": 6860.0,
+    "share": 0.26273458445040215,
+    "pixels": 176,
+    "lat": -35.7912,
+    "lon": 148.6567,
+    "sum_from": 0.0,
+    "sum_to": 6860.0
+   },
+   {
+    "sign": 1,
+    "change": 210.0,
+    "share": 0.00804289544235925,
+    "pixels": 21,
+    "lat": -35.9337,
+    "lon": 148.3858,
+    "sum_from": 140.0,
+    "sum_to": 350.0
+   },
+   {
+    "sign": -1,
+    "change": -200.0,
+    "share": 0.5555555555555556,
+    "pixels": 15,
+    "lat": -36.4052,
+    "lon": 148.4102,
+    "sum_from": 280.0,
+    "sum_to": 80.0
+   }
+  ]
+ },
+ "SA_0011": {
+  "name": "Strzelecki",
+  "year_from": 2013,
+  "year_to": 2024,
+  "rasters": [
+   {
+    "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20130101_20131231_go_epsg4326_v20250904.tif",
+    "scale": 1.0,
+    "offset": 0.0,
+    "window": [
+     76585,
+     27726,
+     335,
+     348
+    ],
+    "transform": [
+     0.00416666666666667,
+     0.0,
+     139.1041666666669,
+     0.0,
+     -0.00416666666666667,
+     -28.155000000000086
+    ],
+    "decoded_sha256": "1b00aee28a742089f638717ff327cd227f52e8a3ba965507a617b387e873f908"
+   },
+   {
+    "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20240101_20241231_go_epsg4326_v20250904.tif",
+    "scale": 10.0,
+    "offset": 0.0,
+    "window": [
+     76585,
+     27726,
+     335,
+     348
+    ],
+    "transform": [
+     0.00416666666666667,
+     0.0,
+     139.1041666666669,
+     0.0,
+     -0.00416666666666667,
+     -28.155000000000086
+    ],
+    "decoded_sha256": "22f055756e6abf4b46526ae77b5640ea59fb7ca383c958da9718212155b8e827"
+   }
+  ],
+  "inside_cells": 43192,
+  "common_valid_cells": 43192,
+  "valid_from_only": 0,
+  "valid_to_only": 0,
+  "inside_sum_from": 1170.0,
+  "inside_sum_to": 570.0,
+  "gross_increase": 70.0,
+  "gross_decrease": -670.0,
+  "clusters": [
+   {
+    "sign": -1,
+    "change": -360.0,
+    "share": 0.5373134328358209,
+    "pixels": 10,
+    "lat": -28.3694,
+    "lon": 139.9697,
+    "sum_from": 640.0,
+    "sum_to": 280.0
+   },
+   {
+    "sign": -1,
+    "change": -310.0,
+    "share": 0.4626865671641791,
+    "pixels": 11,
+    "lat": -28.4157,
+    "lon": 139.8131,
+    "sum_from": 460.0,
+    "sum_to": 150.0
+   }
+  ]
+ },
+ "SA_0247": {
+  "name": "Yellabinna",
+  "year_from": 2016,
+  "year_to": 2024,
+  "rasters": [
+   {
+    "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20160101_20161231_go_epsg4326_v20250904.tif",
+    "scale": 1.0,
+    "offset": 0.0,
+    "window": [
+     74842,
+     28278,
+     681,
+     338
+    ],
+    "transform": [
+     0.00416666666666667,
+     0.0,
+     131.84166666666692,
+     0.0,
+     -0.00416666666666667,
+     -30.455000000000098
+    ],
+    "decoded_sha256": "cd63f27627e5975c93ef8da7d3d7dbb787dea672476eee1aa4d1ae4cba8b09dc"
+   },
+   {
+    "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20240101_20241231_go_epsg4326_v20250904.tif",
+    "scale": 10.0,
+    "offset": 0.0,
+    "window": [
+     74842,
+     28278,
+     681,
+     338
+    ],
+    "transform": [
+     0.00416666666666667,
+     0.0,
+     131.84166666666692,
+     0.0,
+     -0.00416666666666667,
+     -30.455000000000098
+    ],
+    "decoded_sha256": "fadf5d9777cdcf6899849afa409eaec64ea37b8fe8737a721fe147717f89236d"
+   }
+  ],
+  "inside_cells": 109213,
+  "common_valid_cells": 109213,
+  "valid_from_only": 0,
+  "valid_to_only": 0,
+  "inside_sum_from": 1580.0,
+  "inside_sum_to": 4280.0,
+  "gross_increase": 2970.0,
+  "gross_decrease": -270.0,
+  "clusters": [
+   {
+    "sign": 1,
+    "change": 2970.0,
+    "share": 1.0,
+    "pixels": 149,
+    "lat": -30.8702,
+    "lon": 132.2202,
+    "sum_from": 480.0,
+    "sum_to": 3450.0
+   },
+   {
+    "sign": -1,
+    "change": -270.0,
+    "share": 1.0,
+    "pixels": 12,
+    "lat": -30.9065,
+    "lon": 132.2158,
+    "sum_from": 770.0,
+    "sum_to": 500.0
+   }
+  ]
+ },
+ "WA_11648": {
+  "name": "Barrow Island",
+  "year_from": 2015,
+  "year_to": 2016,
+  "rasters": [
+   {
+    "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20150101_20151231_go_epsg4326_v20250904.tif",
+    "scale": 1.0,
+    "offset": 0.0,
+    "window": [
+     70873,
+     25928,
+     43,
+     56
+    ],
+    "transform": [
+     0.00416666666666667,
+     0.0,
+     115.3041666666669,
+     0.0,
+     -0.00416666666666667,
+     -20.663333333333412
+    ],
+    "decoded_sha256": "c3fb34c3016260c06b4f2f09a1287aea9ff4a696d28b6cc2570be3dbc61a146c"
+   },
+   {
+    "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20160101_20161231_go_epsg4326_v20250904.tif",
+    "scale": 1.0,
+    "offset": 0.0,
+    "window": [
+     70873,
+     25928,
+     43,
+     56
+    ],
+    "transform": [
+     0.00416666666666667,
+     0.0,
+     115.3041666666669,
+     0.0,
+     -0.00416666666666667,
+     -20.663333333333412
+    ],
+    "decoded_sha256": "d027a7a330b22d8b2be3a6b957c4a4b2646ee864bf890da3a7f848dd4bbcfc6d"
+   }
+  ],
+  "inside_cells": 1262,
+  "common_valid_cells": 1262,
+  "valid_from_only": 0,
+  "valid_to_only": 0,
+  "inside_sum_from": 74690.0,
+  "inside_sum_to": 207180.0,
+  "gross_increase": 144440.0,
+  "gross_decrease": -11950.0,
+  "clusters": [
+   {
+    "sign": 1,
+    "change": 144300.0,
+    "share": 0.9990307394073664,
+    "pixels": 351,
+    "lat": -20.7793,
+    "lon": 115.4424,
+    "sum_from": 37650.0,
+    "sum_to": 181950.0
+   },
+   {
+    "sign": -1,
+    "change": -5750.0,
+    "share": 0.4811715481171548,
+    "pixels": 12,
+    "lat": -20.7929,
+    "lon": 115.4455,
+    "sum_from": 17280.0,
+    "sum_to": 11530.0
+   },
+   {
+    "sign": -1,
+    "change": -5650.0,
+    "share": 0.47280334728033474,
+    "pixels": 41,
+    "lat": -20.8202,
+    "lon": 115.3848,
+    "sum_from": 14870.0,
+    "sum_to": 9220.0
+   },
+   {
+    "sign": -1,
+    "change": -210.0,
+    "share": 0.017573221757322177,
+    "pixels": 10,
+    "lat": -20.7265,
+    "lon": 115.4201,
+    "sum_from": 280.0,
+    "sum_to": 70.0
+   }
+  ]
+ },
+ "WA_2803": {
+  "name": "Murujuga",
+  "year_from": 2013,
+  "year_to": 2024,
+  "rasters": [
+   {
+    "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20130101_20131231_go_epsg4326_v20250904.tif",
+    "scale": 1.0,
+    "offset": 0.0,
+    "window": [
+     71216,
+     25894,
+     32,
+     37
+    ],
+    "transform": [
+     0.00416666666666667,
+     0.0,
+     116.73333333333358,
+     0.0,
+     -0.00416666666666667,
+     -20.521666666666746
+    ],
+    "decoded_sha256": "7684fcc98f0f9363c4cf5e7535721269cc9c520fdacf88a6b368ce32d24e47e4"
+   },
+   {
+    "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20240101_20241231_go_epsg4326_v20250904.tif",
+    "scale": 10.0,
+    "offset": 0.0,
+    "window": [
+     71216,
+     25894,
+     32,
+     37
+    ],
+    "transform": [
+     0.00416666666666667,
+     0.0,
+     116.73333333333358,
+     0.0,
+     -0.00416666666666667,
+     -20.521666666666746
+    ],
+    "decoded_sha256": "138a0c90169406423e3c47e9a1e76221c515db432132c0ddc95a726d530156dd"
+   }
+  ],
+  "inside_cells": 259,
+  "common_valid_cells": 259,
+  "valid_from_only": 0,
+  "valid_to_only": 0,
+  "inside_sum_from": 76060.0,
+  "inside_sum_to": 10510.0,
+  "gross_increase": 20.0,
+  "gross_decrease": -65570.0,
+  "clusters": [
+   {
+    "sign": -1,
+    "change": -63070.0,
+    "share": 0.961872807686442,
+    "pixels": 151,
+    "lat": -20.601,
+    "lon": 116.787,
+    "sum_from": 72400.0,
+    "sum_to": 9330.0
+   },
+   {
+    "sign": -1,
+    "change": -1680.0,
+    "share": 0.025621473234710996,
+    "pixels": 56,
+    "lat": -20.6465,
+    "lon": 116.7765,
+    "sum_from": 2390.0,
+    "sum_to": 710.0
+   },
+   {
+    "sign": -1,
+    "change": -650.0,
+    "share": 0.009913070001525087,
+    "pixels": 10,
+    "lat": -20.5693,
+    "lon": 116.7879,
+    "sum_from": 810.0,
+    "sum_to": 160.0
+   }
+  ]
+ },
+ "WA_33174": {
+  "name": "Thevenard Island",
+  "year_from": 2013,
+  "year_to": 2024,
+  "rasters": [
+   {
+    "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20130101_20131231_go_epsg4326_v20250904.tif",
+    "scale": 1.0,
+    "offset": 0.0,
+    "window": [
+     70788,
+     26114,
+     22,
+     8
+    ],
+    "transform": [
+     0.00416666666666667,
+     0.0,
+     114.95000000000022,
+     0.0,
+     -0.00416666666666667,
+     -21.438333333333418
+    ],
+    "decoded_sha256": "617050aa1221a591680f297c46cda49c1f5af0b407c1cb35721b267dcc31373d"
+   },
+   {
+    "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20240101_20241231_go_epsg4326_v20250904.tif",
+    "scale": 10.0,
+    "offset": 0.0,
+    "window": [
+     70788,
+     26114,
+     22,
+     8
+    ],
+    "transform": [
+     0.00416666666666667,
+     0.0,
+     114.95000000000022,
+     0.0,
+     -0.00416666666666667,
+     -21.438333333333418
+    ],
+    "decoded_sha256": "bffeeb2d12ba6108806a508082dee2f5ce23d1edeaf81acd4feb8c0d08038978"
+   }
+  ],
+  "inside_cells": 109,
+  "common_valid_cells": 109,
+  "valid_from_only": 0,
+  "valid_to_only": 0,
+  "inside_sum_from": 3370.0,
+  "inside_sum_to": 0.0,
+  "gross_increase": 0.0,
+  "gross_decrease": -3370.0,
+  "clusters": [
+   {
+    "sign": -1,
+    "change": -3370.0,
+    "share": 1.0,
+    "pixels": 20,
+    "lat": -21.4546,
+    "lon": 115.0216,
+    "sum_from": 3370.0,
+    "sum_to": 0.0
+   }
+  ]
+ },
+ "_accessed_utc": "2026-10-18T06:57:49+00:00"
+}

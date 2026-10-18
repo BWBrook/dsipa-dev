@@ -1,0 +1,4 @@
+distance_2013_light,reserves,area_share,net_increase_share,gross_increase_share,net_increase_share_2013_2021
+far_>20km,1246,0.43074,0.0450234,0.00796929,-0.0561677
+middle_2_to_20km,2338,0.157672,0.0611331,0.0108725,-0.0328767
+near_<2km,842,0.411588,0.893844,0.981158,1.08904

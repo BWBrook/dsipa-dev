@@ -1,0 +1,393 @@
+{
+ "inputs": {
+  "trends": {
+   "path": "data/processed/pa_trends_v0_3_0.csv",
+   "sha256": "4c4ba16c7305d53f4fa358ef9a5104e64eee05901fabba5913a843f5cfa8d32d"
+  },
+  "radiance": {
+   "path": "data/processed/pa_radiance_buffers_national_v0_3_0.csv",
+   "sha256": "3173bd9bd3b4a545b34eb740a043a5aaf85175956aa654f0ae52c530cce8344c"
+  },
+  "edges": {
+   "path": "data/processed/pa_edge_profiles_national_v0_3_0.csv",
+   "sha256": "408f39ce27027558b4da4eafab4c78bc3ca57cded5d27c8671620077d4dd1533"
+  },
+  "geometries": {
+   "path": "data/processed/pa_geometries_v0_3_0.gpkg",
+   "sha256": "da843f551bf1863dc5d1930ecb657491f73d69827b25007a0c55c9019721d0e6"
+  },
+  "distances": {
+   "path": "analysis/reports/product_baseline_distances.csv",
+   "sha256": "7b317b0c232d54d167a27f8a8e003cb4c71dbbc8e9781cca1edd9806865b78f3"
+  }
+ },
+ "units": "OLS slope of area-integrated product radiance over the sampled valid support (product units x km2 per year); not physical emitted light; cell area = 15 arc-second cell scaled by cos(centroid latitude); overlapping designations are counted in each reserve",
+ "eligible_reserves": 4426,
+ "cell_area_check_median_area_per_valid_pixel_km2_reserves_over_100km2": 0.18583543612198233,
+ "cell_area_model_median_km2_same_reserves": 0.18594327078202424,
+ "net_slope": 478.9471876315347,
+ "gross_positive": 2709.447890420897,
+ "gross_negative": -2230.5007027893616,
+ "net_slope_2013_2021": -537.8416855726414,
+ "reserves_with_positive_ols_slope": 560,
+ "reserves_with_negative_ols_slope": 75,
+ "top_k": [
+  {
+   "k": 1,
+   "gross_share": 0.13647532033194965,
+   "net_share": 0.7720533251202467,
+   "area_share": 0.004026890297163137,
+   "gross_share_2013_2021_same_reserves": 0.020698375526345965,
+   "gross_share_2013_2021_own_top": 0.03863689514076454,
+   "top_k_overlap_with_2013_2021_top": 0
+  },
+  {
+   "k": 5,
+   "gross_share": 0.25099241021373503,
+   "net_share": 1.419886939368438,
+   "area_share": 0.06493124292609054,
+   "gross_share_2013_2021_same_reserves": 0.13146693505015056,
+   "gross_share_2013_2021_own_top": 0.1434141950497398,
+   "top_k_overlap_with_2013_2021_top": 3
+  },
+  {
+   "k": 10,
+   "gross_share": 0.33187853866171113,
+   "net_share": 1.8774671397480358,
+   "area_share": 0.13669505874167176,
+   "gross_share_2013_2021_same_reserves": 0.22857364836740277,
+   "gross_share_2013_2021_own_top": 0.23956595246362947,
+   "top_k_overlap_with_2013_2021_top": 8
+  },
+  {
+   "k": 20,
+   "gross_share": 0.42930194855797454,
+   "net_share": 2.428600248445011,
+   "area_share": 0.1627826621233536,
+   "gross_share_2013_2021_same_reserves": 0.34253867796092463,
+   "gross_share_2013_2021_own_top": 0.35688364646608817,
+   "top_k_overlap_with_2013_2021_top": 16
+  },
+  {
+   "k": 44,
+   "gross_share": 0.5804115078003026,
+   "net_share": 3.2834407968073838,
+   "area_share": 0.18070519511880487,
+   "gross_share_2013_2021_same_reserves": 0.5343687775787991,
+   "gross_share_2013_2021_own_top": 0.5402308648710841,
+   "top_k_overlap_with_2013_2021_top": 40
+  },
+  {
+   "k": 443,
+   "gross_share": 0.995037205995081,
+   "net_share": 5.629016159392866,
+   "area_share": 0.3987797029942937,
+   "gross_share_2013_2021_same_reserves": 0.9923077698270405,
+   "gross_share_2013_2021_own_top": 0.9993904364665841,
+   "top_k_overlap_with_2013_2021_top": 399
+  }
+ ],
+ "reach": [
+  {
+   "gross_share": 0.5,
+   "reserves_needed": 30,
+   "area_share": 0.1631988688170481
+  },
+  {
+   "gross_share": 0.8,
+   "reserves_needed": 115,
+   "area_share": 0.28056085176823203
+  },
+  {
+   "gross_share": 0.9,
+   "reserves_needed": 192,
+   "area_share": 0.301402184080941
+  }
+ ],
+ "large_reserves_over_1000km2": {
+  "reserves": 201,
+  "area_share": 0.8781899682000913,
+  "net_share": 1.6293612202401964,
+  "gross_share": 0.3189360795744547
+ },
+ "outer_km_all_reserves_with_complete_band": {
+  "reserves": 4426,
+  "outer_km_area_share": 0.1370442445106165,
+  "positive_whole_reserves": 560,
+  "outer_km_area_share_in_positive_reserves": 0.0974010532688993,
+  "interior_dominated_positive_reserves": [
+   "CWTH_06",
+   "CWTH_12",
+   "CWTH_IPA16",
+   "CWTH_IPA17",
+   "CWTH_IPA20",
+   "CWTH_IPA21",
+   "CWTH_IPA33",
+   "CWTH_IPA37",
+   "CWTH_IPA42",
+   "CWTH_IPA43",
+   "CWTH_IPA44",
+   "CWTH_IPA51",
+   "CWTH_IPA56",
+   "CWTH_IPA58",
+   "CWTH_IPA67",
+   "CWTH_IPA68",
+   "CWTH_IPA70",
+   "CWTH_IPA73",
+   "CWTH_IPA74",
+   "CWTH_IPA77",
+   "CWTH_IPA82",
+   "NSW_N0018",
+   "NT_PA92",
+   "SA_0246",
+   "SA_0247",
+   "TAS_50010",
+   "WA_34607",
+   "WA_46235",
+   "WA_54262"
+  ],
+  "outer_km_share_of_increase_in_positive_reserves": 0.7202643985822021,
+  "median_reserve_outer_share_in_positive_reserves": 1.0,
+  "positive_reserves_with_majority_of_increase_in_outer_km": 531
+ },
+ "outer_km_reserves_with_interior_beyond_1km": {
+  "reserves": 1398,
+  "outer_km_area_share": 0.125197609594378,
+  "positive_whole_reserves": 221,
+  "outer_km_area_share_in_positive_reserves": 0.09258322558258592,
+  "interior_dominated_positive_reserves": [
+   "CWTH_06",
+   "CWTH_12",
+   "CWTH_IPA16",
+   "CWTH_IPA17",
+   "CWTH_IPA20",
+   "CWTH_IPA21",
+   "CWTH_IPA33",
+   "CWTH_IPA37",
+   "CWTH_IPA42",
+   "CWTH_IPA43",
+   "CWTH_IPA44",
+   "CWTH_IPA51",
+   "CWTH_IPA56",
+   "CWTH_IPA58",
+   "CWTH_IPA67",
+   "CWTH_IPA68",
+   "CWTH_IPA70",
+   "CWTH_IPA73",
+   "CWTH_IPA74",
+   "CWTH_IPA77",
+   "CWTH_IPA82",
+   "NSW_N0018",
+   "NT_PA92",
+   "SA_0246",
+   "SA_0247",
+   "TAS_50010",
+   "WA_34607",
+   "WA_46235",
+   "WA_54262"
+  ],
+  "outer_km_share_of_increase_in_positive_reserves": 0.5123340541698806,
+  "median_reserve_outer_share_in_positive_reserves": 0.9999999999999998,
+  "positive_reserves_with_majority_of_increase_in_outer_km": 192
+ },
+ "interior_definition": "at least 10 valid pixels beyond the outer 1 km band in every year",
+ "outer_km_reserves_with_interior_stable_counts": {
+  "reserves": 1395,
+  "outer_km_area_share": 0.12483235610455293,
+  "positive_whole_reserves": 219,
+  "outer_km_area_share_in_positive_reserves": 0.09164501581150838,
+  "interior_dominated_positive_reserves": [
+   "CWTH_06",
+   "CWTH_12",
+   "CWTH_IPA16",
+   "CWTH_IPA17",
+   "CWTH_IPA20",
+   "CWTH_IPA21",
+   "CWTH_IPA33",
+   "CWTH_IPA37",
+   "CWTH_IPA42",
+   "CWTH_IPA43",
+   "CWTH_IPA44",
+   "CWTH_IPA51",
+   "CWTH_IPA56",
+   "CWTH_IPA58",
+   "CWTH_IPA67",
+   "CWTH_IPA68",
+   "CWTH_IPA70",
+   "CWTH_IPA73",
+   "CWTH_IPA74",
+   "CWTH_IPA77",
+   "CWTH_IPA82",
+   "NSW_N0018",
+   "NT_PA92",
+   "SA_0246",
+   "SA_0247",
+   "TAS_50010",
+   "WA_34607",
+   "WA_46235",
+   "WA_54262"
+  ],
+  "outer_km_share_of_increase_in_positive_reserves": 0.5121539178731165,
+  "median_reserve_outer_share_in_positive_reserves": 0.9999999999999998,
+  "positive_reserves_with_majority_of_increase_in_outer_km": 190
+ },
+ "reserves_with_changing_valid_counts": [
+  "WA_13045",
+  "WA_27632",
+  "WA_33842",
+  "WA_54225"
+ ],
+ "gross_negative_top_k_share": {
+  "1": 0.5561741891223428,
+  "5": 0.9491161549364829,
+  "10": 0.9711091719887561,
+  "30": 0.9930291352428187
+ },
+ "outer_band_excluded_incomplete": 0,
+ "band_budget": {
+  "outer_km_area_share_all_assessable": 0.1370442445106165,
+  "outer_km_share_of_band_level_gross_increase": 0.7200208817637812,
+  "outer_km_share_of_band_level_gross_increase_2013_2021": 0.8250490504069652,
+  "outer_km_share_of_band_level_gross_increase_period_difference": 0.714651851603955,
+  "beyond_1km_reserves_for_50_80_pct": [
+   2,
+   7
+  ],
+  "beyond_1km_top10": [
+   {
+    "pa_id": "NSW_N0018",
+    "share": 0.47131934004020026
+   },
+   {
+    "pa_id": "CWTH_IPA51",
+    "share": 0.10000383873094906
+   },
+   {
+    "pa_id": "CWTH_IPA20",
+    "share": 0.09273054715500641
+   },
+   {
+    "pa_id": "CWTH_IPA17",
+    "share": 0.05556414607334892
+   },
+   {
+    "pa_id": "SA_0247",
+    "share": 0.04729423998497176
+   },
+   {
+    "pa_id": "CWTH_IPA68",
+    "share": 0.021500926485707943
+   },
+   {
+    "pa_id": "CWTH_IPA56",
+    "share": 0.016304320685660765
+   },
+   {
+    "pa_id": "CWTH_06",
+    "share": 0.01207523597728401
+   },
+   {
+    "pa_id": "NSW_N0030",
+    "share": 0.010775881303407583
+   },
+   {
+    "pa_id": "CWTH_IPA78",
+    "share": 0.010259142715479017
+   }
+  ],
+  "ipa": {
+   "reserves": 77,
+   "area_share": 0.5133336084635565,
+   "share_of_beyond_1km_gross_increase": 0.3606829972200643,
+   "share_of_outer_km_gross_increase": 0.06260568422832809
+  }
+ },
+ "estate_total_by_year": {
+  "2013": 58649.02827321344,
+  "2014": 50705.84012453595,
+  "2015": 52748.2306464379,
+  "2016": 73845.7959003276,
+  "2017": 55088.26630519259,
+  "2018": 48447.375377183904,
+  "2019": 49303.81769248517,
+  "2020": 53400.84815157106,
+  "2021": 56631.958577109865,
+  "2022": 54649.52919604983,
+  "2023": 65649.68661419381,
+  "2024": 65871.77247049237
+ },
+ "lit_pixels_by_year": {
+  "2013": 7150.999999999911,
+  "2014": 6859.999999999941,
+  "2015": 7021.99999999989,
+  "2016": 6939.999999999904,
+  "2017": 9177.999999999874,
+  "2018": 9255.999999999867,
+  "2019": 9516.999999999878,
+  "2020": 10921.999999999858,
+  "2021": 11661.999999999845,
+  "2022": 12152.999999999845,
+  "2023": 14101.999999999858,
+  "2024": 14663.999999999862
+ },
+ "reserves_with_30pct_lit_pixel_jump": {
+  "2013-2014": 0,
+  "2014-2015": 4,
+  "2015-2016": 1,
+  "2016-2017": 39,
+  "2017-2018": 1,
+  "2018-2019": 2,
+  "2019-2020": 18,
+  "2020-2021": 4,
+  "2021-2022": 5,
+  "2022-2023": 26,
+  "2023-2024": 9
+ },
+ "positive_sen_slopes": 420,
+ "positive_sen_slopes_surviving_level_shift_removal": {
+  "2017": 357,
+  "2023": 385,
+  "2017+2023": 319,
+  "2017+2020+2023": 254,
+  "within_2017_2022_only": 332
+ },
+ "top20_overlap_total_vs_mean_slope": [
+  "NSW_N1123",
+  "NT_PA115",
+  "SA_0038",
+  "VIC_4007",
+  "WA_27575",
+  "WA_48325"
+ ],
+ "top20_total_outside_top100_mean": [
+  "CWTH_IPA17",
+  "CWTH_IPA20",
+  "CWTH_IPA50",
+  "CWTH_IPA51",
+  "CWTH_IPA78",
+  "NSW_N0004",
+  "NSW_N0006",
+  "NSW_N0018",
+  "NSW_N0019",
+  "NSW_N0030",
+  "NSW_N1117",
+  "SA_0247"
+ ],
+ "kosciuszko": {
+  "mean_slope_rank_among_positive": 303,
+  "share_of_net": 0.7720533251202467,
+  "share_of_gross": 0.13647532033194965
+ },
+ "largest_decrease": {
+  "pa_id": "WA_11648",
+  "slope": -1240.546919710689,
+  "share_of_gross_decrease": 0.5561741891223428
+ },
+ "min_rest_total_check": -2.1671553440683056e-12,
+ "surroundings_1km": {
+  "paired_reserves_complete": 4253,
+  "sum_buffer_slope": 2451.1041205438432,
+  "sum_inside_slope_same_reserves": 1745.1737079760233,
+  "note": "1 km buffers of neighbouring reserves can overlap, so buffer totals may double count"
+ }
+}
