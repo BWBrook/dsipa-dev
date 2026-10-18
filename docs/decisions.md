@@ -260,3 +260,27 @@ exposure. Evidence and independent replay are in log 146 and the editorial repor
 The next canonical snapshot is `artefacts/editorial_20261018_r2/`, with private
 reading files under `build/final_read/editorial_20261018_r2/`; this follows the
 existing artefact structure and does not replace earlier snapshots.
+
+
+### 2026-10-18 — R3 influence diagnostic and industrial-site interpretation
+
+Select the five most negative full-period integrated OLS contributors once,
+then use the identical exclusion set in both periods. Label this as a
+post-inspection influence diagnostic, not evidence for deleting observations
+or an unbiased background trend. Industrial-context cases are ranks 1, 2 and
+4; do not attribute all five large decreases to facilities. Use independent
+covering-window reads with floor starts/ceil stops, preserving the preliminary
+crop outputs as historical evidence. Same-sign pixel differences supply the
+cluster denominators, separate from reserve OLS contributions and net changes.
+Retain nonmonotonic histories and the outside-window date of the 2025 flaring
+report. Source proximity supports investigation, not lamp/flare attribution.
+
+Promote the national contribution map to main Figure 1, move coverage to SI S1
+and add decreasing-site histories as SI S7. Keep all non-zero mapped
+contributors, using a separate Christmas Island inset. The existing artefact
+structure extends to `artefacts/editorial_20261018_r3/` and
+`build/final_read/editorial_20261018_r3/`; no new top-level structure is created.
+Draft concrete AI roles using verified revision-model identifiers, while
+retaining an explicit requirement to complete the earlier version inventory
+before release. Private Git checkpoints/pushes follow Barry's updated guidance;
+this does not authorise first public release or submission.

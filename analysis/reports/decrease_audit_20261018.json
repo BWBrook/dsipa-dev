@@ -1,0 +1,1227 @@
+{
+  "audit_id": "decreases-r3-independent-20261018",
+  "generated_utc": "2026-10-18T09:10:17.671197+00:00",
+  "script": {
+    "path": "/home/bwbrook/papers/dsipa-dev/analysis/reports/decrease_audit_20261018.py",
+    "sha256": "a7106071b80b255c83819689fde4867e207bd80216374aa00b7292bb4a12c9bd"
+  },
+  "software": {
+    "python": "3.12.3",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "geopandas": "1.1.2",
+    "rasterio": "1.4.4"
+  },
+  "canonical_inputs": {
+    "trends": {
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_trends_v0_3_0.csv",
+      "sha256": "4c4ba16c7305d53f4fa358ef9a5104e64eee05901fabba5913a843f5cfa8d32d"
+    },
+    "annual": {
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_radiance_buffers_national_v0_3_0.csv",
+      "sha256": "3173bd9bd3b4a545b34eb740a043a5aaf85175956aa654f0ae52c530cce8344c"
+    },
+    "geometries": {
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_geometries_v0_3_0.gpkg",
+      "sha256": "da843f551bf1863dc5d1930ecb657491f73d69827b25007a0c55c9019721d0e6"
+    }
+  },
+  "corrected_manifest_sha256": "860604d6f964e8f1a51bf85e377fbca5773b7977ed06f76b536cfbf30a640540",
+  "inspected_hotspot_outputs": {
+    "path": "/home/bwbrook/papers/dsipa-dev/analysis/reports/brightening_budget/hotspots.json",
+    "sha256": "40e24dc5ba8a9ffe99c644e30b492ecc36e20758fd8cd56a28868ee76f6cd8cc",
+    "reported_accessed_utc": "2026-10-18T06:57:49+00:00"
+  },
+  "inspected_hotspot_script": {
+    "path": "/home/bwbrook/papers/dsipa-dev/analysis/brightening_hotspots.py",
+    "sha256": "4f05eeb73f109e048c4479fcac06764f7acb20f7dd04168df623c1ef07a1eaa3"
+  },
+  "independent_window_cache": {
+    "path": "/home/bwbrook/papers/dsipa-dev/analysis/reports/decrease_audit_20261018.npz",
+    "sha256": "f7b5e42eed3e16d1dceec32afe17269179a0dc6007333be051f351719e156c61",
+    "bytes": 18222
+  },
+  "raster_reads": {
+    "accessed_utc": "2026-10-18T09:07:22.686617+00:00",
+    "geometry_sha256": "da843f551bf1863dc5d1930ecb657491f73d69827b25007a0c55c9019721d0e6",
+    "max_cells_per_window": 150000,
+    "remote_identity_limit": "Only requested windows were fetched; full remote file hashes were not recomputed",
+    "cases": {
+      "WA_11648": {
+        "rasters": [
+          {
+            "year": 2015,
+            "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20150101_20151231_go_epsg4326_v20250904.tif",
+            "scale": 1.0,
+            "offset": 0.0,
+            "nodata": -32768.0,
+            "window": [
+              70873,
+              25928,
+              43,
+              57
+            ],
+            "transform": [
+              0.00416666666666667,
+              0.0,
+              115.3041666666669,
+              0.0,
+              -0.00416666666666667,
+              -20.663333333333412
+            ],
+            "crs": "EPSG:4326",
+            "decoded_sha256": "3a3445103b51549a026ec0111d56b3d6f3a2126d16ceee8d6293bb4ade50d414"
+          },
+          {
+            "year": 2016,
+            "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20160101_20161231_go_epsg4326_v20250904.tif",
+            "scale": 1.0,
+            "offset": 0.0,
+            "nodata": -32768.0,
+            "window": [
+              70873,
+              25928,
+              43,
+              57
+            ],
+            "transform": [
+              0.00416666666666667,
+              0.0,
+              115.3041666666669,
+              0.0,
+              -0.00416666666666667,
+              -20.663333333333412
+            ],
+            "crs": "EPSG:4326",
+            "decoded_sha256": "38d75d522d3c15d8eaa379d06bb4dd01f3bdfd526cbeea7f0fe7a9d308eb196c"
+          }
+        ]
+      },
+      "WA_2803": {
+        "rasters": [
+          {
+            "year": 2013,
+            "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20130101_20131231_go_epsg4326_v20250904.tif",
+            "scale": 1.0,
+            "offset": 0.0,
+            "nodata": -32768.0,
+            "window": [
+              71216,
+              25893,
+              33,
+              38
+            ],
+            "transform": [
+              0.00416666666666667,
+              0.0,
+              116.73333333333358,
+              0.0,
+              -0.00416666666666667,
+              -20.517500000000084
+            ],
+            "crs": "EPSG:4326",
+            "decoded_sha256": "880da5aa2eb255b8dc3ea3479421ded04fbbf7100b9e94b4c4407d1c8010e114"
+          },
+          {
+            "year": 2024,
+            "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20240101_20241231_go_epsg4326_v20250904.tif",
+            "scale": 10.0,
+            "offset": 0.0,
+            "nodata": -32768.0,
+            "window": [
+              71216,
+              25893,
+              33,
+              38
+            ],
+            "transform": [
+              0.00416666666666667,
+              0.0,
+              116.73333333333358,
+              0.0,
+              -0.00416666666666667,
+              -20.517500000000084
+            ],
+            "crs": "EPSG:4326",
+            "decoded_sha256": "3eb3fc67b1291fc22e3e21136190abea5d6c4ddcf3e6fe9696602e2172fb2b9d"
+          }
+        ]
+      },
+      "SA_0011": {
+        "rasters": [
+          {
+            "year": 2013,
+            "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20130101_20131231_go_epsg4326_v20250904.tif",
+            "scale": 1.0,
+            "offset": 0.0,
+            "nodata": -32768.0,
+            "window": [
+              76585,
+              27726,
+              336,
+              349
+            ],
+            "transform": [
+              0.00416666666666667,
+              0.0,
+              139.1041666666669,
+              0.0,
+              -0.00416666666666667,
+              -28.155000000000086
+            ],
+            "crs": "EPSG:4326",
+            "decoded_sha256": "70ca74ccc130e515c6070d98208c214a6d8a1930b4c04b6270e73081a931bd90"
+          },
+          {
+            "year": 2024,
+            "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20240101_20241231_go_epsg4326_v20250904.tif",
+            "scale": 10.0,
+            "offset": 0.0,
+            "nodata": -32768.0,
+            "window": [
+              76585,
+              27726,
+              336,
+              349
+            ],
+            "transform": [
+              0.00416666666666667,
+              0.0,
+              139.1041666666669,
+              0.0,
+              -0.00416666666666667,
+              -28.155000000000086
+            ],
+            "crs": "EPSG:4326",
+            "decoded_sha256": "820ff8baa3703db76aaec1c7d956f2ad29f9dfd09436b28aed3da26c4fe51a12"
+          }
+        ]
+      },
+      "WA_33174": {
+        "rasters": [
+          {
+            "year": 2013,
+            "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20130101_20131231_go_epsg4326_v20250904.tif",
+            "scale": 1.0,
+            "offset": 0.0,
+            "nodata": -32768.0,
+            "window": [
+              70787,
+              26114,
+              23,
+              9
+            ],
+            "transform": [
+              0.00416666666666667,
+              0.0,
+              114.94583333333355,
+              0.0,
+              -0.00416666666666667,
+              -21.438333333333418
+            ],
+            "crs": "EPSG:4326",
+            "decoded_sha256": "e8c90c23a81a8bce06d67dbc4a7b5683ad8b2368cd5f7071da34d53b3f8eb85d"
+          },
+          {
+            "year": 2024,
+            "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20240101_20241231_go_epsg4326_v20250904.tif",
+            "scale": 10.0,
+            "offset": 0.0,
+            "nodata": -32768.0,
+            "window": [
+              70787,
+              26114,
+              23,
+              9
+            ],
+            "transform": [
+              0.00416666666666667,
+              0.0,
+              114.94583333333355,
+              0.0,
+              -0.00416666666666667,
+              -21.438333333333418
+            ],
+            "crs": "EPSG:4326",
+            "decoded_sha256": "f8ae869707f0b5b28616c2bd13782d5d89ee022dbc737f19ca0cd46f6cd9af64"
+          }
+        ]
+      }
+    }
+  },
+  "units": {
+    "OLS": "approximate product units x km2 per year over annual valid support; repeated designations retained",
+    "hotspot": "unweighted sums of decoded pixel values and paired endpoint pixel differences"
+  },
+  "gross_negative_full_period": -2230.500702789361,
+  "five_share_gross_negative": 0.9491161549364829,
+  "fixed_five_selected_by_full_period": [
+    {
+      "pa_id": "WA_11648",
+      "name": "Barrow Island",
+      "state": "WA",
+      "ols_2013_2024": -1240.5469197106888,
+      "ols_2013_2021": -1099.271199984774,
+      "share_full_period_negative_slopes": 0.5561741891223428,
+      "stable_inside_pixel_count": true
+    },
+    {
+      "pa_id": "WA_2803",
+      "name": "Murujuga",
+      "state": "WA",
+      "ols_2013_2024": -766.8064841055477,
+      "ols_2013_2021": -1194.3565715070083,
+      "share_full_period_negative_slopes": 0.34378222035375955,
+      "stable_inside_pixel_count": true
+    },
+    {
+      "pa_id": "SA_0011",
+      "name": "Strzelecki",
+      "state": "SA",
+      "ols_2013_2024": -59.851594641353316,
+      "ols_2013_2021": -81.49426092307613,
+      "share_full_period_negative_slopes": 0.026833255226732577,
+      "stable_inside_pixel_count": true
+    },
+    {
+      "pa_id": "WA_33174",
+      "name": "Thevenard Island",
+      "state": "WA",
+      "ols_2013_2024": -29.135731276181193,
+      "ols_2013_2021": -48.7129961205034,
+      "share_full_period_negative_slopes": 0.013062417438266392,
+      "stable_inside_pixel_count": true
+    },
+    {
+      "pa_id": "QLD_NR234",
+      "name": "Newlands",
+      "state": "QLD",
+      "ols_2013_2024": -20.663520880790777,
+      "ols_2013_2021": -35.744020502614575,
+      "share_full_period_negative_slopes": 0.009264072795381741,
+      "stable_inside_pixel_count": true
+    }
+  ],
+  "exclusions": {
+    "all": {
+      "excluded_ids": [],
+      "retained_n": 4426,
+      "net_2013_2024": 478.94718763153446,
+      "net_2013_2021": -537.8416855726421
+    },
+    "exclude_fixed_five": {
+      "excluded_ids": [
+        "WA_11648",
+        "WA_2803",
+        "SA_0011",
+        "WA_33174",
+        "QLD_NR234"
+      ],
+      "retained_n": 4421,
+      "net_2013_2024": 2595.9514382460966,
+      "net_2013_2021": 1921.7373634653343
+    },
+    "exclude_fixed_five_and_kosciuszko": {
+      "excluded_ids": [
+        "WA_11648",
+        "WA_2803",
+        "SA_0011",
+        "WA_33174",
+        "QLD_NR234",
+        "NSW_N0018"
+      ],
+      "retained_n": 4420,
+      "net_2013_2024": 2226.17866947818,
+      "net_2013_2021": 1878.609428431283
+    }
+  },
+  "annual_histories": {
+    "WA_11648": {
+      "2013": {
+        "decoded_pixel_sum": 58950.0,
+        "valid_pixels": 1263,
+        "positive_pixels": 416
+      },
+      "2014": {
+        "decoded_pixel_sum": 76680.0,
+        "valid_pixels": 1263,
+        "positive_pixels": 394
+      },
+      "2015": {
+        "decoded_pixel_sum": 74690.00000000001,
+        "valid_pixels": 1263,
+        "positive_pixels": 420
+      },
+      "2016": {
+        "decoded_pixel_sum": 207180.0,
+        "valid_pixels": 1263,
+        "positive_pixels": 548
+      },
+      "2017": {
+        "decoded_pixel_sum": 73100.0,
+        "valid_pixels": 1263,
+        "positive_pixels": 478
+      },
+      "2018": {
+        "decoded_pixel_sum": 43009.99999999999,
+        "valid_pixels": 1263,
+        "positive_pixels": 353
+      },
+      "2019": {
+        "decoded_pixel_sum": 46490.0,
+        "valid_pixels": 1263,
+        "positive_pixels": 367
+      },
+      "2020": {
+        "decoded_pixel_sum": 48410.00000000001,
+        "valid_pixels": 1263,
+        "positive_pixels": 357
+      },
+      "2021": {
+        "decoded_pixel_sum": 53130.000000000015,
+        "valid_pixels": 1263,
+        "positive_pixels": 426
+      },
+      "2022": {
+        "decoded_pixel_sum": 34750.0,
+        "valid_pixels": 1263,
+        "positive_pixels": 400
+      },
+      "2023": {
+        "decoded_pixel_sum": 41680.0,
+        "valid_pixels": 1263,
+        "positive_pixels": 391
+      },
+      "2024": {
+        "decoded_pixel_sum": 28720.0,
+        "valid_pixels": 1263,
+        "positive_pixels": 358
+      }
+    },
+    "WA_2803": {
+      "2013": {
+        "decoded_pixel_sum": 76060.0,
+        "valid_pixels": 259,
+        "positive_pixels": 227
+      },
+      "2014": {
+        "decoded_pixel_sum": 22890.0,
+        "valid_pixels": 259,
+        "positive_pixels": 151
+      },
+      "2015": {
+        "decoded_pixel_sum": 29890.0,
+        "valid_pixels": 259,
+        "positive_pixels": 165
+      },
+      "2016": {
+        "decoded_pixel_sum": 16270.0,
+        "valid_pixels": 259,
+        "positive_pixels": 136
+      },
+      "2017": {
+        "decoded_pixel_sum": 25980.0,
+        "valid_pixels": 259,
+        "positive_pixels": 167
+      },
+      "2018": {
+        "decoded_pixel_sum": 16450.000000000004,
+        "valid_pixels": 259,
+        "positive_pixels": 162
+      },
+      "2019": {
+        "decoded_pixel_sum": 10120.0,
+        "valid_pixels": 259,
+        "positive_pixels": 152
+      },
+      "2020": {
+        "decoded_pixel_sum": 7220.000000000001,
+        "valid_pixels": 259,
+        "positive_pixels": 123
+      },
+      "2021": {
+        "decoded_pixel_sum": 8500.0,
+        "valid_pixels": 259,
+        "positive_pixels": 135
+      },
+      "2022": {
+        "decoded_pixel_sum": 7930.0,
+        "valid_pixels": 259,
+        "positive_pixels": 127
+      },
+      "2023": {
+        "decoded_pixel_sum": 10100.000000000002,
+        "valid_pixels": 259,
+        "positive_pixels": 144
+      },
+      "2024": {
+        "decoded_pixel_sum": 10510.0,
+        "valid_pixels": 259,
+        "positive_pixels": 152
+      }
+    },
+    "SA_0011": {
+      "2013": {
+        "decoded_pixel_sum": 1169.9999999999964,
+        "valid_pixels": 43238,
+        "positive_pixels": 23
+      },
+      "2014": {
+        "decoded_pixel_sum": 1289.999999999997,
+        "valid_pixels": 43238,
+        "positive_pixels": 28
+      },
+      "2015": {
+        "decoded_pixel_sum": 10799.999999999996,
+        "valid_pixels": 43238,
+        "positive_pixels": 65
+      },
+      "2016": {
+        "decoded_pixel_sum": 799.9999999999962,
+        "valid_pixels": 43238,
+        "positive_pixels": 22
+      },
+      "2017": {
+        "decoded_pixel_sum": 709.9999999999978,
+        "valid_pixels": 43238,
+        "positive_pixels": 23
+      },
+      "2018": {
+        "decoded_pixel_sum": 1440.0,
+        "valid_pixels": 43238,
+        "positive_pixels": 25
+      },
+      "2019": {
+        "decoded_pixel_sum": 389.9999999999959,
+        "valid_pixels": 43238,
+        "positive_pixels": 17
+      },
+      "2020": {
+        "decoded_pixel_sum": 589.9999999999972,
+        "valid_pixels": 43238,
+        "positive_pixels": 21
+      },
+      "2021": {
+        "decoded_pixel_sum": 239.99999999999713,
+        "valid_pixels": 43238,
+        "positive_pixels": 18
+      },
+      "2022": {
+        "decoded_pixel_sum": 279.9999999999974,
+        "valid_pixels": 43238,
+        "positive_pixels": 19
+      },
+      "2023": {
+        "decoded_pixel_sum": 559.9999999999991,
+        "valid_pixels": 43238,
+        "positive_pixels": 25
+      },
+      "2024": {
+        "decoded_pixel_sum": 569.9999999999969,
+        "valid_pixels": 43238,
+        "positive_pixels": 25
+      }
+    },
+    "WA_33174": {
+      "2013": {
+        "decoded_pixel_sum": 3370.0000000000005,
+        "valid_pixels": 110,
+        "positive_pixels": 20
+      },
+      "2014": {
+        "decoded_pixel_sum": 470.0,
+        "valid_pixels": 110,
+        "positive_pixels": 12
+      },
+      "2015": {
+        "decoded_pixel_sum": 39.99999999999999,
+        "valid_pixels": 110,
+        "positive_pixels": 4
+      },
+      "2016": {
+        "decoded_pixel_sum": 0.0,
+        "valid_pixels": 110,
+        "positive_pixels": 0
+      },
+      "2017": {
+        "decoded_pixel_sum": 0.0,
+        "valid_pixels": 110,
+        "positive_pixels": 0
+      },
+      "2018": {
+        "decoded_pixel_sum": 199.99999999999997,
+        "valid_pixels": 110,
+        "positive_pixels": 10
+      },
+      "2019": {
+        "decoded_pixel_sum": 70.0,
+        "valid_pixels": 110,
+        "positive_pixels": 7
+      },
+      "2020": {
+        "decoded_pixel_sum": 0.0,
+        "valid_pixels": 110,
+        "positive_pixels": 0
+      },
+      "2021": {
+        "decoded_pixel_sum": 0.0,
+        "valid_pixels": 110,
+        "positive_pixels": 0
+      },
+      "2022": {
+        "decoded_pixel_sum": 0.0,
+        "valid_pixels": 110,
+        "positive_pixels": 0
+      },
+      "2023": {
+        "decoded_pixel_sum": 0.0,
+        "valid_pixels": 110,
+        "positive_pixels": 0
+      },
+      "2024": {
+        "decoded_pixel_sum": 0.0,
+        "valid_pixels": 110,
+        "positive_pixels": 0
+      }
+    },
+    "QLD_NR234": {
+      "2013": {
+        "decoded_pixel_sum": 2109.9999999999995,
+        "valid_pixels": 212,
+        "positive_pixels": 32
+      },
+      "2014": {
+        "decoded_pixel_sum": 870.0,
+        "valid_pixels": 212,
+        "positive_pixels": 23
+      },
+      "2015": {
+        "decoded_pixel_sum": 19.999999999999993,
+        "valid_pixels": 212,
+        "positive_pixels": 2
+      },
+      "2016": {
+        "decoded_pixel_sum": 0.0,
+        "valid_pixels": 212,
+        "positive_pixels": 0
+      },
+      "2017": {
+        "decoded_pixel_sum": 19.999999999999993,
+        "valid_pixels": 212,
+        "positive_pixels": 2
+      },
+      "2018": {
+        "decoded_pixel_sum": 19.999999999999993,
+        "valid_pixels": 212,
+        "positive_pixels": 2
+      },
+      "2019": {
+        "decoded_pixel_sum": 19.999999999999993,
+        "valid_pixels": 212,
+        "positive_pixels": 2
+      },
+      "2020": {
+        "decoded_pixel_sum": 50.0,
+        "valid_pixels": 212,
+        "positive_pixels": 5
+      },
+      "2021": {
+        "decoded_pixel_sum": 39.999999999999986,
+        "valid_pixels": 212,
+        "positive_pixels": 4
+      },
+      "2022": {
+        "decoded_pixel_sum": 50.0,
+        "valid_pixels": 212,
+        "positive_pixels": 5
+      },
+      "2023": {
+        "decoded_pixel_sum": 50.0,
+        "valid_pixels": 212,
+        "positive_pixels": 5
+      },
+      "2024": {
+        "decoded_pixel_sum": 50.0,
+        "valid_pixels": 212,
+        "positive_pixels": 5
+      }
+    },
+    "NSW_N0018": {
+      "2013": {
+        "decoded_pixel_sum": 1119.9999999999961,
+        "valid_pixels": 39721,
+        "positive_pixels": 72
+      },
+      "2014": {
+        "decoded_pixel_sum": 1249.9999999999998,
+        "valid_pixels": 39721,
+        "positive_pixels": 75
+      },
+      "2015": {
+        "decoded_pixel_sum": 909.999999999998,
+        "valid_pixels": 39721,
+        "positive_pixels": 62
+      },
+      "2016": {
+        "decoded_pixel_sum": 779.9999999999982,
+        "valid_pixels": 39721,
+        "positive_pixels": 53
+      },
+      "2017": {
+        "decoded_pixel_sum": 1319.9999999999968,
+        "valid_pixels": 39721,
+        "positive_pixels": 82
+      },
+      "2018": {
+        "decoded_pixel_sum": 1470.0,
+        "valid_pixels": 39721,
+        "positive_pixels": 101
+      },
+      "2019": {
+        "decoded_pixel_sum": 1219.9999999999984,
+        "valid_pixels": 39721,
+        "positive_pixels": 81
+      },
+      "2020": {
+        "decoded_pixel_sum": 1149.9999999999977,
+        "valid_pixels": 39721,
+        "positive_pixels": 97
+      },
+      "2021": {
+        "decoded_pixel_sum": 4599.999999999999,
+        "valid_pixels": 39721,
+        "positive_pixels": 222
+      },
+      "2022": {
+        "decoded_pixel_sum": 13939.999999999998,
+        "valid_pixels": 39721,
+        "positive_pixels": 563
+      },
+      "2023": {
+        "decoded_pixel_sum": 25280.0,
+        "valid_pixels": 39721,
+        "positive_pixels": 634
+      },
+      "2024": {
+        "decoded_pixel_sum": 26970.0,
+        "valid_pixels": 39721,
+        "positive_pixels": 696
+      }
+    }
+  },
+  "independent_cluster_replay": {
+    "WA_11648": {
+      "years": [
+        2015,
+        2016
+      ],
+      "inside_cells": 1263,
+      "common_valid_cells": 1263,
+      "valid_from_only": 0,
+      "valid_to_only": 0,
+      "sum_from": 74690.0,
+      "sum_to": 207180.0,
+      "common_sum_from": 74690.0,
+      "common_sum_to": 207180.0,
+      "gross_positive_pixel_difference": 144440.0,
+      "gross_negative_pixel_difference": -11950.0,
+      "net_common_difference": 132490.0,
+      "canonical_counts": [
+        1263,
+        1263
+      ],
+      "canonical_sums": [
+        74690.00000000001,
+        207180.0
+      ],
+      "reported_legacy_common_count": 1262,
+      "legacy_crop_omitted_cells": 1,
+      "clusters_ge_200": [
+        {
+          "sign": 1,
+          "change": 144300.0,
+          "share_same_sign_gross": 0.9990307394073664,
+          "pixels": 351,
+          "lat": -20.779283033033114,
+          "lon": 115.44236082236105,
+          "sum_from": 37650.0,
+          "sum_to": 181950.0
+        },
+        {
+          "sign": -1,
+          "change": -5750.0,
+          "share_same_sign_gross": 0.4811715481171548,
+          "pixels": 12,
+          "lat": -20.792858695652253,
+          "lon": 115.44545289855095,
+          "sum_from": 17280.0,
+          "sum_to": 11530.0
+        },
+        {
+          "sign": -1,
+          "change": -5650.0,
+          "share_same_sign_gross": 0.47280334728033474,
+          "pixels": 41,
+          "lat": -20.820188053097425,
+          "lon": 115.38478244837782,
+          "sum_from": 14870.0,
+          "sum_to": 9220.0
+        },
+        {
+          "sign": -1,
+          "change": -210.0,
+          "share_same_sign_gross": 0.017573221757322177,
+          "pixels": 10,
+          "lat": -20.726527777777857,
+          "lon": 115.42013888888913,
+          "sum_from": 280.0,
+          "sum_to": 70.0
+        }
+      ],
+      "reported_window_hash_checks": [
+        {
+          "year": 2015,
+          "decoded_sha256": "c3fb34c3016260c06b4f2f09a1287aea9ff4a696d28b6cc2570be3dbc61a146c",
+          "matches_reported_hash": true,
+          "omitted_valid_cells": 1,
+          "omitted_sum": 0.0
+        },
+        {
+          "year": 2016,
+          "decoded_sha256": "d027a7a330b22d8b2be3a6b957c4a4b2646ee864bf890da3a7f848dd4bbcfc6d",
+          "matches_reported_hash": true,
+          "omitted_valid_cells": 1,
+          "omitted_sum": 0.0
+        }
+      ],
+      "cluster_changes_match_reported": true
+    },
+    "WA_2803": {
+      "years": [
+        2013,
+        2024
+      ],
+      "inside_cells": 259,
+      "common_valid_cells": 259,
+      "valid_from_only": 0,
+      "valid_to_only": 0,
+      "sum_from": 76060.0,
+      "sum_to": 10510.0,
+      "common_sum_from": 76060.0,
+      "common_sum_to": 10510.0,
+      "gross_positive_pixel_difference": 20.0,
+      "gross_negative_pixel_difference": -65570.0,
+      "net_common_difference": -65550.0,
+      "canonical_counts": [
+        259,
+        259
+      ],
+      "canonical_sums": [
+        76060.0,
+        10510.0
+      ],
+      "reported_legacy_common_count": 259,
+      "legacy_crop_omitted_cells": 0,
+      "clusters_ge_200": [
+        {
+          "sign": -1,
+          "change": -63070.0,
+          "share_same_sign_gross": 0.961872807686442,
+          "pixels": 151,
+          "lat": -20.6010463902543,
+          "lon": 116.78703391734076,
+          "sum_from": 72400.0,
+          "sum_to": 9330.0
+        },
+        {
+          "sign": -1,
+          "change": -1680.0,
+          "share_same_sign_gross": 0.025621473234710996,
+          "pixels": 56,
+          "lat": -20.646493055555638,
+          "lon": 116.77646329365103,
+          "sum_from": 2390.0,
+          "sum_to": 710.0
+        },
+        {
+          "sign": -1,
+          "change": -650.0,
+          "share_same_sign_gross": 0.009913070001525087,
+          "pixels": 10,
+          "lat": -20.569326923077007,
+          "lon": 116.7879166666669,
+          "sum_from": 810.0,
+          "sum_to": 160.0
+        }
+      ],
+      "reported_window_hash_checks": [
+        {
+          "year": 2013,
+          "decoded_sha256": "7684fcc98f0f9363c4cf5e7535721269cc9c520fdacf88a6b368ce32d24e47e4",
+          "matches_reported_hash": true,
+          "omitted_valid_cells": 0,
+          "omitted_sum": 0.0
+        },
+        {
+          "year": 2024,
+          "decoded_sha256": "138a0c90169406423e3c47e9a1e76221c515db432132c0ddc95a726d530156dd",
+          "matches_reported_hash": true,
+          "omitted_valid_cells": 0,
+          "omitted_sum": 0.0
+        }
+      ],
+      "cluster_changes_match_reported": true
+    },
+    "SA_0011": {
+      "years": [
+        2013,
+        2024
+      ],
+      "inside_cells": 43238,
+      "common_valid_cells": 43238,
+      "valid_from_only": 0,
+      "valid_to_only": 0,
+      "sum_from": 1170.0,
+      "sum_to": 570.0,
+      "common_sum_from": 1170.0,
+      "common_sum_to": 570.0,
+      "gross_positive_pixel_difference": 70.0,
+      "gross_negative_pixel_difference": -670.0,
+      "net_common_difference": -600.0,
+      "canonical_counts": [
+        43238,
+        43238
+      ],
+      "canonical_sums": [
+        1169.9999999999964,
+        569.9999999999969
+      ],
+      "reported_legacy_common_count": 43192,
+      "legacy_crop_omitted_cells": 46,
+      "clusters_ge_200": [
+        {
+          "sign": -1,
+          "change": -360.0,
+          "share_same_sign_gross": 0.5373134328358209,
+          "pixels": 10,
+          "lat": -28.36935185185194,
+          "lon": 139.96967592592617,
+          "sum_from": 640.0,
+          "sum_to": 280.0
+        },
+        {
+          "sign": -1,
+          "change": -310.0,
+          "share_same_sign_gross": 0.4626865671641791,
+          "pixels": 11,
+          "lat": -28.415685483871055,
+          "lon": 139.81310483870993,
+          "sum_from": 460.0,
+          "sum_to": 150.0
+        }
+      ],
+      "reported_window_hash_checks": [
+        {
+          "year": 2013,
+          "decoded_sha256": "1b00aee28a742089f638717ff327cd227f52e8a3ba965507a617b387e873f908",
+          "matches_reported_hash": true,
+          "omitted_valid_cells": 46,
+          "omitted_sum": 0.0
+        },
+        {
+          "year": 2024,
+          "decoded_sha256": "22f055756e6abf4b46526ae77b5640ea59fb7ca383c958da9718212155b8e827",
+          "matches_reported_hash": true,
+          "omitted_valid_cells": 46,
+          "omitted_sum": 0.0
+        }
+      ],
+      "cluster_changes_match_reported": true
+    },
+    "WA_33174": {
+      "years": [
+        2013,
+        2024
+      ],
+      "inside_cells": 110,
+      "common_valid_cells": 110,
+      "valid_from_only": 0,
+      "valid_to_only": 0,
+      "sum_from": 3370.0,
+      "sum_to": 0.0,
+      "common_sum_from": 3370.0,
+      "common_sum_to": 0.0,
+      "gross_positive_pixel_difference": 0.0,
+      "gross_negative_pixel_difference": -3370.0,
+      "net_common_difference": -3370.0,
+      "canonical_counts": [
+        110,
+        110
+      ],
+      "canonical_sums": [
+        3370.0000000000005,
+        0.0
+      ],
+      "reported_legacy_common_count": 109,
+      "legacy_crop_omitted_cells": 1,
+      "clusters_ge_200": [
+        {
+          "sign": -1,
+          "change": -3370.0,
+          "share_same_sign_gross": 1.0,
+          "pixels": 20,
+          "lat": -21.45459817012867,
+          "lon": 115.02159371909023,
+          "sum_from": 3370.0,
+          "sum_to": 0.0
+        }
+      ],
+      "reported_window_hash_checks": [
+        {
+          "year": 2013,
+          "decoded_sha256": "617050aa1221a591680f297c46cda49c1f5af0b407c1cb35721b267dcc31373d",
+          "matches_reported_hash": true,
+          "omitted_valid_cells": 1,
+          "omitted_sum": 0.0
+        },
+        {
+          "year": 2024,
+          "decoded_sha256": "bffeeb2d12ba6108806a508082dee2f5ce23d1edeaf81acd4feb8c0d08038978",
+          "matches_reported_hash": true,
+          "omitted_valid_cells": 1,
+          "omitted_sum": 0.0
+        }
+      ],
+      "cluster_changes_match_reported": true
+    }
+  },
+  "wording_checks": {
+    "barrow_endpoint_ratio_2016_over_2015": 2.773865309947784,
+    "barrow_endpoint_percent_increase": 177.3865309947784,
+    "barrow_largest_positive_cluster_fraction_gross_positive": 0.9990307394073664,
+    "barrow_largest_positive_cluster_fraction_net": 1.089138802928523,
+    "murujuga_endpoint_percent_decrease": 86.18196160925585,
+    "murujuga_largest_negative_cluster_fraction_gross_negative": 0.961872807686442,
+    "thevenard_zero_years": [
+      2016,
+      2017,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "thevenard_reappearance_2018_2019": [
+      199.99999999999997,
+      70.0
+    ]
+  },
+  "acceptance_checks": {
+    "fixed_five_ids": true,
+    "five_share": true,
+    "exclude_five_full": true,
+    "exclude_five_pre": true,
+    "also_exclude_kosciuszko_full": true,
+    "also_exclude_kosciuszko_pre": true,
+    "independent_clusters_match": true,
+    "legacy_omitted_pixels_zero": true
+  },
+  "limitations": [
+    "Exclusions were selected post hoc by the strongest negative full-period outcomes; shorter-period reuse is a fixed-cohort sensitivity, not independent confirmation of broad brightening.",
+    "This audit verifies product observations and spatial concentration, not facility identities, operational causes, or ecological exposure.",
+    "Endpoint clusters use different periods across reserves and cannot be interpreted as spatial decompositions of the full-period OLS slope.",
+    "The 2013-2024 endpoint comparisons span product-source changes; the Barrow 2015-2016 spike is within the earlier period but that does not establish homogeneous processing.",
+    "A 2021 rise precedes the documented 2022 source change but does not exclude all processing effects; spatial concentration alone does not rule them out.",
+    "Thevenard has positive observations again in 2018 and 2019; a zero 2024 endpoint does not show persistent absence since oil production ended.",
+    "Cluster selection is eight-neighbour connectivity of same-sign common-valid differences; reported clusters have absolute change at least 200, while denominators include all same-sign pixel changes."
+  ],
+  "figure_s7": {
+    "intended_number": "S7",
+    "matplotlib_version": "3.10.8",
+    "selection": "Post-inspection named cases, ranks 1, 2 and 4 among full-period decreases",
+    "scale": "Independent linear vertical scales with visible zero baseline",
+    "annotation": "2022 product-source change only; no industrial-event or causal annotations",
+    "plotted_observations": {
+      "WA_11648": {
+        "name": "Barrow Island",
+        "full_period_decrease_rank": 1,
+        "years": [
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "decoded_pixel_sums": [
+          58950.0,
+          76680.0,
+          74690.00000000001,
+          207180.0,
+          73100.0,
+          43009.99999999999,
+          46490.0,
+          48410.00000000001,
+          53130.000000000015,
+          34750.0,
+          41680.0,
+          28720.0
+        ],
+        "valid_pixel_counts": [
+          1263,
+          1263,
+          1263,
+          1263,
+          1263,
+          1263,
+          1263,
+          1263,
+          1263,
+          1263,
+          1263,
+          1263
+        ],
+        "zero_years": []
+      },
+      "WA_2803": {
+        "name": "Murujuga",
+        "full_period_decrease_rank": 2,
+        "years": [
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "decoded_pixel_sums": [
+          76060.0,
+          22890.0,
+          29890.0,
+          16270.0,
+          25980.0,
+          16450.000000000004,
+          10120.0,
+          7220.000000000001,
+          8500.0,
+          7930.0,
+          10100.000000000002,
+          10510.0
+        ],
+        "valid_pixel_counts": [
+          259,
+          259,
+          259,
+          259,
+          259,
+          259,
+          259,
+          259,
+          259,
+          259,
+          259,
+          259
+        ],
+        "zero_years": []
+      },
+      "WA_33174": {
+        "name": "Thevenard Island",
+        "full_period_decrease_rank": 4,
+        "years": [
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "decoded_pixel_sums": [
+          3370.0000000000005,
+          470.0,
+          39.99999999999999,
+          0.0,
+          0.0,
+          199.99999999999997,
+          70.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "valid_pixel_counts": [
+          110,
+          110,
+          110,
+          110,
+          110,
+          110,
+          110,
+          110,
+          110,
+          110,
+          110,
+          110
+        ],
+        "zero_years": [
+          2016,
+          2017,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ]
+      }
+    },
+    "png_dimensions": [
+      2850,
+      1035
+    ],
+    "qa_checks": {
+      "canonical_observations_plotted": 36,
+      "complete_years_per_panel": 12,
+      "independent_linear_vertical_scales": true,
+      "zero_baseline_with_lower_margin": true
+    },
+    "visual_qa": {
+      "status": "passed",
+      "reviewed_hobart": "2026-10-18T20:10:56+11:00",
+      "checks": [
+        "PNG inspected; all three complete annual series visible with independent linear vertical scales and zero margin",
+        "Thevenard 2018-2019 positive return visible",
+        "Source marker and rank labels do not overlap after focused repair",
+        "PDF rasterized with pdftoppm and visually inspected",
+        "qpdf --check passed; one-page vector PDF"
+      ]
+    },
+    "files": [
+      {
+        "path": "/home/bwbrook/papers/dsipa-dev/manuscript/figures/fig_decrease_histories.png",
+        "sha256": "cff74e850589dfcd4bdca0d461ab8196274da7b00e7b59ff4c3ef51721e7dfe6"
+      },
+      {
+        "path": "/home/bwbrook/papers/dsipa-dev/manuscript/figures/fig_decrease_histories.pdf",
+        "sha256": "1ba6acbf4e51a54174f4c5542aa21797b13bd6b0424df75752fe197acec40c93"
+      }
+    ]
+  }
+}

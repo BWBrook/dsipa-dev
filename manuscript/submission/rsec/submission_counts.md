@@ -7,17 +7,17 @@ Generated from the 18 October 2026 editorial revision of
 
 | Surface | Count | Requirement |
 | --- | ---: | --- |
-| Abstract content | 252 source words | <= 300 |
-| Body from Introduction heading through final declaration | 4,291 source words | source-token count including headings and current declarations |
-| Conservative abstract plus complete body | 4,543 source words | <= 5,000 readiness gate |
+| Abstract content | 273 source words | <= 300 |
+| Body from Introduction heading through final declaration | 4,691 source words | source-token count including headings and current declarations |
+| Conservative abstract plus complete body | 4,964 source words | <= 5,000 readiness gate |
 | Keywords | 5 | 4-6 |
 | Main figures | 4 | report count |
 | Main tables | 1 | report count |
-| Supporting figures | 5 | current Layer A source count |
-| Supporting tables | 6 | report count |
+| Supporting figures | 7 | current Layer A source count |
+| Supporting tables | 7 | report count |
 | Proposed running title | 39 characters | <= 45 |
 
-The conservative 4,543-word readiness count uses whitespace-delimited source
+The conservative 4,964-word readiness count uses whitespace-delimited source
 tokens. It includes Markdown headings, citation tokens, and every current
 declaration and acknowledgement marker. It excludes the title, keywords,
 references, tables, and figure legends. This deliberately errs upward relative

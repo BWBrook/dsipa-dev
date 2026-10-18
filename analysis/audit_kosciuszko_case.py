@@ -318,16 +318,28 @@ def render(root: Path, arrays: dict, report: dict, labels: np.ndarray) -> dict:
     bar.set_label("Product-scaled radiance (product units; same scale in both years)", fontsize=8, labelpad=2)
     bar.ax.tick_params(labelsize=7, length=2)
     bar.outline.set_linewidth(0.4)
-    trajectory = fig.add_axes([0.10, 0.13, 0.875, 0.29])
+    trajectory = fig.add_axes([0.10, 0.15, 0.875, 0.27])
     years = arrays["annual_year"]
     totals = arrays["annual_mean"] * arrays["annual_valid_count"]
     trajectory.plot(years, totals, color="#1f4e79", lw=1.8, marker="o", ms=3.7, zorder=3)
-    for year, offset in [(2019, (0, 11)), (2024, (-4, 9))]:
+    for year, offset in [(2019, (-17, 11)), (2024, (-4, 9))]:
         value = totals[list(years).index(year)]
         trajectory.scatter([year], [value], s=32, facecolor="white", edgecolor="#1f4e79", zorder=4)
         trajectory.annotate(f"{int(round(value)):,}", (year, value), xytext=offset,
                             textcoords="offset points", ha="right" if year == 2024 else "center",
                             fontsize=8)
+    # Values precede the documented 2022 input change, but that timing does
+    # not exclude earlier or later processing effects. The marker is context,
+    # not a correction, causal break point or validation of the trajectory.
+    for year, position in [(2020, (2018.9, 10800)), (2021, (2020.1, 16700))]:
+        value = float(totals[list(years).index(year)])
+        assert abs(value - {2020: 1150, 2021: 4600}[year]) < 1e-8
+        trajectory.annotate(f"{year}: {int(round(value)):,}", (year, value), xytext=position,
+                            textcoords="data", ha="center", fontsize=7.5,
+                            arrowprops={"arrowstyle": "-", "color": muted, "lw": .6},
+                            bbox={"facecolor": "white", "edgecolor": "none", "pad": .8})
+    trajectory.axvline(2022, color=muted, ls="--", lw=.8, zorder=1)
+    trajectory.text(2021.85, 29500, "2022 source change", ha="right", va="top", fontsize=7.5, color=muted)
     trajectory.set_title("c  Whole-reserve annual trajectory", loc="left", fontweight="bold", fontsize=10, pad=8)
     trajectory.set_ylabel("Product cell-sum", fontsize=8)
     trajectory.set_xlabel("Year", labelpad=3)
@@ -341,8 +353,10 @@ def render(root: Path, arrays: dict, report: dict, labels: np.ndarray) -> dict:
     trajectory.grid(axis="y", color="#e3e6e8", lw=0.6, zorder=0)
     fig.text(0.10, 0.975, "Kosciuszko: concentrated change near two construction areas",
              fontsize=11, fontweight="bold", ha="left", va="top")
-    fig.text(0.10, 0.025, "Maps: northern reserve; grey = outside reserve; white = recorded zero.  + = documented monitoring location.",
-             fontsize=7, color=muted)
+    fig.text(0.10, 0.015,
+             "Maps: northern reserve; grey = outside reserve; white = recorded zero.  + = documented monitoring location.\n"
+             "Dashed line: documented 2022 input change; earlier processing effects remain unresolved.",
+             fontsize=6.7, color=muted, va="bottom", linespacing=1.5)
     outputs = {}
     for suffix in (".png", ".pdf"):
         path = root / FIGURE.with_suffix(suffix)
@@ -355,7 +369,14 @@ def render(root: Path, arrays: dict, report: dict, labels: np.ndarray) -> dict:
     return {"extent_lonlat": zoom, "colour_limits": [0, float(vmax)],
             "colour_scale": "linear; zero retained", "width_inches": 7.2,
             "height_inches": 5.15, "maximum_displayed_value": maximum,
-            "display_clips_positive_values": bool(maximum > vmax), "outputs": outputs}
+            "display_clips_positive_values": bool(maximum > vmax),
+            "trajectory_context": {
+                "annotated_annual_sums": {str(year): float(totals[list(years).index(year)])
+                                          for year in (2019, 2020, 2021, 2024)},
+                "source_change_marker_year": 2022,
+                "source_change_evidence": "analysis/reports/product_raster_metadata.json: 2022 TIFFTAG_DOCUMENTNAME identifies VNL_v22_npp-j01_2022 masked input",
+                "qualification": "Timing does not exclude earlier or later processing effects; no correction or causal attribution applied",
+            }, "outputs": outputs}
 
 
 def main():
@@ -364,6 +385,10 @@ def main():
     parser.add_argument("--offline", action="store_true", help="Use cached windows; no network or original input files")
     args = parser.parse_args()
     root = args.root.resolve()
+    previous_report = None
+    if args.offline and (root / REPORT).exists():
+        previous_report = json.loads((root / REPORT).read_text())
+        previous_report_sha256 = sha256_file(root / REPORT)
     if not args.offline:
         acquire(root)
     arrays = load_cache(root)
@@ -371,6 +396,16 @@ def main():
     report["source_provenance"] = json.loads(str(arrays["provenance"]))
     report["cache"] = {"path": str(CACHE), "sha256": sha256_file(root / CACHE),
                        "bytes": (root / CACHE).stat().st_size}
+    if previous_report is not None:
+        # Preserve the pre-revision report identity and its actual execution
+        # record. It is a prior audit receipt, not a claimed acquisition run.
+        report["figure_revision_origin"] = previous_report.get("figure_revision_origin", {
+            "prior_report_path": str(REPORT), "prior_report_sha256": previous_report_sha256,
+            "prior_execution": previous_report["execution"],
+            "prior_figure_outputs": previous_report["figure"]["outputs"],
+        })
+        scientific_keys = set(report) - {"figure_revision_origin"}
+        assert all(report[key] == previous_report[key] for key in scientific_keys), "Offline figure revision changed audit evidence"
     report["execution"] = {
         "completed_utc": utc_now(), "offline": args.offline,
         "script_sha256": sha256_file(Path(__file__)),

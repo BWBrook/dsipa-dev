@@ -661,4 +661,149 @@ references:
   - year: 2026
     month: 10
     day: 18
+- id: chevron2016
+  citation-key: chevron2016
+  type: webpage
+  title: Chevron Achieves First LNG Production at Gorgon
+  author:
+  - literal: Chevron Corporation
+  issued:
+  - year: 2016
+    month: 3
+    day: 7
+  URL: https://chevroncorp.gcs-web.com/node/13991
+  accessed:
+  - year: 2026
+    month: 10
+    day: 18
+- id: chevrongorgon2015
+  citation-key: chevrongorgon2015
+  type: report
+  title: Gorgon and Jansz Feed Gas Pipelines Operations (State) – Environment Plan Summary
+  author:
+  - literal: Chevron Corporation
+  issued:
+  - year: 2015
+    month: 8
+    day: 13
+  number: GOR-COP-01488, Revision 1.0
+  publisher: Chevron Corporation
+  URL: https://ace.dmp.wa.gov.au/ACE/Public/PetroleumProposals/ViewPlanSummary?registrationId=70657
+  accessed:
+  - year: 2026
+    month: 10
+    day: 18
+- id: wagov2016
+  citation-key: wagov2016
+  type: webpage
+  title: Premier hails first Gorgon LNG shipment
+  author:
+  - literal: Government of Western Australia
+  issued:
+  - year: 2016
+    month: 3
+    day: 21
+  URL: https://www.wa.gov.au/government/media-statements/Barnett%20Liberal%20National%20Government/Premier-hails-first-Gorgon-LNG-shipment-20160321
+  accessed:
+  - year: 2026
+    month: 10
+    day: 18
+- id: dcceewkgp2025
+  citation-key: dcceewkgp2025
+  type: report
+  title: 'Request for Advice: EPBC 2018/8335/North West Shelf Project Extension'
+  author:
+  - literal: Department of Climate Change, Energy, the Environment and Water
+  issued:
+  - year: 2025
+    month: 7
+    day: 11
+  number: ECAS-2025-0035; FOI LEX 81194, document 96
+  publisher: Australian Government
+  URL: https://www.dcceew.gov.au/sites/default/files/documents/81194.pdf
+  accessed:
+  - year: 2026
+    month: 10
+    day: 18
+- id: woodside2026
+  citation-key: woodside2026
+  type: webpage
+  title: KGP sets new record for lowest flaring
+  author:
+  - literal: Woodside Energy
+  issued:
+  - year: 2026
+    month: 2
+    day: 6
+  URL: https://www.woodside.com/media-centre/news-stories/story/kgp-sets-new-record-for-lowest-flaring
+  accessed:
+  - year: 2026
+    month: 10
+    day: 18
+- id: chevron2023
+  citation-key: chevron2023
+  type: webpage
+  title: Thevenard Island decommissioning achieves major milestone
+  author:
+  - literal: Chevron Australia
+  issued:
+  - year: 2023
+    month: 6
+    day: 15
+  URL: https://australia.chevron.com/news/2023/thevenard-island-decommissioning-achieves-major-milestone
+  accessed:
+  - year: 2026
+    month: 10
+    day: 18
+- id: chevronthevenard2014
+  citation-key: chevronthevenard2014
+  type: report
+  title: 'Environment Plan Summary: Thevenard Island Joint Venture — Production and Cessation'
+  author:
+  - literal: Chevron Australia Pty Ltd
+  issued:
+  - year: 2014
+    month: 1
+    day: 20
+  number: ABU131200075, Revision 0
+  publisher: Chevron Australia Pty Ltd
+  URL: https://ace.dmp.wa.gov.au/ACE/Public/PetroleumProposals/ViewPlanSummary?registrationId=48046
+  accessed:
+  - year: 2026
+    month: 10
+    day: 18
+- id: maslin2007
+  citation-key: maslin2007
+  type: report
+  title: Acacia bivenosa group of wattles on Airlie & Thevenard Islands, Pilbara region WA
+  author:
+  - family: Maslin
+    given: B. R.
+  issued:
+  - year: 2007
+    month: 2
+  publisher: Department of Environment and Conservation
+  publisher-place: Kensington, Western Australia
+  URL: https://library.dbca.wa.gov.au/FullTextFiles/024072.pdf
+  accessed:
+  - year: 2026
+    month: 10
+    day: 18
+- id: dcceew2023
+  citation-key: dcceew2023
+  type: report
+  title: National Light Pollution Guidelines for Wildlife
+  author:
+  - literal: Department of Climate Change, Energy, the Environment and Water
+  issued:
+  - year: 2023
+    month: 5
+  version: '2.0'
+  publisher: Australian Government
+  publisher-place: Canberra
+  URL: https://www.dcceew.gov.au/system/files/resources/2eb379de-931b-4547-8bcc-f96c73065f54/files/national-light-pollution-guidelines-wildlife.pdf
+  accessed:
+  - year: 2026
+    month: 10
+    day: 18
 ...

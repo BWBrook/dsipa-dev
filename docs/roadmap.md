@@ -10,9 +10,12 @@
 - [x] Build and visually check the first rewritten private reading copy.
 - [x] Integrate the second argument and independent editorial repairs.
 - [x] Complete R2 PDF/DOCX QA and preserve the second private reading bundle.
-- [ ] Obtain Claude's next critique of the integrated R2 argument and displays.
+- [x] Obtain Claude's next critique of the integrated R2 argument and displays.
+- [x] Integrate and independently check the R3 site histories and influence diagnostic.
+- [x] Build, inspect and preserve R3, then commit/push the coherent private revision.
+- [ ] Obtain Claude's next editorial read of the frozen R3 package.
 
-Current starting point: 59725d3 (September revisions committed). See
+Starting point: 59725d3 (September revisions committed); R2 checkpoint: 11efd90. See
 `docs/log/146_editorial_redevelopment.md` and
 `analysis/reports/editorial_redevelopment_20261018.md`. Earlier scientific
 acceptance is the evidence baseline, not acceptance of the manuscript's

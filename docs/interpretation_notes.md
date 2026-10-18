@@ -558,3 +558,29 @@ Evidence: `analysis/reports/brightening_budget_audit_20261018.{py,json}`,
 `analysis/reports/kosciuszko_case_20261018.{json,npz}`, main Methods 2.4,
 Supporting Methods S4 and Table S6. The result enters only the R2 editorial
 candidate; R1 and the accepted September evidence remain preserved.
+
+
+## 18 October 2026 — R3: concentrated decreases and national cancellation
+
+- Five fixed full-period negative contributors supply 94.91% of the gross
+  decrease; Barrow and Murujuga together supply 90.00%. The net changes sign
+  between full and pre-2022 periods, but is positive in both without the same
+  five. This establishes influence and concentration, not a reason to exclude
+  those reserves or a new estimate of broad estate brightening.
+- Three industrial-context cases have verified geographic and chronological
+  connections. Their annual records are not monotonic: Barrow has a 2016 peak
+  and rebounds; Thevenard returns to positive observations in 2018/2019.
+  Murujuga's proximity to Karratha is supported; the operator's 2025 flaring
+  comparison lies outside the satellite study period. Attribution remains a
+  testable explanation, not an established cause of every radiance change.
+- Independent covering windows restore 1/0/46/1 cells for Barrow, Murujuga,
+  Strzelecki and Thevenard relative to the candidate crops. Every omitted cell
+  is zero at both endpoints; cluster magnitudes and shares are unchanged.
+- The national map shows all 635 non-zero contributions and identifies the
+  sites behind the cancellation. Kosciuszko's pre-2022 rise is visible without
+  implying that earlier annual processing was homogeneous or artefact-free.
+- Main and SI wording preserve the supported-interior qualification, product
+  non-detection, fixed estate, overlapping designations and separate budget
+  denominators. Independent editorial review closed its four minor repairs.
+  Source attribution and ecological exposure require future evidence; they
+  are not prerequisites for the descriptive claim made in this revision.

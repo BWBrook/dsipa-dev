@@ -469,11 +469,41 @@
     "sha256": "d76bd2dd874d111af9710be7269e2e0300db3b126e6ad140acdcefd71030cdc1",
     "bytes": 618131
   },
+  "figure_revision_origin": {
+    "prior_report_path": "analysis/reports/kosciuszko_case_20261018.json",
+    "prior_report_sha256": "7045388ace15065a4e242f6bfc0d916110f4af3a55e021a95267a708053dec49",
+    "prior_execution": {
+      "completed_utc": "2026-10-18T04:11:50.589927+00:00",
+      "offline": true,
+      "script_sha256": "af5d0895b0f3dd078317f1b41cf0138a13334c7060c38fd094fd5da44a2653e6",
+      "git_commit": "59725d3811116af1db7dd069c6f1d5545796f3ba",
+      "versions": {
+        "python": "3.12.3",
+        "numpy": "2.3.5",
+        "pandas": "2.3.3",
+        "rasterio": "1.4.4",
+        "GDAL": "3.10.3",
+        "geopandas": "1.1.2",
+        "scipy": "1.16.3",
+        "matplotlib": "3.10.8"
+      }
+    },
+    "prior_figure_outputs": {
+      "manuscript/figures/fig_kosciuszko_case.png": {
+        "sha256": "9ab6bd99c9e137a3739d9889c4db0b7eb0e99759724002be7d256487e8992c7f",
+        "bytes": 243035
+      },
+      "manuscript/figures/fig_kosciuszko_case.pdf": {
+        "sha256": "79c400082b73b18cb6d30c39d7a54d59230f9dfaf6ae05cb5a9ad09e9649334e",
+        "bytes": 123533
+      }
+    }
+  },
   "execution": {
-    "completed_utc": "2026-10-18T04:11:50.589927+00:00",
+    "completed_utc": "2026-10-18T09:12:01.980607+00:00",
     "offline": true,
-    "script_sha256": "af5d0895b0f3dd078317f1b41cf0138a13334c7060c38fd094fd5da44a2653e6",
-    "git_commit": "59725d3811116af1db7dd069c6f1d5545796f3ba",
+    "script_sha256": "b3e533d716161c74f3556c411ca3cc8ffafaaf7917357b0b94892a9be5d4d102",
+    "git_commit": "11efd90c04da10df3750a8fb3271607ffd1d824b",
     "versions": {
       "python": "3.12.3",
       "numpy": "2.3.5",
@@ -501,14 +531,25 @@
     "height_inches": 5.15,
     "maximum_displayed_value": 610.0,
     "display_clips_positive_values": false,
+    "trajectory_context": {
+      "annotated_annual_sums": {
+        "2019": 1219.9999999999984,
+        "2020": 1149.9999999999977,
+        "2021": 4599.999999999999,
+        "2024": 26970.0
+      },
+      "source_change_marker_year": 2022,
+      "source_change_evidence": "analysis/reports/product_raster_metadata.json: 2022 TIFFTAG_DOCUMENTNAME identifies VNL_v22_npp-j01_2022 masked input",
+      "qualification": "Timing does not exclude earlier or later processing effects; no correction or causal attribution applied"
+    },
     "outputs": {
       "manuscript/figures/fig_kosciuszko_case.png": {
-        "sha256": "9ab6bd99c9e137a3739d9889c4db0b7eb0e99759724002be7d256487e8992c7f",
-        "bytes": 243035
+        "sha256": "ae4f89ca9bcf8022b60f27bb2a329b3522255b6e1234246ca2bfd3b3e4c6582b",
+        "bytes": 285115
       },
       "manuscript/figures/fig_kosciuszko_case.pdf": {
-        "sha256": "79c400082b73b18cb6d30c39d7a54d59230f9dfaf6ae05cb5a9ad09e9649334e",
-        "bytes": 123533
+        "sha256": "3e5deaae727284e411248bc85e6900a948536ef3ab2c4f9791f727eeb4e8da00",
+        "bytes": 124776
       }
     }
   }

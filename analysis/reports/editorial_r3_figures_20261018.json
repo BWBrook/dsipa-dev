@@ -1,0 +1,169 @@
+{
+  "generated_utc": "2026-10-18T09:14:38.969855+00:00",
+  "national_map": {
+    "script": {
+      "path": "analysis/render_editorial_map.py",
+      "sha256": "fb99566bec974771ceb2a6b678b0e1a4142f43006218baaf478aedcce59d6aa5"
+    },
+    "adapted_from": "analysis/render_brightening_map.py",
+    "inputs": {
+      "analysis/reports/brightening_budget/reserve_budget.csv": "6fefedc11ecaee03bcb84420ff09a678e6103bfa4d9ca3544537327572cf0012",
+      "data/processed/pa_geometries_v0_3_0.gpkg": "da843f551bf1863dc5d1930ecb657491f73d69827b25007a0c55c9019721d0e6"
+    },
+    "counts": {
+      "assessable": 4426,
+      "positive": 560,
+      "negative": 75,
+      "zero": 3791,
+      "main_panel_nonzero": 634,
+      "inset_nonzero": 1
+    },
+    "units": "OLS slope of approximate area-integrated product radiance, product units x km2 per year",
+    "main_extent_lonlat": [
+      112.0,
+      155.0,
+      -44.5,
+      -9.0
+    ],
+    "outside_main_nonzero": [
+      {
+        "pa_id": "CWTH_05",
+        "name": "Christmas Island",
+        "lon": 105.61760038180911,
+        "lat": -10.48608961021252,
+        "slope_2013_2024": -1.05537
+      }
+    ],
+    "all_nonzero_contributors_displayed": true,
+    "centroids": "Full source geometry in EPSG:3577, transformed to EPSG:4326",
+    "footprints": "All CAPAD 2024 geometries; simplified to 1000 m only for display; no external basemap",
+    "marker_area": {
+      "formula": "max(4, 250 * sqrt(abs(slope) / max_abs_slope))",
+      "units": "pt2",
+      "max_abs_slope": 1240.55,
+      "legend_values": [
+        10,
+        100,
+        1000
+      ]
+    },
+    "labelled_sites": {
+      "NSW_N0018": "Kosciuszko",
+      "WA_11648": "Barrow Island",
+      "WA_2803": "Murujuga",
+      "WA_33174": "Thevenard Island",
+      "SA_0247": "Yellabinna",
+      "CWTH_IPA20": "Anindilyakwa",
+      "WA_27575": "Neerabup",
+      "CWTH_IPA51": "Southern Tanami"
+    },
+    "site_label_overlap_check": "PASS",
+    "outputs": {
+      "manuscript/figures/fig_editorial_map.png": {
+        "sha256": "1f6766d31f0048329133c3273f6b09a747f217321312aa753c22c7c31ced0c55",
+        "bytes": 653524
+      },
+      "manuscript/figures/fig_editorial_map.pdf": {
+        "sha256": "0f22b6861116bae065ac1d129aa6f98e52bdcc76fa0ab48feb14da142f952545",
+        "bytes": 1737691
+      }
+    }
+  },
+  "visual_qa": {
+    "status": "PASS",
+    "reviewed_outputs": [
+      "manuscript/figures/fig_editorial_map.png",
+      "manuscript/figures/fig_editorial_map.pdf",
+      "manuscript/figures/fig_kosciuszko_case.png",
+      "manuscript/figures/fig_kosciuszko_case.pdf"
+    ],
+    "method": "PNG inspection plus independent pdftoppm rasterization and inspection of both final PDFs at 1800 px width",
+    "national_map": [
+      "All eight requested site labels are visible and separate from the inset",
+      "Christmas Island inset displays the sole nonzero contributor outside the main extent",
+      "Sign legend and numeric size key are separate from axes and explanatory notes",
+      "No clipped labels or legends observed"
+    ],
+    "kosciuszko_case": [
+      "2019 and 2024 map panels retain identical colour limits",
+      "2020 and 2021 annual totals are explicitly annotated",
+      "Documented 2022 source change is marked and the unresolved processing qualification is visible",
+      "No clipped labels or legends observed"
+    ]
+  },
+  "kosciuszko_case": {
+    "script": {
+      "path": "analysis/audit_kosciuszko_case.py",
+      "sha256": "b3e533d716161c74f3556c411ca3cc8ffafaaf7917357b0b94892a9be5d4d102",
+      "bytes": 24290
+    },
+    "report": {
+      "path": "analysis/reports/kosciuszko_case_20261018.json",
+      "sha256": "92c6c0cf67b445073a77bf3109d42f594bc7a2e1fe908b2c5cce04c2484eb51d",
+      "bytes": 16636
+    },
+    "cache": {
+      "path": "analysis/reports/kosciuszko_case_20261018.npz",
+      "sha256": "d76bd2dd874d111af9710be7269e2e0300db3b126e6ad140acdcefd71030cdc1",
+      "bytes": 618131
+    },
+    "render_mode": "offline; existing local cache and retained source provenance",
+    "baseline_commit": "11efd90c04da10df3750a8fb3271607ffd1d824b",
+    "baseline_report_sha256": "7045388ace15065a4e242f6bfc0d916110f4af3a55e021a95267a708053dec49",
+    "scientific_fields_unchanged": [
+      "schema_version",
+      "pa_id",
+      "units",
+      "support",
+      "whole_reserve_sums",
+      "gross_positive_change",
+      "gross_negative_change",
+      "net_change",
+      "positive_cluster_connectivity",
+      "positive_clusters",
+      "top_two_change",
+      "top_two_share_of_gross_positive_change",
+      "endpoint_checks",
+      "annual_trajectory",
+      "site_context",
+      "source_provenance",
+      "cache"
+    ],
+    "scientific_field_comparison": "PASS: exact JSON equality against baseline",
+    "cache_comparison": "PASS: byte-identical to baseline",
+    "source_provenance_comparison": "PASS: exact equality; acquisition timestamps and decoded-window hashes retained",
+    "prior_execution_receipt": "Preserved as figure_revision_origin.prior_execution; not relabelled as acquisition provenance",
+    "trajectory_context": {
+      "annotated_annual_sums": {
+        "2019": 1219.9999999999984,
+        "2020": 1149.9999999999977,
+        "2021": 4599.999999999999,
+        "2024": 26970.0
+      },
+      "source_change_marker_year": 2022,
+      "source_change_evidence": "analysis/reports/product_raster_metadata.json: 2022 TIFFTAG_DOCUMENTNAME identifies VNL_v22_npp-j01_2022 masked input",
+      "qualification": "Timing does not exclude earlier or later processing effects; no correction or causal attribution applied"
+    },
+    "source_change_evidence": {
+      "metadata": {
+        "path": "analysis/reports/product_raster_metadata.json",
+        "sha256": "5f9f571cb6c1600d0d5ab17e3105880b5bd063b3b97142346f3bb966dd5fd2b5",
+        "bytes": 8909
+      },
+      "year": 2022,
+      "source_tag": "./VNL_v22_npp-j01_2022_global_vcmslcfg_c202303062300.average_masked.dat.tif"
+    },
+    "outputs": {
+      "manuscript/figures/fig_kosciuszko_case.png": {
+        "sha256": "ae4f89ca9bcf8022b60f27bb2a329b3522255b6e1234246ca2bfd3b3e4c6582b",
+        "bytes": 285115
+      },
+      "manuscript/figures/fig_kosciuszko_case.pdf": {
+        "sha256": "3e5deaae727284e411248bc85e6900a948536ef3ab2c4f9791f727eeb4e8da00",
+        "bytes": 124776
+      }
+    }
+  },
+  "finalized_utc": "2026-10-18T09:18:12.371604+00:00",
+  "finalized_hobart": "2026-10-18T20:18:12.371604+11:00"
+}

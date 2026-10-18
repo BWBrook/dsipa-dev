@@ -2,43 +2,53 @@
 
 ## Active tranche: substantive editorial redevelopment, 18 October 2026
 
-Barry's first read found the paper lacking a compelling, accessible argument.
-He authorised substantial revision in asynchronous collaboration with Claude.
-The tranche started clean at 59725d3; September work and Claude's prose pass were
-committed and pushed in September under Barry's separate authorisation.
-The older uncommitted-status wording below is historical.
+Barry authorised substantial revision in asynchronous collaboration with Claude.
+His 18 October global guidance authorises reversible analyses, commits and pushes
+to his own repositories. First public release and submission remain separate.
+Older authority/status wording below records historical tranches.
 
-Current discussion: DSIPA board thread 90, opening message 1912. Claude's first
-critique led to a second argument built around an additive product-signal budget
-and Kosciuszko. The active title is “Boundary zones and interior hotspots of
-brightening in Australia's protected areas”. Main text is 252 abstract + 4,291
-body = 4,543 conservative source words. Four main figures are coverage, budget,
-paired slopes and Kosciuszko; SI contains Methods S1–S4, Tables S1–S6 and
-Figures S1–S5. Earlier figure distribution/trajectories are retained in the SI.
+Claude's R2 critique is in board discussion 90, messages 2016/2018 and
+`analysis/reports/editorial_claude_r2_review_20261018.md`. Claude committed his
+candidate files as 2a7982c; Codex checkpointed the accepted R2 integration as
+11efd90. R3 adds a national contribution map, independent decrease histories,
+fixed-five influence diagnostics, explicit management applications and a draft
+AI contribution statement with verified revision-model names. Main title remains
+“Boundary zones and interior hotspots of brightening in Australia's protected
+areas”. Source counts: 273 abstract + 4,691 body = 4,964 words. Four main figures
+are contribution map, budget, paired slopes and Kosciuszko; the supplement has
+Methods S1–S5, Tables S1–S7 and Figures S1–S7. Coverage moved to SI S1; subsequent
+old SI figures are renumbered and the new decrease histories are S7.
 
-R2 reading files are in `build/final_read/editorial_20261018_r2/` (main/SI PDFs
-23/21 pages; Word renders 28/25). The canonical snapshot is
-`artefacts/editorial_20261018_r2/`. R1 remains preserved. Native and Word renders,
-document identities and final input/output hashes passed. New numerical evidence
-has independent replay scripts, corrected-input checksums and a cached offline
-Kosciuszko raster comparison. See log 146 and the editorial redevelopment report.
+Five reserves supply 94.91% of negative full-period OLS contributions: Barrow,
+Murujuga, Strzelecki, Thevenard and Newlands. Removing that fixed set gives
++2,595.95 and +1,921.74 for the full and pre-2022 periods, compared with +478.95
+and −537.84 for all reserves. This is a post-inspection influence diagnostic,
+not an alternative estimate of the national estate. The industrial-context
+examples rank first, second and fourth. Correct covering-window reads recovered
+48 omitted zero-valued endpoint cells in the candidate hotspot crops, leaving
+all reported cluster magnitudes unchanged. The independent cache and script
+reproduce offline; Claude's earlier files remain preserved for provenance.
 
-The national outer-band share is 72.0% in 13.7% of sampled area, but 51.2% among
-reserves with supported deeper interiors. This geometry qualifier is prominent.
-The +479 full-period net becomes −538 in 2013–2021; no stable net brightening or
-source attribution is claimed. Kosciuszko ranks 286th by mean OLS and first by
-integrated OLS; the earlier 303rd Sen comparison is superseded for this purpose.
-Its two clusters supply 96.44% of positive endpoint pixel differences, not net
-change or 47% of the same denominator. Three official sources verify proximity
-and distinct construction chronologies.
+The source audit verifies proximity and chronology without attributing sources.
+Woodside's 2026 report concerns 2025 flaring, outside the study window, and is
+used only as qualified SI context. Thevenard's 2018/2019 positive observations
+prevent a permanent-dark-since-2014 interpretation. The Kosciuszko 2021 rise
+predates the documented 2022 source change but does not exclude other processing
+effects. Its figure now shows both. All non-zero contributions appear in the
+new national map, including Christmas Island in an inset.
 
-Claude owns candidate `brightening_budget.py`, `brightening_hotspots.py`,
-`render_brightening_budget.py` and their proposal/report. Those exploratory prose
-files may retain superseded numbers; the integrated manuscript and independent
-JSON receipt define R2. Codex owns the final display/replay scripts and active
-manuscript integration. Claude's next critique of R2 remains pending; further
-changes should begin from that concrete reading copy. No new commit or push was
-made in this redevelopment turn. Public release and submission remain separate.
+The independent R3 editorial/specialist review closed all four minor findings
+and recommends APPROVE within its bounded scope. Native main/SI PDFs contain
+25/25 pages and passed all-page visual review and input/output identity checks.
+Independent LibreOffice rendering of both DOCX files passed all-page review
+at 30/32 pages, including Table S7, the national map and revised site figures.
+Reading files: `build/final_read/editorial_20261018_r3/`;
+canonical evidence: `artefacts/editorial_20261018_r3/`. Final receipts record
+identities, the committed source and private Git synchronisation. See log 148
+and the R3 independent/source reports. Claude's next read of R3 is pending.
+Earlier R1/R2 and September snapshots remain preserved. Final author review,
+complete historical model-version inventory and public-release preparations
+remain separate from this private editorial candidate.
 
 ## Current status: corrected private candidate complete and independently approved
 

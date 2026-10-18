@@ -227,3 +227,34 @@ Old and new refer to the archived and corrected supports. Common counts require 
 | No cell-area weighting | 4,426 | 72.30 |
 
 Whole-reserve OLS slopes are positive for 560 reserves and negative for 75. Thirty positive contributors supply 50% of the gross increase and 115 supply 80%. Five negative contributors supply 94.91% of the gross decrease. Beyond 1 km, two positive contributors supply at least 50% and seven supply at least 80%; Kosciuszko contributes 47.13%. These counts concern fitted product signals, not a significance-selected sample or priority list.
+
+
+```{=latex}
+\clearpage
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**Table S7. Influence of the largest negative reserve contributions.** The five reserves are selected once by their negative 2013–2024 whole-reserve OLS slopes, then held fixed in both periods. Slopes are in product units × km² per year. This post-inspection diagnostic identifies influential observations; excluded cohorts are not proposed as replacement estimates of the national estate. Designations may overlap.
+
+**A. Fixed five negative contributors.**
+
+| Reserve | Identifier | 2013–2024 slope | 2013–2021 slope | Share of gross full-period decrease (%) |
+| --- | --- | ---: | ---: | ---: |
+| Barrow Island | WA_11648 | -1,240.55 | -1,099.27 | 55.62 |
+| Murujuga | WA_2803 | -766.81 | -1,194.36 | 34.38 |
+| Strzelecki | SA_0011 | -59.85 | -81.49 | 2.68 |
+| Thevenard Island | WA_33174 | -29.14 | -48.71 | 1.31 |
+| Newlands | QLD_NR234 | -20.66 | -35.74 | 0.93 |
+
+**B. National net slopes with fixed exclusions.**
+
+| Retained cohort | Reserves | 2013–2024 net slope | 2013–2021 net slope |
+| --- | ---: | ---: | ---: |
+| All assessable | 4,426 | +478.95 | -537.84 |
+| Without the five above | 4,421 | +2,595.95 | +1,921.74 |
+| Without the five above and Kosciuszko | 4,420 | +2,226.18 | +1,878.61 |
+
+All five reserves had constant annual inside valid-pixel counts. Together they supplied 94.91% of full-period gross negative contributions. The three industrial-context examples in the text are Barrow Island, Murujuga and Thevenard Island, ranked first, second and fourth; no common source is inferred for all five. Annual trajectories for the three examples are in Fig. S7.
