@@ -509,3 +509,52 @@ Optional numerical Layer B is omitted from the active candidate because the
 original occurrence downloads are unavailable for verifying a nodata-sampling
 repair. This uses the authorised discretion over this secondary section and
 preserves historical outputs; it is not evidence that old coefficients are wrong.
+
+## 18 October 2026 — Additive budget for the second editorial revision
+
+**What it shows.** The outermost kilometre supplies 72.00% of positive
+band-level OLS contributions over 2013–2024 in 13.70% of sampled 2024 area.
+This falls to 51.22% in the 1,398 reserves with at least ten remainder pixels
+in every year (12.52% of their sampled area). The boundary pattern therefore
+reflects both where change occurs and the estate's reserve geometries. Beyond
+1 km, two reserves supply over half and seven over 80% of positive contributions.
+Kosciuszko supplies 47.13% of that interior total and 13.65% of positive
+whole-reserve contributions. Its two largest positive endpoint clusters account
+for 96.44% of positive 2019–2024 pixel differences across the whole park.
+Official sources place these clusters near documented Snowy 2.0 works areas.
+
+**Hypothesis and consequence.** The observations support a boundary-associated
+concentration of the recorded signal, with an additional concentrated interior
+pattern. They do not identify optical spillover, lamp sources, biological
+exposure or an effect of protection. Mean OLS and integrated OLS rank Kosciuszko
+286th and first; the paired ranking demonstrates why scale matters when choosing
+sites for investigation. It does not establish that either ranking is a
+management priority list. Gross positive and negative reserve contributions
+are +2,709.45 and −2,230.50 product units × km²/year. Their net is +478.95,
+but the 2013–2021 net is −537.84. A stable direction of national net brightening
+is not supported by this period comparison.
+
+**Worries and completed iterations.** The first candidate mixed Sen-mean and
+OLS-total ranks, used cancellation-sensitive net shares and counted constant
+series as tiny non-zero slopes. Those claims were repaired or rejected.
+An independent reconstruction from corrected, hash-verified inputs reproduces
+the accepted quantities without importing the candidate implementation. Stable-
+count exclusion gives 72.00%; unweighted cells give 72.30%; latitude-only
+integration bounds give 71.60–72.42%. These address specific arithmetic and
+support concerns, not product validity. Independently fetched Kosciuszko windows
+have identical grids and 39,721 common-valid inside cells, reproduce accepted
+annual sums and can be replayed offline from the saved compressed arrays.
+
+**Remaining interpretation limits.** Designations overlap, support is annual,
+cell areas are approximate, and the derivative product is masked and quantised.
+The 2017 and 2023 detection pulses remain unresolved. The 51% supported-interior
+result must travel with the 72% national statement. Site coincidence and
+construction chronology support a hypothesis for local investigation, not source
+attribution or ecological harm. An independently processed product comparison
+and field/site evidence would be needed for stronger environmental claims;
+those are not prerequisites to presenting the current descriptive result.
+
+Evidence: `analysis/reports/brightening_budget_audit_20261018.{py,json}`,
+`analysis/reports/kosciuszko_case_20261018.{json,npz}`, main Methods 2.4,
+Supporting Methods S4 and Table S6. The result enters only the R2 editorial
+candidate; R1 and the accepted September evidence remain preserved.

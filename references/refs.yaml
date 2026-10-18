@@ -613,4 +613,52 @@ references:
   publisher: eAtlas
   DOI: 10.26274/qfy8-hj59
   URL: https://doi.org/10.26274/qfy8-hj59
+- id: snowymonitor2025
+  citation-key: snowymonitor2025
+  type: report
+  title: EPL 21266 – Bi-annual monitoring report June 2024 – November 2024
+  author:
+  - literal: Future Generation Joint Venture
+  issued:
+  - year: 2025
+    month: 1
+  publisher: Future Generation Joint Venture
+  number: S2-FGJV-ENV-REP-0116, Revision A
+  URL: https://www.snowyhydro.com.au/wp-content/uploads/2025/02/S2-FGJV-ENV-REP-0116A.pdf
+  accessed:
+  - year: 2026
+    month: 10
+    day: 18
+- id: snowybooklet2020
+  citation-key: snowybooklet2020
+  type: report
+  title: 'Snowy 2.0: Project update, August 2020'
+  author:
+  - literal: Snowy Hydro
+  issued:
+  - year: 2020
+    month: 8
+  publisher: Snowy Hydro
+  URL: https://www.snowyhydro.com.au/wp-content/uploads/2020/08/Snowy-2.0-booklet_August-2020.pdf
+  accessed:
+  - year: 2026
+    month: 10
+    day: 18
+- id: snowysummer2020
+  citation-key: snowysummer2020
+  type: article-magazine
+  title: Snowy 2.0 update
+  author:
+  - literal: Snowy Hydro
+  issued:
+  - year: 2020
+  container-title: Snowy Hydro News
+  issue: '51'
+  page: 4-5
+  note: Summer 2020
+  URL: https://www.snowyhydro.com.au/wp-content/uploads/2020/12/SH_53306_Snowy_Hydro_Community_Newsletter_Nov2020_WEB-1.pdf
+  accessed:
+  - year: 2026
+    month: 10
+    day: 18
 ...

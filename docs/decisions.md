@@ -224,3 +224,39 @@ are unavailable to verify its sampler repair; preserve the historical archive.
 The private candidate does not change the public baseline Zenodo record.
 See spatial_correction_support_validation_20260919.md, spatial_schema_amendment.json,
 reserve_screening_results.csv and docs/spatial_reproduction_20260919.md.
+
+
+## 2026-10-18 — Editorial argument and isolated manuscript builds
+
+The first editorial rewrite leads with paired spatial findings and keeps
+area/magnitude and annual-series interpretation explicit. It does not claim
+that these reporting distinctions are new methods: the literature establishes
+precedents. Rank-based area shares are not alternative estimates of one quantity
+or an ecological threshold. Claude's new additive-budget candidate remains
+separate pending support/numerical review.
+
+Use build/final_read/editorial_20261018_r1/ for the interim private review copy,
+including source identities, QA and packages; its canonical snapshot is
+artefacts/editorial_20261018_r1/. Preserve September's accepted
+spatial bundle. The local makedoc wrapper isolates LaTeX scratch under
+build/.makedoc-latex/<profile>/ after visual QA exposed cross-project input.pdf
+contamination in the shared builder cache. This changes build routing only;
+main and supplementary builds remain sequential.
+
+### 2026-10-18 — Additive budget in editorial revision R2
+
+Add a review-stage descriptive OLS budget to the existing Sen-slope screen.
+Mean × valid-pixel count × centroid-latitude cell area defines the annual
+observed-support integral; whole-minus-outer-1-km defines the remainder, including
+beyond 5 km. Preserve designation overlaps. Report positive and negative fitted
+contributions separately, and distinguish positive reserve, band and endpoint
+pixel denominators. Reject the cancellation-sensitive 77%-of-net headline and
+mixed-estimator rank contrast. Require the 51% supported-interior result beside
+the 72% national boundary share. Restrict the named Kosciuszko interpretation to
+proximity to documented construction areas and explicitly retain product-change
+ambiguity. These choices answer the quantity-of-change question raised during
+editorial redevelopment without converting the product signal to ecological
+exposure. Evidence and independent replay are in log 146 and the editorial report.
+The next canonical snapshot is `artefacts/editorial_20261018_r2/`, with private
+reading files under `build/final_read/editorial_20261018_r2/`; this follows the
+existing artefact structure and does not replace earlier snapshots.

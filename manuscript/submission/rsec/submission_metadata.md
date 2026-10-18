@@ -1,12 +1,11 @@
 # RSEC Submission Metadata
 
-Status: 19 September 2026 corrected Layer A candidate metadata with visible human
+Status: 18 October 2026 editorial candidate metadata with visible human
 decision fields; not submission metadata of record.
 
 - Journal: *Remote Sensing in Ecology and Conservation*
 - Article type: **Original Research**
-- Title: **Satellite screening of lighting change across Australia's protected
-  areas**
+- Title: **Boundary zones and interior hotspots of brightening in Australia's protected areas**
 - Running title: `[BARRY CONFIRM] Satellite screening of reserve lighting`
 - Running-title character count: 39, excluding the confirmation marker
 - Language: English
@@ -38,14 +37,14 @@ unconfirmed affiliation, ORCID or contact details.
 
 ## Counts
 
-- Abstract: 237 source words
-- Body from the Introduction heading through the final declaration: 3,931
+- Abstract: 252 source words
+- Body from the Introduction heading through the final declaration: 4,291
   source words
 - Conservative abstract plus body, including headings and all current
-  declaration and acknowledgement markers: 4,168 source words
+  declaration and acknowledgement markers: 4,543 source words
 - Keywords: 5
 - Main figures/tables: 4/1
-- Supporting figures/tables: 3/5
+- Supporting figures/tables: 5/6
 
 The current candidate is Layer A only. The corrected private spatial outputs
 use 4,253 paired reserves; the public Zenodo DOI remains the historical

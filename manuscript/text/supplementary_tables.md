@@ -1,3 +1,11 @@
+```{=latex}
+\clearpage
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
 ## Supplementary Tables
 
 **Table S1. Selected protected areas with full-period slopes and marginal temporal sensitivity.**
@@ -61,6 +69,10 @@ Each set contains the first 20 entries in its preserved source order. Sets A, B 
 | Goorooyarroo (NSW) | 0.000 | 0.250 | -0.250 | 0.000 to 0.096 | 0.056 |
 
 
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
 ### C. Positive inside-minus-surrounding contrasts
 
@@ -185,3 +197,33 @@ Old and new refer to the archived and corrected supports. Common counts require 
 | All reserves | 1,432 | 1,398 | 1,398 | 0 | 34 | 1 |
 | Fixed paired cohort | 1,201 | 1,169 | 1,169 | 0 | 32 | 0 |
 | Joint paired and band | 1,205 | 1,341 | 1,169 | 172 | 36 | 0 |
+
+```{=latex}
+\clearpage
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**Table S6. Additive product-signal budget and sensitivities.** OLS entries are slopes in product units × km² per year; period differences are in product units × km². Positive contributions are clipped at zero at the stated reserve or band level before summation. Negative reserve contributions retain their sign. Designations may overlap. The remainder is all sampled support beyond 1 km, not just the 1–5 km band.
+
+| Quantity | 2013–2024 OLS | 2013–2021 OLS | 2022–2024 minus 2013–2015 means |
+| --- | ---: | ---: | ---: |
+| Positive outer-band contributions | 1,951.52 | 1,723.14 | 17,215.04 |
+| Positive remainder contributions | 758.85 | 365.39 | 6,873.67 |
+| Positive band-level denominator | 2,710.36 | 2,088.54 | 24,088.71 |
+| Positive reserve-level denominator | 2,709.45 | 2,083.64 | 24,081.02 |
+| Negative reserve contributions | −2,230.50 | −2,621.48 | −16,058.39 |
+| Net reserve contribution | 478.95 | −537.84 | 8,022.63 |
+| Outer share of positive band contributions (%) | 72.00 | 82.50 | 71.47 |
+
+| Full-period comparison | Reserves | Outer share of positive band contributions (%) |
+| --- | ---: | ---: |
+| All assessable | 4,426 | 72.00 |
+| Stable whole/outer valid-pixel counts | 4,422 | 72.00 |
+| At least ten remainder pixels every year | 1,398 | 51.22 |
+| Supported remainder and stable counts | 1,395 | 51.20 |
+| No cell-area weighting | 4,426 | 72.30 |
+
+Whole-reserve OLS slopes are positive for 560 reserves and negative for 75. Thirty positive contributors supply 50% of the gross increase and 115 supply 80%. Five negative contributors supply 94.91% of the gross decrease. Beyond 1 km, two positive contributors supply at least 50% and seven supply at least 80%; Kosciuszko contributes 47.13%. These counts concern fitted product signals, not a significance-selected sample or priority list.

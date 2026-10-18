@@ -1,0 +1,351 @@
+{
+  "audit_id": "brightening-budget-independent-replay-20261018",
+  "generated_utc": "2026-10-18T04:06:43.271697+00:00",
+  "script": {
+    "path": "/home/bwbrook/papers/dsipa-dev/analysis/reports/brightening_budget_audit_20261018.py",
+    "sha256": "97cdad9805241ed5bb05705490c36fdec7b3d2b404629a86ce0875a58ed3b4cc"
+  },
+  "software": {
+    "python": "3.12.3",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "geopandas": "1.1.2"
+  },
+  "inputs": {
+    "trends": {
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_trends_v0_3_0.csv",
+      "sha256": "4c4ba16c7305d53f4fa358ef9a5104e64eee05901fabba5913a843f5cfa8d32d",
+      "bytes": 5324125,
+      "matches_corrected_manifest": true
+    },
+    "annual_inside": {
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_radiance_buffers_national_v0_3_0.csv",
+      "sha256": "3173bd9bd3b4a545b34eb740a043a5aaf85175956aa654f0ae52c530cce8344c",
+      "bytes": 101658795,
+      "matches_corrected_manifest": true
+    },
+    "annual_bands": {
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_edge_profiles_national_v0_3_0.csv",
+      "sha256": "408f39ce27027558b4da4eafab4c78bc3ca57cded5d27c8671620077d4dd1533",
+      "bytes": 25293966,
+      "matches_corrected_manifest": true
+    },
+    "geometries": {
+      "path": "/home/bwbrook/papers/dsipa-dev/data/processed/pa_geometries_v0_3_0.gpkg",
+      "sha256": "da843f551bf1863dc5d1930ecb657491f73d69827b25007a0c55c9019721d0e6",
+      "bytes": 132571136,
+      "matches_corrected_manifest": true
+    }
+  },
+  "corrected_input_manifest": {
+    "path": "/home/bwbrook/papers/dsipa-dev/analysis/reports/spatial_correction_render_input_manifest.json",
+    "sha256": "860604d6f964e8f1a51bf85e377fbca5773b7977ed06f76b536cfbf30a640540"
+  },
+  "scope": {
+    "signal": "Approximate area-integrated product signal over annual valid pixel support",
+    "overlap": "Each protected-area designation counted separately; overlapping pixels can repeat",
+    "gross_positive": "Positive part of each fitted reserve or band contribution, as labelled",
+    "ols_units": "product units x km2 per year",
+    "period_difference_units": "product units x km2",
+    "period_difference": "mean(2022-2024) minus mean(2013-2015)",
+    "area_reference_year": 2024,
+    "remainder": "Whole reserve minus its 0-1 km band; includes all support beyond 1 km",
+    "count_stability": "Equal annual counts do not prove identical valid-pixel identities",
+    "causality": "No attribution to light sources, product changes, or ecological exposure",
+    "numerical_zero_tolerance": 1e-09
+  },
+  "full_2013_2024": {
+    "reserve_net": 478.94718763153446,
+    "reserve_gross_positive": 2709.4478904208963,
+    "reserve_gross_negative": -2230.500702789361,
+    "outer_net": 825.0932069866703,
+    "remainder_net": -346.14601935513565,
+    "outer_gross_positive": 1951.5188552838238,
+    "remainder_gross_positive": 758.8453920743001,
+    "band_gross_positive": 2710.364247358124,
+    "band_gross_negative": -2231.417059726589,
+    "band_minus_reserve_gross": 0.916356937227647,
+    "outer_share_band_gross": 0.7200208817637812,
+    "max_per_reserve_additivity_error": 1.8385293287792592e-13,
+    "reserve_positive_n": 560,
+    "reserve_negative_n": 75,
+    "beyond_1km_top10": [
+      {
+        "pa_id": "NSW_N0018",
+        "positive_contribution": 357.6585093850062,
+        "share": 0.47131934004020026
+      },
+      {
+        "pa_id": "CWTH_IPA51",
+        "positive_contribution": 75.88745221072213,
+        "share": 0.10000383873094906
+      },
+      {
+        "pa_id": "CWTH_IPA20",
+        "positive_contribution": 70.3681484131052,
+        "share": 0.09273054715500638
+      },
+      {
+        "pa_id": "CWTH_IPA17",
+        "positive_contribution": 42.16459621230414,
+        "share": 0.055564146073348905
+      },
+      {
+        "pa_id": "SA_0247",
+        "positive_contribution": 35.88901608425195,
+        "share": 0.04729423998497177
+      },
+      {
+        "pa_id": "CWTH_IPA68",
+        "positive_contribution": 16.31587898900775,
+        "share": 0.021500926485707943
+      },
+      {
+        "pa_id": "CWTH_IPA56",
+        "positive_contribution": 12.372458623215365,
+        "share": 0.016304320685660765
+      },
+      {
+        "pa_id": "CWTH_06",
+        "positive_contribution": 9.163237179571777,
+        "share": 0.012075235977284006
+      },
+      {
+        "pa_id": "NSW_N0030",
+        "positive_contribution": 8.177227872630452,
+        "share": 0.010775881303407587
+      },
+      {
+        "pa_id": "CWTH_IPA78",
+        "positive_contribution": 7.785103176273877,
+        "share": 0.010259142715479019
+      }
+    ],
+    "beyond_1km_reserves_for_50_80_percent": [
+      2,
+      7
+    ]
+  },
+  "pre_2013_2021": {
+    "reserve_net": -537.8416855726421,
+    "reserve_gross_positive": 2083.6386401027457,
+    "reserve_gross_negative": -2621.4803256753876,
+    "outer_net": 98.57345316012777,
+    "remainder_net": -636.4151387327697,
+    "outer_gross_positive": 1723.1441388816331,
+    "remainder_gross_positive": 365.39124944669965,
+    "band_gross_positive": 2088.535388328333,
+    "band_gross_negative": -2626.377073900975,
+    "band_minus_reserve_gross": 4.896748225587089,
+    "outer_share_band_gross": 0.8250490504069651,
+    "max_per_reserve_additivity_error": 1.6631140908884845e-13,
+    "reserve_positive_n": 463,
+    "reserve_negative_n": 91
+  },
+  "late_minus_early": {
+    "reserve_net": 8022.629745516194,
+    "reserve_gross_positive": 24081.017223391143,
+    "reserve_gross_negative": -16058.387477874949,
+    "outer_net": 7657.514044536009,
+    "remainder_net": 365.11570098018547,
+    "outer_gross_positive": 17215.037794211083,
+    "remainder_gross_positive": 6873.667434179337,
+    "band_gross_positive": 24088.70522839042,
+    "band_gross_negative": -16066.075482874225,
+    "band_minus_reserve_gross": 7.688004999276018,
+    "outer_share_band_gross": 0.714651851603955,
+    "max_per_reserve_additivity_error": 9.094947017729282e-13,
+    "reserve_positive_n": 547,
+    "reserve_negative_n": 69
+  },
+  "sampled_area": {
+    "whole_2024_km2": 1714589.984134769,
+    "outer_2024_km2": 234974.68902121938,
+    "outer_share": 0.1370442445106165,
+    "eligible_summed_polygon_area_km2": 1710860.2417864343,
+    "note": "Raster-cell area and polygon area are distinct denominators"
+  },
+  "support": {
+    "eligible_n": 4426,
+    "complete_12_year_inside_n": 4426,
+    "complete_12_year_outer_n": 4426,
+    "interior_definition": "At least ten valid remainder pixels in every year, 2013-2024",
+    "interior_n": 1398,
+    "interior_stable_n": 1395,
+    "stable_all_n": 4422,
+    "unstable_ids": [
+      "WA_13045",
+      "WA_27632",
+      "WA_33842",
+      "WA_54225"
+    ],
+    "minimum_annual_remainder_total": -2.1668622743789376e-12
+  },
+  "all_stable": {
+    "reserve_net": 478.3785752661281,
+    "reserve_gross_positive": 2708.8792780554895,
+    "reserve_gross_negative": -2230.500702789361,
+    "outer_net": 824.5245946212636,
+    "remainder_net": -346.14601935513565,
+    "outer_gross_positive": 1950.9502429184167,
+    "remainder_gross_positive": 758.8453920743001,
+    "band_gross_positive": 2709.7956349927167,
+    "band_gross_negative": -2231.417059726589,
+    "band_minus_reserve_gross": 0.9163569372271922,
+    "outer_share_band_gross": 0.7199621320977072,
+    "max_per_reserve_additivity_error": 1.8385293287792592e-13,
+    "reserve_positive_n": 558,
+    "reserve_negative_n": 75,
+    "n": 4422,
+    "outer_signed_share_in_whole_positive": 0.7202056801582035
+  },
+  "interior": {
+    "reserve_net": -618.6590330144347,
+    "reserve_gross_positive": 1539.919048495897,
+    "reserve_gross_negative": -2158.5780815103317,
+    "outer_net": -265.106767173914,
+    "remainder_net": -353.5522658405208,
+    "outer_gross_positive": 788.952969209328,
+    "remainder_gross_positive": 751.3618693380727,
+    "band_gross_positive": 1540.3148385474005,
+    "band_gross_negative": -2158.9738715618355,
+    "band_minus_reserve_gross": 0.3957900515035817,
+    "outer_share_band_gross": 0.512202407887827,
+    "max_per_reserve_additivity_error": 1.8385293287792592e-13,
+    "reserve_positive_n": 221,
+    "reserve_negative_n": 35,
+    "n": 1398,
+    "outer_signed_share_in_whole_positive": 0.5123340541698806
+  },
+  "interior_stable": {
+    "reserve_net": -619.2276453798415,
+    "reserve_gross_positive": 1539.3504361304902,
+    "reserve_gross_negative": -2158.5780815103317,
+    "outer_net": -265.6753795393207,
+    "remainder_net": -353.5522658405208,
+    "outer_gross_positive": 788.3843568439212,
+    "remainder_gross_positive": 751.3618693380727,
+    "band_gross_positive": 1539.7462261819937,
+    "band_gross_negative": -2158.9738715618355,
+    "band_minus_reserve_gross": 0.3957900515035817,
+    "outer_share_band_gross": 0.512022269279286,
+    "max_per_reserve_additivity_error": 1.8385293287792592e-13,
+    "reserve_positive_n": 219,
+    "reserve_negative_n": 35,
+    "n": 1395,
+    "outer_signed_share_in_whole_positive": 0.5121539178731166
+  },
+  "unweighted_cells": {
+    "full_2013_2024": {
+      "reserve_net": 3644.195804195804,
+      "reserve_gross_positive": 14821.013986013988,
+      "reserve_gross_negative": -11176.818181818182,
+      "outer_net": 5068.006993006992,
+      "remainder_net": -1423.811188811188,
+      "outer_gross_positive": 10719.055944055945,
+      "remainder_gross_positive": 4106.3286713286725,
+      "band_gross_positive": 14825.384615384617,
+      "band_gross_negative": -11181.188811188811,
+      "band_minus_reserve_gross": 4.3706293706291035,
+      "outer_share_band_gross": 0.723020428956194,
+      "max_per_reserve_additivity_error": 3.7481129311345285e-13,
+      "reserve_positive_n": 560,
+      "reserve_negative_n": 75,
+      "kosciuszko_beyond_share": 0.5025331868768146
+    },
+    "pre_2013_2021": {
+      "reserve_net": -1838.666666666666,
+      "reserve_gross_positive": 11305.666666666668,
+      "reserve_gross_negative": -13144.33333333333,
+      "outer_net": 1297.999999999999,
+      "remainder_net": -3136.6666666666624,
+      "outer_gross_positive": 9446.166666666666,
+      "remainder_gross_positive": 1884.0000000000025,
+      "band_gross_positive": 11330.166666666668,
+      "band_gross_negative": -13168.833333333332,
+      "band_minus_reserve_gross": 24.5,
+      "outer_share_band_gross": 0.833718244803695,
+      "max_per_reserve_additivity_error": 9.094947017729282e-13,
+      "reserve_positive_n": 463,
+      "reserve_negative_n": 91,
+      "kosciuszko_beyond_share": 0.1302193913658881
+    },
+    "late_minus_early": {
+      "reserve_net": 51299.99999999998,
+      "reserve_gross_positive": 131936.66666666663,
+      "reserve_gross_negative": -80636.66666666666,
+      "outer_net": 46643.33333333333,
+      "remainder_net": 4656.666666666675,
+      "outer_gross_positive": 94586.66666666666,
+      "remainder_gross_positive": 37386.66666666668,
+      "band_gross_positive": 131973.33333333334,
+      "band_gross_negative": -80673.33333333333,
+      "band_minus_reserve_gross": 36.66666666671517,
+      "outer_share_band_gross": 0.7167104465548595,
+      "max_per_reserve_additivity_error": 4.561684363579843e-12,
+      "reserve_positive_n": 547,
+      "reserve_negative_n": 69,
+      "kosciuszko_beyond_share": 0.5421718972895863
+    },
+    "area_share_by_cell_count": 0.14076131972761272,
+    "units": "product units x pixel count; no geographic-area weighting"
+  },
+  "latitude_extent_bounds": {
+    "spherical_radius_km": 6371.0088,
+    "cell_degrees": 0.004166666666666667,
+    "method": "Bound annual nonnegative cell sums by reserve latitude extrema; reverse area bounds for negative OLS coefficients before clipping each slope at zero",
+    "limitations": "Conservative latitude-only bounds within the adopted spherical approximation, not bounds for ellipsoidal or raster-boundary error",
+    "max_cell_area_relative_error_bound": 0.021598999028048516,
+    "median_cell_area_relative_error_bound": 0.0002762775559523867,
+    "kosciuszko_cell_area_relative_error_bound": 0.011219905046611522,
+    "outer_gross_low": 1943.4894278481922,
+    "outer_gross_high": 1959.612503482054,
+    "remainder_gross_low": 746.3776647043543,
+    "remainder_gross_high": 770.8265933495962,
+    "outer_share_low": 0.7160144259807149,
+    "outer_share_high": 0.7241757662391705
+  },
+  "matched_ols_ranks": {
+    "description": "Same OLS estimator and same 2013-2024 cohort; reserve mean versus approximate area integral",
+    "top20_overlap_n": 6,
+    "top20_overlap_ids": [
+      "NSW_N1123",
+      "NT_PA115",
+      "SA_0038",
+      "VIC_4007",
+      "WA_27575",
+      "WA_48325"
+    ],
+    "integral_top20_outside_mean_top100_n": 12,
+    "integral_top20_outside_mean_top100_ids": [
+      "CWTH_IPA17",
+      "CWTH_IPA20",
+      "CWTH_IPA50",
+      "CWTH_IPA51",
+      "CWTH_IPA78",
+      "NSW_N0004",
+      "NSW_N0006",
+      "NSW_N0018",
+      "NSW_N0019",
+      "NSW_N0030",
+      "NSW_N1117",
+      "SA_0247"
+    ],
+    "kosciuszko_mean_ols_rank": 286.0,
+    "kosciuszko_integral_ols_rank": 1.0
+  },
+  "acceptance_checks": {
+    "eligible_4426": true,
+    "interior_1398_stable_1395": true,
+    "stable_4422": true,
+    "band_outer_share": true,
+    "sampled_area_share": true,
+    "pre_outer_share": true,
+    "period_outer_share": true,
+    "net_full": true,
+    "net_pre": true,
+    "beyond_reach_2_7": true,
+    "matched_ols_ranks": true,
+    "additivity": true
+  }
+}

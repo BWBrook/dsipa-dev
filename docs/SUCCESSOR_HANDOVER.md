@@ -1,5 +1,45 @@
 # DSIPA successor handover
 
+## Active tranche: substantive editorial redevelopment, 18 October 2026
+
+Barry's first read found the paper lacking a compelling, accessible argument.
+He authorised substantial revision in asynchronous collaboration with Claude.
+The tranche started clean at 59725d3; September work and Claude's prose pass were
+committed and pushed in September under Barry's separate authorisation.
+The older uncommitted-status wording below is historical.
+
+Current discussion: DSIPA board thread 90, opening message 1912. Claude's first
+critique led to a second argument built around an additive product-signal budget
+and Kosciuszko. The active title is “Boundary zones and interior hotspots of
+brightening in Australia's protected areas”. Main text is 252 abstract + 4,291
+body = 4,543 conservative source words. Four main figures are coverage, budget,
+paired slopes and Kosciuszko; SI contains Methods S1–S4, Tables S1–S6 and
+Figures S1–S5. Earlier figure distribution/trajectories are retained in the SI.
+
+R2 reading files are in `build/final_read/editorial_20261018_r2/` (main/SI PDFs
+23/21 pages; Word renders 28/25). The canonical snapshot is
+`artefacts/editorial_20261018_r2/`. R1 remains preserved. Native and Word renders,
+document identities and final input/output hashes passed. New numerical evidence
+has independent replay scripts, corrected-input checksums and a cached offline
+Kosciuszko raster comparison. See log 146 and the editorial redevelopment report.
+
+The national outer-band share is 72.0% in 13.7% of sampled area, but 51.2% among
+reserves with supported deeper interiors. This geometry qualifier is prominent.
+The +479 full-period net becomes −538 in 2013–2021; no stable net brightening or
+source attribution is claimed. Kosciuszko ranks 286th by mean OLS and first by
+integrated OLS; the earlier 303rd Sen comparison is superseded for this purpose.
+Its two clusters supply 96.44% of positive endpoint pixel differences, not net
+change or 47% of the same denominator. Three official sources verify proximity
+and distinct construction chronologies.
+
+Claude owns candidate `brightening_budget.py`, `brightening_hotspots.py`,
+`render_brightening_budget.py` and their proposal/report. Those exploratory prose
+files may retain superseded numbers; the integrated manuscript and independent
+JSON receipt define R2. Codex owns the final display/replay scripts and active
+manuscript integration. Claude's next critique of R2 remains pending; further
+changes should begin from that concrete reading copy. No new commit or push was
+made in this redevelopment turn. Public release and submission remain separate.
+
 ## Current status: corrected private candidate complete and independently approved
 
 The authorised 19 September revision corrects outward buffers, inward bands and
@@ -14,7 +54,7 @@ explicit provisional flags; exclusion gives 4,244 / 341 / 70 / 3,585 / 248.
 
 The optional numerical Layer B section is omitted because original occurrence
 inputs could not be recovered to verify a sampling repair. Its archive remains.
-Active SI has three methods sections, five tables and three figures. Corrected
+The September SI had three methods sections, five tables and three figures; R2 expands it as described above. Corrected
 canonical inputs are in data/processed/; flat analysis/reports/ plus the current
 interior/edge subdirectories hold the audit outputs. Earlier nested staging
 folders are not candidate inputs. See docs/spatial_reproduction_20260919.md.

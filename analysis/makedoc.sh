@@ -24,7 +24,10 @@ if [[ ! -d "$MAKEDOC_ROOT" ]]; then
 fi
 
 set +e
-make_args=(-C "$MAKEDOC_ROOT" CONFIG="$CONFIG" PROFILE="$PROFILE")
+# Pandoc uses generic LaTeX filenames. Keep them out of the shared tool cache
+# so another project's build cannot supply our PDF during a concurrent run.
+make_args=(-C "$MAKEDOC_ROOT" CONFIG="$CONFIG" PROFILE="$PROFILE"
+  "PDF_ENGINE_OUTPUT_DIR=$REPO_ROOT/build/.makedoc-latex/$PROFILE")
 # Upstream dependencies omit embedded image changes; reader builds must be fresh.
 if [[ "$TARGET" == "all" || "$TARGET" == "check" ]]; then
   make_args+=(-B)

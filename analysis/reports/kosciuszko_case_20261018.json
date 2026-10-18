@@ -1,0 +1,515 @@
+{
+  "schema_version": "1.0",
+  "pa_id": "NSW_N0018",
+  "units": "product cell-sum: sum of metadata-scaled cell values, without area weighting; not physical light output",
+  "support": {
+    "window_cells": 79170,
+    "inside_cells": 39721,
+    "common_valid_inside_cells": 39721,
+    "valid_inside_by_year": {
+      "2019": 39721,
+      "2024": 39721
+    },
+    "valid_support_change_cells": 0,
+    "positive_change_cells": 642,
+    "negative_change_cells": 30,
+    "zero_change_cells": 39049
+  },
+  "whole_reserve_sums": {
+    "2019": 1220.0,
+    "2024": 26970.0
+  },
+  "gross_positive_change": 26110.0,
+  "gross_negative_change": -360.0,
+  "net_change": 25750.0,
+  "positive_cluster_connectivity": "8-neighbour; strictly positive decoded endpoint difference",
+  "positive_clusters": [
+    {
+      "label": 2,
+      "cells": 378,
+      "change": 18320.0,
+      "sum_2019": 0.0,
+      "sum_2024": 18320.0,
+      "change_weighted_centroid_lon": 148.41423762736562,
+      "change_weighted_centroid_lat": -35.78329102983998
+    },
+    {
+      "label": 3,
+      "cells": 176,
+      "change": 6860.0,
+      "sum_2019": 0.0,
+      "sum_2024": 6860.0,
+      "change_weighted_centroid_lon": 148.6566873177845,
+      "change_weighted_centroid_lat": -35.79124878522847
+    },
+    {
+      "label": 7,
+      "cells": 21,
+      "change": 210.0,
+      "sum_2019": 140.0,
+      "sum_2024": 350.0,
+      "change_weighted_centroid_lon": 148.38581349206373,
+      "change_weighted_centroid_lat": -35.93367063492073
+    },
+    {
+      "label": 5,
+      "cells": 12,
+      "change": 150.0,
+      "sum_2019": 0.0,
+      "sum_2024": 150.0,
+      "change_weighted_centroid_lon": 148.43347222222246,
+      "change_weighted_centroid_lat": -35.88236111111121
+    },
+    {
+      "label": 6,
+      "cells": 12,
+      "change": 140.0,
+      "sum_2019": 0.0,
+      "sum_2024": 140.0,
+      "change_weighted_centroid_lon": 148.45327380952406,
+      "change_weighted_centroid_lat": -35.90500000000009
+    },
+    {
+      "label": 11,
+      "cells": 9,
+      "change": 90.0,
+      "sum_2019": 0.0,
+      "sum_2024": 90.0,
+      "change_weighted_centroid_lon": 148.19236111111135,
+      "change_weighted_centroid_lat": -36.245046296296394
+    },
+    {
+      "label": 18,
+      "cells": 8,
+      "change": 80.0,
+      "sum_2019": 20.0,
+      "sum_2024": 100.0,
+      "change_weighted_centroid_lon": 148.32500000000024,
+      "change_weighted_centroid_lat": -36.49770833333343
+    },
+    {
+      "label": 16,
+      "cells": 7,
+      "change": 70.0,
+      "sum_2019": 0.0,
+      "sum_2024": 70.0,
+      "change_weighted_centroid_lon": 148.43125000000026,
+      "change_weighted_centroid_lat": -36.39041666666676
+    },
+    {
+      "label": 8,
+      "cells": 6,
+      "change": 60.0,
+      "sum_2019": 0.0,
+      "sum_2024": 60.0,
+      "change_weighted_centroid_lon": 148.3708333333336,
+      "change_weighted_centroid_lat": -35.95083333333343
+    },
+    {
+      "label": 10,
+      "cells": 2,
+      "change": 20.0,
+      "sum_2019": 0.0,
+      "sum_2024": 20.0,
+      "change_weighted_centroid_lon": 148.1458333333336,
+      "change_weighted_centroid_lat": -36.21750000000009
+    },
+    {
+      "label": 12,
+      "cells": 2,
+      "change": 20.0,
+      "sum_2019": 0.0,
+      "sum_2024": 20.0,
+      "change_weighted_centroid_lon": 148.58750000000026,
+      "change_weighted_centroid_lat": -36.33833333333343
+    },
+    {
+      "label": 1,
+      "cells": 1,
+      "change": 10.0,
+      "sum_2019": 0.0,
+      "sum_2024": 10.0,
+      "change_weighted_centroid_lon": 148.3145833333336,
+      "change_weighted_centroid_lat": -35.58208333333343
+    },
+    {
+      "label": 4,
+      "cells": 1,
+      "change": 10.0,
+      "sum_2019": 0.0,
+      "sum_2024": 10.0,
+      "change_weighted_centroid_lon": 148.71041666666693,
+      "change_weighted_centroid_lat": -35.80708333333343
+    },
+    {
+      "label": 9,
+      "cells": 1,
+      "change": 10.0,
+      "sum_2019": 0.0,
+      "sum_2024": 10.0,
+      "change_weighted_centroid_lon": 148.13958333333358,
+      "change_weighted_centroid_lat": -36.20708333333343
+    },
+    {
+      "label": 13,
+      "cells": 1,
+      "change": 10.0,
+      "sum_2019": 0.0,
+      "sum_2024": 10.0,
+      "change_weighted_centroid_lon": 148.5729166666669,
+      "change_weighted_centroid_lat": -36.34041666666676
+    },
+    {
+      "label": 14,
+      "cells": 1,
+      "change": 10.0,
+      "sum_2019": 0.0,
+      "sum_2024": 10.0,
+      "change_weighted_centroid_lon": 148.6104166666669,
+      "change_weighted_centroid_lat": -36.34041666666676
+    },
+    {
+      "label": 15,
+      "cells": 1,
+      "change": 10.0,
+      "sum_2019": 0.0,
+      "sum_2024": 10.0,
+      "change_weighted_centroid_lon": 148.60625000000024,
+      "change_weighted_centroid_lat": -36.348750000000095
+    },
+    {
+      "label": 17,
+      "cells": 1,
+      "change": 10.0,
+      "sum_2019": 0.0,
+      "sum_2024": 10.0,
+      "change_weighted_centroid_lon": 148.4270833333336,
+      "change_weighted_centroid_lat": -36.40291666666676
+    },
+    {
+      "label": 19,
+      "cells": 1,
+      "change": 10.0,
+      "sum_2019": 0.0,
+      "sum_2024": 10.0,
+      "change_weighted_centroid_lon": 148.3020833333336,
+      "change_weighted_centroid_lat": -36.49458333333343
+    },
+    {
+      "label": 20,
+      "cells": 1,
+      "change": 10.0,
+      "sum_2019": 0.0,
+      "sum_2024": 10.0,
+      "change_weighted_centroid_lon": 148.31875000000025,
+      "change_weighted_centroid_lat": -36.507083333333426
+    }
+  ],
+  "top_two_change": 25180.0,
+  "top_two_share_of_gross_positive_change": 0.9643814630409805,
+  "endpoint_checks": {
+    "2019": {
+      "raster_sum": 1220.0,
+      "accepted_mean_times_count": 1219.9999999999984,
+      "difference": -1.5916157281026244e-12,
+      "valid_cells": 39721
+    },
+    "2024": {
+      "raster_sum": 26970.0,
+      "accepted_mean_times_count": 26970.0,
+      "difference": 0.0,
+      "valid_cells": 39721
+    }
+  },
+  "annual_trajectory": [
+    {
+      "year": 2013,
+      "mean": 0.0281966717857052,
+      "valid_cells": 39721,
+      "product_cell_sum": 1119.9999999999961
+    },
+    {
+      "year": 2014,
+      "mean": 0.0314694997608318,
+      "valid_cells": 39721,
+      "product_cell_sum": 1249.9999999999998
+    },
+    {
+      "year": 2015,
+      "mean": 0.0229097958258855,
+      "valid_cells": 39721,
+      "product_cell_sum": 909.999999999998
+    },
+    {
+      "year": 2016,
+      "mean": 0.019636967850759,
+      "valid_cells": 39721,
+      "product_cell_sum": 779.9999999999982
+    },
+    {
+      "year": 2017,
+      "mean": 0.0332317917474383,
+      "valid_cells": 39721,
+      "product_cell_sum": 1319.9999999999968
+    },
+    {
+      "year": 2018,
+      "mean": 0.0370081317187382,
+      "valid_cells": 39721,
+      "product_cell_sum": 1470.0
+    },
+    {
+      "year": 2019,
+      "mean": 0.0307142317665718,
+      "valid_cells": 39721,
+      "product_cell_sum": 1219.9999999999984
+    },
+    {
+      "year": 2020,
+      "mean": 0.0289519397799652,
+      "valid_cells": 39721,
+      "product_cell_sum": 1149.9999999999977
+    },
+    {
+      "year": 2021,
+      "mean": 0.115807759119861,
+      "valid_cells": 39721,
+      "product_cell_sum": 4599.999999999999
+    },
+    {
+      "year": 2022,
+      "mean": 0.3509478613327962,
+      "valid_cells": 39721,
+      "product_cell_sum": 13939.999999999998
+    },
+    {
+      "year": 2023,
+      "mean": 0.6364391631630624,
+      "valid_cells": 39721,
+      "product_cell_sum": 25280.0
+    },
+    {
+      "year": 2024,
+      "mean": 0.6789859268397069,
+      "valid_cells": 39721,
+      "product_cell_sum": 26970.0
+    }
+  ],
+  "site_context": {
+    "source": "https://www.snowyhydro.com.au/wp-content/uploads/2025/02/S2-FGJV-ENV-REP-0116A.pdf",
+    "points": [
+      {
+        "name": "Lobs Hole",
+        "lon": 148.416,
+        "lat": -35.785,
+        "point": "EPL5",
+        "printed_page": 7,
+        "description": "Yarrangobilly River, upstream of exploratory tunnel and construction pad"
+      },
+      {
+        "name": "Tantangara",
+        "lon": 148.659,
+        "lat": -35.79,
+        "point": "EPL32",
+        "printed_page": 8,
+        "description": "Tantangara Reservoir, Tantangara Intake, downstream of construction works"
+      }
+    ],
+    "qualification": "Official monitoring points near construction areas; not light-source positions or causal attribution"
+  },
+  "source_provenance": {
+    "array_sha256": {
+      "annual_mean": "067944dfd80e14e29280e89a07fe841c6c7cdb0c74b62c3ff7ba1478b8db72a9",
+      "annual_valid_count": "f528baae01f77de0f07f708b2db44d10074ca5b45ecef264140663d6d7ba5167",
+      "annual_year": "dcb441cc7dda0c5d8dc298de0bacb62786b59b9ee9af4db8856f53f2b60993d9",
+      "geometry_wkb": "cea7c84e527aa001ba7a02d6d00308904d12e34cbe84af3bac5070cfbfa45fb3",
+      "inside": "62f55bd71f3af870ec79da0ea449d60be13dc257080c09bedc712788ee4000dd",
+      "radiance_2019": "5fa9d7da890a2216843aa5c96993b6b9a6f830347c62aaee4eaabd3bfbe5f0d3",
+      "radiance_2024": "15e22488e541f8054f59c3907d7a9d0afcb7cdb40bb96ae118ff2ad067d5edd2",
+      "transform": "65e3b41af990ffa91fdb704dc15ee666307bdfe665b017af101aa62aa0cedc78",
+      "valid_2019": "7dfa13521ab8bd0dbf1d1305a487538ffe5796ffdfc8b15b572acedba0b16a76",
+      "valid_2024": "7dfa13521ab8bd0dbf1d1305a487538ffe5796ffdfc8b15b572acedba0b16a76"
+    },
+    "geometry_bounds": [
+      148.03747790013568,
+      -37.02580371839967,
+      148.84483010253786,
+      -35.33609984383871
+    ],
+    "geometry_crs": "EPSG:4326",
+    "local_inputs": {
+      "data/processed/pa_geometries_v0_3_0.gpkg": "da843f551bf1863dc5d1930ecb657491f73d69827b25007a0c55c9019721d0e6",
+      "data/processed/pa_radiance_buffers_national_v0_3_0.csv": "3173bd9bd3b4a545b34eb740a043a5aaf85175956aa654f0ae52c530cce8344c"
+    },
+    "mask_rule": "Raster-centre polygon inclusion; native nodata/mask, nonfinite and negative raw values excluded before scale plus offset",
+    "name": "Kosciuszko",
+    "pa_id": "NSW_N0018",
+    "sources": {
+      "2019": {
+        "access_completed_utc": "2026-10-18T04:09:45.512427+00:00",
+        "access_started_utc": "2026-10-18T04:09:40.697401+00:00",
+        "band_tags": {},
+        "dataset_tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "decoded_window_sha256": "5fa9d7da890a2216843aa5c96993b6b9a6f830347c62aaee4eaabd3bfbe5f0d3",
+        "full_raster_shape": [
+          35849,
+          86400
+        ],
+        "grid": {
+          "crs": "EPSG:4326",
+          "full_transform": [
+            0.00416666666666667,
+            0.0,
+            -180.0,
+            0.0,
+            -0.00416666666666667,
+            87.37,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "shape": [
+            406,
+            195
+          ],
+          "window": [
+            78728,
+            29449,
+            195,
+            406
+          ],
+          "window_transform": [
+            0.00416666666666667,
+            0.0,
+            148.0333333333336,
+            0.0,
+            -0.00416666666666667,
+            -35.33416666666676,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "nodata": -32768.0,
+        "offset": 0.0,
+        "raw_dtype": "int16",
+        "raw_window_sha256": "cd6f45cafef93204bed66a4ae62ff8bce3099574bac2d98733e6077450cb6ff3",
+        "scale": 1.0,
+        "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20190101_20191231_go_epsg4326_v20250904.tif",
+        "valid_mask_sha256": "7dfa13521ab8bd0dbf1d1305a487538ffe5796ffdfc8b15b572acedba0b16a76"
+      },
+      "2024": {
+        "access_completed_utc": "2026-10-18T04:09:48.489967+00:00",
+        "access_started_utc": "2026-10-18T04:09:45.515815+00:00",
+        "band_tags": {},
+        "dataset_tags": {
+          "AREA_OR_POINT": "Area",
+          "TIFFTAG_DATETIME": "2025:04:03 14:16:11",
+          "TIFFTAG_DOCUMENTNAME": "./VNL_npp_2024_global_vcmslcfg_v2_c202502261200.average_masked.dat.tif",
+          "TIFFTAG_IMAGEDESCRIPTION": "IDL TIFF file",
+          "TIFFTAG_RESOLUTIONUNIT": "2 (pixels/inch)",
+          "TIFFTAG_SOFTWARE": "IDL 8.7.2, Harris Geospatial Solutions, Inc.",
+          "TIFFTAG_XRESOLUTION": "100",
+          "TIFFTAG_YRESOLUTION": "100"
+        },
+        "decoded_window_sha256": "15e22488e541f8054f59c3907d7a9d0afcb7cdb40bb96ae118ff2ad067d5edd2",
+        "full_raster_shape": [
+          35849,
+          86400
+        ],
+        "grid": {
+          "crs": "EPSG:4326",
+          "full_transform": [
+            0.00416666666666667,
+            0.0,
+            -180.0,
+            0.0,
+            -0.00416666666666667,
+            87.37,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "shape": [
+            406,
+            195
+          ],
+          "window": [
+            78728,
+            29449,
+            195,
+            406
+          ],
+          "window_transform": [
+            0.00416666666666667,
+            0.0,
+            148.0333333333336,
+            0.0,
+            -0.00416666666666667,
+            -35.33416666666676,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "nodata": -32768.0,
+        "offset": 0.0,
+        "raw_dtype": "int16",
+        "raw_window_sha256": "1ec28a0ad54426bed1ca457039943237755b7ce6a91f95dc0320205ab615dbe3",
+        "scale": 10.0,
+        "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20240101_20241231_go_epsg4326_v20250904.tif",
+        "valid_mask_sha256": "7dfa13521ab8bd0dbf1d1305a487538ffe5796ffdfc8b15b572acedba0b16a76"
+      }
+    }
+  },
+  "cache": {
+    "path": "analysis/reports/kosciuszko_case_20261018.npz",
+    "sha256": "d76bd2dd874d111af9710be7269e2e0300db3b126e6ad140acdcefd71030cdc1",
+    "bytes": 618131
+  },
+  "execution": {
+    "completed_utc": "2026-10-18T04:11:50.589927+00:00",
+    "offline": true,
+    "script_sha256": "af5d0895b0f3dd078317f1b41cf0138a13334c7060c38fd094fd5da44a2653e6",
+    "git_commit": "59725d3811116af1db7dd069c6f1d5545796f3ba",
+    "versions": {
+      "python": "3.12.3",
+      "numpy": "2.3.5",
+      "pandas": "2.3.3",
+      "rasterio": "1.4.4",
+      "GDAL": "3.10.3",
+      "geopandas": "1.1.2",
+      "scipy": "1.16.3",
+      "matplotlib": "3.10.8"
+    }
+  },
+  "figure": {
+    "extent_lonlat": [
+      148.30500000000026,
+      148.7533333333336,
+      -35.8625000000001,
+      -35.69166666666676
+    ],
+    "colour_limits": [
+      0,
+      700.0
+    ],
+    "colour_scale": "linear; zero retained",
+    "width_inches": 7.2,
+    "height_inches": 5.15,
+    "maximum_displayed_value": 610.0,
+    "display_clips_positive_values": false,
+    "outputs": {
+      "manuscript/figures/fig_kosciuszko_case.png": {
+        "sha256": "9ab6bd99c9e137a3739d9889c4db0b7eb0e99759724002be7d256487e8992c7f",
+        "bytes": 243035
+      },
+      "manuscript/figures/fig_kosciuszko_case.pdf": {
+        "sha256": "79c400082b73b18cb6d30c39d7a54d59230f9dfaf6ae05cb5a9ad09e9649334e",
+        "bytes": 123533
+      }
+    }
+  }
+}

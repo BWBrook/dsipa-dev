@@ -214,3 +214,33 @@ def test_successful_check_fails_closed_when_manifest_is_missing(tmp_path: Path) 
 
     assert result.returncode != 0
     assert "manifest" in result.stderr.lower()
+
+
+def test_latex_scratch_is_separate_across_projects_and_profiles(tmp_path: Path) -> None:
+    """Concurrent external builds must not share Pandoc's input.pdf/input.tex."""
+    tool_root = tmp_path / "makedoc"
+    tool_root.mkdir()
+    fake_bin, log = _fake_make(tmp_path)
+    scratch_paths = []
+    for project, profile in [("one", "draft"), ("two", "draft"), ("one", "supplementary")]:
+        source_root = tmp_path / project
+        source_root.mkdir(exist_ok=True)
+        env = _wrapper_env(
+            source_root, tool_root, source_root / "build.yaml", fake_bin, log
+        )
+        env["PROFILE"] = profile
+        result = subprocess.run(
+            ["bash", str(WRAPPER), "validate-config"],
+            cwd=source_root,
+            capture_output=True,
+            text=True,
+            env=env,
+        )
+        assert result.returncode == 0, result.stderr
+        args = log.read_text().splitlines()[-1].split()
+        scratch = Path(next(arg.split("=", 1)[1] for arg in args
+                            if arg.startswith("PDF_ENGINE_OUTPUT_DIR=")))
+        assert scratch.is_absolute()
+        assert scratch.is_relative_to(source_root)
+        scratch_paths.append(scratch)
+    assert len(set(scratch_paths)) == 3

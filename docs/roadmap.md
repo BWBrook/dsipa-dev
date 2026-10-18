@@ -1,5 +1,23 @@
 # DSIPA-NBS Roadmap (execution queue)
 
+## Editor-first redevelopment (authorised 18 October 2026)
+
+- [x] Read the current draft and post Barry's brief plus a concrete proposition to Claude.
+- [x] Challenge the organising argument and develop alternative openings through board discussion 90.
+- [x] Integrate a first full substantive rewrite with an explicit evidence-preservation check.
+- [x] Obtain Claude's critique of the first rewrite; resolve its substantive analytical objections.
+- [x] Independently replay and integrate the additive budget with its supported-interior and net-trend qualifications.
+- [x] Build and visually check the first rewritten private reading copy.
+- [x] Integrate the second argument and independent editorial repairs.
+- [x] Complete R2 PDF/DOCX QA and preserve the second private reading bundle.
+- [ ] Obtain Claude's next critique of the integrated R2 argument and displays.
+
+Current starting point: 59725d3 (September revisions committed). See
+`docs/log/146_editorial_redevelopment.md` and
+`analysis/reports/editorial_redevelopment_20261018.md`. Earlier scientific
+acceptance is the evidence baseline, not acceptance of the manuscript's
+editorial effectiveness. This tranche does not authorise publication.
+
 ## Spatial correction and private release candidate (authorised 19 September 2026)
 
 - [x] Specify and validate accurate kilometre supports and an appropriate coastline.

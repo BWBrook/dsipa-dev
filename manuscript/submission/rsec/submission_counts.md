@@ -1,23 +1,23 @@
 # RSEC Submission Counts
 
-Generated from the 19 September 2026 corrected Layer A candidate revision of
+Generated from the 18 October 2026 editorial revision of
 `manuscript/text/manuscript_draft.md`.
 
 ## Results
 
 | Surface | Count | Requirement |
 | --- | ---: | --- |
-| Abstract content | 237 source words | <= 300 |
-| Body from Introduction heading through final declaration | 3,931 source words | source-token count including headings and current declarations |
-| Conservative abstract plus complete body | 4,168 source words | <= 5,000 readiness gate |
+| Abstract content | 252 source words | <= 300 |
+| Body from Introduction heading through final declaration | 4,291 source words | source-token count including headings and current declarations |
+| Conservative abstract plus complete body | 4,543 source words | <= 5,000 readiness gate |
 | Keywords | 5 | 4-6 |
 | Main figures | 4 | report count |
 | Main tables | 1 | report count |
-| Supporting figures | 3 | current Layer A source count |
-| Supporting tables | 5 | report count |
+| Supporting figures | 5 | current Layer A source count |
+| Supporting tables | 6 | report count |
 | Proposed running title | 39 characters | <= 45 |
 
-The conservative 4,168-word readiness count uses whitespace-delimited source
+The conservative 4,543-word readiness count uses whitespace-delimited source
 tokens. It includes Markdown headings, citation tokens, and every current
 declaration and acknowledgement marker. It excludes the title, keywords,
 references, tables, and figure legends. This deliberately errs upward relative

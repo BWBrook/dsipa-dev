@@ -157,7 +157,14 @@ uv run python -m dsipa.layerB_model --provider dr368 --sensitivity-sample-rate 0
 If you are running Codex in this repo, follow `docs/roadmap.md` strictly.
 When a milestone review gate is reached, zip the repo and send it for PI review.
 
-Current reading documents are in `build/final_read/spatial_20260919/`; the
+The current editorial review iteration is in
+`build/final_read/editorial_20261018_r2/`; its argument and evidence checks are in
+`analysis/reports/editorial_redevelopment_20261018.md`. The second rewrite integrates the independently replayed
+additive budget and Kosciuszko example; Claude's next critique is pending; its canonical snapshot is
+`artefacts/editorial_20261018_r2/`. Manuscript builds isolate LaTeX scratch in
+`build/.makedoc-latex/<profile>/` to avoid cross-project cache collisions.
+
+The accepted September reading documents remain in `build/final_read/spatial_20260919/`; the
 private source/evidence package is `artefacts/spatial_candidate_20260919/`.
 The independent acceptance memo is
 `analysis/reports/spatial_correction_acceptance_review_20260919.md`; archive
