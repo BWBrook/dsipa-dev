@@ -1,6 +1,6 @@
 # RSEC Submission Metadata
 
-Status: 18 October 2026 editorial candidate metadata with visible human
+Status: 19 October 2026 editorial candidate metadata with visible human
 decision fields; not submission metadata of record.
 
 - Journal: *Remote Sensing in Ecology and Conservation*
@@ -37,14 +37,16 @@ unconfirmed affiliation, ORCID or contact details.
 
 ## Counts
 
-- Abstract: 273 source words
-- Body from the Introduction heading through the final declaration: 4,691
+- Abstract: 259 source words
+- Body from the Introduction heading through the final declaration: 4,549
   source words
-- Conservative abstract plus body, including headings and all current
-  declaration and acknowledgement markers: 4,964 source words
+- Abstract plus body, including headings and all current
+  declaration and acknowledgement markers: 4,808 source words
+- Table 1 cells/headers: 170 source tokens
+- Conservative readiness total including Table 1: 4,978 source tokens
 - Keywords: 5
 - Main figures/tables: 4/1
-- Supporting figures/tables: 7/7
+- Supporting figures/tables: 7/8
 
 The current candidate is Layer A only. The corrected private spatial outputs
 use 4,253 paired reserves; the public Zenodo DOI remains the historical
@@ -56,7 +58,7 @@ Counting methods are in `submission_counts.md`.
 
 - Funding: `No specific funding.`
 - Conflicts of interest: `[BARRY CONFIRM]`
-- AI use: specific roles and verified revision-model names drafted in the manuscript; complete historical version inventory and final author review remain pending
+- AI use: seven recoverable model labels and roles disclosed in Methods, declaration and SI S6; historical record gaps are explicit, and final author review remains pending
 - Ethics/consent: `[BARRY CONFIRM exact applicability and wording]`
 - Sole submission: `[BARRY CONFIRM immediately before submission]`
 - Data/archive DOI: `10.5281/zenodo.21524637`

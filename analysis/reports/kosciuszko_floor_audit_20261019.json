@@ -1,0 +1,297 @@
+{
+  "schema_version": "1.0",
+  "completed_utc": "2026-10-19T03:35:54.832933+00:00",
+  "completed_hobart": "2026-10-19T14:35:54.832933+11:00",
+  "purpose": "Independent offline arithmetic and inference audit of consequential claim 1 in the Claude R3 review",
+  "verdict": "Numerical table reproduced; categorical exclusion of masking is unsupported",
+  "provenance": {
+    "git_commit_at_execution": "77af011c60e6198b9c3af9cae0c62beb8ec95797",
+    "script": {
+      "path": "analysis/reports/kosciuszko_floor_audit_20261019.py",
+      "sha256": "d842a69b2d5d3da4bfa0d83304e104002d2e46f3fe1b818ab682a7ca8d8fc59e"
+    },
+    "cache": {
+      "path": "analysis/reports/kosciuszko_case_20261018.npz",
+      "sha256": "d76bd2dd874d111af9710be7269e2e0300db3b126e6ad140acdcefd71030cdc1",
+      "bytes": 618131
+    },
+    "reviewed_local_reference_hashes": {
+      "analysis/audit_kosciuszko_case.py": "b3e533d716161c74f3556c411ca3cc8ffafaaf7917357b0b94892a9be5d4d102",
+      "analysis/reports/editorial_claude_r3_review_20261019.md": "106421e5ce21368cd88ccdc36beff4ce7e1c152b2968b48149cbdde6e6322116",
+      "analysis/reports/product_floor_followup.md": "0ce521acd189cce3ac30521640cd904a66a7f60ad76de98618a9695c010b7e6e",
+      "analysis/reports/product_lineage_review.md": "07569b874c661adfa698e55f1d1fe9cc5dacd771ad15ef0768c7360ae063c1fa"
+    },
+    "verified_cached_array_hashes": {
+      "annual_mean": "067944dfd80e14e29280e89a07fe841c6c7cdb0c74b62c3ff7ba1478b8db72a9",
+      "annual_valid_count": "f528baae01f77de0f07f708b2db44d10074ca5b45ecef264140663d6d7ba5167",
+      "annual_year": "dcb441cc7dda0c5d8dc298de0bacb62786b59b9ee9af4db8856f53f2b60993d9",
+      "geometry_wkb": "cea7c84e527aa001ba7a02d6d00308904d12e34cbe84af3bac5070cfbfa45fb3",
+      "inside": "62f55bd71f3af870ec79da0ea449d60be13dc257080c09bedc712788ee4000dd",
+      "radiance_2019": "5fa9d7da890a2216843aa5c96993b6b9a6f830347c62aaee4eaabd3bfbe5f0d3",
+      "radiance_2024": "15e22488e541f8054f59c3907d7a9d0afcb7cdb40bb96ae118ff2ad067d5edd2",
+      "transform": "65e3b41af990ffa91fdb704dc15ee666307bdfe665b017af101aa62aa0cedc78",
+      "valid_2019": "7dfa13521ab8bd0dbf1d1305a487538ffe5796ffdfc8b15b572acedba0b16a76",
+      "valid_2024": "7dfa13521ab8bd0dbf1d1305a487538ffe5796ffdfc8b15b572acedba0b16a76"
+    },
+    "cached_source_rasters": {
+      "2019": {
+        "access_completed_utc": "2026-10-18T04:09:45.512427+00:00",
+        "access_started_utc": "2026-10-18T04:09:40.697401+00:00",
+        "band_tags": {},
+        "dataset_tags": {
+          "AREA_OR_POINT": "Area"
+        },
+        "decoded_window_sha256": "5fa9d7da890a2216843aa5c96993b6b9a6f830347c62aaee4eaabd3bfbe5f0d3",
+        "full_raster_shape": [
+          35849,
+          86400
+        ],
+        "grid": {
+          "crs": "EPSG:4326",
+          "full_transform": [
+            0.00416666666666667,
+            0.0,
+            -180.0,
+            0.0,
+            -0.00416666666666667,
+            87.37,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "shape": [
+            406,
+            195
+          ],
+          "window": [
+            78728,
+            29449,
+            195,
+            406
+          ],
+          "window_transform": [
+            0.00416666666666667,
+            0.0,
+            148.0333333333336,
+            0.0,
+            -0.00416666666666667,
+            -35.33416666666676,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "nodata": -32768.0,
+        "offset": 0.0,
+        "raw_dtype": "int16",
+        "raw_window_sha256": "cd6f45cafef93204bed66a4ae62ff8bce3099574bac2d98733e6077450cb6ff3",
+        "scale": 1.0,
+        "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20190101_20191231_go_epsg4326_v20250904.tif",
+        "valid_mask_sha256": "7dfa13521ab8bd0dbf1d1305a487538ffe5796ffdfc8b15b572acedba0b16a76"
+      },
+      "2024": {
+        "access_completed_utc": "2026-10-18T04:09:48.489967+00:00",
+        "access_started_utc": "2026-10-18T04:09:45.515815+00:00",
+        "band_tags": {},
+        "dataset_tags": {
+          "AREA_OR_POINT": "Area",
+          "TIFFTAG_DATETIME": "2025:04:03 14:16:11",
+          "TIFFTAG_DOCUMENTNAME": "./VNL_npp_2024_global_vcmslcfg_v2_c202502261200.average_masked.dat.tif",
+          "TIFFTAG_IMAGEDESCRIPTION": "IDL TIFF file",
+          "TIFFTAG_RESOLUTIONUNIT": "2 (pixels/inch)",
+          "TIFFTAG_SOFTWARE": "IDL 8.7.2, Harris Geospatial Solutions, Inc.",
+          "TIFFTAG_XRESOLUTION": "100",
+          "TIFFTAG_YRESOLUTION": "100"
+        },
+        "decoded_window_sha256": "15e22488e541f8054f59c3907d7a9d0afcb7cdb40bb96ae118ff2ad067d5edd2",
+        "full_raster_shape": [
+          35849,
+          86400
+        ],
+        "grid": {
+          "crs": "EPSG:4326",
+          "full_transform": [
+            0.00416666666666667,
+            0.0,
+            -180.0,
+            0.0,
+            -0.00416666666666667,
+            87.37,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "shape": [
+            406,
+            195
+          ],
+          "window": [
+            78728,
+            29449,
+            195,
+            406
+          ],
+          "window_transform": [
+            0.00416666666666667,
+            0.0,
+            148.0333333333336,
+            0.0,
+            -0.00416666666666667,
+            -35.33416666666676,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "nodata": -32768.0,
+        "offset": 0.0,
+        "raw_dtype": "int16",
+        "raw_window_sha256": "1ec28a0ad54426bed1ca457039943237755b7ce6a91f95dc0320205ab615dbe3",
+        "scale": 10.0,
+        "url": "https://zenodo.org/records/17294744/files/nightlights.average_viirs.v21_m_500m_s_20240101_20241231_go_epsg4326_v20250904.tif",
+        "valid_mask_sha256": "7dfa13521ab8bd0dbf1d1305a487538ffe5796ffdfc8b15b572acedba0b16a76"
+      }
+    },
+    "cached_upstream_local_input_hashes": {
+      "data/processed/pa_geometries_v0_3_0.gpkg": "da843f551bf1863dc5d1930ecb657491f73d69827b25007a0c55c9019721d0e6",
+      "data/processed/pa_radiance_buffers_national_v0_3_0.csv": "3173bd9bd3b4a545b34eb740a043a5aaf85175956aa654f0ae52c530cce8344c"
+    },
+    "software": {
+      "python": "3.12.3",
+      "numpy": "2.3.5"
+    },
+    "mode": "Offline numeric replay; primary methodology documentation consulted separately"
+  },
+  "definitions": {
+    "support": "Raster-centre-selected inside cells valid in both cached 2019 and 2024 arrays; zeros are valid recorded non-detections",
+    "delta": "decoded_2024 - decoded_2019",
+    "brightened": "delta > 0",
+    "threshold": "2024 decoded value >= listed threshold, restricted to brightened cells; thresholds are nested",
+    "share_denominator": "sum(delta for delta > 0) = 26110 product units across 642 cells",
+    "units": "Sum of metadata-decoded pixel differences, without area weights; not integrated radiance slope, net change, physical emission or ground illumination"
+  },
+  "support": {
+    "window_cells": 79170,
+    "inside_cells": 39721,
+    "common_valid_inside_cells": 39721,
+    "endpoint_support_change_cells": 0,
+    "positive_change_cells": 642,
+    "negative_change_cells": 30,
+    "unchanged_cells": 39049
+  },
+  "endpoint_sums": {
+    "2019": {
+      "cached_cell_sum": 1220.0,
+      "accepted_mean_times_count": 1219.9999999999984,
+      "difference": 1.5916157281026244e-12
+    },
+    "2024": {
+      "cached_cell_sum": 26970.0,
+      "accepted_mean_times_count": 26970.0,
+      "difference": 0.0
+    }
+  },
+  "gross_positive_change": 26110.0,
+  "gross_negative_change": -360.0,
+  "net_change": 25750.0,
+  "threshold_rows": [
+    {
+      "minimum_2024_value": 10,
+      "cells": 642,
+      "positive_change_sum": 26110.0,
+      "share_of_all_positive_change": 1.0,
+      "percent_of_all_positive_change": 100.0,
+      "recorded_zero_in_2019_cells": 632,
+      "maximum_2019_value": 30.0
+    },
+    {
+      "minimum_2024_value": 50,
+      "cells": 102,
+      "positive_change_sum": 19530.0,
+      "share_of_all_positive_change": 0.7479892761394102,
+      "percent_of_all_positive_change": 74.79892761394102,
+      "recorded_zero_in_2019_cells": 102,
+      "maximum_2019_value": 0.0
+    },
+    {
+      "minimum_2024_value": 100,
+      "cells": 64,
+      "positive_change_sum": 16910.0,
+      "share_of_all_positive_change": 0.6476445806204519,
+      "percent_of_all_positive_change": 64.7644580620452,
+      "recorded_zero_in_2019_cells": 64,
+      "maximum_2019_value": 0.0
+    },
+    {
+      "minimum_2024_value": 200,
+      "cells": 37,
+      "positive_change_sum": 13300.0,
+      "share_of_all_positive_change": 0.5093833780160858,
+      "percent_of_all_positive_change": 50.938337801608576,
+      "recorded_zero_in_2019_cells": 37,
+      "maximum_2019_value": 0.0
+    }
+  ],
+  "diagnostics": {
+    "maximum_inside_2019": 40.0,
+    "maximum_inside_2024": 610.0,
+    "maximum_entire_cache_window_2019": 120.0,
+    "maximum_entire_cache_window_2024": 610.0,
+    "median_2024_value_among_brightened_cells": 10.0,
+    "brightened_cells_ending_at_10": 448,
+    "positive_change_from_cells_ending_at_10": 4480.0,
+    "positive_change_cells_with_delta_over_10": 184,
+    "positive_change_sum_with_delta_over_10": 21530.0,
+    "zero_to_positive_cells": 632,
+    "zero_to_positive_change_sum": 26010.0
+  },
+  "counterexample": {
+    "model": "Y = M * Q(A), M = indicator(D >= T)",
+    "interpretation": "Illustrative changing-mask counterexample; not fitted, not an exact EOG implementation and not evidence that this occurred",
+    "unchanged_unmasked_encoded_values": [
+      610.0,
+      10.0
+    ],
+    "unchanged_mask_statistic": [
+      1.0,
+      3.0
+    ],
+    "before_after_thresholds": [
+      2.0,
+      0.5
+    ],
+    "recorded_before": [
+      0.0,
+      10.0
+    ],
+    "recorded_after": [
+      610.0,
+      10.0
+    ],
+    "minimum_positive_both_periods": 10,
+    "target_change_with_no_change_in_unmasked_value": 610,
+    "constraint": "Official original V2 uses a fixed per-cell multiyear threshold; this toy permits a changed masking decision across processing regimes and does not claim undocumented year-by-year threshold adjustment within one implementation",
+    "falsification": "Retrieve corresponding native pre-mask values and masks for the high-value cells. Low 2019 pre-mask values relative to 2024 would reject an unchanged-input mask-only account; high pre-mask 2019 values excluded by its mask would support it. Use matched processing and source identity to test broader product effects."
+  },
+  "inference": {
+    "supported": "Most summed positive endpoint change is contributed by values far above the observed minimum positive encoded value",
+    "conditional_rounding_claim": "Under an explicitly bounded rounding-only model allowing at most 10 product units of endpoint difference per unchanged unmasked cell, the 184 cells with delta > 10 cannot arise from that model",
+    "not_supported": "The ten-unit observed minimum is an upper bound on upstream masking thresholds or on values suppressed by the mask; all processing effects are excluded; environmental or construction-lighting attribution is proved",
+    "identifiability": "Masked zero does not identify the corresponding pre-mask average. High retained 2024 values alone cannot recover it."
+  },
+  "recommended_manuscript_wording": "The documented 2022 source change cannot by itself explain the rise already visible in 2021. The endpoint increase also extends well above the smallest positive encoded value: 64 of the 642 cells that brightened between 2019 and 2024 reached at least 100 product units, contributing 64.8% of summed positive pixel differences; the 2024 maximum within the park was 610. This establishes that the increase is not confined to the ten-unit output floor, but does not exclude masking or other processing effects.",
+  "primary_methodology_sources": [
+    {
+      "title": "EOG Annual VNL V2 methodology and band definitions",
+      "url": "https://eogdata.mines.edu/products/vnl/",
+      "access_date": "2026-10-19",
+      "evidence": "Background masking uses 3x3 data range and coverage-dependent thresholds; average-masked is the average with background masked. The documented original V2 method sets a per-cell multiyear threshold, not an unconstrained new threshold every year."
+    },
+    {
+      "title": "Elvidge et al. (2021), Annual Time Series of Global VIIRS Nighttime Lights Derived from Monthly Averages: 2012 to 2019",
+      "url": "https://doi.org/10.3390/rs13050922",
+      "access_date": "2026-10-19",
+      "evidence": "Publisher-indexed abstract and methods describe median-based outlier removal, a spatial data-range mask, and filling retained lit cells with average radiance. Direct publisher retrieval returned HTTP 429; the indexed publisher text was available."
+    }
+  ]
+}

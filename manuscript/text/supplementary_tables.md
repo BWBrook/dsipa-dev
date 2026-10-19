@@ -258,3 +258,23 @@ Whole-reserve OLS slopes are positive for 560 reserves and negative for 75. Thir
 | Without the five above and Kosciuszko | 4,420 | +2,226.18 | +1,878.61 |
 
 All five reserves had constant annual inside valid-pixel counts. Together they supplied 94.91% of full-period gross negative contributions. The three industrial-context examples in the text are Barrow Island, Murujuga and Thevenard Island, ranked first, second and fourth; no common source is inferred for all five. Annual trajectories for the three examples are in Fig. S7.
+
+
+```{=latex}
+\clearpage
+```
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**Table S8. Kosciuszko positive endpoint change by recorded 2024 value.** Among 39,721 common-valid inside cells, 642 increased between 2019 and 2024. All rows use the whole-park sum of positive pixel differences (26,110 product units) as denominator; changes are unweighted pixel sums. The subsets are nested, not mutually exclusive. Thresholds are descriptive multiples of the recorded ten-unit floor.
+
+| Minimum 2024 value (product units) | Brightening cells | Sum of positive differences | Share of positive change (%) |
+| --- | ---: | ---: | ---: |
+| 10 (all brightening cells) | 642 | 26,110 | 100.00 |
+| 50 | 102 | 19,530 | 74.80 |
+| 100 | 64 | 16,910 | 64.76 |
+| 200 | 37 | 13,300 | 50.94 |
+
+The median 2024 value among brightening cells was 10; their maximum was 610. The maximum 2019 value across all common-valid cells was 40. All 64 cells with a 2024 value of at least 100 were recorded as zero in 2019. Their high final values show that change was not confined to near-floor detections. Recorded zeros do not reveal upstream unmasked radiance, so this comparison cannot exclude changes in masking or other processing effects.

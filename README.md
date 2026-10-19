@@ -157,17 +157,17 @@ uv run python -m dsipa.layerB_model --provider dr368 --sensitivity-sample-rate 0
 If you are running Codex in this repo, follow `docs/roadmap.md` strictly.
 When a milestone review gate is reached, zip the repo and send it for PI review.
 
-The current editorial review iteration is in
-`build/final_read/editorial_20261018_r3/`; its canonical snapshot is
-`artefacts/editorial_20261018_r3/`. R3 integrates Claude's R2 critique with
-independent checks of influential decreases, industrial-site histories and a
-national contribution map. The argument and adjudications are in
-`analysis/reports/editorial_redevelopment_20261018.md`; the independent review
-is `analysis/reports/editorial_r3_independent_review_20261018.md`.
-Run `uv run python analysis/reports/decrease_audit_20261018.py` for the offline
-decrease replay and supplementary figure; its small NPZ cache retains the
-independently fetched windows. R1/R2 snapshots and September evidence remain
-preserved. Manuscript builds isolate LaTeX scratch under
+The current editorial reading version is in
+`build/final_read/editorial_20261019_r4/`; its canonical snapshot is
+`artefacts/editorial_20261019_r4/`. R4 integrates Claude's final R3 critique,
+independently verifies the high-value Kosciuszko pixels, repairs map labels and
+records seven recoverable AI model identities with explicit provenance limits.
+The masking inference and journal requirements are adjudicated in
+`analysis/reports/editorial_r4_adjudication_20261019.md`.
+Run `uv run python analysis/reports/kosciuszko_floor_audit_20261019.py` for the
+new offline pixel check; `analysis/reports/decrease_audit_20261018.py` replays
+the decrease audit. Earlier frozen reading packages remain preserved.
+Manuscript builds isolate LaTeX scratch under
 `build/.makedoc-latex/<profile>/` to avoid cross-project cache collisions.
 
 The accepted September reading documents remain in `build/final_read/spatial_20260919/`; the

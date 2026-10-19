@@ -31,14 +31,16 @@ UP, DOWN, INK, MUTED, FOOTPRINT = "#b84a24", "#2b66a1", "#23313d", "#66727c", "#
 MAX_MARKER_AREA, MIN_MARKER_AREA = 250.0, 4.0
 LABELS = {
     "NSW_N0018": ("Kosciuszko", (143.4, -39.0)),
-    "WA_11648": ("Barrow Island", (120.0, -17.5)),
-    "WA_2803": ("Murujuga", (122.3, -20.0)),
-    "WA_33174": ("Thevenard Island", (113.1, -25.2)),
+    "WA_11648": ("Barrow Island", (112.7, -18.4)),
+    "WA_2803": ("Murujuga", (116.8, -18.2)),
+    "WA_33174": ("Thevenard Island", (112.7, -24.0)),
     "SA_0247": ("Yellabinna", (128.0, -33.7)),
     "CWTH_IPA20": ("Anindilyakwa", (139.3, -12.1)),
     "WA_27575": ("Neerabup", (113.1, -35.5)),
     "CWTH_IPA51": ("Southern Tanami", (127.2, -24.6)),
 }
+# Separate the three adjacent north-west sites without moving their markers.
+LABEL_ALIGNMENT = {"WA_11648": "right", "WA_2803": "center", "WA_33174": "right"}
 
 
 def sha256(path: Path) -> str:
@@ -93,11 +95,15 @@ def main():
     annotations = []
     for pid, (name, label_position) in LABELS.items():
         row = budget.loc[pid]
+        leader_gap = (0.5 * np.sqrt(marker_area(row.slope_2013_2024, maximum)) + 0.8
+                      if pid in LABEL_ALIGNMENT else 3)
+        leader_start = (1.0, 0.5) if LABEL_ALIGNMENT.get(pid) == "right" else (0.5, 0.5)
         annotations.append(ax.annotate(
             name, (row.lon, row.lat), xytext=label_position, textcoords="data",
-            fontsize=8, ha="left", va="center", zorder=5,
+            fontsize=8, ha=LABEL_ALIGNMENT.get(pid, "left"), va="center", zorder=5,
             bbox={"facecolor": "white", "edgecolor": "none", "pad": 1.2, "alpha": 0.9},
-            arrowprops={"arrowstyle": "-", "color": MUTED, "lw": 0.6, "shrinkB": 3},
+            arrowprops={"arrowstyle": "-", "color": MUTED, "lw": 0.6,
+                        "shrinkB": leader_gap, "relpos": leader_start},
         ))
     ax.set_xlim(EXTENT[:2])
     ax.set_ylim(EXTENT[2:])
@@ -185,11 +191,13 @@ def main():
             "marker_area": {"formula": "max(4, 250 * sqrt(abs(slope) / max_abs_slope))", "units": "pt2",
                             "max_abs_slope": maximum, "legend_values": references},
             "labelled_sites": {pid: name for pid, (name, _) in LABELS.items()},
+            "label_positions_lonlat": {pid: list(position) for pid, (_, position) in LABELS.items()},
+            "label_alignment": {pid: LABEL_ALIGNMENT.get(pid, "left") for pid in LABELS},
             "site_label_overlap_check": "PASS", "outputs": outputs,
         },
         "visual_qa": {"status": "pending"},
     }
-    receipt = root / "analysis/reports/editorial_r3_figures_20261018.json"
+    receipt = root / "analysis/reports/editorial_r4_map_20261019.json"
     receipt.write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps({"counts": report["national_map"]["counts"], "outputs": outputs}, indent=2))
 

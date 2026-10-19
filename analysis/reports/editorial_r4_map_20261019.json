@@ -1,0 +1,170 @@
+{
+  "generated_utc": "2026-10-19T03:37:17.304056+00:00",
+  "national_map": {
+    "script": {
+      "path": "analysis/render_editorial_map.py",
+      "sha256": "2c2e577aff1c759cdc84240a44116267f05dfa08f105c1ccadb00d1068590d07"
+    },
+    "adapted_from": "analysis/render_brightening_map.py",
+    "inputs": {
+      "analysis/reports/brightening_budget/reserve_budget.csv": "6fefedc11ecaee03bcb84420ff09a678e6103bfa4d9ca3544537327572cf0012",
+      "data/processed/pa_geometries_v0_3_0.gpkg": "da843f551bf1863dc5d1930ecb657491f73d69827b25007a0c55c9019721d0e6"
+    },
+    "counts": {
+      "assessable": 4426,
+      "positive": 560,
+      "negative": 75,
+      "zero": 3791,
+      "main_panel_nonzero": 634,
+      "inset_nonzero": 1
+    },
+    "units": "OLS slope of approximate area-integrated product radiance, product units x km2 per year",
+    "main_extent_lonlat": [
+      112.0,
+      155.0,
+      -44.5,
+      -9.0
+    ],
+    "outside_main_nonzero": [
+      {
+        "pa_id": "CWTH_05",
+        "name": "Christmas Island",
+        "lon": 105.61760038180911,
+        "lat": -10.48608961021252,
+        "slope_2013_2024": -1.05537
+      }
+    ],
+    "all_nonzero_contributors_displayed": true,
+    "centroids": "Full source geometry in EPSG:3577, transformed to EPSG:4326",
+    "footprints": "All CAPAD 2024 geometries; simplified to 1000 m only for display; no external basemap",
+    "marker_area": {
+      "formula": "max(4, 250 * sqrt(abs(slope) / max_abs_slope))",
+      "units": "pt2",
+      "max_abs_slope": 1240.55,
+      "legend_values": [
+        10,
+        100,
+        1000
+      ]
+    },
+    "labelled_sites": {
+      "NSW_N0018": "Kosciuszko",
+      "WA_11648": "Barrow Island",
+      "WA_2803": "Murujuga",
+      "WA_33174": "Thevenard Island",
+      "SA_0247": "Yellabinna",
+      "CWTH_IPA20": "Anindilyakwa",
+      "WA_27575": "Neerabup",
+      "CWTH_IPA51": "Southern Tanami"
+    },
+    "label_positions_lonlat": {
+      "NSW_N0018": [
+        143.4,
+        -39.0
+      ],
+      "WA_11648": [
+        112.7,
+        -18.4
+      ],
+      "WA_2803": [
+        116.8,
+        -18.2
+      ],
+      "WA_33174": [
+        112.7,
+        -24.0
+      ],
+      "SA_0247": [
+        128.0,
+        -33.7
+      ],
+      "CWTH_IPA20": [
+        139.3,
+        -12.1
+      ],
+      "WA_27575": [
+        113.1,
+        -35.5
+      ],
+      "CWTH_IPA51": [
+        127.2,
+        -24.6
+      ]
+    },
+    "label_alignment": {
+      "NSW_N0018": "left",
+      "WA_11648": "right",
+      "WA_2803": "center",
+      "WA_33174": "right",
+      "SA_0247": "left",
+      "CWTH_IPA20": "left",
+      "WA_27575": "left",
+      "CWTH_IPA51": "left"
+    },
+    "site_label_overlap_check": "PASS",
+    "outputs": {
+      "manuscript/figures/fig_editorial_map.png": {
+        "sha256": "809a030340452dd71524d7ccc78496121dd8a1a62fd015acaefa2d736079562e",
+        "bytes": 654387
+      },
+      "manuscript/figures/fig_editorial_map.pdf": {
+        "sha256": "e0bd90af5518aed4d0c93f4d6e2ac86c964d7c671f36ac050b500fea3a4b2a83",
+        "bytes": 1737701
+      }
+    }
+  },
+  "visual_qa": {
+    "status": "PASS",
+    "reviewed_outputs": [
+      "manuscript/figures/fig_editorial_map.png",
+      "manuscript/figures/fig_editorial_map.pdf"
+    ],
+    "method": "Full PNG, native-resolution north-west crop, and independent pdftoppm PDF rasterization inspected",
+    "findings": [
+      "Barrow Island, Murujuga and Thevenard Island labels identify their intended markers with separate leaders",
+      "No north-west leader crossings or collisions with unrelated markers; no north-west label covers a marker",
+      "Christmas Island inset retains the sole non-zero contributor outside the main extent, with slope -1.05537 rounded to -1.06",
+      "All eight site labels, legends and explanatory notes remain visible without clipping",
+      "No city labels added"
+    ]
+  },
+  "revision_validation": {
+    "baseline_commit": "238b437",
+    "baseline_receipt": "analysis/reports/editorial_r3_figures_20261018.json",
+    "baseline_receipt_sha256": "9b2776c4fc4b5e8625461b8231e5dbe2404ba2dcf776a62dd54a31424c0ecbdc",
+    "baseline_receipt_unchanged": true,
+    "scientific_fields_compared": [
+      "inputs",
+      "counts",
+      "units",
+      "main_extent_lonlat",
+      "outside_main_nonzero",
+      "all_nonzero_contributors_displayed",
+      "centroids",
+      "footprints",
+      "marker_area",
+      "labelled_sites"
+    ],
+    "scientific_field_comparison": "PASS: exact JSON equality against R3",
+    "numerical_code_comparison": "PASS: exact AST equality of input loading and numerical processing, marker-area function, both scatter calls, and extent/size/colour constants against R3",
+    "annotation_changes_only": [
+      "Barrow Island label west of its marker",
+      "Murujuga label above its marker",
+      "Thevenard Island label south-west of its marker",
+      "North-west leaders stop outside their target marker edges",
+      "Western label leaders start at the right edge of their text boxes"
+    ],
+    "northwest_layout_checks": {
+      "leader_crossings": [],
+      "leader_unrelated_marker_collisions": [],
+      "label_marker_collisions": [],
+      "minimum_leader_clearance_px_at_100dpi": {
+        "Barrow Island": 12.570615047691442,
+        "Murujuga": 8.187599308282394,
+        "Thevenard Island": 1.1558718274645152
+      }
+    }
+  },
+  "finalized_utc": "2026-10-19T03:38:10.930168+00:00",
+  "finalized_hobart": "2026-10-19T14:38:10.930168+11:00"
+}

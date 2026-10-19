@@ -284,3 +284,24 @@ Draft concrete AI roles using verified revision-model identifiers, while
 retaining an explicit requirement to complete the earlier version inventory
 before release. Private Git checkpoints/pushes follow Barry's updated guidance;
 this does not authorise first public release or submission.
+
+
+### 19 October 2026 — R4 interpretation, disclosure and counting
+
+Retain the Kosciuszko high-value endpoint diagnostic as descriptive evidence;
+do not infer that a ten-unit encoded floor excludes changes in upstream
+masking. Table S8 records nested thresholds and the whole-park positive-change
+denominator. This adjudication follows an independent cached-array replay and
+the original product methodology, not agreement between reviewers.
+
+AI disclosure now names seven recoverable model labels, records roles and
+periods in Supporting Methods S6, and explicitly describes missing historical
+records. Methods and the declaration after Acknowledgements both disclose AI
+use, matching the current Wiley guidance. No missing version is guessed.
+
+The conservative 5,000-word readiness gate now includes Table 1 cells/headers
+(170 tokens), because the current journal wording excludes legends but does
+not explicitly exempt table content. Source counts retain headings, citation
+tokens and current declarations. The final author-completed text must be
+recounted. R4 uses `artefacts/editorial_20261019_r4/` and
+`build/final_read/editorial_20261019_r4/`, with earlier snapshots preserved.

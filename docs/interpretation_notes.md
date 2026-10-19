@@ -584,3 +584,23 @@ candidate; R1 and the accepted September evidence remain preserved.
   denominators. Independent editorial review closed its four minor repairs.
   Source attribution and ecological exposure require future evidence; they
   are not prerequisites for the descriptive claim made in this revision.
+
+
+## 19 October 2026 — R4 high-value pixel interpretation
+
+- Independent offline replay confirms that 64 of 642 increasing Kosciuszko
+  cells reached at least 100 product units and supplied 64.7645% of positive
+  2019–2024 pixel differences. The common support is 39,721 inside cells;
+  the denominator is 26,110, not net change or an OLS contribution.
+- The increase extends beyond faint floor-valued detections. This is stronger
+  evidence about the magnitude distribution, but does not by itself reject
+  upstream masking: the output floor does not bound discarded radiance.
+- A mask-only toy example refutes categorical impossibility; it is not an
+  explanation fitted to Kosciuszko. Native pre-mask values/masks would
+  distinguish that example, but were not acquired for this bounded revision.
+- [x] Preserve the valid numbers in Results, S4 and new Table S8, retaining
+  the processing qualification in Discussion.
+- [x] Repair northwestern map labels without altering scientific values.
+
+Evidence: `analysis/reports/kosciuszko_floor_audit_20261019.*` and
+`analysis/reports/editorial_r4_map_20261019.json`.

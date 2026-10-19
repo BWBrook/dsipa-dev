@@ -1,6 +1,35 @@
 # DSIPA successor handover
 
-## Active tranche: substantive editorial redevelopment, 18 October 2026
+## Current reading candidate: R4, 19 October 2026
+
+Barry resumed the substantive editorial collaboration after Claude's R3 review
+(board 90 message 2063; commit 77af011). R4 accepts the improved abstract context,
+chronological sign comparison, global follow-up question and northwestern map
+label repair. The independent floor audit confirms all high-value Kosciuszko
+counts, but rejects the claim that they rule out upstream masking. Results,
+Discussion and new Table S8 retain both the positive finding and that limit.
+
+The manuscript now discloses seven recoverable AI model labels in Methods,
+the declaration and new Supporting Methods S6. Historical gaps are explicit.
+The current Wiley guidelines were checked: 5,000 words for research and 300
+for the abstract. Conservative source counts are 259 abstract + 4,549 body +
+170 Table 1 cell/header tokens = 4,978. The body count retains headings,
+citation tokens and current declarations; final author text must be recounted.
+There are four main figures, one main table, SI Methods S1–S6, Tables S1–S8
+and Figures S1–S7.
+
+Reading files: `build/final_read/editorial_20261019_r4/`; canonical evidence:
+`artefacts/editorial_20261019_r4/`. Final seal, rendering and Git receipts
+record completion and exact identities. R3 remains frozen at 238b437; the
+latest Claude review was committed as 77af011. The independent floor and map
+receipts and `editorial_r4_adjudication_20261019.md` document the changes.
+Native PDFs pass at 25/28 pages; independent LibreOffice Word renders pass at
+30/35 pages. The next human task is Barry's read of the complete manuscript. First public
+release/submission, final factual declarations and author approval remain
+separate. Private commits/pushes are authorised by the 18 October guidance.
+
+## Previous reading candidate: R3, 18 October 2026
+
 
 Barry authorised substantial revision in asynchronous collaboration with Claude.
 His 18 October global guidance authorises reversible analyses, commits and pushes

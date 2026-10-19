@@ -13,7 +13,10 @@
 - [x] Obtain Claude's next critique of the integrated R2 argument and displays.
 - [x] Integrate and independently check the R3 site histories and influence diagnostic.
 - [x] Build, inspect and preserve R3, then commit/push the coherent private revision.
-- [ ] Obtain Claude's next editorial read of the frozen R3 package.
+- [x] Obtain Claude's next editorial read of the frozen R3 package.
+- [x] Independently check the high-value Kosciuszko pixels and adjudicate the masking claim.
+- [x] Complete R4 disclosure, map-label repair, document QA and private reading package.
+- [ ] Barry reads the complete R4 manuscript and identifies any remaining substantive changes.
 
 Starting point: 59725d3 (September revisions committed); R2 checkpoint: 11efd90. See
 `docs/log/146_editorial_redevelopment.md` and
