@@ -1,5 +1,7 @@
 # DSIPA-NBS: Dark-Sky Integrity of Protected Areas & Nocturnal Biodiversity Signals (Australia)
 
+> **Status:** developed in the open as a working record. This is work in progress: contents may change, and nothing here is peer-reviewed unless stated.
+
 **Current status: corrected spatial candidate independently approved for private reading (19 September 2026).** The independent Astra/max review found errors in surrounding buffers, inward bands and coastal masking. Whole-reserve observations remain unchanged. The corrected route is documented in [spatial reproduction](docs/spatial_reproduction_20260919.md); the older Goal 012 runner and reference contract describe the historical baseline, not the current manuscript's surrounding or band results. Previous private reading bundles remain preserved. Optional numerical Layer B results are excluded from the active candidate because original occurrence inputs could not be recovered to verify a sampling repair. Source code and historical results remain available for research. No public release is authorised.
 
 This repository investigates a conservation question with a strong “dark-sky” angle:
