@@ -1,9 +1,8 @@
 # AGENTS: DSIPA-NBS — Dark-Sky Integrity of Protected Areas & Nocturnal Biodiversity Signals (Australia)
 
-This file defines how you (the Codex CLI agent) must work **in this repository**.
-Global rules from `~/.codex/AGENTS.md` may also apply; if there is a conflict, **this file wins** for this repo.
+These project instructions apply to all contributors alongside the machine-wide policy.
 
-This project is part of an “AI for Science” workflow: you act as an autonomous research postdoc; the human is hands-off and only answers targeted questions when you are truly blocked.
+This project is part of an “AI for Science” workflow. Agents carry out the research with Barry as a scientific collaborator.
 
 ---
 
@@ -20,14 +19,11 @@ This is a two-layer paper:
 ## 1) Working agreements
 
 ### 1.1 Autonomy first
-- You should drive the work end-to-end using `docs/roadmap.md` as the execution GPS.
-- Minimise questions to the human. Only ask when:
-  1) you are blocked after multiple concrete attempts, or
-  2) a high-impact, irreversible fork is genuinely ambiguous, or
-  3) sanity checks repeatedly fail and you cannot resolve them.
+- Drive the work end-to-end using `docs/roadmap.md` as a research roadmap.
+- Ask Barry when a material scientific choice, external commitment or unresolved blocker requires his input. Continue independent work while awaiting a decision.
 
-### 1.2 “Code runs” is not success
-You must follow the **Result Review Cycle** and the **Artefact Review Cycle** (defined below and in `docs/workflow.md`). Passing unit tests is necessary but not sufficient.
+### 1.2 Scientific and engineering verification
+Check numerical behaviour, domain plausibility and interpretation for candidate main results. Run relevant unit tests, scale other engineering verification to the change and require distributable builds and canonical run bundles when the deliverable needs them. See section 6 and `docs/workflow.md`.
 
 ### 1.3 Reproducibility is a first-class deliverable
 - Pin environments and dependencies.
@@ -59,12 +55,12 @@ Use the standard `ai-science-portal` structure:
 - `README.md` — project overview and how to run.
 - `docs/`
   - `plan.md` — narrative plan (“the brochure”).
-  - `roadmap.md` — work queue + definitions of done (“the GPS”; you follow this).
-  - `workflow.md` — Result Review Cycle + Artefact Review Cycle (mandatory).
+  - `roadmap.md` — research roadmap and work queue.
+  - `workflow.md` — guidance for scientific and engineering verification.
   - `decisions.md` — irreversible/costly choices with rationale and links.
   - `interpretation_notes.md` — what results mean; surprises; iteration queue.
-  - `questions_for_human.md` — targeted questions when blocked.
-  - `log/` — chronological phase logs.
+  - `questions_for_human.md` — context from earlier questions.
+  - `log/` — milestone and reproducibility records.
 - `data/`
   - `raw/` — immutable downloads (never hand-edit).
   - `processed/` — generated products only.
@@ -90,18 +86,17 @@ If you add a directory, record it in `docs/decisions.md` and update `README.md`.
 ### 4.2 Environment rules
 - Python must be managed with **`uv`** + a committed `pyproject.toml` (and lockfile if used).
 - If R is used, manage dependencies with `renv` and record the rationale in `docs/decisions.md`.
-- Every run that produces paper figures must record software versions in a machine-readable manifest inside the run artefacts (see Artefact Review Cycle).
+- Every run that produces paper figures must record software versions in a machine-readable manifest inside the run artefacts (see section 6.2).
 
 ---
 
 ## 5) Phases (high level)
 
-You must work in phases and leave a trace in `docs/log/`.
+Use these phases as a research roadmap. Record consequential decisions and reproducibility evidence in existing project records as needed.
 
 1) **Bootstrap & scoping**
    - Reconstruct context from repo docs.
-   - Fill `docs/log/000_bootstrap.md` (append, don’t overwrite).
-   - Update `docs/plan.md` minimally to reflect your refined understanding.
+   - Update `docs/plan.md` when the scope changes.
 
 2) **Data acquisition & provenance**
    - Acquire protected-area polygons and night-lights products.
@@ -129,59 +124,40 @@ You must work in phases and leave a trace in `docs/log/`.
 
 ---
 
-## 6) Mandatory loops
+## 6) Scientific and engineering verification
 
-### 6.1 Result Review Cycle (scientific validity)
-For any new candidate “main” result (figure/table/model), you must perform:
+### 6.1 Scientific validity
+Check bounds, missingness, units and invariants for each candidate main result
+(figure, table or model). Check expected patterns. Major cities should be
+brighter than remote areas, and buffers around urban-adjacent PAs are often
+brighter than their cores. Check whether missing years drive the trends.
 
-1) **Sanity**
-   - Numerical sanity: bounds, missingness, units, invariants.
-   - Domain sanity: patterns that must hold in obvious cases (e.g., major cities > remote; buffers around urban-adjacent PAs often brighter than cores; trends not driven by missing years).
+Save artefacts to `manuscript/figures/` or `analysis/reports/`. Record what each
+result shows, how it bears on the hypothesis and any material concerns in
+`docs/interpretation_notes.md` before sharing the result as final. Investigate
+those concerns and regenerate artefacts when the analysis changes.
 
-2) **Interpretation**
-   - Save artefacts to `manuscript/figures/` or `analysis/reports/`.
-   - Write interpretation bullets in `docs/interpretation_notes.md`:
-     - what it shows,
-     - how it supports/refutes the hypothesis,
-     - what worries you.
+### 6.2 Engineering validity
+Match verification to the change. When the deliverable needs distributable
+artefacts, build and verify them, including a Python sdist and wheel if Python
+is primary. Verify that the documentation or reference material builds when
+it is part of the deliverable.
 
-3) **Iteration**
-   - Convert worries into concrete follow-up tasks under that result entry.
-   - Re-run, regenerate artefacts, and close the loop.
-
-No “ship it” without interpretation notes.
-
-### 6.2 Artefact Review Cycle (engineering validity)
-For each Work Package (WP) you complete (see `docs/roadmap.md`), you must:
-
-1) **Build artefacts**
-   - Build and verify distributable artefacts for the codebase (at minimum: Python sdist + wheel if Python is primary).
-   - Ensure documentation/reference material is buildable (even if minimal).
-
-2) **Canonical run artefact folder**
-   - Create (or update) a canonical run folder under `artefacts/` (or `analysis/artefacts/`), containing:
-     - run manifest (data versions, checksums, git commit hash, package versions),
-     - key outputs produced in that WP (tables/figures),
-     - a brief README describing what the run demonstrates.
-
-3) **Sanity inspection**
-   - Inspect the WP outputs and record sanity notes in the relevant log + `docs/interpretation_notes.md` (if it’s a result).
-
-4) **Iteration**
-   - Fix issues, re-run, and only then mark the WP complete in `docs/roadmap.md`.
+When the deliverable needs a canonical run bundle, use `artefacts/` or
+`analysis/artefacts/`. Include a manifest with data versions, checksums, the
+Git commit hash and package versions, the key output tables and figures, and
+a brief README describing what the run demonstrates. Inspect the outputs and
+address material issues before marking the related work complete in
+`docs/roadmap.md`. Record findings in the relevant project record and include
+scientific interpretation in `docs/interpretation_notes.md`.
 
 ---
 
 ## 7) Logging, decisions, and context reconstruction
 
 ### 7.1 Logs
-Maintain chronological log files in `docs/log/` (append-only style). At minimum:
-- `000_bootstrap.md`
-- plus additional phase logs as you progress (monotonic numbering).
-
-Every substantial work session must end with:
-- a short log update,
-- and any roadmap checkbox updates.
+Use `docs/log/` for milestone evidence and handoffs that need a durable record.
+Preserve existing entries, including `docs/log/000_bootstrap.md` when present.
 
 ### 7.2 Decisions
 Any non-trivial, costly-to-change choice must be recorded in `docs/decisions.md`:
@@ -192,26 +168,17 @@ Any non-trivial, costly-to-change choice must be recorded in `docs/decisions.md`
 - output schema choices.
 
 ### 7.3 Resume discipline
-Assume chat context may be truncated. When resuming after a pause:
-1) read `docs/roadmap.md` and pick the first unchecked WP,
-2) skim `docs/plan.md`,
-3) skim newest files in `docs/log/`,
-4) read `docs/decisions.md`,
-5) inspect recent git history.
-
-Do not rely on chat history.
+Resume the current authorised task. Use `docs/roadmap.md` and the relevant
+project records to recover context and choose the next step. Consult
+`docs/plan.md`, `docs/decisions.md`, `docs/log/` and recent Git history as needed.
 
 ---
 
-## 8) Human interaction: how to ask questions
+## 8) Questions for Barry
 
-If you must ask the human, do it in `docs/questions_for_human.md`:
-- numbered questions,
-- 1–3 sentences each,
-- include options if relevant,
-- state what is blocked.
-
-Then summarise those questions in your next assistant message and pause work on that branch.
+Ask Barry directly using the available question tool. State what is blocked
+and give options when relevant. Record consequential unresolved decisions in
+the project notes when a durable record helps.
 
 ---
 
